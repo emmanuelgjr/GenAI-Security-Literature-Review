@@ -1,0 +1,24 @@
+[
+  {
+    "ID": 1,
+    "Category": "LLM Top 10 - Prompt Injection",
+    "Description": "Unvalidated prompts cause model misbehavior",
+    "Impact": "High",
+    "Example": "User tricking model to reveal system prompt",
+    "Mitigation": "Input validation, filtering",
+    "Source/Reference": "https://owasp.org/Top10",
+    "Contributor": "John Doe",
+    "Date": "2025-10-01"
+  },
+  {
+    "ID": 2,
+    "Category": "Agentic T10 - Unsafe Autonomy",
+    "Description": "Agent executes harmful action without oversight",
+    "Impact": "Critical",
+    "Example": "Agent deleting important files",
+    "Mitigation": "Human-in-the-loop, guardrails",
+    "Source/Reference": "N/A",
+    "Contributor": "Jane Smith",
+    "Date": "2025-10-01"
+  }
+]

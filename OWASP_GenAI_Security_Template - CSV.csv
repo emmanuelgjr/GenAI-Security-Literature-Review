@@ -1,0 +1,3 @@
+ID,Category,Description,Impact,Example,Mitigation,Source/Reference,Contributor,Date
+1,LLM Top 10 - Prompt Injection,Unvalidated prompts cause model misbehavior,High,User tricking model to reveal system prompt,"Input validation, filtering",https://owasp.org/Top10,John Doe,2025-10-01
+2,Agentic T10 - Unsafe Autonomy,Agent executes harmful action without oversight,Critical,Agent deleting important files,"Human-in-the-loop, guardrails",N/A,Jane Smith,2025-10-01
