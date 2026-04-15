@@ -1,16 +1,17 @@
 # GenAI Security Literature Review
 
-[![Validate Data](../../actions/workflows/validate-data.yml/badge.svg)](../../actions/workflows/validate-data.yml)
-[![Deploy Webapp](../../actions/workflows/deploy-webapp.yml/badge.svg)](../../actions/workflows/deploy-webapp.yml)
+[![Validate Data](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/validate-data.yml/badge.svg)](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/validate-data.yml)
+[![Deploy Webapp](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/deploy-webapp.yml/badge.svg)](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/deploy-webapp.yml)
+[![Fetch Papers](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/fetch-papers.yml/badge.svg)](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/fetch-papers.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive, community-driven, auto-updating literature review of **GenAI and LLM security** research, standards, tools, and resources.
+A comprehensive, community-driven, auto-updating literature review of **GenAI and LLM security** research, standards, tools, and resources. Currently tracking **100 resources** across **42 categories** with weekly automated updates from academic APIs.
 
-**[Browse the Interactive Webapp](https://emmanuelgjr.github.io/LLM-Security-Literature-Review/)**
+**[Browse the Interactive Webapp](https://emmanuelgjr.github.io/GenAI-Security-Literature-Review/)**
 
 ## What's Inside
 
-This repository maintains a curated and continuously growing database of LLM/AI security resources spanning:
+This repository maintains a curated and continuously growing database of GenAI/LLM security resources spanning:
 
 ### Categories
 
@@ -38,46 +39,46 @@ Every entry is mapped (where applicable) to:
 
 ### Auto-Discovery
 
-A weekly GitHub Action queries academic APIs (arXiv, Semantic Scholar, CrossRef) for new LLM security publications. New entries are submitted as pull requests for human review before merging.
+A weekly GitHub Action queries academic APIs (arXiv, Semantic Scholar, CrossRef) for new GenAI security publications. New entries are submitted as pull requests for human review before merging.
 
 ### Community Contributions
 
-Anyone can submit resources via [GitHub Issues](../../issues/new?template=add-resource.md) or pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Anyone can submit resources via [GitHub Issues](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md) or pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ### Interactive Webapp
 
 The static webapp (deployed to GitHub Pages) provides:
-- Full-text search across all entries
-- Browse by category taxonomy
+- Full-text fuzzy search across all entries
+- Color-coded category browsing by domain
 - Filter by type, year, framework mapping, and review status
-- Individual entry detail pages with citation export
+- Framework mapping explorer (OWASP, NIST, MITRE, ISO)
+- Individual entry detail pages with BibTeX citation export
 
 ## Repository Structure
 
 ```
 data/
-  literature.json      # Core database of all entries
-  taxonomy.json        # Category definitions
-  frameworks.json      # Security framework definitions
+  literature.json      # Core database (100 curated entries)
+  taxonomy.json        # 8 domains, 42 category definitions
+  frameworks.json      # OWASP/NIST/MITRE/ISO framework definitions
   sources.json         # Automation source configuration
 schemas/               # JSON Schema for data validation
 scripts/               # Python automation (fetch, dedup, validate)
-webapp/                # Astro static site
-.github/workflows/     # CI/CD (validation, fetch, deploy)
+webapp/                # Astro static site (Preact + Tailwind)
+.github/workflows/     # CI/CD (validation, weekly fetch, deploy)
 ```
 
 ## Quick Start
 
 ### Browse Online
 
-Visit the **[Interactive Webapp](https://emmanuelgjr.github.io/LLM-Security-Literature-Review/)** -- no installation needed.
+Visit the **[Interactive Webapp](https://emmanuelgjr.github.io/GenAI-Security-Literature-Review/)** -- no installation needed.
 
 ### Run Locally
 
 ```bash
-# Clone
-git clone https://github.com/emmanuelgjr/LLM-Security-Literature-Review.git
-cd LLM-Security-Literature-Review
+git clone https://github.com/emmanuelgjr/GenAI-Security-Literature-Review.git
+cd GenAI-Security-Literature-Review
 
 # Run the webapp
 cd webapp

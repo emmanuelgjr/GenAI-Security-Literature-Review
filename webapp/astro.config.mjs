@@ -4,7 +4,8 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://emmanuelgjr.github.io',
-  base: '/GenAI-Security-Literature-Review',
+  base: '/GenAI-Security-Literature-Review/',
+  trailingSlash: 'always',
   integrations: [preact(), tailwind()],
   output: 'static',
 });
