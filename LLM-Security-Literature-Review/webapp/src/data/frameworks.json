@@ -1,0 +1,99 @@
+{
+  "frameworks": [
+    {
+      "id": "owasp_llm_top10",
+      "name": "OWASP Top 10 for LLM Applications",
+      "version": "2025",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "entries": [
+        { "id": "LLM01", "name": "Prompt Injection", "description": "Manipulating LLMs through crafted inputs" },
+        { "id": "LLM02", "name": "Sensitive Information Disclosure", "description": "Unintended revelation of confidential data" },
+        { "id": "LLM03", "name": "Supply Chain Vulnerabilities", "description": "Compromised components in LLM supply chain" },
+        { "id": "LLM04", "name": "Data and Model Poisoning", "description": "Tampering with training data or models" },
+        { "id": "LLM05", "name": "Improper Output Handling", "description": "Insufficient validation of LLM outputs" },
+        { "id": "LLM06", "name": "Excessive Agency", "description": "Granting LLMs too much autonomy or access" },
+        { "id": "LLM07", "name": "System Prompt Leakage", "description": "Exposure of system-level instructions" },
+        { "id": "LLM08", "name": "Vector and Embedding Weaknesses", "description": "Vulnerabilities in vector stores and embeddings" },
+        { "id": "LLM09", "name": "Misinformation", "description": "Generation of false or misleading content" },
+        { "id": "LLM10", "name": "Unbounded Consumption", "description": "Uncontrolled resource usage by LLMs" }
+      ]
+    },
+    {
+      "id": "owasp_agentic_top10",
+      "name": "OWASP Top 10 for Agentic AI",
+      "version": "2025",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "entries": [
+        { "id": "AGT01", "name": "Excessive Agency & Privilege Escalation" },
+        { "id": "AGT02", "name": "Unsafe Tool Execution" },
+        { "id": "AGT03", "name": "Prompt Injection in Agent Pipelines" },
+        { "id": "AGT04", "name": "Memory & Context Poisoning" },
+        { "id": "AGT05", "name": "Insecure Multi-Agent Communication" },
+        { "id": "AGT06", "name": "Inadequate Human Oversight" },
+        { "id": "AGT07", "name": "Supply Chain Compromise" },
+        { "id": "AGT08", "name": "Insufficient Monitoring & Logging" },
+        { "id": "AGT09", "name": "Unsafe Autonomy & Self-Modification" },
+        { "id": "AGT10", "name": "Data Leakage Across Agent Boundaries" }
+      ]
+    },
+    {
+      "id": "mitre_atlas",
+      "name": "MITRE ATLAS",
+      "version": "4.0",
+      "url": "https://atlas.mitre.org/",
+      "entries": [
+        { "id": "AML.T0000", "name": "Reconnaissance" },
+        { "id": "AML.T0001", "name": "Resource Development" },
+        { "id": "AML.T0010", "name": "ML Supply Chain Compromise" },
+        { "id": "AML.T0015", "name": "Evade ML Model" },
+        { "id": "AML.T0018", "name": "Backdoor ML Model" },
+        { "id": "AML.T0020", "name": "Poison Training Data" },
+        { "id": "AML.T0024", "name": "Exfiltration via ML Inference API" },
+        { "id": "AML.T0025", "name": "Exfiltration via Cyber Means" },
+        { "id": "AML.T0034", "name": "Cost Harvesting" },
+        { "id": "AML.T0035", "name": "Denial of ML Service" },
+        { "id": "AML.T0040", "name": "ML Model Inference API Access" },
+        { "id": "AML.T0042", "name": "Verify Attack" },
+        { "id": "AML.T0043", "name": "Craft Adversarial Data" },
+        { "id": "AML.T0044", "name": "Full ML Model Access" },
+        { "id": "AML.T0047", "name": "ML-Enabled Product or Service" },
+        { "id": "AML.T0048", "name": "Prompt Injection" },
+        { "id": "AML.T0049", "name": "Extract ML Model" },
+        { "id": "AML.T0050", "name": "Command and Control via ML Service" },
+        { "id": "AML.T0051", "name": "LLM Prompt Injection" },
+        { "id": "AML.T0054", "name": "LLM Jailbreak" },
+        { "id": "AML.T0056", "name": "LLM Data Leakage" },
+        { "id": "AML.T0057", "name": "LLM Plugin Compromise" }
+      ]
+    },
+    {
+      "id": "nist_ai_rmf",
+      "name": "NIST AI Risk Management Framework",
+      "version": "1.0",
+      "url": "https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence",
+      "entries": [
+        { "id": "GOVERN", "name": "Govern", "description": "Cultivate a culture of risk management" },
+        { "id": "MAP", "name": "Map", "description": "Context and risk identification" },
+        { "id": "MEASURE", "name": "Measure", "description": "Analyze, assess, and track AI risks" },
+        { "id": "MANAGE", "name": "Manage", "description": "Allocate resources to mapped and measured risks" }
+      ]
+    },
+    {
+      "id": "iso_42001",
+      "name": "ISO/IEC 42001",
+      "version": "2023",
+      "url": "https://www.iso.org/standard/81230.html",
+      "entries": [
+        { "id": "4", "name": "Context of the organization" },
+        { "id": "5", "name": "Leadership" },
+        { "id": "6", "name": "Planning" },
+        { "id": "7", "name": "Support" },
+        { "id": "8", "name": "Operation" },
+        { "id": "9", "name": "Performance evaluation" },
+        { "id": "10", "name": "Improvement" },
+        { "id": "A", "name": "Annex A - AI Controls" },
+        { "id": "B", "name": "Annex B - AI Objectives" }
+      ]
+    }
+  ]
+}

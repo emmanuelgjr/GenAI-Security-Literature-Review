@@ -1,0 +1,59 @@
+---
+import { getCategoryClasses } from '../categoryColors';
+
+interface Category {
+  id: string;
+  label: string;
+  description?: string;
+}
+
+interface Domain {
+  id: string;
+  label: string;
+  description?: string;
+  categories: Category[];
+}
+
+interface Props {
+  domains: Domain[];
+  entryCounts: Record<string, number>;
+}
+
+const { domains, entryCounts } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const domainBorders: Record<string, string> = {
+  'attacks-threats': 'border-l-red-400',
+  'defenses-mitigations': 'border-l-emerald-400',
+  'privacy': 'border-l-violet-400',
+  'governance-compliance': 'border-l-amber-400',
+  'red-teaming-evaluation': 'border-l-orange-400',
+  'infrastructure-deployment': 'border-l-cyan-400',
+  'agentic-ai-security': 'border-l-fuchsia-400',
+  'surveys-meta': 'border-l-sky-400',
+};
+---
+
+<div class="space-y-6">
+  {domains.map((domain) => (
+    <div class={`card border-l-4 ${domainBorders[domain.id] || 'border-l-gray-400'}`}>
+      <h3 class="text-lg font-semibold text-gray-900 mb-1">{domain.label}</h3>
+      {domain.description && (
+        <p class="text-sm text-gray-500 mb-3">{domain.description}</p>
+      )}
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {domain.categories.map((cat) => (
+          <a
+            href={`${base}browse/?category=${cat.id}`}
+            class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-50 no-underline text-gray-700 hover:text-primary-700 transition-colors"
+          >
+            <span class="text-sm">{cat.label}</span>
+            <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${getCategoryClasses(cat.id)}`}>
+              {entryCounts[cat.id] || 0}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

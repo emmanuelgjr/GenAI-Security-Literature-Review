@@ -1,0 +1,22 @@
+{
+  "name": "llm-security-literature-review",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/preact": "^3.5.0",
+    "preact": "^10.24.0",
+    "fuse.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.0"
+  }
+}

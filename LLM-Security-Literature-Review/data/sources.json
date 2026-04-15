@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "api_url": "https://export.arxiv.org/api/query",
+      "enabled": true,
+      "query_terms": [
+        "(\"large language model\" OR \"LLM\" OR \"generative AI\") AND (security OR attack OR vulnerability OR adversarial OR privacy OR jailbreak OR \"prompt injection\")"
+      ],
+      "categories": ["cs.CR", "cs.AI", "cs.CL"],
+      "max_results_per_fetch": 100,
+      "last_fetched": null
+    },
+    {
+      "id": "semantic-scholar",
+      "name": "Semantic Scholar",
+      "api_url": "https://api.semanticscholar.org/graph/v1/paper/search",
+      "enabled": true,
+      "query_terms": [
+        "LLM security attack defense",
+        "large language model vulnerability",
+        "AI agent security",
+        "prompt injection defense",
+        "LLM privacy differential"
+      ],
+      "fields_of_study": ["Computer Science"],
+      "min_citation_count_older_than_6mo": 3,
+      "max_results_per_fetch": 100,
+      "last_fetched": null
+    },
+    {
+      "id": "crossref",
+      "name": "CrossRef",
+      "api_url": "https://api.crossref.org/works",
+      "enabled": true,
+      "query_terms": [
+        "large language model security",
+        "AI safety adversarial",
+        "LLM prompt injection"
+      ],
+      "max_results_per_fetch": 50,
+      "last_fetched": null
+    }
+  ]
+}

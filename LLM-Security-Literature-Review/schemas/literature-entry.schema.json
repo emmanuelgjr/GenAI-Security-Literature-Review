@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LLM Security Literature Database",
+  "type": "object",
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "title", "authors", "year", "url", "categories", "added_date", "reviewed"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^llmsec-\\d{4}-\\d{5}$",
+            "description": "Unique identifier: llmsec-YYYY-NNNNN"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["paper", "book", "report", "tool", "standard", "talk", "blog", "dataset"],
+            "description": "Resource type"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Full title of the resource"
+          },
+          "authors": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "description": "List of author names"
+          },
+          "year": {
+            "type": "integer",
+            "minimum": 2017,
+            "maximum": 2030,
+            "description": "Publication year"
+          },
+          "month": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12,
+            "description": "Publication month"
+          },
+          "venue": {
+            "type": "string",
+            "description": "Publication venue (conference, journal, etc.)"
+          },
+          "abstract": {
+            "type": "string",
+            "description": "Abstract or summary"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Primary URL for the resource"
+          },
+          "doi": {
+            "type": "string",
+            "description": "Digital Object Identifier"
+          },
+          "pdf_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Direct link to PDF"
+          },
+          "categories": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "description": "Category IDs from taxonomy.json"
+          },
+          "framework_mappings": {
+            "type": "object",
+            "properties": {
+              "owasp_llm_top10": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "owasp_agentic_top10": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "mitre_atlas": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "nist_ai_rmf": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "iso_42001": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": false
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Free-form tags for additional classification"
+          },
+          "added_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the entry was added (YYYY-MM-DD)"
+          },
+          "added_by": {
+            "type": "string",
+            "description": "Who added this entry (automation or GitHub username)"
+          },
+          "source_api": {
+            "type": "string",
+            "enum": ["semantic-scholar", "arxiv", "crossref", "manual"],
+            "description": "Source API that discovered this entry"
+          },
+          "external_ids": {
+            "type": "object",
+            "properties": {
+              "arxiv_id": { "type": "string" },
+              "semantic_scholar_id": { "type": "string" },
+              "doi": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "citation_count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of citations (from Semantic Scholar)"
+          },
+          "open_access": {
+            "type": "boolean",
+            "description": "Whether the resource is freely accessible"
+          },
+          "reviewed": {
+            "type": "boolean",
+            "description": "Whether a human has reviewed this entry"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,86 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Comprehensive literature review of LLM and AI security research, standards, tools, and resources." } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <title>{title} | GenAI Security Literature Review</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="bg-primary-900 text-white shadow-lg">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href={base} class="text-white hover:text-primary-200 font-bold text-lg no-underline">
+            GenAI Security Lit Review
+          </a>
+          <div class="hidden sm:flex space-x-6">
+            <a href={base} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Home</a>
+            <a href={`${base}browse/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Browse</a>
+            <a href={`${base}search/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Search</a>
+            <a href={`${base}frameworks/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Frameworks</a>
+            <a href={`${base}about/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">About</a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="sm:hidden">
+            <button id="mobile-menu-btn" class="text-primary-200 hover:text-white" aria-label="Toggle menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden sm:hidden pb-4">
+          <a href={base} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Home</a>
+          <a href={`${base}browse/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Browse</a>
+          <a href={`${base}search/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Search</a>
+          <a href={`${base}frameworks/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Frameworks</a>
+          <a href={`${base}about/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-white font-semibold mb-2">GenAI Security Literature Review</h3>
+            <p class="text-sm">A comprehensive, community-driven, auto-updating resource for LLM and AI security research.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-2">Contribute</h3>
+            <ul class="text-sm space-y-1">
+              <li><a href="https://github.com/emmanuelgjr/LLM-Security-Literature-Review/issues/new?template=add-resource.md" class="text-gray-300 hover:text-white">Submit a Resource</a></li>
+              <li><a href="https://github.com/emmanuelgjr/LLM-Security-Literature-Review" class="text-gray-300 hover:text-white">GitHub Repository</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-2">License</h3>
+            <p class="text-sm">MIT License. Maintained by <a href="https://github.com/emmanuelgjr" class="text-gray-300 hover:text-white">@emmanuelgjr</a>.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+        document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

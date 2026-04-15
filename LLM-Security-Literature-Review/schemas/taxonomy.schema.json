@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LLM Security Taxonomy",
+  "type": "object",
+  "required": ["domains"],
+  "properties": {
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "categories"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Domain identifier"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable domain name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of the domain"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "label"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Category identifier (used in literature entries)"
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Human-readable category name"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Brief description of what this category covers"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

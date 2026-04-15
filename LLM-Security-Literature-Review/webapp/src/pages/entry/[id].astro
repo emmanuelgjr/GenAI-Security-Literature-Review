@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FrameworkBadge from '../../components/FrameworkBadge.astro';
+import { getCategoryClasses } from '../../categoryColors';
+import literature from '../../data/literature.json';
+
+export function getStaticPaths() {
+  return literature.entries.map(entry => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const typeColors: Record<string, string> = {
+  paper: 'badge-blue',
+  book: 'badge-purple',
+  report: 'badge-orange',
+  tool: 'badge-green',
+  standard: 'badge-red',
+  talk: 'badge-gray',
+  blog: 'badge-gray',
+  dataset: 'badge-green',
+};
+
+// Generate BibTeX
+function generateBibtex(e: typeof entry): string {
+  const key = e.id.replace(/-/g, '');
+  const authorStr = e.authors.join(' and ');
+  const lines = [
+    `@article{${key},`,
+    `  title = {${e.title}},`,
+    `  author = {${authorStr}},`,
+    `  year = {${e.year}},`,
+  ];
+  if (e.venue) lines.push(`  journal = {${e.venue}},`);
+  if (e.doi) lines.push(`  doi = {${e.doi}},`);
+  if (e.url) lines.push(`  url = {${e.url}},`);
+  lines.push('}');
+  return lines.join('\n');
+}
+
+const bibtex = generateBibtex(entry);
+const frameworkMappings: Record<string, string[]> | undefined = (entry as any).framework_mappings;
+---
+
+<BaseLayout title={entry.title}>
+  <div class="max-w-4xl mx-auto">
+    <!-- Back link -->
+    <a href={`${base}search/`} class="text-sm text-gray-500 hover:text-primary-600 mb-4 inline-block">
+      &larr; Back to search
+    </a>
+
+    <!-- Header -->
+    <div class="card mb-6">
+      <div class="flex items-center gap-2 mb-3 flex-wrap">
+        <span class={`badge ${typeColors[entry.type] || 'badge-gray'}`}>{entry.type}</span>
+        {entry.reviewed && <span class="badge badge-green">reviewed</span>}
+        {entry.open_access && <span class="badge badge-blue">open access</span>}
+        <span class="text-sm text-gray-500">{entry.id}</span>
+      </div>
+
+      <h1 class="text-2xl font-bold text-gray-900 mb-3">{entry.title}</h1>
+
+      <p class="text-gray-700 mb-2">
+        {entry.authors.join(', ')}
+      </p>
+
+      <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+        <span>{entry.year}{entry.month ? `-${String(entry.month).padStart(2, '0')}` : ''}</span>
+        {entry.venue && <span>&mdash; {entry.venue}</span>}
+        {entry.citation_count !== undefined && entry.citation_count > 0 && (
+          <span>{entry.citation_count} citations</span>
+        )}
+      </div>
+
+      <div class="flex gap-3">
+        <a href={entry.url} target="_blank" rel="noopener noreferrer" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 no-underline">
+          View Resource
+        </a>
+        {entry.pdf_url && (
+          <a href={entry.pdf_url} target="_blank" rel="noopener noreferrer" class="bg-white text-primary-600 px-4 py-2 rounded-md text-sm font-medium border border-primary-600 hover:bg-primary-50 no-underline">
+            PDF
+          </a>
+        )}
+        {entry.doi && (
+          <a href={`https://doi.org/${entry.doi}`} target="_blank" rel="noopener noreferrer" class="bg-white text-gray-600 px-4 py-2 rounded-md text-sm font-medium border border-gray-300 hover:bg-gray-50 no-underline">
+            DOI
+          </a>
+        )}
+      </div>
+    </div>
+
+    <!-- Abstract -->
+    {entry.abstract && (
+      <div class="card mb-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-2">Abstract</h2>
+        <p class="text-gray-700 leading-relaxed">{entry.abstract}</p>
+      </div>
+    )}
+
+    <!-- Categories & Tags -->
+    <div class="card mb-6">
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">Categories</h2>
+      <div class="flex flex-wrap gap-2 mb-4">
+        {entry.categories.map(cat => (
+          <a href={`${base}browse/?category=${cat}`} class={`badge no-underline font-medium ${getCategoryClasses(cat)}`}>
+            {cat.replace(/-/g, ' ')}
+          </a>
+        ))}
+      </div>
+
+      {entry.tags && entry.tags.length > 0 && (
+        <>
+          <h2 class="text-lg font-semibold text-gray-900 mb-3">Tags</h2>
+          <div class="flex flex-wrap gap-2">
+            {entry.tags.map(tag => (
+              <span class="badge badge-gray">{tag}</span>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+
+    <!-- Framework Mappings -->
+    {frameworkMappings && Object.keys(frameworkMappings).some(k => (frameworkMappings[k] || []).length > 0) && (
+      <div class="card mb-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-3">Framework Mappings</h2>
+        <div class="flex flex-wrap gap-2">
+          {Object.entries(frameworkMappings).map(([fw, ids]) =>
+            (ids || []).map(id => <FrameworkBadge framework={fw} id={id} />)
+          )}
+        </div>
+      </div>
+    )}
+
+    <!-- Citation Export -->
+    <div class="card mb-6">
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">Cite This Resource</h2>
+      <div class="relative">
+        <pre class="bg-gray-50 rounded-md p-4 text-sm overflow-x-auto"><code>{bibtex}</code></pre>
+        <button
+          id="copy-bibtex"
+          class="absolute top-2 right-2 bg-white border border-gray-300 rounded px-2 py-1 text-xs text-gray-600 hover:bg-gray-50"
+          data-bibtex={bibtex}
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+
+    <!-- Metadata -->
+    <div class="card">
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">Metadata</h2>
+      <dl class="grid grid-cols-2 gap-2 text-sm">
+        <dt class="text-gray-500">Added</dt>
+        <dd>{entry.added_date}</dd>
+        <dt class="text-gray-500">Added by</dt>
+        <dd>{entry.added_by || 'manual'}</dd>
+        <dt class="text-gray-500">Source</dt>
+        <dd>{entry.source_api || 'manual'}</dd>
+        {entry.external_ids && Object.entries(entry.external_ids).map(([key, val]) => val && (
+          <>
+            <dt class="text-gray-500">{key}</dt>
+            <dd class="break-all">{val}</dd>
+          </>
+        ))}
+      </dl>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  document.getElementById('copy-bibtex')?.addEventListener('click', (e) => {
+    const btn = e.currentTarget as HTMLButtonElement;
+    const bibtex = btn.getAttribute('data-bibtex') || '';
+    navigator.clipboard.writeText(bibtex).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    });
+  });
+</script>

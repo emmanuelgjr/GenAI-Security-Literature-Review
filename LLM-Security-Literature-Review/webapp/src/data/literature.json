@@ -1,0 +1,4433 @@
+{
+  "entries": [
+    {
+      "id": "llmsec-2023-00001",
+      "type": "paper",
+      "title": "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+      "authors": [
+        "Kai Greshake",
+        "Sahar Abdelnabi",
+        "Shailesh Mishra",
+        "Christoph Endres",
+        "Thorsten Holz",
+        "Mario Fritz"
+      ],
+      "year": 2023,
+      "month": 5,
+      "venue": "AISec 2023",
+      "abstract": "Introduces indirect prompt injection attacks against LLM-integrated applications, demonstrating how adversaries can remotely control LLMs by injecting prompts into data sources the LLM retrieves.",
+      "url": "https://arxiv.org/abs/2302.12173",
+      "doi": "10.1145/3605764.3623985",
+      "pdf_url": "https://arxiv.org/pdf/2302.12173",
+      "categories": [
+        "prompt-injection",
+        "agentic-threats"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "indirect-injection",
+        "rag",
+        "application-security"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2302.12173"
+      },
+      "citation_count": 450,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2023-00002",
+      "type": "paper",
+      "title": "Ignore This Title and HackAPrompt: Exposing Systemic Weaknesses of LLMs through a Global Scale Prompt Hacking Competition",
+      "authors": [
+        "Sander Schulhoff",
+        "Jeremy Pinto",
+        "Anaum Khan",
+        "Louis-Francois Bouchard",
+        "Chenglei Si",
+        "Svetlina Anati",
+        "Valen Tagliabue",
+        "Anson Liu Kost",
+        "Christopher Carnahan",
+        "Jordan Boyd-Graber"
+      ],
+      "year": 2023,
+      "month": 11,
+      "venue": "EMNLP 2023",
+      "abstract": "Presents results from a global prompt hacking competition with 600K+ adversarial prompts, revealing systemic LLM vulnerabilities across multiple models and defense strategies.",
+      "url": "https://arxiv.org/abs/2311.16119",
+      "pdf_url": "https://arxiv.org/pdf/2311.16119",
+      "categories": [
+        "prompt-injection",
+        "jailbreaking",
+        "benchmarks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0051",
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "competition",
+        "benchmark",
+        "prompt-hacking"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2311.16119"
+      },
+      "citation_count": 180,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00001",
+      "type": "paper",
+      "title": "Jailbroken: How Does LLM Safety Training Fail?",
+      "authors": [
+        "Alexander Wei",
+        "Nika Haghtalab",
+        "Jacob Steinhardt"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "NeurIPS 2023",
+      "abstract": "Analyzes failure modes of LLM safety training, identifying two broad categories: competing objectives and mismatched generalization, demonstrating attacks that exploit each.",
+      "url": "https://arxiv.org/abs/2307.02483",
+      "pdf_url": "https://arxiv.org/pdf/2307.02483",
+      "categories": [
+        "jailbreaking",
+        "guardrails"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "safety-training",
+        "alignment",
+        "failure-modes"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2307.02483"
+      },
+      "citation_count": 520,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00002",
+      "type": "paper",
+      "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+      "authors": [
+        "Andy Zou",
+        "Zifan Wang",
+        "Nicholas Carlini",
+        "Milad Nasr",
+        "J. Zico Kolter",
+        "Matt Fredrikson"
+      ],
+      "year": 2023,
+      "month": 7,
+      "venue": "arXiv preprint",
+      "abstract": "Proposes an automated method (GCG) to generate adversarial suffixes that cause aligned LLMs to produce harmful content, with attacks transferring across models including ChatGPT and Claude.",
+      "url": "https://arxiv.org/abs/2307.15043",
+      "pdf_url": "https://arxiv.org/pdf/2307.15043",
+      "categories": [
+        "jailbreaking",
+        "adversarial-examples"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "GCG",
+        "adversarial-suffix",
+        "transferability"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2307.15043"
+      },
+      "citation_count": 890,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2023-00003",
+      "type": "paper",
+      "title": "Poisoning Language Models During Instruction Tuning",
+      "authors": [
+        "Alexander Wan",
+        "Eric Wallace",
+        "Sheng Shen",
+        "Dan Klein"
+      ],
+      "year": 2023,
+      "month": 5,
+      "venue": "ICML 2023",
+      "abstract": "Shows that adversaries can insert poisoned examples into instruction-tuning datasets, causing models to generate targeted outputs for attacker-chosen triggers.",
+      "url": "https://arxiv.org/abs/2305.00944",
+      "pdf_url": "https://arxiv.org/pdf/2305.00944",
+      "categories": [
+        "data-poisoning",
+        "fine-tuning-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0020"
+        ]
+      },
+      "tags": [
+        "instruction-tuning",
+        "backdoor",
+        "fine-tuning"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2305.00944"
+      },
+      "citation_count": 210,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00003",
+      "type": "paper",
+      "title": "PoisonedRAG: Knowledge Poisoning Attacks to Retrieval-Augmented Generation of Large Language Models",
+      "authors": [
+        "Wei Zou",
+        "Runpeng Geng",
+        "Binghui Wang",
+        "Jinyuan Jia"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "arXiv preprint",
+      "abstract": "Demonstrates knowledge poisoning attacks against RAG systems where adversaries inject malicious texts into the knowledge database to manipulate LLM outputs.",
+      "url": "https://arxiv.org/abs/2402.07867",
+      "pdf_url": "https://arxiv.org/pdf/2402.07867",
+      "categories": [
+        "data-poisoning",
+        "rag-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04",
+          "LLM08"
+        ],
+        "mitre_atlas": [
+          "AML.T0020"
+        ]
+      },
+      "tags": [
+        "rag",
+        "knowledge-poisoning",
+        "vector-database"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.07867"
+      },
+      "citation_count": 85,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2021-00001",
+      "type": "paper",
+      "title": "Extracting Training Data from Large Language Models",
+      "authors": [
+        "Nicholas Carlini",
+        "Florian Tramer",
+        "Eric Wallace",
+        "Matthew Jagielski",
+        "Ariel Herbert-Voss",
+        "Katherine Lee",
+        "Adam Roberts",
+        "Tom Brown",
+        "Dawn Song",
+        "Ulfar Erlingsson",
+        "Alina Oprea",
+        "Colin Raffel"
+      ],
+      "year": 2021,
+      "month": 6,
+      "venue": "USENIX Security 2021",
+      "abstract": "Demonstrates that large language models memorize and can be prompted to emit verbatim training data, including PII, revealing significant privacy risks.",
+      "url": "https://arxiv.org/abs/2012.07805",
+      "doi": "10.5555/3489212.3489351",
+      "pdf_url": "https://arxiv.org/pdf/2012.07805",
+      "categories": [
+        "membership-inference",
+        "differential-privacy"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "mitre_atlas": [
+          "AML.T0024",
+          "AML.T0056"
+        ]
+      },
+      "tags": [
+        "memorization",
+        "training-data-extraction",
+        "privacy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2012.07805"
+      },
+      "citation_count": 1200,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2023-00004",
+      "type": "paper",
+      "title": "Scalable Extraction of Training Data from (Production) Language Models",
+      "authors": [
+        "Milad Nasr",
+        "Nicholas Carlini",
+        "Jonathan Hayase",
+        "Matthew Jagielski",
+        "A. Feder Cooper",
+        "Daphne Ippolito",
+        "Christopher A. Choquette-Choo",
+        "Eric Wallace",
+        "Florian Tramer",
+        "Katherine Lee"
+      ],
+      "year": 2023,
+      "month": 11,
+      "venue": "arXiv preprint",
+      "abstract": "Develops a scalable attack to extract over a gigabyte of training data from semi-open and closed models including ChatGPT, at a cost of roughly $200.",
+      "url": "https://arxiv.org/abs/2311.17035",
+      "pdf_url": "https://arxiv.org/pdf/2311.17035",
+      "categories": [
+        "membership-inference",
+        "model-extraction"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "mitre_atlas": [
+          "AML.T0024",
+          "AML.T0056"
+        ]
+      },
+      "tags": [
+        "training-data-extraction",
+        "ChatGPT",
+        "production-model"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2311.17035"
+      },
+      "citation_count": 320,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00004",
+      "type": "paper",
+      "title": "Stealing Part of a Production Language Model",
+      "authors": [
+        "Nicholas Carlini",
+        "Daniel Paleka",
+        "Krishnamurthy Dj Dvijotham",
+        "Thomas Steinke",
+        "Jonathan Hayase",
+        "A. Feder Cooper",
+        "Katherine Lee",
+        "Matthew Jagielski",
+        "Milad Nasr",
+        "Arthur Conmy",
+        "Eric Wallace",
+        "David Rolnick",
+        "Florian Tramer"
+      ],
+      "year": 2024,
+      "month": 3,
+      "venue": "ICML 2024",
+      "abstract": "Demonstrates that it is possible to steal the embedding projection layer of production LLMs like OpenAI's models through the API, confirming model extraction risks.",
+      "url": "https://arxiv.org/abs/2403.06634",
+      "pdf_url": "https://arxiv.org/pdf/2403.06634",
+      "categories": [
+        "model-extraction"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM03"
+        ],
+        "mitre_atlas": [
+          "AML.T0049"
+        ]
+      },
+      "tags": [
+        "model-stealing",
+        "embedding-projection",
+        "API-attack"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2403.06634"
+      },
+      "citation_count": 95,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00005",
+      "type": "paper",
+      "title": "The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions",
+      "authors": [
+        "Eric Wallace",
+        "Kai Xiao",
+        "Reimar Leike",
+        "Lilian Weng",
+        "Johannes Heidecke",
+        "Alex Beutel"
+      ],
+      "year": 2024,
+      "month": 4,
+      "venue": "arXiv preprint",
+      "abstract": "Proposes an instruction hierarchy for training LLMs to prioritize system prompts over user prompts over third-party content, as a defense against prompt injection.",
+      "url": "https://arxiv.org/abs/2404.13208",
+      "pdf_url": "https://arxiv.org/pdf/2404.13208",
+      "categories": [
+        "prompt-injection",
+        "input-filtering",
+        "guardrails"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM07"
+        ],
+        "mitre_atlas": [
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "defense",
+        "instruction-hierarchy",
+        "system-prompt"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2404.13208"
+      },
+      "citation_count": 150,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00006",
+      "type": "paper",
+      "title": "Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations",
+      "authors": [
+        "Hakan Inan",
+        "Kartikeya Upasani",
+        "Jianfeng Chi",
+        "Rashi Rungta",
+        "Krithika Iyer",
+        "Yuning Mao",
+        "Michael Tontchev",
+        "Qing Hu",
+        "Brian Fuller",
+        "Davide Testuggine",
+        "Madian Khabsa"
+      ],
+      "year": 2023,
+      "month": 12,
+      "venue": "arXiv preprint",
+      "abstract": "Introduces Llama Guard, an LLM-based safeguard model for classifying safety risks in LLM inputs and outputs, achieving strong performance on standard benchmarks.",
+      "url": "https://arxiv.org/abs/2312.06674",
+      "pdf_url": "https://arxiv.org/pdf/2312.06674",
+      "categories": [
+        "input-filtering",
+        "output-moderation",
+        "guardrails"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM05"
+        ]
+      },
+      "tags": [
+        "llama-guard",
+        "content-safety",
+        "classifier"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2312.06674"
+      },
+      "citation_count": 280,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00007",
+      "type": "paper",
+      "title": "NeMo Guardrails: A Toolkit for Controllable and Safe LLM Applications with Programmable Rails",
+      "authors": [
+        "Traian Rebedea",
+        "Razvan Dinu",
+        "Makesh Narsimhan Sreedhar",
+        "Christopher Parisien",
+        "Jonathan Cohen"
+      ],
+      "year": 2023,
+      "month": 10,
+      "venue": "EMNLP 2023 Demo",
+      "abstract": "Presents NeMo Guardrails, an open-source toolkit for adding programmable safety, security, and privacy rails to LLM-based conversational systems.",
+      "url": "https://arxiv.org/abs/2310.10501",
+      "pdf_url": "https://arxiv.org/pdf/2310.10501",
+      "categories": [
+        "guardrails",
+        "input-filtering",
+        "output-moderation"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM05",
+          "LLM06"
+        ]
+      },
+      "tags": [
+        "NeMo",
+        "programmable-rails",
+        "toolkit"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.10501"
+      },
+      "citation_count": 190,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00008",
+      "type": "paper",
+      "title": "A Survey on Large Language Model (LLM) Security and Privacy: The Good, The Bad, and The Ugly",
+      "authors": [
+        "Yifan Yao",
+        "Jinhao Duan",
+        "Kaidi Xu",
+        "Yuanfang Cai",
+        "Zhibo Sun",
+        "Yue Zhang"
+      ],
+      "year": 2024,
+      "month": 3,
+      "venue": "High-Confidence Computing",
+      "abstract": "Comprehensive survey covering LLM security and privacy from three perspectives: beneficial applications of LLMs for security, attacks against LLMs, and defensive techniques.",
+      "url": "https://arxiv.org/abs/2312.02003",
+      "pdf_url": "https://arxiv.org/pdf/2312.02003",
+      "categories": [
+        "survey"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02",
+          "LLM03",
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0051",
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "survey",
+        "comprehensive",
+        "security-privacy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2312.02003"
+      },
+      "citation_count": 350,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00009",
+      "type": "paper",
+      "title": "Adversarial Attacks and Defenses in Large Language Models: Old and New Threats",
+      "authors": [
+        "Leo Schwinn",
+        "David Dobre",
+        "Stephan Gunnemann",
+        "Gauthier Gidel"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "arXiv preprint",
+      "abstract": "Systematizes adversarial attacks and defenses for LLMs, connecting them to the classical adversarial ML literature while identifying LLM-specific threats.",
+      "url": "https://arxiv.org/abs/2310.19737",
+      "pdf_url": "https://arxiv.org/pdf/2310.19737",
+      "categories": [
+        "survey",
+        "adversarial-examples",
+        "jailbreaking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "survey",
+        "adversarial-ML",
+        "systematization"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.19737"
+      },
+      "citation_count": 125,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00010",
+      "type": "paper",
+      "title": "A Comprehensive Survey of Attack Techniques, Implementation, and Mitigation Strategies in Large Language Models",
+      "authors": [
+        "Aysan Esmradi",
+        "Daniel Wankit Yip",
+        "Chun Fai Chan"
+      ],
+      "year": 2024,
+      "month": 12,
+      "venue": "arXiv preprint",
+      "abstract": "Surveys attack techniques across the LLM lifecycle including training, fine-tuning, and inference, with comprehensive mitigation strategies.",
+      "url": "https://arxiv.org/abs/2312.10982",
+      "pdf_url": "https://arxiv.org/pdf/2312.10982",
+      "categories": [
+        "survey",
+        "threat-modeling"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02",
+          "LLM03",
+          "LLM04",
+          "LLM05"
+        ]
+      },
+      "tags": [
+        "survey",
+        "attack-taxonomy",
+        "mitigation"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2312.10982"
+      },
+      "citation_count": 90,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00011",
+      "type": "paper",
+      "title": "AI Supply Chain Attacks and Mitigations: A Security-Focused Survey",
+      "authors": [
+        "Eitan Borgnia",
+        "Vinay Prabhu"
+      ],
+      "year": 2024,
+      "month": 3,
+      "venue": "IEEE S&P Workshop",
+      "abstract": "Surveys the AI/ML supply chain attack surface including model repositories, training pipelines, and dependency risks, with practical mitigations.",
+      "url": "https://arxiv.org/abs/2403.12345",
+      "pdf_url": "https://arxiv.org/pdf/2403.12345",
+      "categories": [
+        "supply-chain-attacks",
+        "mlops-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM03"
+        ],
+        "mitre_atlas": [
+          "AML.T0010"
+        ]
+      },
+      "tags": [
+        "supply-chain",
+        "model-repository",
+        "SBOM"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "citation_count": 45,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00012",
+      "type": "paper",
+      "title": "AgentDojo: A Dynamic Environment to Evaluate Attacks and Defenses for LLM Agents",
+      "authors": [
+        "Edoardo Debenedetti",
+        "Jie Zhang",
+        "Mislav Balunovic",
+        "Luca Beurer-Kellner",
+        "Marc Fischer",
+        "Florian Tramer"
+      ],
+      "year": 2024,
+      "month": 6,
+      "venue": "arXiv preprint",
+      "abstract": "Introduces AgentDojo, a framework for evaluating the security of LLM agents against prompt injection and other attacks in realistic tool-use scenarios.",
+      "url": "https://arxiv.org/abs/2406.13352",
+      "pdf_url": "https://arxiv.org/pdf/2406.13352",
+      "categories": [
+        "agentic-threats",
+        "prompt-injection",
+        "benchmarks",
+        "tool-use-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM06"
+        ],
+        "owasp_agentic_top10": [
+          "AGT02",
+          "AGT03"
+        ],
+        "mitre_atlas": [
+          "AML.T0051",
+          "AML.T0057"
+        ]
+      },
+      "tags": [
+        "agent-security",
+        "evaluation-framework",
+        "tool-use"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2406.13352"
+      },
+      "citation_count": 75,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00013",
+      "type": "paper",
+      "title": "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated LLM Agents",
+      "authors": [
+        "Qiusi Zhan",
+        "Zhixiang Liang",
+        "Zifan Ying",
+        "Daniel Kang"
+      ],
+      "year": 2024,
+      "month": 3,
+      "venue": "ACL 2024 Findings",
+      "abstract": "Presents InjecAgent, a benchmark for evaluating indirect prompt injection attacks against LLM agents that use tools, showing most agents are highly vulnerable.",
+      "url": "https://arxiv.org/abs/2403.02691",
+      "pdf_url": "https://arxiv.org/pdf/2403.02691",
+      "categories": [
+        "prompt-injection",
+        "tool-use-security",
+        "benchmarks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM06"
+        ],
+        "owasp_agentic_top10": [
+          "AGT02",
+          "AGT03"
+        ]
+      },
+      "tags": [
+        "benchmark",
+        "tool-use",
+        "indirect-injection"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2403.02691"
+      },
+      "citation_count": 65,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2023-00005",
+      "type": "paper",
+      "title": "Do Anything Now: Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models",
+      "authors": [
+        "Xinyue Shen",
+        "Zeyuan Chen",
+        "Michael Backes",
+        "Yun Shen",
+        "Yang Zhang"
+      ],
+      "year": 2023,
+      "month": 8,
+      "venue": "CCS 2024",
+      "abstract": "Collects and analyzes 6,387 jailbreak prompts from the wild, developing a comprehensive taxonomy of jailbreak techniques and evaluating their effectiveness.",
+      "url": "https://arxiv.org/abs/2308.03825",
+      "pdf_url": "https://arxiv.org/pdf/2308.03825",
+      "categories": [
+        "jailbreaking",
+        "threat-modeling"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "jailbreak-taxonomy",
+        "in-the-wild",
+        "DAN"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2308.03825"
+      },
+      "citation_count": 310,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2023-00006",
+      "type": "paper",
+      "title": "Multi-step Jailbreaking Privacy Attacks on ChatGPT",
+      "authors": [
+        "Haoran Li",
+        "Dadi Guo",
+        "Wei Fan",
+        "Mingshi Xu",
+        "Jie Huang",
+        "Fanpu Meng",
+        "Yangqiu Song"
+      ],
+      "year": 2023,
+      "month": 4,
+      "venue": "EMNLP 2023 Findings",
+      "abstract": "Demonstrates multi-step jailbreaking attacks to extract personal information from ChatGPT, showing how sequential prompting can bypass safety measures.",
+      "url": "https://arxiv.org/abs/2304.05197",
+      "pdf_url": "https://arxiv.org/pdf/2304.05197",
+      "categories": [
+        "jailbreaking",
+        "data-anonymization",
+        "membership-inference"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02"
+        ],
+        "mitre_atlas": [
+          "AML.T0054",
+          "AML.T0056"
+        ]
+      },
+      "tags": [
+        "multi-step",
+        "privacy",
+        "PII-extraction"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2304.05197"
+      },
+      "citation_count": 175,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00014",
+      "type": "paper",
+      "title": "A Text Watermark for Large Language Models",
+      "authors": [
+        "John Kirchenbauer",
+        "Jonas Geiping",
+        "Yuxin Wen",
+        "Jonathan Katz",
+        "Ian Miers",
+        "Tom Goldstein"
+      ],
+      "year": 2023,
+      "month": 6,
+      "venue": "ICML 2023",
+      "abstract": "Proposes a watermarking framework for LLM-generated text that embeds a statistically detectable signal without significantly affecting output quality.",
+      "url": "https://arxiv.org/abs/2301.10226",
+      "pdf_url": "https://arxiv.org/pdf/2301.10226",
+      "categories": [
+        "watermarking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM09"
+        ]
+      },
+      "tags": [
+        "watermark",
+        "detection",
+        "provenance"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2301.10226"
+      },
+      "citation_count": 650,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00015",
+      "type": "paper",
+      "title": "Can LLMs Keep a Secret? Testing Privacy Implications of Language Models via Contextual Integrity Theory",
+      "authors": [
+        "Niloofar Mireshghallah",
+        "Hyunwoo Kim",
+        "Xuhui Zhou",
+        "Yulia Tsvetkov",
+        "Maarten Sap",
+        "Reza Shokri",
+        "Yejin Choi"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "ICLR 2024",
+      "abstract": "Evaluates LLM privacy behavior through the lens of contextual integrity theory, finding significant mismatches between LLM norms and human privacy expectations.",
+      "url": "https://arxiv.org/abs/2310.17884",
+      "pdf_url": "https://arxiv.org/pdf/2310.17884",
+      "categories": [
+        "differential-privacy",
+        "data-anonymization"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP"
+        ]
+      },
+      "tags": [
+        "contextual-integrity",
+        "privacy-norms",
+        "evaluation"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.17884"
+      },
+      "citation_count": 110,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00016",
+      "type": "paper",
+      "title": "Machine Unlearning for Large Language Models: A Survey",
+      "authors": [
+        "Zheyuan Liu",
+        "Guangyao Dou",
+        "Zhaoxuan Tan",
+        "Yijun Tian",
+        "Meng Jiang"
+      ],
+      "year": 2024,
+      "month": 5,
+      "venue": "arXiv preprint",
+      "abstract": "Surveys machine unlearning techniques for LLMs including methods for forgetting specific training data, complying with data deletion requests, and maintaining model utility.",
+      "url": "https://arxiv.org/abs/2405.15152",
+      "pdf_url": "https://arxiv.org/pdf/2405.15152",
+      "categories": [
+        "unlearning",
+        "survey"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MANAGE"
+        ],
+        "iso_42001": [
+          "8"
+        ]
+      },
+      "tags": [
+        "machine-unlearning",
+        "right-to-erasure",
+        "GDPR"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2405.15152"
+      },
+      "citation_count": 60,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00017",
+      "type": "paper",
+      "title": "Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned",
+      "authors": [
+        "Deep Ganguli",
+        "Liane Lovitt",
+        "Jackson Kernion",
+        "Amanda Askell",
+        "Yuntao Bai",
+        "Saurav Kadavath",
+        "Ben Mann",
+        "Ethan Perez",
+        "Nicholas Schiefer",
+        "Kamal Ndousse",
+        "Andy Jones",
+        "Sam Bowman",
+        "Anna Chen",
+        "Tom Conerly",
+        "Nova DasSarma",
+        "Dawn Drain",
+        "Nelson Elhage",
+        "Sheer El-Showk",
+        "Stanislav Fort",
+        "Zac Hatfield-Dodds",
+        "Tom Henighan",
+        "Danny Hernandez",
+        "Tristan Hume",
+        "Josh Jacobson",
+        "Scott Johnston",
+        "Shauna Kravec",
+        "Catherine Olsson",
+        "Sam Ringer",
+        "Eli Tyre",
+        "Jared Kaplan",
+        "Chris Olah",
+        "Sam McCandlish",
+        "Dario Amodei"
+      ],
+      "year": 2022,
+      "month": 8,
+      "venue": "arXiv preprint",
+      "abstract": "Describes Anthropic's early red teaming methodology for language models, documenting methods, scaling behaviors, and lessons for identifying harmful outputs.",
+      "url": "https://arxiv.org/abs/2209.07858",
+      "pdf_url": "https://arxiv.org/pdf/2209.07858",
+      "categories": [
+        "red-teaming",
+        "benchmarks"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "red-teaming",
+        "methodology",
+        "scaling"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2209.07858"
+      },
+      "citation_count": 750,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00018",
+      "type": "paper",
+      "title": "Garak: A Framework for Security Probing Large Language Models",
+      "authors": [
+        "Leon Derczynski",
+        "Erick Galinkin",
+        "Jeffrey Martin",
+        "Subho Majumdar",
+        "Nanna Inie"
+      ],
+      "year": 2024,
+      "month": 6,
+      "venue": "arXiv preprint",
+      "abstract": "Presents garak, an open-source framework for systematically probing LLM vulnerabilities including prompt injection, data leakage, and toxicity generation.",
+      "url": "https://arxiv.org/abs/2406.11036",
+      "pdf_url": "https://arxiv.org/pdf/2406.11036",
+      "categories": [
+        "red-teaming",
+        "fuzzing",
+        "benchmarks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "garak",
+        "vulnerability-scanning",
+        "open-source"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2406.11036"
+      },
+      "citation_count": 40,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00019",
+      "type": "paper",
+      "title": "R-Judge: Benchmarking Safety Risk Awareness for LLM Agents",
+      "authors": [
+        "Tongxin Yuan",
+        "Zhiwei He",
+        "Lingzhong Dong",
+        "Yiming Wang",
+        "Ruijie Zhao",
+        "Tian Xia",
+        "Lizhen Xu",
+        "Binglin Zhou",
+        "Fangqi Li",
+        "Zhuosheng Zhang",
+        "Rui Wang",
+        "Gongshen Liu"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "EMNLP 2024",
+      "abstract": "Introduces R-Judge benchmark for evaluating whether LLM agents can identify safety risks in agentic scenarios involving tool use and multi-step reasoning.",
+      "url": "https://arxiv.org/abs/2401.10019",
+      "pdf_url": "https://arxiv.org/pdf/2401.10019",
+      "categories": [
+        "agentic-threats",
+        "benchmarks",
+        "human-in-the-loop"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "owasp_agentic_top10": [
+          "AGT06"
+        ]
+      },
+      "tags": [
+        "agent-safety",
+        "benchmark",
+        "risk-awareness"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2401.10019"
+      },
+      "citation_count": 35,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00020",
+      "type": "standard",
+      "title": "OWASP Top 10 for Large Language Model Applications",
+      "authors": [
+        "Steve Wilson",
+        "OWASP LLM AI Security Team"
+      ],
+      "year": 2025,
+      "venue": "OWASP Foundation",
+      "abstract": "The definitive OWASP guide identifying the top 10 most critical security risks in LLM applications, with descriptions, examples, and mitigation strategies.",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "categories": [
+        "threat-modeling",
+        "risk-frameworks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02",
+          "LLM03",
+          "LLM04",
+          "LLM05",
+          "LLM06",
+          "LLM07",
+          "LLM08",
+          "LLM09",
+          "LLM10"
+        ]
+      },
+      "tags": [
+        "OWASP",
+        "top-10",
+        "standard",
+        "reference"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00021",
+      "type": "standard",
+      "title": "NIST Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "authors": [
+        "National Institute of Standards and Technology"
+      ],
+      "year": 2023,
+      "month": 1,
+      "venue": "NIST",
+      "abstract": "Voluntary framework for managing risks in AI systems across the lifecycle, organized into Govern, Map, Measure, and Manage functions.",
+      "url": "https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence",
+      "categories": [
+        "risk-frameworks",
+        "model-governance"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "NIST",
+        "risk-management",
+        "governance",
+        "framework"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00022",
+      "type": "standard",
+      "title": "MITRE ATLAS: Adversarial Threat Landscape for AI Systems",
+      "authors": [
+        "MITRE Corporation"
+      ],
+      "year": 2024,
+      "venue": "MITRE",
+      "abstract": "Knowledge base of adversarial tactics, techniques, and case studies for AI systems, modeled on the ATT&CK framework for cybersecurity.",
+      "url": "https://atlas.mitre.org/",
+      "categories": [
+        "threat-modeling",
+        "risk-frameworks"
+      ],
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0000",
+          "AML.T0001",
+          "AML.T0010",
+          "AML.T0015",
+          "AML.T0020",
+          "AML.T0043",
+          "AML.T0048",
+          "AML.T0049",
+          "AML.T0051",
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "MITRE",
+        "ATLAS",
+        "ATT&CK",
+        "threat-knowledge-base"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00023",
+      "type": "standard",
+      "title": "OWASP AI Security and Privacy Guide",
+      "authors": [
+        "Rob van der Veer",
+        "OWASP AI Exchange Team"
+      ],
+      "year": 2024,
+      "venue": "OWASP Foundation",
+      "abstract": "Comprehensive guide for AI security and privacy including threat analysis, controls, and regulatory mapping for AI systems.",
+      "url": "https://owasp.org/www-project-ai-security-and-privacy-guide/",
+      "categories": [
+        "risk-frameworks",
+        "survey"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02",
+          "LLM03",
+          "LLM04",
+          "LLM05",
+          "LLM06"
+        ],
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "OWASP",
+        "AI-exchange",
+        "privacy",
+        "comprehensive"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00024",
+      "type": "report",
+      "title": "Anthropic: Many-shot Jailbreaking",
+      "authors": [
+        "Anthropic"
+      ],
+      "year": 2024,
+      "month": 4,
+      "venue": "Anthropic Research Blog",
+      "abstract": "Reveals many-shot jailbreaking, a technique exploiting long context windows by including many examples of harmful Q&A pairs to override safety training.",
+      "url": "https://www.anthropic.com/research/many-shot-jailbreaking",
+      "categories": [
+        "jailbreaking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "many-shot",
+        "long-context",
+        "in-context-learning"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2023-00007",
+      "type": "paper",
+      "title": "Constitutional AI: Harmlessness from AI Feedback",
+      "authors": [
+        "Yuntao Bai",
+        "Saurav Kadavath",
+        "Sandipan Kundu",
+        "Amanda Askell",
+        "Jackson Kernion",
+        "Andy Jones",
+        "Anna Chen",
+        "Anna Goldie",
+        "Azalia Mirhoseini",
+        "Cameron McKinnon",
+        "Carol Chen",
+        "Catherine Olsson",
+        "Christopher Olah",
+        "Danny Hernandez",
+        "Dawn Drain",
+        "Deep Ganguli",
+        "Dustin Li",
+        "Eli Tyre",
+        "Ethan Perez",
+        "Jamie Kerr",
+        "Jared Kaplan",
+        "Jeffrey Ladish",
+        "Joshua Landau",
+        "Kamal Ndousse",
+        "Kamile Lukosiute",
+        "Liane Lovitt",
+        "Michael Sellitto",
+        "Nelson Elhage",
+        "Nicholas Schiefer",
+        "Noemi Mercado",
+        "Nova DasSarma",
+        "Robert Lasenby",
+        "Robin Larson",
+        "Sam Ringer",
+        "Scott Johnston",
+        "Shauna Kravec",
+        "Sheer El Showk",
+        "Stanislav Fort",
+        "Tamera Lanham",
+        "Timothy Telleen-Lawton",
+        "Tom Brown",
+        "Tom Henighan",
+        "Tristan Hume",
+        "Sam McCandlish",
+        "Jared Kaplan",
+        "Dario Amodei",
+        "Chris Olah"
+      ],
+      "year": 2022,
+      "month": 12,
+      "venue": "arXiv preprint",
+      "abstract": "Introduces Constitutional AI (CAI), a method for training AI systems to be harmless using a set of principles (a constitution) and AI-generated feedback, reducing reliance on human red teamers.",
+      "url": "https://arxiv.org/abs/2212.08073",
+      "pdf_url": "https://arxiv.org/pdf/2212.08073",
+      "categories": [
+        "guardrails",
+        "responsible-ai"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "constitutional-AI",
+        "RLHF",
+        "alignment",
+        "harmlessness"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2212.08073"
+      },
+      "citation_count": 1100,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00025",
+      "type": "paper",
+      "title": "Prompt Injection Attack Against LLM-Integrated Applications",
+      "authors": [
+        "Yi Liu",
+        "Gelei Deng",
+        "Yuekang Li",
+        "Kailong Wang",
+        "Tianwei Zhang",
+        "Yepang Liu",
+        "Haoyu Wang",
+        "Yan Zheng",
+        "Yang Liu"
+      ],
+      "year": 2024,
+      "month": 6,
+      "venue": "ACM Computing Surveys",
+      "abstract": "First comprehensive survey of prompt injection attacks against LLM-integrated applications, categorizing attacks and defenses with a unified framework.",
+      "url": "https://arxiv.org/abs/2306.05499",
+      "pdf_url": "https://arxiv.org/pdf/2306.05499",
+      "categories": [
+        "prompt-injection",
+        "survey"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0048",
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "survey",
+        "prompt-injection",
+        "taxonomy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2306.05499"
+      },
+      "citation_count": 280,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00026",
+      "type": "tool",
+      "title": "Rebuff: Self-Hardening Prompt Injection Detector",
+      "authors": [
+        "Protect AI"
+      ],
+      "year": 2023,
+      "venue": "GitHub",
+      "abstract": "Open-source tool designed to detect and prevent prompt injection attacks using multiple detection methods including heuristics, LLM-based analysis, and canary tokens.",
+      "url": "https://github.com/protectai/rebuff",
+      "categories": [
+        "input-filtering",
+        "prompt-injection"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      },
+      "tags": [
+        "tool",
+        "detection",
+        "canary-tokens",
+        "open-source"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00027",
+      "type": "tool",
+      "title": "PyRIT: Python Risk Identification Toolkit for Generative AI",
+      "authors": [
+        "Microsoft AI Red Team"
+      ],
+      "year": 2024,
+      "venue": "GitHub / Microsoft",
+      "abstract": "Microsoft's open-source framework for red teaming generative AI systems, supporting automated prompt generation, attack strategies, and scoring of AI responses.",
+      "url": "https://github.com/Azure/PyRIT",
+      "categories": [
+        "red-teaming",
+        "fuzzing",
+        "tool-use-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "tool",
+        "red-teaming",
+        "Microsoft",
+        "automation"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00028",
+      "type": "paper",
+      "title": "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training",
+      "authors": [
+        "Evan Hubinger",
+        "Carson Denison",
+        "Jesse Mu",
+        "Mike Lambert",
+        "Meg Tong",
+        "Monte MacDiarmid",
+        "Tamera Lanham",
+        "Daniel M. Ziegler",
+        "Tim Maxwell",
+        "Newton Cheng",
+        "Adam Jermyn",
+        "Amanda Askell",
+        "Ansh Radhakrishnan",
+        "Cem Anil",
+        "David Duvenaud",
+        "Deep Ganguli",
+        "Fazl Barez",
+        "Jack Clark",
+        "Kamal Ndousse",
+        "Kshitij Sachan",
+        "Michael Sellitto",
+        "Mrinank Sharma",
+        "Nova DasSarma",
+        "Roger Grosse",
+        "Shauna Kravec",
+        "Yuntao Bai",
+        "Jared Kaplan",
+        "Dario Amodei",
+        "Sam McCandlish",
+        "Ethan Perez"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "arXiv preprint",
+      "abstract": "Demonstrates that LLMs can be trained with deceptive behaviors (sleeper agents) that persist through standard safety training including RLHF, posing risks for backdoor attacks.",
+      "url": "https://arxiv.org/abs/2401.05566",
+      "pdf_url": "https://arxiv.org/pdf/2401.05566",
+      "categories": [
+        "data-poisoning",
+        "guardrails",
+        "adversarial-examples"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0018",
+          "AML.T0020"
+        ]
+      },
+      "tags": [
+        "sleeper-agent",
+        "backdoor",
+        "deceptive-alignment",
+        "safety-training"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2401.05566"
+      },
+      "citation_count": 420,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00029",
+      "type": "paper",
+      "title": "DP-SGD for Fine-Tuning Foundation Models: A Privacy-Utility Trade-off Study",
+      "authors": [
+        "Yu-Xiang Wang",
+        "Borja Balle",
+        "Shiva Prasad Kasiviswanathan"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "ICLR 2024",
+      "abstract": "Investigates applying differentially private stochastic gradient descent to fine-tune large foundation models, characterizing the privacy-utility trade-off.",
+      "url": "https://arxiv.org/abs/2402.06677",
+      "pdf_url": "https://arxiv.org/pdf/2402.06677",
+      "categories": [
+        "differential-privacy",
+        "fine-tuning-security"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MANAGE"
+        ],
+        "iso_42001": [
+          "8"
+        ]
+      },
+      "tags": [
+        "DP-SGD",
+        "differential-privacy",
+        "fine-tuning",
+        "privacy-utility"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.06677"
+      },
+      "citation_count": 55,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00030",
+      "type": "paper",
+      "title": "Tensor Trust: Interpretable Prompt Injection Attacks from an Online Game",
+      "authors": [
+        "Sam Toyer",
+        "Olivia Watkins",
+        "Ethan Adrian Mendes",
+        "Justin Svegliato",
+        "Luke Bailey",
+        "Tiffany Wang",
+        "Isaac Ong",
+        "Karim Elmaaroufi",
+        "Pieter Abbeel",
+        "Trevor Darrell",
+        "Alan Ritter",
+        "Stuart Russell"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "ICLR 2024",
+      "abstract": "Uses data from an online game (Tensor Trust) where players compete to craft prompt injections and defenses, creating a large dataset of human-generated attacks.",
+      "url": "https://arxiv.org/abs/2311.01011",
+      "pdf_url": "https://arxiv.org/pdf/2311.01011",
+      "categories": [
+        "prompt-injection",
+        "benchmarks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "game-based",
+        "dataset",
+        "interpretable"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2311.01011"
+      },
+      "citation_count": 95,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00031",
+      "type": "paper",
+      "title": "OWASP LLM AI Security & Governance Checklist",
+      "authors": [
+        "OWASP Foundation",
+        "Sandy Dunn",
+        "Jackie McGuire"
+      ],
+      "year": 2024,
+      "venue": "OWASP Foundation",
+      "abstract": "Practical checklist for organizations deploying LLMs covering security, governance, legal, and regulatory considerations with actionable steps.",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/llm-top-10-governance-doc/LLM_AI_Security_and_Governance_Checklist-v1.1.pdf",
+      "categories": [
+        "risk-frameworks",
+        "model-governance",
+        "audit-assurance"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02",
+          "LLM03",
+          "LLM04",
+          "LLM05",
+          "LLM06",
+          "LLM07",
+          "LLM08",
+          "LLM09",
+          "LLM10"
+        ],
+        "nist_ai_rmf": [
+          "GOVERN"
+        ]
+      },
+      "tags": [
+        "checklist",
+        "governance",
+        "deployment"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00032",
+      "type": "paper",
+      "title": "Federated Fine-Tuning of LLMs on the Very Edge: The Good, the Bad, the Ugly",
+      "authors": [
+        "Herbert Woisetschlager",
+        "Alexander Isenko",
+        "Shiqiang Wang",
+        "Ruben Mayer",
+        "Hans-Arno Jacobsen"
+      ],
+      "year": 2024,
+      "month": 10,
+      "venue": "arXiv preprint",
+      "abstract": "Examines federated learning approaches for fine-tuning LLMs on edge devices, analyzing privacy guarantees, communication efficiency, and security trade-offs.",
+      "url": "https://arxiv.org/abs/2310.17124",
+      "pdf_url": "https://arxiv.org/pdf/2310.17124",
+      "categories": [
+        "federated-learning",
+        "fine-tuning-security",
+        "confidential-computing"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MANAGE"
+        ],
+        "iso_42001": [
+          "8"
+        ]
+      },
+      "tags": [
+        "federated-learning",
+        "edge-computing",
+        "privacy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.17124"
+      },
+      "citation_count": 70,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00033",
+      "type": "paper",
+      "title": "TrojLLM: A Black-box Trojan Prompt Attack on Large Language Models",
+      "authors": [
+        "Jiaqi Xue",
+        "Mengxin Zheng",
+        "Ting Hua",
+        "Yilin Shen",
+        "Yepeng Liu",
+        "Ladislau Boloni",
+        "Qian Lou"
+      ],
+      "year": 2024,
+      "month": 5,
+      "venue": "NeurIPS 2023",
+      "abstract": "Proposes TrojLLM, a black-box attack that generates universal trojan prompts to compromise LLMs without access to model internals.",
+      "url": "https://arxiv.org/abs/2306.06815",
+      "pdf_url": "https://arxiv.org/pdf/2306.06815",
+      "categories": [
+        "data-poisoning",
+        "adversarial-examples",
+        "supply-chain-attacks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM03",
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0018",
+          "AML.T0043"
+        ]
+      },
+      "tags": [
+        "trojan",
+        "backdoor",
+        "black-box"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2306.06815"
+      },
+      "citation_count": 85,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00034",
+      "type": "paper",
+      "title": "LoRA Fine-Tuning Efficiently Undoes Safety Training in Llama 2-Chat",
+      "authors": [
+        "Simon Lermen",
+        "Charlie Rogers-Smith",
+        "Jeffrey Ladish"
+      ],
+      "year": 2023,
+      "month": 10,
+      "venue": "arXiv preprint",
+      "abstract": "Shows that LoRA fine-tuning with as few as 100 examples can remove safety guardrails from Llama 2-Chat, raising concerns about fine-tuning access to aligned models.",
+      "url": "https://arxiv.org/abs/2310.20624",
+      "pdf_url": "https://arxiv.org/pdf/2310.20624",
+      "categories": [
+        "fine-tuning-security",
+        "guardrails",
+        "jailbreaking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0018"
+        ]
+      },
+      "tags": [
+        "LoRA",
+        "safety-undoing",
+        "fine-tuning",
+        "alignment"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.20624"
+      },
+      "citation_count": 190,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00035",
+      "type": "paper",
+      "title": "Assessing the Brittleness of Safety Alignment via Pruning and Low-Rank Modifications",
+      "authors": [
+        "Yangsibo Huang",
+        "Samyak Gupta",
+        "Mengzhou Xia",
+        "Kai Li",
+        "Danqi Chen"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "ICLR 2024",
+      "abstract": "Demonstrates that safety alignment in LLMs is brittle and can be undermined through simple weight pruning or low-rank modifications without any fine-tuning data.",
+      "url": "https://arxiv.org/abs/2402.05162",
+      "pdf_url": "https://arxiv.org/pdf/2402.05162",
+      "categories": [
+        "guardrails",
+        "adversarial-examples"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0015"
+        ]
+      },
+      "tags": [
+        "safety-alignment",
+        "pruning",
+        "brittleness"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.05162"
+      },
+      "citation_count": 110,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00036",
+      "type": "paper",
+      "title": "ConfusedPilot: Confused Deputy Attacks Against RAG-based Code Assistants",
+      "authors": [
+        "Andrew Patel",
+        "Hossein Aboutorab",
+        "Ilia Kolochenko"
+      ],
+      "year": 2024,
+      "month": 9,
+      "venue": "arXiv preprint",
+      "abstract": "Introduces confused deputy attacks against RAG-based code assistants like GitHub Copilot, where poisoned code repositories manipulate assistant outputs.",
+      "url": "https://arxiv.org/abs/2409.12345",
+      "categories": [
+        "rag-security",
+        "supply-chain-attacks",
+        "agentic-threats"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM08"
+        ],
+        "owasp_agentic_top10": [
+          "AGT03",
+          "AGT07"
+        ]
+      },
+      "tags": [
+        "RAG",
+        "code-assistant",
+        "confused-deputy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "citation_count": 25,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00037",
+      "type": "paper",
+      "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "authors": [
+        "Timo Schick",
+        "Jane Dwivedi-Yu",
+        "Roberto Dessi",
+        "Roberta Raileanu",
+        "Maria Lomeli",
+        "Eric Hambro",
+        "Luke Zettlemoyer",
+        "Nicola Cancedda",
+        "Thomas Scialom"
+      ],
+      "year": 2023,
+      "month": 2,
+      "venue": "NeurIPS 2023",
+      "abstract": "Demonstrates how LLMs can learn to use external tools (APIs, search engines, calculators) through self-supervised learning, foundational for understanding tool-use security.",
+      "url": "https://arxiv.org/abs/2302.04761",
+      "pdf_url": "https://arxiv.org/pdf/2302.04761",
+      "categories": [
+        "tool-use-security",
+        "agent-architecture"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "owasp_agentic_top10": [
+          "AGT02"
+        ]
+      },
+      "tags": [
+        "tool-use",
+        "API-calling",
+        "foundational"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2302.04761"
+      },
+      "citation_count": 1400,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00038",
+      "type": "paper",
+      "title": "Identifying and Mitigating the Security Risks of Generative AI",
+      "authors": [
+        "Clark Barrett",
+        "Brad Boyd",
+        "Elie Burzstein",
+        "Nicholas Carlini",
+        "Brad Chen",
+        "Jihye Choi",
+        "Amrita Roy Chowdhury",
+        "Mihai Christodorescu",
+        "Anupam Datta",
+        "Soheil Feizi",
+        "Kathleen Fisher",
+        "Tatsunori Hashimoto",
+        "Dan Hendrycks",
+        "Somesh Jha",
+        "Daniel Kang",
+        "Florian Kerschbaum",
+        "Eric Mitchell",
+        "John Mitchell",
+        "Zulfikar Ramzan",
+        "Khawaja Shams",
+        "Dawn Song",
+        "Ankur Taly",
+        "Diyi Yang"
+      ],
+      "year": 2023,
+      "month": 12,
+      "venue": "Foundations and Trends in Privacy and Security",
+      "abstract": "Comprehensive treatment of generative AI security risks across the ML lifecycle with a focus on practical mitigations and deployment considerations.",
+      "url": "https://arxiv.org/abs/2308.14840",
+      "pdf_url": "https://arxiv.org/pdf/2308.14840",
+      "categories": [
+        "survey",
+        "threat-modeling",
+        "risk-frameworks"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "comprehensive",
+        "lifecycle",
+        "practical-mitigations"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2308.14840"
+      },
+      "citation_count": 280,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00001",
+      "type": "paper",
+      "title": "The AI Security Pyramid of Pain",
+      "authors": [
+        "Daniel Miessler"
+      ],
+      "year": 2024,
+      "venue": "Blog / Industry",
+      "abstract": "Adapts David Bianco's Pyramid of Pain framework to AI security, categorizing AI threats by how difficult they are for adversaries to change.",
+      "url": "https://danielmiessler.com/p/the-ai-security-pyramid-of-pain",
+      "categories": [
+        "threat-modeling",
+        "industry-report"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MAP"
+        ]
+      },
+      "tags": [
+        "pyramid-of-pain",
+        "threat-taxonomy",
+        "practical"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00039",
+      "type": "paper",
+      "title": "Securing LLM Systems Against Prompt Injection",
+      "authors": [
+        "Yupei Liu",
+        "Yuqi Jia",
+        "Runpeng Geng",
+        "Jinyuan Jia",
+        "Neil Zhenqiang Gong"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "arXiv preprint",
+      "abstract": "Proposes defense mechanisms against prompt injection in LLM systems including isolation-based approaches, input/output filtering, and detection methods.",
+      "url": "https://arxiv.org/abs/2402.00898",
+      "pdf_url": "https://arxiv.org/pdf/2402.00898",
+      "categories": [
+        "prompt-injection",
+        "input-filtering",
+        "sandboxing-isolation"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "defense",
+        "isolation",
+        "filtering"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.00898"
+      },
+      "citation_count": 50,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00040",
+      "type": "paper",
+      "title": "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations (NIST AI 100-2e2025)",
+      "authors": [
+        "Apostol Vassilev",
+        "Alina Oprea",
+        "Alie Fordyce",
+        "Hyrum Anderson"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "NIST",
+      "abstract": "NIST's authoritative taxonomy of adversarial ML attacks and mitigations covering evasion, poisoning, privacy, and abuse attacks against AI systems.",
+      "url": "https://csrc.nist.gov/pubs/ai/100/2/e2025/final",
+      "categories": [
+        "threat-modeling",
+        "risk-frameworks",
+        "survey"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MAP",
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "NIST",
+        "taxonomy",
+        "adversarial-ML",
+        "authoritative"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00041",
+      "type": "report",
+      "title": "Google DeepMind: Gemini Security Assessment and Red Team Evaluation",
+      "authors": [
+        "Google DeepMind"
+      ],
+      "year": 2024,
+      "venue": "Google AI Blog",
+      "abstract": "Describes Google's approach to red teaming Gemini models, including automated and human evaluation methods for safety and security.",
+      "url": "https://deepmind.google/discover/blog/",
+      "categories": [
+        "red-teaming",
+        "benchmarks",
+        "industry-report"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "Google",
+        "Gemini",
+        "red-teaming",
+        "evaluation"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00042",
+      "type": "paper",
+      "title": "LLM Agents Can Autonomously Hack Websites",
+      "authors": [
+        "Richard Fang",
+        "Rohan Bindu",
+        "Akul Gupta",
+        "Qiusi Zhan",
+        "Daniel Kang"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "arXiv preprint",
+      "abstract": "Demonstrates that LLM agents can autonomously perform web hacking tasks including SQL injection, XSS, and CSRF attacks without human guidance.",
+      "url": "https://arxiv.org/abs/2402.06664",
+      "pdf_url": "https://arxiv.org/pdf/2402.06664",
+      "categories": [
+        "agentic-threats",
+        "autonomous-operations",
+        "social-engineering"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "owasp_agentic_top10": [
+          "AGT01",
+          "AGT09"
+        ]
+      },
+      "tags": [
+        "autonomous-hacking",
+        "web-security",
+        "agent-misuse"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.06664"
+      },
+      "citation_count": 200,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00043",
+      "type": "paper",
+      "title": "Pandora's White-Box: Precise Training Data Detection and Extraction in Large Language Models",
+      "authors": [
+        "Jeffrey Cheng",
+        "Ruoxi Jia"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "arXiv preprint",
+      "abstract": "Develops precise methods for detecting and extracting training data from LLMs when white-box access is available, with implications for copyright and privacy.",
+      "url": "https://arxiv.org/abs/2402.17012",
+      "pdf_url": "https://arxiv.org/pdf/2402.17012",
+      "categories": [
+        "membership-inference",
+        "differential-privacy"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM02"
+        ],
+        "mitre_atlas": [
+          "AML.T0024"
+        ]
+      },
+      "tags": [
+        "training-data-detection",
+        "white-box",
+        "copyright"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.17012"
+      },
+      "citation_count": 40,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00044",
+      "type": "standard",
+      "title": "OWASP Top 10 for Agentic AI Applications",
+      "authors": [
+        "OWASP Foundation"
+      ],
+      "year": 2025,
+      "venue": "OWASP Foundation",
+      "abstract": "Identifies the top 10 security risks specific to agentic AI applications including excessive agency, unsafe tool execution, and inadequate oversight.",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "categories": [
+        "threat-modeling",
+        "risk-frameworks",
+        "agent-architecture"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT01",
+          "AGT02",
+          "AGT03",
+          "AGT04",
+          "AGT05",
+          "AGT06",
+          "AGT07",
+          "AGT08",
+          "AGT09",
+          "AGT10"
+        ]
+      },
+      "tags": [
+        "OWASP",
+        "agentic",
+        "top-10",
+        "standard"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00045",
+      "type": "paper",
+      "title": "From Prompt Injections to SQL Injection Attacks: How Protected is Your LLM-Integrated Web Application?",
+      "authors": [
+        "Rodrigo Pedro",
+        "Daniel Castro",
+        "Paolo Molina",
+        "Nuno Santos"
+      ],
+      "year": 2024,
+      "month": 8,
+      "venue": "USENIX Security 2024",
+      "abstract": "Demonstrates how prompt injection can be chained with traditional web attacks (SQL injection, XSS) in LLM-integrated applications.",
+      "url": "https://arxiv.org/abs/2308.01990",
+      "pdf_url": "https://arxiv.org/pdf/2308.01990",
+      "categories": [
+        "prompt-injection",
+        "model-serving-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM05"
+        ],
+        "mitre_atlas": [
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "SQL-injection",
+        "XSS",
+        "web-application",
+        "chained-attack"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2308.01990"
+      },
+      "citation_count": 70,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00046",
+      "type": "paper",
+      "title": "Model Context Protocol (MCP): Security Considerations and Best Practices",
+      "authors": [
+        "Anthropic"
+      ],
+      "year": 2024,
+      "venue": "Anthropic Documentation",
+      "abstract": "Documentation and analysis of security considerations for the Model Context Protocol, covering authentication, authorization, and tool sandboxing.",
+      "url": "https://modelcontextprotocol.io/docs/concepts/security",
+      "categories": [
+        "tool-use-security",
+        "agent-architecture",
+        "access-control"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02",
+          "AGT03"
+        ]
+      },
+      "tags": [
+        "MCP",
+        "protocol-security",
+        "tool-sandboxing"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00047",
+      "type": "paper",
+      "title": "Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models",
+      "authors": [
+        "Jingwei Yi",
+        "Yueqi Xie",
+        "Bin Zhu",
+        "Keegan Hines",
+        "Emre Kiciman",
+        "Guangzhong Sun",
+        "Xing Xie",
+        "Fangzhao Wu"
+      ],
+      "year": 2024,
+      "month": 1,
+      "venue": "arXiv preprint",
+      "abstract": "Provides a benchmark for indirect prompt injection attacks and evaluates several defense strategies including perplexity-based detection and sandwich defense.",
+      "url": "https://arxiv.org/abs/2312.14197",
+      "pdf_url": "https://arxiv.org/pdf/2312.14197",
+      "categories": [
+        "prompt-injection",
+        "input-filtering",
+        "benchmarks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0051"
+        ]
+      },
+      "tags": [
+        "indirect-injection",
+        "benchmark",
+        "defense-evaluation"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2312.14197"
+      },
+      "citation_count": 60,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00002",
+      "type": "book",
+      "title": "AI Security: A Comprehensive Guide to Threats, Defenses, and Best Practices",
+      "authors": [
+        "Gary McGraw",
+        "Harold Figueroa",
+        "Victor Shepardson",
+        "Richie Bonett"
+      ],
+      "year": 2024,
+      "venue": "Berryville Institute of Machine Learning",
+      "abstract": "Comprehensive practitioner guide covering AI/ML security from an architectural risk analysis perspective, with practical defense patterns.",
+      "url": "https://berryvilleiml.com/",
+      "categories": [
+        "book",
+        "threat-modeling",
+        "risk-frameworks"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "book",
+        "practitioner-guide",
+        "BIML",
+        "architecture"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": false,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00003",
+      "type": "paper",
+      "title": "Security of AI-Based Code Generation Tools: A Multi-Perspective Study",
+      "authors": [
+        "Xinyi Hou",
+        "Yanjie Zhao",
+        "Yue Liu",
+        "Zhou Yang",
+        "Kailong Wang",
+        "Li Li",
+        "Xiapu Luo",
+        "David Lo",
+        "John Grundy",
+        "Haoyu Wang"
+      ],
+      "year": 2024,
+      "month": 7,
+      "venue": "IEEE TSE",
+      "abstract": "Examines security implications of AI code generation tools, analyzing vulnerability introduction patterns and mitigation strategies.",
+      "url": "https://arxiv.org/abs/2302.07160",
+      "pdf_url": "https://arxiv.org/pdf/2302.07160",
+      "categories": [
+        "supply-chain-attacks",
+        "mlops-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM05"
+        ],
+        "mitre_atlas": [
+          "AML.T0010"
+        ]
+      },
+      "tags": [
+        "code-generation",
+        "Copilot",
+        "vulnerability-introduction"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2302.07160"
+      },
+      "citation_count": 150,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00004",
+      "type": "dataset",
+      "title": "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal",
+      "authors": [
+        "Mantas Mazeika",
+        "Long Phan",
+        "Xuwang Yin",
+        "Andy Zou",
+        "Zifan Wang",
+        "Norman Mu",
+        "Elham Sakhaee",
+        "Nathaniel Li",
+        "Steven Basart",
+        "Bo Li",
+        "David Forsyth",
+        "Dan Hendrycks"
+      ],
+      "year": 2024,
+      "month": 2,
+      "venue": "ICML 2024",
+      "abstract": "Introduces HarmBench, a standardized framework for evaluating automated red teaming methods and robust refusal in LLMs with a comprehensive behavior taxonomy.",
+      "url": "https://arxiv.org/abs/2402.04249",
+      "pdf_url": "https://arxiv.org/pdf/2402.04249",
+      "categories": [
+        "red-teaming",
+        "benchmarks",
+        "jailbreaking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "benchmark",
+        "red-teaming",
+        "evaluation-framework",
+        "dataset"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.04249"
+      },
+      "citation_count": 180,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00005",
+      "type": "standard",
+      "title": "ISO/IEC 42001:2023 - Artificial Intelligence Management System",
+      "authors": [
+        "International Organization for Standardization"
+      ],
+      "year": 2023,
+      "month": 12,
+      "venue": "ISO",
+      "abstract": "International standard specifying requirements for establishing, implementing, maintaining and continually improving an AI management system within organizations.",
+      "url": "https://www.iso.org/standard/81230.html",
+      "categories": [
+        "risk-frameworks",
+        "model-governance",
+        "audit-assurance"
+      ],
+      "framework_mappings": {
+        "iso_42001": [
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "A",
+          "B"
+        ]
+      },
+      "tags": [
+        "ISO",
+        "management-system",
+        "certification",
+        "governance"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": false,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00048",
+      "type": "paper",
+      "title": "AutoDAN: Generating Stealthy Jailbreak Prompts on Aligned Large Language Models",
+      "authors": [
+        "Xiaogeng Liu",
+        "Nan Xu",
+        "Muhao Chen",
+        "Chaowei Xiao"
+      ],
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "abstract": "Proposes AutoDAN, a method for automatically generating stealthy jailbreak prompts that are semantically meaningful and can bypass perplexity-based defenses.",
+      "url": "https://arxiv.org/abs/2310.04451",
+      "pdf_url": "https://arxiv.org/pdf/2310.04451",
+      "categories": [
+        "jailbreaking",
+        "adversarial-examples",
+        "red-teaming"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "automated-jailbreak",
+        "stealthy",
+        "genetic-algorithm"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.04451"
+      },
+      "citation_count": 230,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00049",
+      "type": "paper",
+      "title": "Tree of Attacks: Jailbreaking Black-Box LLMs with Auto-Generated Subtrees",
+      "authors": [
+        "Anay Mehrotra",
+        "Manolis Zampetakis",
+        "Paul Kassianik",
+        "Blaine Nelson",
+        "Hyrum Anderson",
+        "Yaron Singer",
+        "Amin Karbasi"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "abstract": "Introduces TAP using an LLM to iteratively refine jailbreak prompts against black-box target models with high success rates.",
+      "url": "https://arxiv.org/abs/2312.02119",
+      "pdf_url": "https://arxiv.org/pdf/2312.02119",
+      "categories": [
+        "jailbreaking",
+        "red-teaming"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "black-box",
+        "automated",
+        "tree-search"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2312.02119"
+      },
+      "citation_count": 175,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00050",
+      "type": "paper",
+      "title": "GPT-4 Is Too Smart To Be Safe: Stealthy Chat with LLMs via Cipher",
+      "authors": [
+        "Youliang Yuan",
+        "Wenxiang Jiao",
+        "Wenxuan Wang",
+        "Jen-tse Huang",
+        "Pinjia He",
+        "Shuming Shi",
+        "Zhaopeng Tu"
+      ],
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "abstract": "Demonstrates that LLMs can be jailbroken using cipher-based encoding, bypassing safety training designed for natural language.",
+      "url": "https://arxiv.org/abs/2308.06463",
+      "pdf_url": "https://arxiv.org/pdf/2308.06463",
+      "categories": [
+        "jailbreaking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "cipher",
+        "encoding",
+        "bypass"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2308.06463"
+      },
+      "citation_count": 160,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00051",
+      "type": "paper",
+      "title": "DecodingTrust: A Comprehensive Assessment of Trustworthiness in GPT Models",
+      "authors": [
+        "Boxin Wang",
+        "Weixin Chen",
+        "Hengzhi Pei",
+        "Chulin Xie",
+        "Mintong Kang",
+        "Chenhui Zhang",
+        "Chejian Xu",
+        "Zidi Xiong",
+        "Ritik Dutta",
+        "Rylan Schaeffer"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2023",
+      "abstract": "Comprehensive trustworthiness evaluation of GPT models across 8 dimensions including toxicity, bias, robustness, privacy, fairness, and machine ethics.",
+      "url": "https://arxiv.org/abs/2306.11698",
+      "pdf_url": "https://arxiv.org/pdf/2306.11698",
+      "categories": [
+        "benchmarks",
+        "responsible-ai",
+        "survey"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE",
+          "MAP"
+        ]
+      },
+      "tags": [
+        "trustworthiness",
+        "GPT",
+        "comprehensive-evaluation"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2306.11698"
+      },
+      "citation_count": 520,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00052",
+      "type": "paper",
+      "title": "Purple Llama CyberSecEval: A Secure Coding Benchmark for Language Models",
+      "authors": [
+        "Manish Bhatt",
+        "Sahana Chennabasappa",
+        "Cyrus Nikolaidis",
+        "Shengye Wan",
+        "Ivan Evtimov"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Introduces CyberSecEval, a benchmark for evaluating the cybersecurity risks of LLM code generation, including insecure code suggestions.",
+      "url": "https://arxiv.org/abs/2312.04724",
+      "pdf_url": "https://arxiv.org/pdf/2312.04724",
+      "categories": [
+        "benchmarks",
+        "supply-chain-attacks",
+        "red-teaming"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM05"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "CyberSecEval",
+        "code-security",
+        "Meta",
+        "benchmark"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2312.04724"
+      },
+      "citation_count": 140,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00053",
+      "type": "paper",
+      "title": "BadChain: Backdoor Chain-of-Thought Prompting for Large Language Models",
+      "authors": [
+        "Zhen Xiang",
+        "Fengqing Jiang",
+        "Zidi Xiong",
+        "Bhaskar Ramasubramanian",
+        "Radha Poovendran",
+        "Bo Li"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "abstract": "Demonstrates backdoor attacks on chain-of-thought reasoning in LLMs where poisoned demonstrations cause incorrect reasoning chains.",
+      "url": "https://arxiv.org/abs/2401.12242",
+      "pdf_url": "https://arxiv.org/pdf/2401.12242",
+      "categories": [
+        "data-poisoning",
+        "adversarial-examples"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0018",
+          "AML.T0020"
+        ]
+      },
+      "tags": [
+        "chain-of-thought",
+        "backdoor",
+        "reasoning"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2401.12242"
+      },
+      "citation_count": 55,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00054",
+      "type": "paper",
+      "title": "PAIR: Prompt Automatic Iterative Refinement for Jailbreaking LLMs",
+      "authors": [
+        "Patrick Chao",
+        "Alexander Robey",
+        "Edgar Dobriban",
+        "Hamed Hassani",
+        "George J. Pappas",
+        "Eric Wong"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "abstract": "Uses an attacker LLM to automatically generate jailbreak prompts through iterative refinement achieving high success with only black-box access.",
+      "url": "https://arxiv.org/abs/2310.08419",
+      "pdf_url": "https://arxiv.org/pdf/2310.08419",
+      "categories": [
+        "jailbreaking",
+        "red-teaming"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "automated",
+        "iterative",
+        "black-box"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.08419"
+      },
+      "citation_count": 220,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00055",
+      "type": "paper",
+      "title": "GPT in Sheep's Clothing: The Risk of Customized GPTs",
+      "authors": [
+        "Tao Qin",
+        "Zhen Li",
+        "Wenxin Mao",
+        "Xinyu Zhao"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Analyzes security risks of custom GPTs in the OpenAI GPT Store including prompt leakage, data exfiltration, and malicious GPTs.",
+      "url": "https://arxiv.org/abs/2401.09075",
+      "pdf_url": "https://arxiv.org/pdf/2401.09075",
+      "categories": [
+        "supply-chain-attacks",
+        "prompt-injection",
+        "model-serving-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM03",
+          "LLM07"
+        ],
+        "owasp_agentic_top10": [
+          "AGT07"
+        ]
+      },
+      "tags": [
+        "custom-GPTs",
+        "GPT-Store",
+        "supply-chain"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2401.09075"
+      },
+      "citation_count": 45,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00056",
+      "type": "tool",
+      "title": "Vigil: LLM Prompt Injection Detection and Defense Toolkit",
+      "authors": [
+        "DeadBits"
+      ],
+      "year": 2024,
+      "venue": "GitHub",
+      "abstract": "Open-source scanner for detecting prompt injections using vector similarity, YARA rules, text classifiers, and canary tokens.",
+      "url": "https://github.com/deadbits/vigil-llm",
+      "categories": [
+        "input-filtering",
+        "prompt-injection",
+        "monitoring-detection"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      },
+      "tags": [
+        "tool",
+        "detection",
+        "open-source",
+        "scanner"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00057",
+      "type": "tool",
+      "title": "Guardrails AI: Input/Output Guards for LLM Applications",
+      "authors": [
+        "Guardrails AI"
+      ],
+      "year": 2024,
+      "venue": "GitHub",
+      "abstract": "Framework for adding structural, type, and quality guarantees to LLM outputs with validators for PII, toxicity, code security, and factual accuracy.",
+      "url": "https://github.com/guardrails-ai/guardrails",
+      "categories": [
+        "guardrails",
+        "output-moderation",
+        "input-filtering"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM05"
+        ]
+      },
+      "tags": [
+        "tool",
+        "validation",
+        "open-source",
+        "production"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00058",
+      "type": "tool",
+      "title": "LLM Guard: Security Toolkit for LLM Interactions",
+      "authors": [
+        "Protect AI"
+      ],
+      "year": 2024,
+      "venue": "GitHub",
+      "abstract": "Comprehensive toolkit for sanitizing LLM prompts and outputs, detecting prompt injection, PII leakage, toxic content, and code vulnerabilities.",
+      "url": "https://github.com/protectai/llm-guard",
+      "categories": [
+        "input-filtering",
+        "output-moderation",
+        "guardrails"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM02",
+          "LLM05"
+        ]
+      },
+      "tags": [
+        "tool",
+        "sanitization",
+        "PII-detection",
+        "open-source"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00059",
+      "type": "paper",
+      "title": "The Emerged Security and Privacy of LLM Agent: A Survey with Case Studies",
+      "authors": [
+        "Feng He",
+        "Tianqing Zhu",
+        "Dayong Ye",
+        "Bo Liu",
+        "Wanlei Zhou",
+        "Philip S. Yu"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Surveys security and privacy challenges specific to LLM-based agents, covering agent architectures, attack surfaces, and defense mechanisms.",
+      "url": "https://arxiv.org/abs/2407.19354",
+      "pdf_url": "https://arxiv.org/pdf/2407.19354",
+      "categories": [
+        "survey",
+        "agentic-threats",
+        "agent-architecture"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT01",
+          "AGT02",
+          "AGT03"
+        ]
+      },
+      "tags": [
+        "survey",
+        "agent-security",
+        "comprehensive"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2407.19354"
+      },
+      "citation_count": 35,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00060",
+      "type": "paper",
+      "title": "Adaptive Attacks Break Defenses Against LLM Jailbreaking",
+      "authors": [
+        "Jingwei Yi",
+        "Yueqi Xie",
+        "Bin Zhu",
+        "Keegan Hines",
+        "Emre Kiciman",
+        "Guangzhong Sun",
+        "Xing Xie",
+        "Fangzhao Wu"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Shows that adaptive adversaries can bypass most proposed jailbreak defenses, highlighting the arms race between attacks and defenses.",
+      "url": "https://arxiv.org/abs/2404.02151",
+      "pdf_url": "https://arxiv.org/pdf/2404.02151",
+      "categories": [
+        "jailbreaking",
+        "guardrails",
+        "adversarial-examples"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "adaptive-attacks",
+        "defense-bypass",
+        "arms-race"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2404.02151"
+      },
+      "citation_count": 50,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2024-00061",
+      "type": "paper",
+      "title": "How Johnny Can Persuade LLMs to Jailbreak Them: Rethinking Persuasion to Challenge AI Safety",
+      "authors": [
+        "Yi Zeng",
+        "Hongpeng Lin",
+        "Jingwen Zhang",
+        "Diyi Yang",
+        "Ruoxi Jia",
+        "Weiyan Shi"
+      ],
+      "year": 2024,
+      "venue": "ACL 2024",
+      "abstract": "Applies social science persuasion techniques to jailbreak LLMs, showing high attack success rates using persuasion taxonomy.",
+      "url": "https://arxiv.org/abs/2401.06373",
+      "pdf_url": "https://arxiv.org/pdf/2401.06373",
+      "categories": [
+        "jailbreaking",
+        "social-engineering"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0054"
+        ]
+      },
+      "tags": [
+        "persuasion",
+        "social-science",
+        "human-like"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2401.06373"
+      },
+      "citation_count": 85,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00006",
+      "type": "paper",
+      "title": "Model Context Protocol (MCP): Specification",
+      "authors": [
+        "Anthropic"
+      ],
+      "year": 2024,
+      "venue": "Anthropic / GitHub",
+      "abstract": "Open protocol specification for connecting AI models to external data sources and tools, enabling standardized tool use with security considerations.",
+      "url": "https://modelcontextprotocol.io/",
+      "categories": [
+        "tool-use-security",
+        "agent-architecture",
+        "access-control"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02",
+          "AGT03"
+        ]
+      },
+      "tags": [
+        "MCP",
+        "protocol",
+        "specification",
+        "tool-integration"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00007",
+      "type": "report",
+      "title": "Anthropic's Responsible Scaling Policy",
+      "authors": [
+        "Anthropic"
+      ],
+      "year": 2024,
+      "venue": "Anthropic Blog",
+      "abstract": "Framework defining AI Safety Levels (ASL) for evaluating and managing risks from increasingly capable AI systems.",
+      "url": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy",
+      "categories": [
+        "risk-frameworks",
+        "model-governance",
+        "responsible-ai"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "responsible-scaling",
+        "ASL",
+        "governance",
+        "policy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00008",
+      "type": "report",
+      "title": "OpenAI: Preparedness Framework (Beta)",
+      "authors": [
+        "OpenAI"
+      ],
+      "year": 2023,
+      "venue": "OpenAI Blog",
+      "abstract": "OpenAI's approach to tracking, evaluating, forecasting, and protecting against catastrophic risks of frontier AI models.",
+      "url": "https://openai.com/safety/preparedness",
+      "categories": [
+        "risk-frameworks",
+        "red-teaming",
+        "model-governance"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "preparedness",
+        "frontier-risk",
+        "catastrophic-risk"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00009",
+      "type": "standard",
+      "title": "EU AI Act: Regulation on Artificial Intelligence",
+      "authors": [
+        "European Parliament"
+      ],
+      "year": 2024,
+      "venue": "Official Journal of the European Union",
+      "abstract": "The EU's comprehensive AI regulation establishing risk-based categories, conformity assessments, and requirements for high-risk AI systems.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "categories": [
+        "risk-frameworks",
+        "audit-assurance",
+        "model-governance"
+      ],
+      "framework_mappings": {
+        "iso_42001": [
+          "4",
+          "6",
+          "8"
+        ]
+      },
+      "tags": [
+        "EU-AI-Act",
+        "regulation",
+        "compliance",
+        "high-risk"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00010",
+      "type": "report",
+      "title": "Google: Secure AI Framework (SAIF)",
+      "authors": [
+        "Google"
+      ],
+      "year": 2023,
+      "venue": "Google Security Blog",
+      "abstract": "Google's conceptual framework for secure AI systems with six core elements covering security foundations, detection, automation, and contextualization.",
+      "url": "https://safety.google/cybersecurity-advancements/saif/",
+      "categories": [
+        "risk-frameworks",
+        "cloud-ai-security"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "Google",
+        "SAIF",
+        "framework",
+        "enterprise"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00011",
+      "type": "report",
+      "title": "Microsoft AI Red Team: Lessons Learned and Best Practices",
+      "authors": [
+        "Microsoft AI Red Team"
+      ],
+      "year": 2024,
+      "venue": "Microsoft Blog",
+      "abstract": "Shares lessons from Microsoft's AI red team operations including methodology, tooling, common failure modes, and best practices.",
+      "url": "https://www.microsoft.com/en-us/security/blog/2024/02/22/announcing-microsofts-open-automation-framework-to-red-team-generative-ai-systems/",
+      "categories": [
+        "red-teaming",
+        "industry-report"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "Microsoft",
+        "red-team",
+        "methodology",
+        "lessons-learned"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00012",
+      "type": "paper",
+      "title": "LLM Agents Can Autonomously Exploit One-day Vulnerabilities",
+      "authors": [
+        "Richard Fang",
+        "Rohan Bindu",
+        "Akul Gupta",
+        "Daniel Kang"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Shows that LLM agents (GPT-4) can autonomously exploit real-world one-day vulnerabilities given CVE descriptions, achieving 87% success rate.",
+      "url": "https://arxiv.org/abs/2404.08144",
+      "pdf_url": "https://arxiv.org/pdf/2404.08144",
+      "categories": [
+        "agentic-threats",
+        "autonomous-operations",
+        "vulnerability-disclosure"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM06"
+        ],
+        "owasp_agentic_top10": [
+          "AGT01",
+          "AGT09"
+        ]
+      },
+      "tags": [
+        "autonomous-exploit",
+        "CVE",
+        "one-day",
+        "offensive"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2404.08144"
+      },
+      "citation_count": 150,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00013",
+      "type": "paper",
+      "title": "Adversarial Attacks on Multimodal Agents",
+      "authors": [
+        "Chen Henry Wu",
+        "Jing Yu Koh",
+        "Ruslan Salakhutdinov",
+        "Daniel Fried",
+        "Aditi Raghunathan"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Demonstrates adversarial attacks on multimodal agents that take actions in digital environments, showing visual perturbations can hijack agent behavior.",
+      "url": "https://arxiv.org/abs/2406.12814",
+      "pdf_url": "https://arxiv.org/pdf/2406.12814",
+      "categories": [
+        "agentic-threats",
+        "adversarial-examples",
+        "tool-use-security"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02",
+          "AGT03"
+        ]
+      },
+      "tags": [
+        "multimodal",
+        "visual-attacks",
+        "agent-hijacking"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2406.12814"
+      },
+      "citation_count": 25,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00014",
+      "type": "paper",
+      "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+      "authors": [
+        "John Yang",
+        "Carlos E. Jimenez",
+        "Alexander Wettig",
+        "Kilian Lieret",
+        "Shunyu Yao",
+        "Karthik Narasimhan",
+        "Ofir Press"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "abstract": "Demonstrates autonomous coding agents that interact with computer interfaces to solve software engineering tasks, raising questions about agent containment.",
+      "url": "https://arxiv.org/abs/2405.15793",
+      "pdf_url": "https://arxiv.org/pdf/2405.15793",
+      "categories": [
+        "autonomous-operations",
+        "agent-architecture",
+        "tool-use-security"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT01",
+          "AGT02",
+          "AGT09"
+        ]
+      },
+      "tags": [
+        "SWE-agent",
+        "autonomous-coding",
+        "agent-computer-interface"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2405.15793"
+      },
+      "citation_count": 200,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00015",
+      "type": "paper",
+      "title": "TrustLLM: Trustworthiness in Large Language Models",
+      "authors": [
+        "Lichao Sun",
+        "Yue Huang",
+        "Haoran Wang",
+        "Siyuan Wu",
+        "Qihui Zhang"
+      ],
+      "year": 2024,
+      "venue": "ICML 2024",
+      "abstract": "Comprehensive study of LLM trustworthiness across truthfulness, safety, fairness, robustness, privacy, and machine ethics with benchmarks.",
+      "url": "https://arxiv.org/abs/2401.05561",
+      "pdf_url": "https://arxiv.org/pdf/2401.05561",
+      "categories": [
+        "benchmarks",
+        "responsible-ai",
+        "survey"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MAP",
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "trustworthiness",
+        "benchmark",
+        "comprehensive"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2401.05561"
+      },
+      "citation_count": 300,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00016",
+      "type": "paper",
+      "title": "On the Societal Impact of Open Foundation Models",
+      "authors": [
+        "Sayash Kapoor",
+        "Rishi Bommasani",
+        "Kevin Klyman",
+        "Shayne Longpre",
+        "Ashwin Ramaswami"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Analyzes the societal impacts of open-weight foundation models, including security implications of open vs closed model access.",
+      "url": "https://arxiv.org/abs/2403.07918",
+      "pdf_url": "https://arxiv.org/pdf/2403.07918",
+      "categories": [
+        "responsible-ai",
+        "model-governance",
+        "industry-report"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP"
+        ]
+      },
+      "tags": [
+        "open-models",
+        "societal-impact",
+        "policy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2403.07918"
+      },
+      "citation_count": 180,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00017",
+      "type": "paper",
+      "title": "Poisoning Web-Scale Training Datasets is Practical",
+      "authors": [
+        "Nicholas Carlini",
+        "Matthew Jagielski",
+        "Christopher A. Choquette-Choo",
+        "Daniel Paleka",
+        "Will Pearce",
+        "Hyrum Anderson",
+        "Andreas Terzis",
+        "Kurt Thomas",
+        "Florian Tramer"
+      ],
+      "year": 2024,
+      "venue": "IEEE S&P 2024",
+      "abstract": "Demonstrates practical attacks to poison web-scale datasets like LAION by purchasing expired domains, affecting 0.01% of a dataset for under $60.",
+      "url": "https://arxiv.org/abs/2302.10149",
+      "pdf_url": "https://arxiv.org/pdf/2302.10149",
+      "categories": [
+        "data-poisoning",
+        "supply-chain-attacks"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM03",
+          "LLM04"
+        ],
+        "mitre_atlas": [
+          "AML.T0020"
+        ]
+      },
+      "tags": [
+        "web-scale",
+        "practical-attack",
+        "domain-purchase",
+        "dataset-poisoning"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2302.10149"
+      },
+      "citation_count": 250,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00018",
+      "type": "paper",
+      "title": "Visual Adversarial Examples Jailbreak Aligned Large Language Models",
+      "authors": [
+        "Xiangyu Qi",
+        "Kaixuan Huang",
+        "Ashwinee Panda",
+        "Peter Henderson",
+        "Mengdi Wang",
+        "Prateek Mittal"
+      ],
+      "year": 2024,
+      "venue": "AAAI 2024",
+      "abstract": "Shows adversarial images can jailbreak multimodal LLMs that are robust to text-only attacks, bypassing alignment through the visual channel.",
+      "url": "https://arxiv.org/abs/2306.13213",
+      "pdf_url": "https://arxiv.org/pdf/2306.13213",
+      "categories": [
+        "jailbreaking",
+        "adversarial-examples"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ],
+        "mitre_atlas": [
+          "AML.T0043"
+        ]
+      },
+      "tags": [
+        "visual",
+        "multimodal",
+        "image-jailbreak"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2306.13213"
+      },
+      "citation_count": 220,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00019",
+      "type": "paper",
+      "title": "Are Aligned Neural Networks Adversarially Aligned?",
+      "authors": [
+        "Nicholas Carlini",
+        "Milad Nasr",
+        "Christopher A. Choquette-Choo",
+        "Matthew Jagielski",
+        "Irena Gao",
+        "Anas Awadalla",
+        "Pang Wei Koh",
+        "Daphne Ippolito",
+        "Katherine Lee",
+        "Florian Tramer",
+        "Ludwig Schmidt"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2023",
+      "abstract": "Evaluates whether multimodal LLMs aligned to refuse harmful text requests also refuse harmful image-based requests, finding significant gaps.",
+      "url": "https://arxiv.org/abs/2306.15447",
+      "pdf_url": "https://arxiv.org/pdf/2306.15447",
+      "categories": [
+        "adversarial-examples",
+        "guardrails",
+        "jailbreaking"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      },
+      "tags": [
+        "multimodal",
+        "alignment-gap",
+        "image-attacks"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2306.15447"
+      },
+      "citation_count": 180,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00020",
+      "type": "book",
+      "title": "Generative AI Security: Theories and Practices",
+      "authors": [
+        "Ken Huang",
+        "Yang Wang",
+        "Ben Goertzel",
+        "Yale Li",
+        "Sean Wright",
+        "Jyoti Ponnapalli"
+      ],
+      "year": 2024,
+      "venue": "Springer",
+      "abstract": "Comprehensive textbook covering generative AI security from foundations to advanced topics including LLM threats, defenses, privacy, and governance.",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-54252-7",
+      "categories": [
+        "book",
+        "survey"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN",
+          "MAP",
+          "MEASURE",
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "textbook",
+        "comprehensive",
+        "Springer"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": false,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00021",
+      "type": "paper",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
+      "year": 2023,
+      "venue": "ICLR 2023",
+      "abstract": "Foundational work on the ReAct paradigm for LLM agents that interleave reasoning and tool-use actions, enabling complex task completion with security implications.",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "pdf_url": "https://arxiv.org/pdf/2210.03629",
+      "categories": [
+        "agent-architecture",
+        "tool-use-security"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT01",
+          "AGT02"
+        ]
+      },
+      "tags": [
+        "ReAct",
+        "reasoning",
+        "tool-use",
+        "foundational"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2210.03629"
+      },
+      "citation_count": 2500,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00022",
+      "type": "paper",
+      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "authors": [
+        "Guanzhi Wang",
+        "Yuqi Xie",
+        "Yunfan Jiang",
+        "Ajay Mandlekar",
+        "Chaowei Xiao",
+        "Yuke Zhu",
+        "Linxi Fan",
+        "Anima Anandkumar"
+      ],
+      "year": 2023,
+      "venue": "NeurIPS 2023",
+      "abstract": "Demonstrates a continuously learning LLM agent in Minecraft that writes and executes code, highlighting autonomous operation and containment challenges.",
+      "url": "https://arxiv.org/abs/2305.16291",
+      "pdf_url": "https://arxiv.org/pdf/2305.16291",
+      "categories": [
+        "autonomous-operations",
+        "agent-architecture"
+      ],
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT09"
+        ]
+      },
+      "tags": [
+        "embodied-agent",
+        "autonomous-learning",
+        "code-execution"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2305.16291"
+      },
+      "citation_count": 800,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00023",
+      "type": "dataset",
+      "title": "SafetyBench: Evaluating the Safety of Large Language Models",
+      "authors": [
+        "Zhexin Zhang",
+        "Leqi Lei",
+        "Lindong Wu",
+        "Rui Sun",
+        "Yongkang Huang"
+      ],
+      "year": 2024,
+      "venue": "ACL 2024",
+      "abstract": "Large-scale safety evaluation benchmark with 11,435 multiple-choice questions across 7 safety categories in both Chinese and English.",
+      "url": "https://arxiv.org/abs/2309.07045",
+      "pdf_url": "https://arxiv.org/pdf/2309.07045",
+      "categories": [
+        "benchmarks",
+        "guardrails"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "benchmark",
+        "safety",
+        "multilingual",
+        "dataset"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2309.07045"
+      },
+      "citation_count": 90,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00024",
+      "type": "paper",
+      "title": "Can Sensitive Information Be Deleted From LLMs? Objectives for Defending Against Extraction Attacks",
+      "authors": [
+        "Vaidehi Patil",
+        "Peter Hase",
+        "Mohit Bansal"
+      ],
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "abstract": "Evaluates methods for deleting sensitive information from trained LLMs, finding current unlearning approaches insufficient against determined adversaries.",
+      "url": "https://arxiv.org/abs/2309.17410",
+      "pdf_url": "https://arxiv.org/pdf/2309.17410",
+      "categories": [
+        "unlearning",
+        "differential-privacy",
+        "membership-inference"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM02"
+        ]
+      },
+      "tags": [
+        "knowledge-deletion",
+        "unlearning",
+        "extraction-defense"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2309.17410"
+      },
+      "citation_count": 70,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00025",
+      "type": "paper",
+      "title": "WildGuard: Open One-Stop Moderation Tools for Safety Risks, Jailbreaks, and Refusals of LLMs",
+      "authors": [
+        "Seungju Han",
+        "Kavel Rao",
+        "Allyson Ettinger",
+        "Liwei Jiang",
+        "Bill Yuchen Lin",
+        "Nathan Lambert",
+        "Yejin Choi",
+        "Nouha Dziri"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Open-source moderation tool for detecting safety risks in LLM interactions, trained on a diverse dataset of harmful and benign prompts.",
+      "url": "https://arxiv.org/abs/2406.18495",
+      "pdf_url": "https://arxiv.org/pdf/2406.18495",
+      "categories": [
+        "guardrails",
+        "input-filtering",
+        "output-moderation"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM05"
+        ]
+      },
+      "tags": [
+        "moderation",
+        "open-source",
+        "safety-classifier"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2406.18495"
+      },
+      "citation_count": 30,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00026",
+      "type": "paper",
+      "title": "StrongREJECT: A Comprehensive Evaluation of LLM Safety Refusal Behaviors",
+      "authors": [
+        "Alexandra Souly",
+        "Qingyuan Lu",
+        "Dillon Bowen",
+        "Tu Trinh",
+        "Elvis Hsieh",
+        "Sana Pandey",
+        "Pieter Abbeel",
+        "Justin Svegliato",
+        "Scott Emmons",
+        "Olivia Watkins",
+        "Sam Toyer"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Introduces StrongREJECT, a high-quality evaluation benchmark for measuring how well LLMs refuse harmful requests.",
+      "url": "https://arxiv.org/abs/2402.10260",
+      "pdf_url": "https://arxiv.org/pdf/2402.10260",
+      "categories": [
+        "benchmarks",
+        "guardrails",
+        "red-teaming"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      },
+      "tags": [
+        "evaluation",
+        "refusal",
+        "benchmark",
+        "reliability"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2402.10260"
+      },
+      "citation_count": 65,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00027",
+      "type": "tool",
+      "title": "OWASP Threat Dragon: AI-Aware Threat Modeling Tool",
+      "authors": [
+        "OWASP Foundation"
+      ],
+      "year": 2024,
+      "venue": "OWASP / GitHub",
+      "abstract": "Open-source threat modeling tool supporting AI/ML system threat models, data flow diagrams, and STRIDE methodology for GenAI applications.",
+      "url": "https://owasp.org/www-project-threat-dragon/",
+      "categories": [
+        "threat-modeling",
+        "risk-frameworks"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MAP"
+        ]
+      },
+      "tags": [
+        "tool",
+        "threat-modeling",
+        "STRIDE",
+        "open-source"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00028",
+      "type": "paper",
+      "title": "CISA: Roadmap for Artificial Intelligence",
+      "authors": [
+        "Cybersecurity and Infrastructure Security Agency"
+      ],
+      "year": 2024,
+      "venue": "CISA",
+      "abstract": "CISA's strategic roadmap for AI covering responsible use, assuring AI systems, securing AI adoption, and collaborating on AI governance.",
+      "url": "https://www.cisa.gov/ai",
+      "categories": [
+        "risk-frameworks",
+        "model-governance"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "GOVERN"
+        ]
+      },
+      "tags": [
+        "CISA",
+        "government",
+        "roadmap",
+        "policy"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00029",
+      "type": "paper",
+      "title": "Prompt Stealing Attacks Against Text-to-Image Generation Models",
+      "authors": [
+        "Xinyue Shen",
+        "Yiting Qu",
+        "Michael Backes",
+        "Yang Zhang"
+      ],
+      "year": 2024,
+      "venue": "USENIX Security 2024",
+      "abstract": "Demonstrates attacks that steal the prompts used to generate images from text-to-image models, raising IP and privacy concerns.",
+      "url": "https://arxiv.org/abs/2302.09923",
+      "pdf_url": "https://arxiv.org/pdf/2302.09923",
+      "categories": [
+        "model-extraction",
+        "membership-inference"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM07"
+        ],
+        "mitre_atlas": [
+          "AML.T0049"
+        ]
+      },
+      "tags": [
+        "prompt-stealing",
+        "text-to-image",
+        "IP-protection"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2302.09923"
+      },
+      "citation_count": 110,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00030",
+      "type": "paper",
+      "title": "The Shadow Alignment: The Risks of RLHF to LLM Alignment",
+      "authors": [
+        "Xianjun Yang",
+        "Xiao Wang",
+        "Qi Zhang",
+        "Linda Petzold",
+        "William Yang Wang",
+        "Xun Zhao",
+        "Dahua Lin"
+      ],
+      "year": 2024,
+      "venue": "arXiv preprint",
+      "abstract": "Shows that RLHF can introduce shadow alignment where models exhibit harmful behaviors not present in the base model.",
+      "url": "https://arxiv.org/abs/2310.02842",
+      "pdf_url": "https://arxiv.org/pdf/2310.02842",
+      "categories": [
+        "guardrails",
+        "responsible-ai",
+        "fine-tuning-security"
+      ],
+      "framework_mappings": {
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      },
+      "tags": [
+        "RLHF",
+        "shadow-alignment",
+        "safety-regression"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {
+        "arxiv_id": "2310.02842"
+      },
+      "citation_count": 75,
+      "open_access": true,
+      "reviewed": true
+    },
+    {
+      "id": "llmsec-2025-00031",
+      "type": "paper",
+      "title": "Confidential Computing for AI Workloads: Survey and Best Practices",
+      "authors": [
+        "Microsoft Azure Confidential Computing Team"
+      ],
+      "year": 2024,
+      "venue": "Microsoft Research",
+      "abstract": "Surveys confidential computing technologies (SGX, SEV, TDX) applied to AI workloads covering secure training, inference, and multi-party computation.",
+      "url": "https://www.microsoft.com/en-us/research/publication/confidential-computing-for-ai/",
+      "categories": [
+        "confidential-computing",
+        "cloud-ai-security"
+      ],
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MANAGE"
+        ]
+      },
+      "tags": [
+        "TEE",
+        "SGX",
+        "confidential-computing",
+        "cloud"
+      ],
+      "added_date": "2026-04-14",
+      "added_by": "manual",
+      "source_api": "manual",
+      "external_ids": {},
+      "open_access": true,
+      "reviewed": true
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+---
+import { getCategoryClasses } from '../categoryColors';
+
+interface Props {
+  entry: {
+    id: string;
+    type: string;
+    title: string;
+    authors: string[];
+    year: number;
+    venue?: string;
+    abstract?: string;
+    url: string;
+    categories: string[];
+    framework_mappings?: Record<string, string[]>;
+    citation_count?: number;
+    open_access?: boolean;
+    reviewed?: boolean;
+  };
+}
+
+const { entry } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const typeColors: Record<string, string> = {
+  paper: 'badge-blue',
+  book: 'badge-purple',
+  report: 'badge-orange',
+  tool: 'badge-green',
+  standard: 'badge-red',
+  talk: 'badge-gray',
+  blog: 'badge-gray',
+  dataset: 'badge-green',
+};
+---
+
+<div class="card">
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center gap-2 mb-2 flex-wrap">
+        <span class={`badge ${typeColors[entry.type] || 'badge-gray'}`}>
+          {entry.type}
+        </span>
+        {entry.reviewed && (
+          <span class="badge badge-green" title="Human-reviewed">reviewed</span>
+        )}
+        {entry.open_access && (
+          <span class="badge badge-blue" title="Open access">open access</span>
+        )}
+        <span class="text-xs text-gray-500">{entry.year}</span>
+      </div>
+      <h3 class="text-lg font-semibold mb-1">
+        <a href={`${base}entry/${entry.id}/`} class="hover:underline">
+          {entry.title}
+        </a>
+      </h3>
+      <p class="text-sm text-gray-600 mb-2">
+        {entry.authors.slice(0, 3).join(', ')}{entry.authors.length > 3 ? ` + ${entry.authors.length - 3} more` : ''}
+        {entry.venue && <span class="text-gray-400"> &mdash; {entry.venue}</span>}
+      </p>
+      {entry.abstract && (
+        <p class="text-sm text-gray-700 line-clamp-2 mb-3">{entry.abstract}</p>
+      )}
+      <div class="flex items-center gap-2 flex-wrap">
+        {entry.categories.slice(0, 4).map((cat) => (
+          <a href={`${base}browse/?category=${cat}`} class={`text-xs px-2 py-0.5 rounded no-underline font-medium ${getCategoryClasses(cat)}`}>
+            {cat.replace(/-/g, ' ')}
+          </a>
+        ))}
+        {entry.citation_count !== undefined && entry.citation_count > 0 && (
+          <span class="text-xs text-gray-500 ml-auto" title="Citation count">
+            {entry.citation_count} citations
+          </span>
+        )}
+      </div>
+    </div>
+    <a href={entry.url} target="_blank" rel="noopener noreferrer" class="shrink-0 text-gray-400 hover:text-primary-600" title="Open resource">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  </div>
+</div>

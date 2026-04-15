@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+  a {
+    @apply text-primary-600 hover:text-primary-800 transition-colors;
+  }
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-blue {
+    @apply bg-blue-100 text-blue-800;
+  }
+  .badge-green {
+    @apply bg-green-100 text-green-800;
+  }
+  .badge-purple {
+    @apply bg-purple-100 text-purple-800;
+  }
+  .badge-orange {
+    @apply bg-orange-100 text-orange-800;
+  }
+  .badge-gray {
+    @apply bg-gray-100 text-gray-800;
+  }
+  .badge-red {
+    @apply bg-red-100 text-red-800;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow;
+  }
+}

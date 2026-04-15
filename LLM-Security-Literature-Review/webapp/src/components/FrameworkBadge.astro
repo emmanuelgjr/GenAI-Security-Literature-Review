@@ -1,0 +1,22 @@
+---
+interface Props {
+  framework: string;
+  id: string;
+}
+
+const { framework, id } = Astro.props;
+
+const frameworkStyles: Record<string, { bg: string; text: string; label: string }> = {
+  owasp_llm_top10: { bg: 'bg-red-100', text: 'text-red-800', label: 'OWASP LLM' },
+  owasp_agentic_top10: { bg: 'bg-orange-100', text: 'text-orange-800', label: 'OWASP Agentic' },
+  mitre_atlas: { bg: 'bg-purple-100', text: 'text-purple-800', label: 'MITRE ATLAS' },
+  nist_ai_rmf: { bg: 'bg-blue-100', text: 'text-blue-800', label: 'NIST AI RMF' },
+  iso_42001: { bg: 'bg-green-100', text: 'text-green-800', label: 'ISO 42001' },
+};
+
+const style = frameworkStyles[framework] || { bg: 'bg-gray-100', text: 'text-gray-800', label: framework };
+---
+
+<span class={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${style.bg} ${style.text}`}>
+  {style.label}: {id}
+</span>

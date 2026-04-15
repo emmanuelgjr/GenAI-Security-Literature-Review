@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+webapp/dist/
+
+# Automation artifacts
+scripts/candidates_*.json
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Claude
+.claude/

@@ -1,0 +1,290 @@
+{
+  "domains": [
+    {
+      "id": "attacks-threats",
+      "label": "Attacks & Threats",
+      "description": "Offensive techniques and threat vectors targeting LLM and AI systems",
+      "categories": [
+        {
+          "id": "prompt-injection",
+          "label": "Prompt Injection",
+          "description": "Direct, indirect, and multi-turn prompt injection attacks"
+        },
+        {
+          "id": "jailbreaking",
+          "label": "Jailbreaking",
+          "description": "Guardrail bypass and alignment subversion techniques"
+        },
+        {
+          "id": "data-poisoning",
+          "label": "Data Poisoning",
+          "description": "Training data, fine-tuning, and RAG poisoning attacks"
+        },
+        {
+          "id": "model-extraction",
+          "label": "Model Extraction",
+          "description": "Model stealing, distillation attacks, and weight extraction"
+        },
+        {
+          "id": "membership-inference",
+          "label": "Membership Inference",
+          "description": "Determining whether specific data was used in training"
+        },
+        {
+          "id": "adversarial-examples",
+          "label": "Adversarial Examples",
+          "description": "Evasion attacks and adversarial perturbations"
+        },
+        {
+          "id": "supply-chain-attacks",
+          "label": "Supply Chain Attacks",
+          "description": "Model supply chain, plugin, and dependency attacks"
+        },
+        {
+          "id": "social-engineering",
+          "label": "Social Engineering",
+          "description": "AI-enabled phishing, deepfakes, and manipulation"
+        },
+        {
+          "id": "agentic-threats",
+          "label": "Agentic Threats",
+          "description": "Tool misuse, autonomous harm, and agent-specific attack vectors"
+        }
+      ]
+    },
+    {
+      "id": "defenses-mitigations",
+      "label": "Defenses & Mitigations",
+      "description": "Defensive techniques and countermeasures for LLM security",
+      "categories": [
+        {
+          "id": "input-filtering",
+          "label": "Input Filtering",
+          "description": "Prompt validation, sanitization, and input guards"
+        },
+        {
+          "id": "output-moderation",
+          "label": "Output Moderation",
+          "description": "Content filtering, PII redaction, and output safety"
+        },
+        {
+          "id": "guardrails",
+          "label": "Guardrails",
+          "description": "Constitutional AI, safety layers, and behavioral constraints"
+        },
+        {
+          "id": "access-control",
+          "label": "Access Control",
+          "description": "RBAC/ABAC for LLMs, credential scoping, and authorization"
+        },
+        {
+          "id": "monitoring-detection",
+          "label": "Monitoring & Detection",
+          "description": "Anomaly detection, behavioral analysis, and drift monitoring"
+        },
+        {
+          "id": "sandboxing-isolation",
+          "label": "Sandboxing & Isolation",
+          "description": "Tool sandboxing, execution containment, and process isolation"
+        },
+        {
+          "id": "cryptographic-controls",
+          "label": "Cryptographic Controls",
+          "description": "Encryption, signing, post-quantum cryptography for AI"
+        },
+        {
+          "id": "watermarking",
+          "label": "Watermarking",
+          "description": "AI output watermarking, provenance tracking, and attribution"
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "label": "Privacy",
+      "description": "Privacy-preserving techniques and data protection for AI systems",
+      "categories": [
+        {
+          "id": "differential-privacy",
+          "label": "Differential Privacy",
+          "description": "DP training, inference, and privacy-preserving mechanisms"
+        },
+        {
+          "id": "federated-learning",
+          "label": "Federated Learning",
+          "description": "Distributed training security and privacy"
+        },
+        {
+          "id": "data-anonymization",
+          "label": "Data Anonymization",
+          "description": "PII handling, synthetic data, and de-identification"
+        },
+        {
+          "id": "unlearning",
+          "label": "Machine Unlearning",
+          "description": "Model unlearning, right to erasure, and data removal"
+        },
+        {
+          "id": "confidential-computing",
+          "label": "Confidential Computing",
+          "description": "TEEs, secure enclaves, and hardware-based AI privacy"
+        }
+      ]
+    },
+    {
+      "id": "governance-compliance",
+      "label": "Governance & Compliance",
+      "description": "Policy, regulation, and organizational governance for AI security",
+      "categories": [
+        {
+          "id": "risk-frameworks",
+          "label": "Risk Frameworks",
+          "description": "NIST AI RMF, ISO 42001, EU AI Act, and regulatory frameworks"
+        },
+        {
+          "id": "model-governance",
+          "label": "Model Governance",
+          "description": "Model lifecycle, model cards, and documentation practices"
+        },
+        {
+          "id": "audit-assurance",
+          "label": "Audit & Assurance",
+          "description": "AI auditing methodologies and verification standards"
+        },
+        {
+          "id": "responsible-ai",
+          "label": "Responsible AI",
+          "description": "Fairness, bias, transparency, and ethical AI considerations"
+        },
+        {
+          "id": "incident-response",
+          "label": "Incident Response",
+          "description": "AI-specific incident response, playbooks, and forensics"
+        }
+      ]
+    },
+    {
+      "id": "red-teaming-evaluation",
+      "label": "Red Teaming & Evaluation",
+      "description": "Offensive security testing and evaluation methodologies for AI",
+      "categories": [
+        {
+          "id": "red-teaming",
+          "label": "Red Teaming",
+          "description": "AI red team methodology, automation, and frameworks"
+        },
+        {
+          "id": "benchmarks",
+          "label": "Benchmarks & Evaluation",
+          "description": "Safety benchmarks, evaluation datasets, and scoring"
+        },
+        {
+          "id": "fuzzing",
+          "label": "Fuzzing",
+          "description": "LLM fuzzing, automated prompt testing, and input generation"
+        },
+        {
+          "id": "vulnerability-disclosure",
+          "label": "Vulnerability Disclosure",
+          "description": "Coordinated disclosure processes for AI vulnerabilities"
+        }
+      ]
+    },
+    {
+      "id": "infrastructure-deployment",
+      "label": "Infrastructure & Deployment",
+      "description": "Secure deployment patterns and infrastructure security for AI systems",
+      "categories": [
+        {
+          "id": "model-serving-security",
+          "label": "Model Serving Security",
+          "description": "API security, rate limiting, and inference endpoint protection"
+        },
+        {
+          "id": "rag-security",
+          "label": "RAG Security",
+          "description": "Vector database security, retrieval poisoning, and embedding attacks"
+        },
+        {
+          "id": "fine-tuning-security",
+          "label": "Fine-Tuning Security",
+          "description": "Safe fine-tuning practices, alignment preservation, and data curation"
+        },
+        {
+          "id": "mlops-security",
+          "label": "MLOps Security",
+          "description": "ML pipeline security, CI/CD for models, and artifact management"
+        },
+        {
+          "id": "cloud-ai-security",
+          "label": "Cloud AI Security",
+          "description": "Managed AI service security, multi-tenant isolation, and cloud controls"
+        }
+      ]
+    },
+    {
+      "id": "agentic-ai-security",
+      "label": "Agentic AI Security",
+      "description": "Security specific to autonomous AI agents and multi-agent systems",
+      "categories": [
+        {
+          "id": "agent-architecture",
+          "label": "Agent Architecture",
+          "description": "Multi-agent security patterns, isolation, and trust boundaries"
+        },
+        {
+          "id": "tool-use-security",
+          "label": "Tool Use Security",
+          "description": "Function calling security, plugin safety, and API tool governance"
+        },
+        {
+          "id": "memory-security",
+          "label": "Memory Security",
+          "description": "Context window attacks, long-term memory poisoning, and memory isolation"
+        },
+        {
+          "id": "human-in-the-loop",
+          "label": "Human-in-the-Loop",
+          "description": "Oversight mechanisms, approval workflows, and escalation patterns"
+        },
+        {
+          "id": "autonomous-operations",
+          "label": "Autonomous Operations",
+          "description": "Guardrails for autonomous agents, self-modification prevention, and containment"
+        }
+      ]
+    },
+    {
+      "id": "surveys-meta",
+      "label": "Surveys & Meta",
+      "description": "Survey papers, meta-analyses, and cross-cutting resources",
+      "categories": [
+        {
+          "id": "survey",
+          "label": "Surveys",
+          "description": "Literature surveys, systematizations of knowledge, and meta-analyses"
+        },
+        {
+          "id": "threat-modeling",
+          "label": "Threat Modeling",
+          "description": "AI-specific threat models, attack taxonomies, and kill chains"
+        },
+        {
+          "id": "industry-report",
+          "label": "Industry Reports",
+          "description": "Vendor reports, market analysis, and industry research"
+        },
+        {
+          "id": "book",
+          "label": "Books",
+          "description": "Textbooks, practitioner guides, and reference books"
+        },
+        {
+          "id": "conference-proceedings",
+          "label": "Conference Proceedings",
+          "description": "Workshop summaries, conference reports, and event proceedings"
+        }
+      ]
+    }
+  ]
+}

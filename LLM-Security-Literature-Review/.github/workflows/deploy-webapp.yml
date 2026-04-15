@@ -1,0 +1,62 @@
+name: Deploy Webapp
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'webapp/**'
+      - 'data/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: webapp/package-lock.json
+
+      - name: Install dependencies
+        working-directory: webapp
+        run: npm ci
+
+      - name: Copy data files
+        run: |
+          mkdir -p webapp/src/data
+          cp data/literature.json webapp/src/data/
+          cp data/taxonomy.json webapp/src/data/
+          cp data/frameworks.json webapp/src/data/
+
+      - name: Build
+        working-directory: webapp
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: webapp/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

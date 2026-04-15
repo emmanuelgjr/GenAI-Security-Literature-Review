@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SearchBar from '../components/SearchBar.tsx';
+import literature from '../data/literature.json';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Search">
+  <div>
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Search Resources</h1>
+    <SearchBar client:load entries={literature.entries} basePath={base} />
+  </div>
+</BaseLayout>

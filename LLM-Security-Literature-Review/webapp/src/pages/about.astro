@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import taxonomy from '../data/taxonomy.json';
+import literature from '../data/literature.json';
+
+const totalEntries = literature.entries.length;
+const totalCategories = taxonomy.domains.reduce((s, d) => s + d.categories.length, 0);
+---
+
+<BaseLayout title="About">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">About This Project</h1>
+
+    <div class="prose prose-gray max-w-none">
+      <div class="card mb-6">
+        <h2 class="text-xl font-semibold mb-3">What is this?</h2>
+        <p class="text-gray-700 mb-4">
+          The GenAI Security Literature Review is a comprehensive, community-driven, auto-updating database of research, standards, tools, and resources related to the security of Large Language Models (LLMs) and AI systems.
+        </p>
+        <p class="text-gray-700">
+          Currently tracking <strong>{totalEntries} resources</strong> across <strong>{totalCategories} categories</strong> in <strong>{taxonomy.domains.length} domains</strong>.
+        </p>
+      </div>
+
+      <div class="card mb-6">
+        <h2 class="text-xl font-semibold mb-3">How It Works</h2>
+        <div class="space-y-4 text-gray-700">
+          <div>
+            <h3 class="font-semibold text-gray-900">Auto-Discovery</h3>
+            <p>A weekly GitHub Action queries academic APIs (arXiv, Semantic Scholar, CrossRef) for new LLM security publications. New entries are submitted as pull requests for human review before merging into the database.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">Human Curation</h3>
+            <p>Every entry is categorized using our taxonomy, mapped to relevant security frameworks (OWASP, NIST, MITRE ATLAS, ISO 42001), and tagged. Entries can be community-submitted via GitHub Issues.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">Quality Signals</h3>
+            <p>Entries marked as "reviewed" have been vetted by a human. Citation counts, open-access status, and venue information help you prioritize what to read.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-6">
+        <h2 class="text-xl font-semibold mb-3">Coverage</h2>
+        <p class="text-gray-700 mb-4">We cover the full LLM/AI security landscape:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {taxonomy.domains.map(domain => (
+            <div class="bg-gray-50 rounded-md p-3">
+              <h4 class="font-semibold text-gray-900 text-sm">{domain.label}</h4>
+              <p class="text-xs text-gray-500">{domain.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="card mb-6">
+        <h2 class="text-xl font-semibold mb-3">Framework Mappings</h2>
+        <p class="text-gray-700 mb-3">Every entry is mapped (where applicable) to these security frameworks:</p>
+        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+          <li><strong>OWASP Top 10 for LLM Applications</strong> -- the most widely adopted LLM security standard</li>
+          <li><strong>OWASP Top 10 for Agentic AI</strong> -- security risks specific to autonomous AI agents</li>
+          <li><strong>MITRE ATLAS</strong> -- adversarial tactics, techniques, and case studies for AI systems</li>
+          <li><strong>NIST AI RMF</strong> -- the US government's AI risk management framework</li>
+          <li><strong>ISO/IEC 42001</strong> -- international standard for AI management systems</li>
+        </ul>
+      </div>
+
+      <div class="card mb-6">
+        <h2 class="text-xl font-semibold mb-3">Contributing</h2>
+        <p class="text-gray-700 mb-4">We welcome contributions from the community:</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/emmanuelgjr/LLM-Security-Literature-Review/issues/new?template=add-resource.md" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 no-underline">
+            Submit a Resource
+          </a>
+          <a href="https://github.com/emmanuelgjr/LLM-Security-Literature-Review" class="bg-white text-primary-600 px-4 py-2 rounded-md text-sm font-medium border border-primary-600 hover:bg-primary-50 no-underline">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-3">Maintainer</h2>
+        <p class="text-gray-700">
+          <strong>Emmanuel Gonzalez</strong> (<a href="https://github.com/emmanuelgjr">@emmanuelgjr</a>) -- OWASP contributor and GenAI data security researcher.
+        </p>
+        <p class="text-gray-700 mt-2">
+          Licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
