@@ -55,7 +55,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.dedup.outputs.has_new == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: auto/papers-${{ github.run_number }}
           commit-message: "auto: add new papers from weekly fetch"
