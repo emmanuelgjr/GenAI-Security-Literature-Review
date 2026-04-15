@@ -44,7 +44,7 @@ const domainBorders: Record<string, string> = {
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {domain.categories.map((cat) => (
           <a
-            href={`${base}browse/?category=${cat.id}`}
+            href={`${base}browse/${cat.id}/`}
             class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-50 no-underline text-gray-700 hover:text-primary-700 transition-colors"
           >
             <span class="text-sm">{cat.label}</span>

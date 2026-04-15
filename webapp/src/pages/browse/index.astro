@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryTree from '../../components/CategoryTree.astro';
+import literature from '../../data/literature.json';
+import taxonomy from '../../data/taxonomy.json';
+
+const entries = literature.entries;
+
+// Count entries per category
+const entryCounts: Record<string, number> = {};
+entries.forEach((e: any) => {
+  e.categories.forEach((c: string) => {
+    entryCounts[c] = (entryCounts[c] || 0) + 1;
+  });
+});
+---
+
+<BaseLayout title="Browse by Category">
+  <div>
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Browse by Category</h1>
+    <p class="text-gray-600 mb-8">
+      Explore {entries.length} resources across {taxonomy.domains.length} domains and {taxonomy.domains.reduce((s: number, d: any) => s + d.categories.length, 0)} categories.
+    </p>
+    <CategoryTree domains={taxonomy.domains} entryCounts={entryCounts} />
+  </div>
+</BaseLayout>

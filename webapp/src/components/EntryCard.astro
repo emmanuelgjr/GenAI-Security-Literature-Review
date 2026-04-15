@@ -63,7 +63,7 @@ const typeColors: Record<string, string> = {
       )}
       <div class="flex items-center gap-2 flex-wrap">
         {entry.categories.slice(0, 4).map((cat) => (
-          <a href={`${base}browse/?category=${cat}`} class={`text-xs px-2 py-0.5 rounded no-underline font-medium ${getCategoryClasses(cat)}`}>
+          <a href={`${base}browse/${cat}/`} class={`text-xs px-2 py-0.5 rounded no-underline font-medium ${getCategoryClasses(cat)}`}>
             {cat.replace(/-/g, ' ')}
           </a>
         ))}

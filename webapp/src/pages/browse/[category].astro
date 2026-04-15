@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryCard from '../../components/EntryCard.astro';
+import { getCategoryColor } from '../../categoryColors';
+import literature from '../../data/literature.json';
+import taxonomy from '../../data/taxonomy.json';
+
+export function getStaticPaths() {
+  const categories: { id: string; label: string; domainLabel: string; description?: string }[] = [];
+  for (const domain of taxonomy.domains) {
+    for (const cat of domain.categories) {
+      categories.push({
+        id: cat.id,
+        label: cat.label,
+        domainLabel: domain.label,
+        description: cat.description,
+      });
+    }
+  }
+
+  return categories.map((cat) => ({
+    params: { category: cat.id },
+    props: { cat },
+  }));
+}
+
+interface Props {
+  cat: {
+    id: string;
+    label: string;
+    domainLabel: string;
+    description?: string;
+  };
+}
+
+const { cat } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const color = getCategoryColor(cat.id);
+
+const entries = literature.entries
+  .filter((e: any) => e.categories.includes(cat.id))
+  .sort((a: any, b: any) => b.year - a.year || (b.citation_count || 0) - (a.citation_count || 0));
+---
+
+<BaseLayout title={cat.label}>
+  <div>
+    <a href={`${base}browse/`} class="text-sm text-gray-500 hover:text-primary-600 mb-4 inline-block">
+      &larr; Back to all categories
+    </a>
+
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-2">
+        <h1 class="text-3xl font-bold text-gray-900">{cat.label}</h1>
+        <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${color.bg} ${color.text}`}>
+          {entries.length} {entries.length === 1 ? 'resource' : 'resources'}
+        </span>
+      </div>
+      <p class="text-sm text-gray-500">{cat.domainLabel}</p>
+      {cat.description && (
+        <p class="text-gray-600 mt-2">{cat.description}</p>
+      )}
+    </div>
+
+    {entries.length > 0 ? (
+      <div class="space-y-4">
+        {entries.map((entry: any) => <EntryCard entry={entry} />)}
+      </div>
+    ) : (
+      <div class="text-center py-12">
+        <p class="text-gray-500 text-lg">No resources in this category yet.</p>
+        <p class="text-gray-400 text-sm mt-2">
+          <a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md">Submit one</a>
+        </p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

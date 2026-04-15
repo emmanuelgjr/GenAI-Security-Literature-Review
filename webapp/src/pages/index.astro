@@ -90,7 +90,7 @@ const frameworkCounts = frameworkDefs.map(fw => {
       <h2 class="text-2xl font-bold text-gray-900 mb-4">Top Categories</h2>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
         {topCategories.map(([cat, count]) => (
-          <a href={`${base}browse/?category=${cat}`} class="card text-center no-underline hover:border-primary-300">
+          <a href={`${base}browse/${cat}/`} class="card text-center no-underline hover:border-primary-300">
             <div class="text-2xl font-bold text-primary-600">{count}</div>
             <div class="text-sm text-gray-600 mt-1">{cat.replace(/-/g, ' ')}</div>
           </a>

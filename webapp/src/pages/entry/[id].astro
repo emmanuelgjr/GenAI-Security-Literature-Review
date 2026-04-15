@@ -106,7 +106,7 @@ const frameworkMappings: Record<string, string[]> | undefined = (entry as any).f
       <h2 class="text-lg font-semibold text-gray-900 mb-3">Categories</h2>
       <div class="flex flex-wrap gap-2 mb-4">
         {entry.categories.map(cat => (
-          <a href={`${base}browse/?category=${cat}`} class={`badge no-underline font-medium ${getCategoryClasses(cat)}`}>
+          <a href={`${base}browse/${cat}/`} class={`badge no-underline font-medium ${getCategoryClasses(cat)}`}>
             {cat.replace(/-/g, ' ')}
           </a>
         ))}
