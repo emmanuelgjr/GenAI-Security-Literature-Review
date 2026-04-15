@@ -102,4 +102,4 @@ This work is licensed under the [MIT License](LICENSE).
 
 ## Maintainer
 
-**Emmanuel Gonzalez** ([@emmanuelgjr](https://github.com/emmanuelgjr)) -- OWASP contributor, GenAI data security researcher.
+**Emmanuel Guilherme** ([@emmanuelgjr](https://github.com/emmanuelgjr)) -- OWASP contributor, GenAI data security researcher.
