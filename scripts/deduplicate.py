@@ -92,6 +92,27 @@ def get_next_id(literature: dict) -> int:
     return max_num + 1
 
 
+YEAR_MIN = 2017
+YEAR_MAX = datetime.now().year + 1
+
+
+def is_valid_candidate(paper: dict) -> tuple[bool, str]:
+    """Reject candidates that would fail schema validation."""
+    year = paper.get("year")
+    if not isinstance(year, int) or year < YEAR_MIN or year > YEAR_MAX:
+        return False, f"year={year!r} outside [{YEAR_MIN},{YEAR_MAX}]"
+    authors = paper.get("authors") or []
+    if not authors:
+        return False, "empty authors"
+    title = (paper.get("title") or "").strip()
+    if not title:
+        return False, "empty title"
+    url = (paper.get("url") or "").strip()
+    if not url:
+        return False, "empty url"
+    return True, ""
+
+
 def paper_to_entry(paper: dict, entry_id: str, source: str) -> dict:
     """Convert a candidate paper to a literature entry."""
     entry = {
@@ -132,9 +153,19 @@ def paper_to_entry(paper: dict, entry_id: str, source: str) -> dict:
     # Auto-categorize based on title/abstract keywords
     text = f"{paper.get('title', '')} {paper.get('abstract', '')}".lower()
     categories = auto_categorize(text)
-    entry["categories"] = categories if categories else ["survey"]
+    entry["categories"] = categories
 
     return entry
+
+
+def is_on_topic(paper: dict) -> bool:
+    """Reject papers whose title/abstract don't match any taxonomy keyword.
+
+    Without this, broad CrossRef queries pull in unrelated medical/education/
+    sustainability papers that would get bucketed into 'survey' by default.
+    """
+    text = f"{paper.get('title', '')} {paper.get('abstract', '')}".lower()
+    return bool(auto_categorize(text))
 
 
 def auto_categorize(text: str) -> list[str]:
@@ -201,7 +232,20 @@ def main():
         print(f"\nProcessing {cand_file.name}: {len(papers)} candidates from {source}")
 
         added = 0
+        skipped_invalid = 0
+        skipped_offtopic = 0
         for paper in papers:
+            # Drop candidates that would fail schema validation
+            ok, reason = is_valid_candidate(paper)
+            if not ok:
+                skipped_invalid += 1
+                continue
+
+            # Drop candidates with no taxonomy-keyword match (off-topic)
+            if not is_on_topic(paper):
+                skipped_offtopic += 1
+                continue
+
             # Check against existing
             if is_duplicate(paper, index):
                 continue
@@ -225,7 +269,7 @@ def main():
                 index["dois"].add(paper["doi"].lower())
             index["titles"].append(norm)
 
-        print(f"  Added {added} new entries")
+        print(f"  Added {added} new entries (skipped {skipped_invalid} invalid, {skipped_offtopic} off-topic)")
 
     if not new_entries:
         print("\nNo new entries to add.")
