@@ -8,6 +8,11 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
+    ignore:
+      # Tailwind v4 is a major migration (config rewrite, new @tailwindcss/postcss
+      # plugin, @import syntax). Pin to v3 until the migration is done manually.
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
     groups:
       astro:
         patterns:
