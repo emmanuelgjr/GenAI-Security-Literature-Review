@@ -10,8 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.7.0",
-    "@astrojs/preact": "^4.0.0",
+    "astro": "^6.1.8",
+    "@astrojs/preact": "^5.1.1",
     "preact": "^10.24.0",
     "fuse.js": "^7.0.0"
   },
