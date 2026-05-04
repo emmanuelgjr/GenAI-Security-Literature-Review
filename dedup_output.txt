@@ -1,0 +1,382 @@
+
+Processing candidates_arxiv.json: 184 candidates from arxiv
+  Added 119 new entries (skipped 0 invalid, 65 off-topic)
+
+Processing candidates_s2.json: 0 candidates from semantic-scholar
+  Added 0 new entries (skipped 0 invalid, 0 off-topic)
+
+Processing candidates_crossref.json: 88 candidates from crossref
+  Added 4 new entries (skipped 8 invalid, 76 off-topic)
+
+Added 123 new entries. Total: 223
+
+--- New Entries ---
+- [llmsec-2026-00062] Self-Adaptive Multi-Agent LLM-Based Security Pattern Selection for IoT Systems
+  https://arxiv.org/abs/2605.00741
+  Categories: agent-architecture
+- [llmsec-2026-00063] Latent Adversarial Detection: Adaptive Probing of LLM Activations for Multi-Turn Attack Detection
+  https://arxiv.org/abs/2604.28129
+  Categories: prompt-injection
+- [llmsec-2026-00064] How Code Representation Shapes False-Positive Dynamics in Cross-Language LLM Vulnerability Detection
+  https://arxiv.org/abs/2604.27714
+  Categories: benchmarks
+- [llmsec-2026-00065] Membership Inference Attacks Against Video Large Language Models
+  https://arxiv.org/abs/2604.27002
+  Categories: membership-inference
+- [llmsec-2026-00066] Evaluating Jailbreaking Vulnerabilities in LLMs Deployed as Assistants for Smart Grid Operations: A Benchmark Against NERC Standards
+  https://arxiv.org/abs/2604.23341
+  Categories: jailbreaking, adversarial-examples, guardrails, benchmarks
+- [llmsec-2026-00067] Mechanistic Steering of LLMs Reveals Layer-wise Feature Vulnerabilities in Adversarial Settings
+  https://arxiv.org/abs/2604.23130
+  Categories: jailbreaking, guardrails
+- [llmsec-2026-00068] Automation-Exploit: A Multi-Agent LLM Framework for Adaptive Offensive Security with Digital Twin-Based Risk-Mitigated Exploitation
+  https://arxiv.org/abs/2604.22427
+  Categories: guardrails, agent-architecture
+- [llmsec-2026-00069] Stealthy Backdoor Attacks against LLMs Based on Natural Style Triggers
+  https://arxiv.org/abs/2604.21700
+  Categories: data-poisoning
+- [llmsec-2026-00070] Toward Efficient Membership Inference Attacks against Federated Large Language Models: A Projection Residual Approach
+  https://arxiv.org/abs/2604.21197
+  Categories: membership-inference
+- [llmsec-2026-00071] Towards Secure Logging: Characterizing and Benchmarking Logging Code Security Issues with LLMs
+  https://arxiv.org/abs/2604.20211
+  Categories: monitoring-detection, benchmarks
+- [llmsec-2026-00072] Taint-Style Vulnerability Detection and Confirmation for Node.js Packages Using LLM Agent Reasoning
+  https://arxiv.org/abs/2604.20179
+  Categories: supply-chain-attacks
+- [llmsec-2026-00073] HarDBench: A Benchmark for Draft-Based Co-Authoring Jailbreak Attacks for Safe Human-LLM Collaborative Writing
+  https://arxiv.org/abs/2604.19274
+  Categories: jailbreaking, benchmarks
+- [llmsec-2026-00074] HarmChip: Evaluating Hardware Security Centric LLM Safety via Jailbreak Benchmarking
+  https://arxiv.org/abs/2604.17093
+  Categories: jailbreaking, benchmarks
+- [llmsec-2026-00075] Jailbreaking Large Language Models with Morality Attacks
+  https://arxiv.org/abs/2604.17053
+  Categories: jailbreaking, guardrails
+- [llmsec-2026-00076] A Survey on the Security of Long-Term Memory in LLM Agents: Toward Mnemonic Sovereignty
+  https://arxiv.org/abs/2604.16548
+  Categories: access-control
+- [llmsec-2026-00077] Conjunctive Prompt Attacks in Multi-Agent LLM Systems
+  https://arxiv.org/abs/2604.16543
+  Categories: agent-architecture
+- [llmsec-2026-00078] RealVuln: Benchmarking Rule-Based, General-Purpose LLM, and Security-Specialized Scanners on Real-World Code
+  https://arxiv.org/abs/2604.13764
+  Categories: benchmarks
+- [llmsec-2026-00079] SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment
+  https://arxiv.org/abs/2604.13630
+  Categories: tool-use-security
+- [llmsec-2026-00080] SoK: Security of Autonomous LLM Agents in Agentic Commerce
+  https://arxiv.org/abs/2604.15367
+  Categories: agentic-threats
+- [llmsec-2026-00081] Can Agents Secure Hardware? Evaluating Agentic LLM-Driven Obfuscation for IP Protection
+  https://arxiv.org/abs/2604.13298
+  Categories: supply-chain-attacks, agentic-threats, benchmarks
+- [llmsec-2026-00082] ClawGuard: A Runtime Security Framework for Tool-Augmented LLM Agents Against Indirect Prompt Injection
+  https://arxiv.org/abs/2604.11790
+  Categories: prompt-injection
+- [llmsec-2026-00083] Critical-CoT: A Robust Defense Framework against Reasoning-Level Backdoor Attacks in Large Language Models
+  https://arxiv.org/abs/2604.10681
+  Categories: data-poisoning
+- [llmsec-2026-00084] GRM: Utility-Aware Jailbreak Attacks on Audio LLMs via Gradient-Ratio Masking
+  https://arxiv.org/abs/2604.09222
+  Categories: jailbreaking
+- [llmsec-2026-00085] CleanBase: Detecting Malicious Documents in RAG Knowledge Databases
+  https://arxiv.org/abs/2605.00460
+  Categories: prompt-injection
+- [llmsec-2026-00086] Jailbroken Frontier Models Retain Their Capabilities
+  https://arxiv.org/abs/2605.00267
+  Categories: jailbreaking, benchmarks
+- [llmsec-2026-00087] Attention Is Where You Attack
+  https://arxiv.org/abs/2605.00236
+  Categories: jailbreaking, adversarial-examples
+- [llmsec-2026-00088] FlashRT: Towards Computationally and Memory Efficient Red-Teaming for Prompt Injection and Knowledge Corruption
+  https://arxiv.org/abs/2604.28157
+  Categories: prompt-injection, red-teaming
+- [llmsec-2026-00089] TwinGate: Stateful Defense against Decompositional Jailbreaks in Untraceable Traffic via Asymmetric Contrastive Learning
+  https://arxiv.org/abs/2604.27861
+  Categories: jailbreaking
+- [llmsec-2026-00090] Indirect Prompt Injection in the Wild: An Empirical Study of Prevalence, Techniques, and Objectives
+  https://arxiv.org/abs/2604.27202
+  Categories: prompt-injection
+- [llmsec-2026-00091] Dynamic Adversarial Fine-Tuning Reorganizes Refusal Geometry
+  https://arxiv.org/abs/2604.27019
+  Categories: jailbreaking
+- [llmsec-2026-00092] SnapGuard: Lightweight Prompt Injection Detection for Screenshot-Based Web Agents
+  https://arxiv.org/abs/2604.25562
+  Categories: prompt-injection
+- [llmsec-2026-00093] SUDP: Secret-Use Delegation Protocol for Agentic Systems
+  https://arxiv.org/abs/2604.24920
+  Categories: agentic-threats, access-control
+- [llmsec-2026-00094] Layerwise Convergence Fingerprints for Runtime Misbehavior Detection in Large Language Models
+  https://arxiv.org/abs/2604.24542
+  Categories: prompt-injection, jailbreaking, guardrails
+- [llmsec-2026-00095] AgentVisor: Defending LLM Agents Against Prompt Injection via Semantic Virtualization
+  https://arxiv.org/abs/2604.24118
+  Categories: prompt-injection
+- [llmsec-2026-00096] Jailbreaking Frontier Foundation Models Through Intention Deception
+  https://arxiv.org/abs/2604.24082
+  Categories: jailbreaking, guardrails
+- [llmsec-2026-00097] Poster: ClawdGo: Endogenous Security Awareness Training for Autonomous AI Agents
+  https://arxiv.org/abs/2604.24020
+  Categories: prompt-injection
+- [llmsec-2026-00098] ARIstoteles -- Dissecting Apple's Baseband Interface
+  https://arxiv.org/abs/2604.23457
+  Categories: jailbreaking
+- [llmsec-2026-00099] Ghost in the Agent: Redefining Information Flow Tracking for LLM Agents
+  https://arxiv.org/abs/2604.23374
+  Categories: prompt-injection
+- [llmsec-2026-00100] From Stateless Queries to Autonomous Actions: A Layered Security Framework for Agentic AI Systems
+  https://arxiv.org/abs/2604.23338
+  Categories: prompt-injection, jailbreaking, agentic-threats
+- [llmsec-2026-00101] Semantic Denial of Service in LLM-controlled robots
+  https://arxiv.org/abs/2604.24790
+  Categories: jailbreaking
+- [llmsec-2026-00102] RouteGuard: Internal-Signal Detection of Skill Poisoning in LLM Agents
+  https://arxiv.org/abs/2604.22888
+  Categories: prompt-injection
+- [llmsec-2026-00103] AutoRISE: Agent-Driven Strategy Evolution for Red-Teaming Large Language Models
+  https://arxiv.org/abs/2604.22871
+  Categories: red-teaming
+- [llmsec-2026-00104] Adaptive Instruction Composition for Automated LLM Red-Teaming
+  https://arxiv.org/abs/2604.21159
+  Categories: jailbreaking, red-teaming
+- [llmsec-2026-00105] Breaking MCP with Function Hijacking Attacks: Novel Threats for Function Calling and Agentic Models
+  https://arxiv.org/abs/2604.20994
+  Categories: jailbreaking, agentic-threats, tool-use-security
+- [llmsec-2026-00106] Breaking Bad: Interpretability-Based Safety Audits of State-of-the-Art LLMs
+  https://arxiv.org/abs/2604.20945
+  Categories: jailbreaking
+- [llmsec-2026-00107] An AI Agent Execution Environment to Safeguard User Data
+  https://arxiv.org/abs/2604.19657
+  Categories: prompt-injection
+- [llmsec-2026-00108] Towards Understanding the Robustness of Sparse Autoencoders
+  https://arxiv.org/abs/2604.18756
+  Categories: jailbreaking
+- [llmsec-2026-00109] Different Paths to Harmful Compliance: Behavioral Side Effects and Mechanistic Divergence Across LLM Jailbreaks
+  https://arxiv.org/abs/2604.18510
+  Categories: jailbreaking
+- [llmsec-2026-00110] Beyond Pattern Matching: Seven Cross-Domain Techniques for Prompt Injection Detection
+  https://arxiv.org/abs/2604.18248
+  Categories: prompt-injection
+- [llmsec-2026-00111] Owner-Harm: A Missing Threat Model for AI Agent Safety
+  https://arxiv.org/abs/2604.18658
+  Categories: benchmarks
+- [llmsec-2026-00112] CASCADE: A Cascaded Hybrid Defense Architecture for Prompt Injection Detection in MCP-Based Systems
+  https://arxiv.org/abs/2604.17125
+  Categories: prompt-injection
+- [llmsec-2026-00113] Visual Inception: Compromising Long-term Planning in Agentic Recommenders via Multimodal Memory Poisoning
+  https://arxiv.org/abs/2604.16966
+  Categories: adversarial-examples, agentic-threats
+- [llmsec-2026-00114] SafeDream: Safety World Model for Proactive Early Jailbreak Detection
+  https://arxiv.org/abs/2604.16824
+  Categories: jailbreaking, guardrails
+- [llmsec-2026-00115] CapSeal: Capability-Sealed Secret Mediation for Secure Agent Execution
+  https://arxiv.org/abs/2604.16762
+  Categories: prompt-injection, agentic-threats
+- [llmsec-2026-00116] Benign Fine-Tuning Breaks Safety Alignment in Audio LLMs
+  https://arxiv.org/abs/2604.16659
+  Categories: guardrails
+- [llmsec-2026-00117] Into the Gray Zone: Domain Contexts Can Blur LLM Safety Boundaries
+  https://arxiv.org/abs/2604.15717
+  Categories: jailbreaking, guardrails
+- [llmsec-2026-00118] HarmfulSkillBench: How Do Harmful Skills Weaponize Your Agents?
+  https://arxiv.org/abs/2604.15415
+  Categories: prompt-injection
+- [llmsec-2026-00119] Segment-Level Coherence for Robust Harmful Intent Probing in LLMs
+  https://arxiv.org/abs/2604.14865
+  Categories: jailbreaking, monitoring-detection
+- [llmsec-2026-00120] Hijacking Large Audio-Language Models via Context-Agnostic and Imperceptible Auditory Prompt Injection
+  https://arxiv.org/abs/2604.14604
+  Categories: prompt-injection, jailbreaking
+- [llmsec-2026-00121] LogJack: Indirect Prompt Injection Through Cloud Logs Against LLM Debugging Agents
+  https://arxiv.org/abs/2604.15368
+  Categories: prompt-injection, benchmarks
+- [llmsec-2026-00122] Understanding and Improving Continuous Adversarial Training for LLMs via In-context Learning Theory
+  https://arxiv.org/abs/2604.12817
+  Categories: jailbreaking, adversarial-examples
+- [llmsec-2026-00123] DeepSeek Robustness Against Semantic-Character Dual-Space Mutated Prompt Injection
+  https://arxiv.org/abs/2604.12548
+  Categories: prompt-injection
+- [llmsec-2026-00124] Compiling Activation Steering into Weights via Null-Space Constraints for Stealthy Backdoors
+  https://arxiv.org/abs/2604.12359
+  Categories: jailbreaking
+- [llmsec-2026-00125] WebAgentGuard: A Reasoning-Driven Guard Model for Detecting Prompt Injection Attacks in Web Agents
+  https://arxiv.org/abs/2604.12284
+  Categories: prompt-injection
+- [llmsec-2026-00126] Can Adversarial Code Comments Fool AI Security Reviewers -- Large-Scale Empirical Study of Comment-Based Attacks and Defenses Against LLM Code Analysis
+  https://arxiv.org/abs/2602.16741
+  Categories: benchmarks
+- [llmsec-2026-00127] Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges
+  https://arxiv.org/abs/2510.23883
+  Categories: agentic-threats, benchmarks, tool-use-security
+- [llmsec-2026-00128] SafeTune: Mitigating Data Poisoning in LLM Fine-Tuning for RTL Code Generation
+  https://arxiv.org/abs/2604.27238
+  Categories: data-poisoning
+- [llmsec-2026-00129] ProjLens: Unveiling the Role of Projectors in Multimodal Model Safety
+  https://arxiv.org/abs/2604.19083
+  Categories: data-poisoning
+- [llmsec-2026-00130] DuCodeMark: Dual-Purpose Code Dataset Watermarking via Style-Aware Watermark-Poison Design
+  https://arxiv.org/abs/2604.10611
+  Categories: watermarking
+- [llmsec-2026-00131] Backdoors in RLVR: Jailbreak Backdoors in LLMs From Verifiable Reward
+  https://arxiv.org/abs/2604.09748
+  Categories: jailbreaking, data-poisoning
+- [llmsec-2026-00132] Your Agent Is Mine: Measuring Malicious Intermediary Attacks on the LLM Supply Chain
+  https://arxiv.org/abs/2604.08407
+  Categories: supply-chain-attacks
+- [llmsec-2026-00133] Phantasia: Context-Adaptive Backdoors in Vision Language Models
+  https://arxiv.org/abs/2604.08395
+  Categories: data-poisoning
+- [llmsec-2026-00134] MirageBackdoor: A Stealthy Attack that Induces Think-Well-Answer-Wrong Reasoning
+  https://arxiv.org/abs/2604.06840
+  Categories: data-poisoning, monitoring-detection
+- [llmsec-2026-00135] FedDetox: Robust Federated SLM Alignment via On-Device Data Sanitization
+  https://arxiv.org/abs/2604.06833
+  Categories: data-poisoning, guardrails, federated-learning
+- [llmsec-2026-00136] Multimodal Backdoor Attack on VLMs for Autonomous Driving via Graffiti and Cross-Lingual Triggers
+  https://arxiv.org/abs/2604.04630
+  Categories: data-poisoning
+- [llmsec-2026-00137] From Prompt to Physical Action: Structured Backdoor Attacks on LLM-Mediated Robotic Control Systems
+  https://arxiv.org/abs/2604.03890
+  Categories: data-poisoning
+- [llmsec-2026-00138] LogicPoison: Logical Attacks on Graph Retrieval-Augmented Generation
+  https://arxiv.org/abs/2604.02954
+  Categories: prompt-injection
+- [llmsec-2026-00139] Backdoor Attacks on Decentralised Post-Training
+  https://arxiv.org/abs/2604.02372
+  Categories: data-poisoning, federated-learning
+- [llmsec-2026-00140] Adversarial Attacks on Multimodal Large Language Models: A Comprehensive Survey
+  https://arxiv.org/abs/2603.27918
+  Categories: adversarial-examples
+- [llmsec-2026-00141] Hidden Ads: Behavior Triggered Semantic Backdoors for Advertisement Injection in Vision Language Models
+  https://arxiv.org/abs/2603.27522
+  Categories: data-poisoning
+- [llmsec-2026-00142] Poisoning the Genome: Targeted Backdoor Attacks on DNA Foundation Models
+  https://arxiv.org/abs/2603.27465
+  Categories: data-poisoning
+- [llmsec-2026-00143] PIDP-Attack: Combining Prompt Injection with Database Poisoning Attacks on Retrieval-Augmented Generation Systems
+  https://arxiv.org/abs/2603.25164
+  Categories: prompt-injection, data-poisoning, adversarial-examples
+- [llmsec-2026-00144] DP^2-VL: Private Photo Dataset Protection by Data Poisoning for Vision-Language Models
+  https://arxiv.org/abs/2603.23925
+  Categories: data-poisoning, guardrails
+- [llmsec-2026-00145] ProGRank: Probe-Gradient Reranking to Defend Dense-Retriever RAG from Corpus Poisoning
+  https://arxiv.org/abs/2603.22934
+  Categories: output-moderation
+- [llmsec-2026-00146] SoK: The Attack Surface of Agentic AI -- Tools, and Autonomy
+  https://arxiv.org/abs/2603.22928
+  Categories: agentic-threats, agent-architecture
+- [llmsec-2026-00147] Towards Secure Retrieval-Augmented Generation: A Comprehensive Review of Threats, Defenses and Benchmarks
+  https://arxiv.org/abs/2603.21654
+  Categories: data-poisoning, membership-inference, adversarial-examples, benchmarks
+- [llmsec-2026-00148] Detection of adversarial intent in Human-AI teams using LLMs
+  https://arxiv.org/abs/2603.20976
+  Categories: prompt-injection, data-poisoning
+- [llmsec-2026-00149] Memory poisoning and secure multi-agent systems
+  https://arxiv.org/abs/2603.20357
+  Categories: agentic-threats, agent-architecture
+- [llmsec-2026-00150] Detecting Data Poisoning in Code Generation LLMs via Black-Box, Vulnerability-Oriented Scanning
+  https://arxiv.org/abs/2603.17174
+  Categories: data-poisoning
+- [llmsec-2026-00151] Test-Time Attention Purification for Backdoored Large Vision Language Models
+  https://arxiv.org/abs/2603.12989
+  Categories: data-poisoning
+- [llmsec-2026-00152] SlowBA: An efficiency backdoor attack towards VLM-based GUI agents
+  https://arxiv.org/abs/2603.08316
+  Categories: data-poisoning, agentic-threats
+- [llmsec-2026-00153] SoK: Agentic Retrieval-Augmented Generation (RAG): Taxonomy, Architectures, Evaluation, and Research Directions
+  https://arxiv.org/abs/2603.07379
+  Categories: agentic-threats
+- [llmsec-2026-00154] AgentReputation: A Decentralized Agentic AI Reputation Framework
+  https://arxiv.org/abs/2605.00073
+  Categories: agentic-threats
+- [llmsec-2026-00155] Contextual Agentic Memory is a Memo, Not True Memory
+  https://arxiv.org/abs/2604.27707
+  Categories: agentic-threats
+- [llmsec-2026-00156] Ambient Persuasion in a Deployed AI Agent: Unauthorized Escalation Following Routine Non-Adversarial Content Exposure
+  https://arxiv.org/abs/2605.00055
+  Categories: adversarial-examples, agent-architecture
+- [llmsec-2026-00157] Lightweight Quantum Agent for Edge Systems: Joint PQC and NOMA Resource Allocation
+  https://arxiv.org/abs/2604.25980
+  Categories: agentic-threats
+- [llmsec-2026-00158] Think Before You Act -- A Neurocognitive Governance Model for Autonomous AI Agents
+  https://arxiv.org/abs/2604.25684
+  Categories: guardrails
+- [llmsec-2026-00159] Green Shielding: A User-Centric Approach Towards Trustworthy AI
+  https://arxiv.org/abs/2604.24700
+  Categories: red-teaming, benchmarks
+- [llmsec-2026-00160] A Comparative Evaluation of AI Agent Security Guardrails
+  https://arxiv.org/abs/2604.24826
+  Categories: prompt-injection, agentic-threats, guardrails, benchmarks
+- [llmsec-2026-00161] TSAssistant: A Human-in-the-Loop Agentic Framework for Automated Target Safety Assessment
+  https://arxiv.org/abs/2604.23938
+  Categories: agentic-threats, agent-architecture
+- [llmsec-2026-00162] Architecture Matters for Multi-Agent Security
+  https://arxiv.org/abs/2604.23459
+  Categories: agentic-threats, agent-architecture
+- [llmsec-2026-00163] When the Agent Is the Adversary: Architectural Requirements for Agentic AI Containment After the April 2026 Frontier Model Escape
+  https://arxiv.org/abs/2604.23425
+  Categories: agentic-threats, guardrails
+- [llmsec-2026-00164] AgentSOC: A Multi-Layer Agentic AI Framework for Security Operations Automation
+  https://arxiv.org/abs/2604.20134
+  Categories: agentic-threats
+- [llmsec-2026-00165] Insights into Security-Related AI-Generated Pull Requests
+  https://arxiv.org/abs/2604.19965
+  Categories: agentic-threats
+- [llmsec-2026-00166] Integrating Anomaly Detection into Agentic AI for Proactive Risk Management in Human Activity
+  https://arxiv.org/abs/2604.19538
+  Categories: agentic-threats, monitoring-detection
+- [llmsec-2026-00167] AIT Academy: Cultivating the Complete Agent with a Confucian Three-Domain Curriculum
+  https://arxiv.org/abs/2604.17989
+  Categories: tool-use-security
+- [llmsec-2026-00168] From Craft to Kernel: A Governance-First Execution Architecture and Semantic ISA for Agentic Computers
+  https://arxiv.org/abs/2604.18652
+  Categories: agentic-threats, guardrails
+- [llmsec-2026-00169] Beyond Task Success: An Evidence-Synthesis Framework for Evaluating, Governing, and Orchestrating Agentic AI
+  https://arxiv.org/abs/2604.19818
+  Categories: agentic-threats, benchmarks
+- [llmsec-2026-00170] Harness as an Asset: Enforcing Determinism via the Convergent AI Agent Framework (CAAF)
+  https://arxiv.org/abs/2604.17025
+  Categories: agentic-threats
+- [llmsec-2026-00171] Symbolic Guardrails for Domain-Specific Agents: Stronger Safety and Security Guarantees Without Sacrificing Utility
+  https://arxiv.org/abs/2604.15579
+  Categories: guardrails
+- [llmsec-2026-00172] Agentic Microphysics: A Manifesto for Generative AI Safety
+  https://arxiv.org/abs/2604.15236
+  Categories: agentic-threats, tool-use-security
+- [llmsec-2026-00173] Dive into Claude Code: The Design Space of Today's and Future AI Agent Systems
+  https://arxiv.org/abs/2604.14228
+  Categories: agentic-threats
+- [llmsec-2026-00174] Parallax: Why AI Agents That Think Must Never Act
+  https://arxiv.org/abs/2604.12986
+  Categories: guardrails
+- [llmsec-2026-00175] A Framework for Longitudinal Health AI Agents
+  https://arxiv.org/abs/2604.12019
+  Categories: guardrails
+- [llmsec-2026-00176] Context Kubernetes: Declarative Orchestration of Enterprise Knowledge for Agentic AI Systems
+  https://arxiv.org/abs/2604.11623
+  Categories: agentic-threats
+- [llmsec-2026-00177] OccuBench: Evaluating AI Agents on Real-World Professional Tasks via Language Environment Simulation
+  https://arxiv.org/abs/2604.10866
+  Categories: monitoring-detection, benchmarks
+- [llmsec-2026-00178] AI Organizations are More Effective but Less Aligned than Individual Agents
+  https://arxiv.org/abs/2604.10290
+  Categories: agent-architecture
+- [llmsec-2026-00179] PilotBench: A Benchmark for General Aviation Agents with Safety Constraints
+  https://arxiv.org/abs/2604.08987
+  Categories: benchmarks
+- [llmsec-2026-00180] MPAC: A Multi-Principal Agent Coordination Protocol for Interoperable Multi-Agent Collaboration
+  https://arxiv.org/abs/2604.09744
+  Categories: agent-architecture
+- [llmsec-2026-00181] IoT-Aided Self-Adaptive Routing for Flying Ad Hoc Network Using Gauss-Markov Mobility Model
+  https://doi.org/10.2174/0126662558342382241217084742
+  Categories: monitoring-detection
+- [llmsec-2026-00182] BadAgent Extension
+  https://doi.org/10.4018/979-8-3373-8252-4.ch010
+  Categories: data-poisoning, benchmarks
+- [llmsec-2026-00183] Hybrid ML-LLM Pipeline for Non-Governance IT Audits
+  https://doi.org/10.4018/979-8-3373-8252-4.ch009
+  Categories: monitoring-detection
+- [llmsec-2026-00184] Transparent-by-Design AI
+  https://doi.org/10.4018/979-8-3373-6761-3.ch006
+  Categories: monitoring-detection
