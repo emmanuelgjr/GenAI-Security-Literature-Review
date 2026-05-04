@@ -58,6 +58,7 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           branch: auto/papers-${{ github.run_number }}
+          add-paths: data/literature.json
           commit-message: "auto: add new papers from weekly fetch"
           title: "Auto: New LLM Security Papers (Week of ${{ github.event.schedule && 'scheduled' || 'manual' }} run)"
           body: |
