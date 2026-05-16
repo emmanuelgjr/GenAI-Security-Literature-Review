@@ -14,7 +14,7 @@ This repository contains a static literature review database and webapp. It does
 | Component | Version | Supported |
 |-----------|---------|-----------|
 | Webapp (Astro) | latest on `main` | Yes |
-| Data schema | v1.0 | Yes |
+| Data schema | latest on `main` | Yes |
 | Python scripts | latest on `main` | Yes |
 
 ## Reporting a Vulnerability
