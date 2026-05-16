@@ -5,7 +5,7 @@
 [![Fetch Papers](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/fetch-papers.yml/badge.svg)](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/fetch-papers.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive, community-driven, auto-updating literature review of **GenAI and LLM security** research, standards, tools, and resources. Currently tracking **100 resources** across **42 categories** with weekly automated updates from academic APIs.
+A comprehensive, community-driven, auto-updating literature review of **GenAI and LLM security** research, standards, tools, and resources. Currently tracking **100 resources** across **46 categories** with weekly automated updates from academic APIs.
 
 **[Browse the Interactive Webapp](https://emmanuelgjr.github.io/GenAI-Security-Literature-Review/)**
 
@@ -59,7 +59,7 @@ The static webapp (deployed to GitHub Pages) provides:
 ```
 data/
   literature.json      # Core database (100 curated entries)
-  taxonomy.json        # 8 domains, 42 category definitions
+  taxonomy.json        # 8 domains, 46 category definitions
   frameworks.json      # OWASP/NIST/MITRE/ISO framework definitions
   sources.json         # Automation source configuration
 schemas/               # JSON Schema for data validation
