@@ -29,10 +29,12 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: webapp/package-lock.json
 
       - name: Install dependencies
         working-directory: webapp
-        run: npm install
+        run: npm ci
 
       - name: Copy data files
         run: |

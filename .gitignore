@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 webapp/dist/
+webapp/.astro/
 
 # Automation artifacts
 scripts/candidates_*.json
