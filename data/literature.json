@@ -133,11 +133,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2307.02483"
+        "arxiv_id": "2307.02483",
+        "doi": "10.52202/075280-3508"
       },
       "citation_count": 520,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/075280-3508"
     },
     {
       "id": "llmsec-2024-00002",
@@ -560,11 +562,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2310.10501"
+        "arxiv_id": "2310.10501",
+        "doi": "10.18653/v1/2023.emnlp-demo.40"
       },
       "citation_count": 190,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.18653/v1/2023.emnlp-demo.40"
     },
     {
       "id": "llmsec-2024-00008",
@@ -608,11 +612,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2312.02003"
+        "arxiv_id": "2312.02003",
+        "doi": "10.1016/j.hcc.2024.100211"
       },
       "citation_count": 350,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1016/j.hcc.2024.100211"
     },
     {
       "id": "llmsec-2024-00009",
@@ -696,11 +702,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2312.10982"
+        "arxiv_id": "2312.10982",
+        "doi": "10.1007/978-981-97-1274-8_6"
       },
       "citation_count": 90,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1007/978-981-97-1274-8_6"
     },
     {
       "id": "llmsec-2024-00011",
@@ -788,11 +796,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2406.13352"
+        "arxiv_id": "2406.13352",
+        "doi": "10.52202/079017-2636"
       },
       "citation_count": 75,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/079017-2636"
     },
     {
       "id": "llmsec-2024-00013",
@@ -878,11 +888,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2308.03825"
+        "arxiv_id": "2308.03825",
+        "doi": "10.1145/3658644.3670388"
       },
       "citation_count": 310,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1145/3658644.3670388"
     },
     {
       "id": "llmsec-2023-00006",
@@ -927,11 +939,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2304.05197"
+        "arxiv_id": "2304.05197",
+        "doi": "10.18653/v1/2023.findings-emnlp.272"
       },
       "citation_count": 175,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.18653/v1/2023.findings-emnlp.272"
     },
     {
       "id": "llmsec-2024-00014",
@@ -1228,11 +1242,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2401.10019"
+        "arxiv_id": "2401.10019",
+        "doi": "10.18653/v1/2024.findings-emnlp.79"
       },
       "citation_count": 35,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.18653/v1/2024.findings-emnlp.79"
     },
     {
       "id": "llmsec-2024-00020",
@@ -1749,11 +1765,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2402.06677"
+        "arxiv_id": "2402.06677",
+        "doi": "10.21468/SciPostPhys.20.1.002"
       },
       "citation_count": 55,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.21468/SciPostPhys.20.1.002"
     },
     {
       "id": "llmsec-2024-00030",
@@ -1892,11 +1910,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2310.17124"
+        "arxiv_id": "2310.17124",
+        "doi": "10.1145/3650203.3663331"
       },
       "citation_count": 70,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1145/3650203.3663331"
     },
     {
       "id": "llmsec-2024-00033",
@@ -1941,11 +1961,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2306.06815"
+        "arxiv_id": "2306.06815",
+        "doi": "10.52202/075280-2866"
       },
       "citation_count": 85,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/075280-2866"
     },
     {
       "id": "llmsec-2024-00034",
@@ -2119,11 +2141,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2302.04761"
+        "arxiv_id": "2302.04761",
+        "doi": "10.52202/075280-2997"
       },
       "citation_count": 1400,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/075280-2997"
     },
     {
       "id": "llmsec-2024-00038",
@@ -2182,11 +2206,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2308.14840"
+        "arxiv_id": "2308.14840",
+        "doi": "10.1561/3300000041"
       },
       "citation_count": 280,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1561/3300000041"
     },
     {
       "id": "llmsec-2025-00001",
@@ -2216,9 +2242,12 @@
       "added_date": "2026-04-14",
       "added_by": "manual",
       "source_api": "manual",
-      "external_ids": {},
+      "external_ids": {
+        "doi": "10.1117/12.3025025"
+      },
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1117/12.3025025"
     },
     {
       "id": "llmsec-2024-00039",
@@ -2590,11 +2619,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2312.14197"
+        "arxiv_id": "2312.14197",
+        "doi": "10.1145/3690624.3709179"
       },
       "citation_count": 60,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1145/3690624.3709179"
     },
     {
       "id": "llmsec-2025-00002",
@@ -2954,11 +2985,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2306.11698"
+        "arxiv_id": "2306.11698",
+        "doi": "10.52202/075280-1361"
       },
       "citation_count": 520,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/075280-1361"
     },
     {
       "id": "llmsec-2024-00052",
@@ -3281,11 +3314,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2407.19354"
+        "arxiv_id": "2407.19354",
+        "doi": "10.1145/3773080"
       },
       "citation_count": 35,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1145/3773080"
     },
     {
       "id": "llmsec-2024-00060",
@@ -3372,11 +3407,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2401.06373"
+        "arxiv_id": "2401.06373",
+        "doi": "10.18653/v1/2024.acl-long.773"
       },
       "citation_count": 85,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.18653/v1/2024.acl-long.773"
     },
     {
       "id": "llmsec-2025-00006",
@@ -3715,11 +3752,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2405.15793"
+        "arxiv_id": "2405.15793",
+        "doi": "10.52202/079017-1601"
       },
       "citation_count": 200,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/079017-1601"
     },
     {
       "id": "llmsec-2025-00015",
@@ -3848,11 +3887,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2302.10149"
+        "arxiv_id": "2302.10149",
+        "doi": "10.1109/sp54263.2024.00179"
       },
       "citation_count": 250,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1109/sp54263.2024.00179"
     },
     {
       "id": "llmsec-2025-00018",
@@ -3892,11 +3933,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2306.13213"
+        "arxiv_id": "2306.13213",
+        "doi": "10.1609/aaai.v38i19.30150"
       },
       "citation_count": 220,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.1609/aaai.v38i19.30150"
     },
     {
       "id": "llmsec-2025-00019",
@@ -3939,11 +3982,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2306.15447"
+        "arxiv_id": "2306.15447",
+        "doi": "10.52202/075280-2687"
       },
       "citation_count": 180,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/075280-2687"
     },
     {
       "id": "llmsec-2025-00020",
@@ -4191,11 +4236,13 @@
       "added_by": "manual",
       "source_api": "manual",
       "external_ids": {
-        "arxiv_id": "2406.18495"
+        "arxiv_id": "2406.18495",
+        "doi": "10.52202/079017-0261"
       },
       "citation_count": 30,
       "open_access": true,
-      "reviewed": true
+      "reviewed": true,
+      "doi": "10.52202/079017-0261"
     },
     {
       "id": "llmsec-2025-00026",
