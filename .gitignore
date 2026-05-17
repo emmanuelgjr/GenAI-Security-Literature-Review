@@ -5,6 +5,11 @@ node_modules/
 webapp/dist/
 webapp/.astro/
 
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
 # Automation artifacts
 scripts/candidates_*.json
 
