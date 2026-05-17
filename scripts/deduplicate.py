@@ -169,9 +169,16 @@ def is_on_topic(paper: dict) -> bool:
 
 
 def auto_categorize(text: str) -> list[str]:
-    """Simple keyword-based auto-categorization."""
+    """Simple keyword-based auto-categorization.
+
+    Covers all topic-bearing taxonomy categories. The three resource-type
+    categories (book, industry-report, conference-proceedings) are intentionally
+    excluded -- the upstream sources (arXiv, Semantic Scholar, CrossRef) only
+    return papers, so those would never match anyway.
+    """
     categories = []
     keyword_map = {
+        # Attacks & Threats
         "prompt-injection": ["prompt injection", "indirect injection"],
         "jailbreaking": ["jailbreak", "jailbreaking", "safety bypass"],
         "data-poisoning": ["data poisoning", "training data poison", "backdoor attack"],
@@ -179,22 +186,56 @@ def auto_categorize(text: str) -> list[str]:
         "membership-inference": ["membership inference", "training data extraction", "data leakage"],
         "adversarial-examples": ["adversarial example", "adversarial attack", "adversarial perturbation", "evasion attack"],
         "supply-chain-attacks": ["supply chain", "model repository", "dependency attack"],
+        "social-engineering": ["deepfake", "ai-generated phishing", "voice cloning", "synthetic media"],
         "agentic-threats": ["agent attack", "agentic", "tool misuse", "agent security"],
+
+        # Defenses & Mitigations
         "input-filtering": ["input filter", "input validation", "prompt filter"],
         "output-moderation": ["output filter", "content filter", "output moderation"],
         "guardrails": ["guardrail", "safety training", "constitutional ai", "alignment"],
         "access-control": ["access control", "authorization", "rbac", "abac"],
         "monitoring-detection": ["anomaly detection", "monitoring", "drift detection"],
+        "sandboxing-isolation": ["sandbox", "sandboxing", "execution containment", "tool sandbox"],
+        "cryptographic-controls": ["homomorphic encryption", "secure multi-party computation", "model signing"],
         "watermarking": ["watermark"],
+
+        # Privacy
         "differential-privacy": ["differential privacy", "dp-sgd"],
         "federated-learning": ["federated learning", "federated fine-tuning"],
+        "data-anonymization": ["data anonymization", "pii removal", "de-identification", "synthetic data generation"],
         "unlearning": ["machine unlearning", "model unlearning"],
+        "confidential-computing": ["confidential computing", "trusted execution environment", "secure enclave", "tee inference"],
+
+        # Governance & Compliance
+        "risk-frameworks": ["nist ai rmf", "iso 42001", "eu ai act", "ai risk management framework"],
+        "model-governance": ["model card", "model governance", "model lifecycle", "datasheet for datasets"],
+        "audit-assurance": ["ai audit", "ai assurance", "algorithmic audit"],
+        "responsible-ai": ["responsible ai", "trustworthy ai", "ai ethics"],
+        "incident-response": ["ai incident", "ai forensics", "ai security playbook"],
+
+        # Red Teaming & Evaluation
         "red-teaming": ["red team", "red-team"],
         "benchmarks": ["benchmark", "evaluation framework"],
+        "fuzzing": ["llm fuzzing", "prompt fuzzing", "fuzz testing"],
+        "vulnerability-disclosure": ["vulnerability disclosure", "coordinated disclosure", "cve assignment"],
+
+        # Infrastructure & Deployment
+        "model-serving-security": ["model serving security", "inference endpoint security", "inference api security"],
         "rag-security": ["rag security", "retrieval augmented", "vector database attack"],
         "fine-tuning-security": ["fine-tuning security", "fine-tuning attack", "lora attack"],
-        "tool-use-security": ["tool use", "function calling", "plugin security"],
+        "mlops-security": ["mlops security", "ml pipeline security", "model artifact security"],
+        "cloud-ai-security": ["managed ai service", "multi-tenant ai", "cloud ai security"],
+
+        # Agentic AI Security
         "agent-architecture": ["multi-agent", "agent architecture"],
+        "tool-use-security": ["tool use", "function calling", "plugin security"],
+        "memory-security": ["memory poisoning", "long-term memory attack", "context window attack"],
+        "human-in-the-loop": ["human-in-the-loop", "human oversight", "human approval"],
+        "autonomous-operations": ["autonomous agent", "self-modifying agent", "agent containment"],
+
+        # Surveys & Meta
+        "survey": ["survey of", "survey on", "systematic review", "systematization of knowledge", "literature review"],
+        "threat-modeling": ["threat model", "threat modeling", "attack taxonomy", "kill chain"],
     }
 
     for category, keywords in keyword_map.items():
