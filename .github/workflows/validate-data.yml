@@ -5,11 +5,13 @@ on:
     paths:
       - 'data/**'
       - 'schemas/**'
+      - 'README.md'
   push:
     branches: [main]
     paths:
       - 'data/**'
       - 'schemas/**'
+      - 'README.md'
 
 jobs:
   validate:
@@ -65,3 +67,6 @@ jobs:
               exit(1)
           print(f'All category references are valid ({len(valid_cats)} categories)')
           "
+
+      - name: Check README counts match the data
+        run: python scripts/sync_readme_counts.py --check

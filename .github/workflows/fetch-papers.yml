@@ -53,6 +53,10 @@ jobs:
         if: steps.dedup.outputs.has_new == 'true'
         run: python scripts/validate_data.py
 
+      - name: Sync README counts
+        if: steps.dedup.outputs.has_new == 'true'
+        run: python scripts/sync_readme_counts.py
+
       - name: Compose PR body
         if: steps.dedup.outputs.has_new == 'true'
         run: |
@@ -78,7 +82,9 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           branch: auto/papers-${{ github.run_number }}
-          add-paths: data/literature.json
+          add-paths: |
+            data/literature.json
+            README.md
           commit-message: "auto: add new papers from weekly fetch"
           title: "auto: new LLM security papers (run #${{ github.run_number }})"
           body-path: pr_body.md
