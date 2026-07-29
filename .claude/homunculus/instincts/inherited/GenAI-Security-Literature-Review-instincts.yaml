@@ -1,0 +1,337 @@
+# Instincts generated from https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+# Generated: 2026-07-28T00:13:50.428Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: GenAI-Security-Literature-Review-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# GenAI Security Literature Review Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: docs
+
+## Evidence
+
+- 1 commits analyzed
+- Detected conventional commit pattern
+- Examples: docs: correct resource count and keep it in sync automatically
+
+---
+id: GenAI-Security-Literature-Review-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# GenAI Security Literature Review Commit Length
+
+## Action
+
+Write moderate-length commit messages (~62 characters)
+
+## Evidence
+
+- Average commit message length: 62 chars
+- Based on 1 commits
+
+---
+id: GenAI-Security-Literature-Review-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# GenAI Security Literature Review Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: GenAI-Security-Literature-Review-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# GenAI Security Literature Review Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: GenAI-Security-Literature-Review-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# GenAI Security Literature Review Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: GenAI-Security-Literature-Review-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# GenAI Security Literature Review Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: genai-security-literature-review-instinct-file-naming
+trigger: "When creating a new Python file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct File Naming
+
+## Action
+
+Name the file using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: genai-security-literature-review-instinct-function-naming
+trigger: "When defining a new Python function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Function Naming
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: genai-security-literature-review-instinct-class-naming
+trigger: "When defining a new Python class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Class Naming
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: genai-security-literature-review-instinct-constant-naming
+trigger: "When defining a constant in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Constant Naming
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: genai-security-literature-review-instinct-import-style
+trigger: "When importing modules in Python files"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Import Style
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: genai-security-literature-review-instinct-export-style
+trigger: "When exporting from a Python module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: genai-security-literature-review-instinct-git-commit-format
+trigger: "When writing a git commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Git Commit Format
+
+## Action
+
+Use the conventional commit format with a 'docs:' prefix for documentation changes
+
+## Evidence
+
+- Pattern in commits.prefixes: docs
+- Seen in commit: docs: correct resource count and keep it in sync automatically
+
+---
+id: genai-security-literature-review-instinct-git-commit-length
+trigger: "When writing a git commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Git Commit Length
+
+## Action
+
+Keep the commit message concise, around 62 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength: 62
+
+---
+id: genai-security-literature-review-instinct-test-location
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Test Location
+
+## Action
+
+Place test files in a separate folder from source code
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation: separate
+
+---
+id: genai-security-literature-review-instinct-workflow-fetch-papers
+trigger: "When automating paper retrieval"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Workflow Fetch Papers
+
+## Action
+
+Use the workflow defined in .github/workflows/fetch-papers.yml
+
+## Evidence
+
+- .github/workflows/fetch-papers.yml exists
+
+---
+id: genai-security-literature-review-instinct-workflow-validate-data
+trigger: "When automating data validation"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: emmanuelgjr/GenAI-Security-Literature-Review
+---
+
+# Genai Security Literature Review Instinct Workflow Validate Data
+
+## Action
+
+Use the workflow defined in .github/workflows/validate-data.yml
+
+## Evidence
+
+- .github/workflows/validate-data.yml exists
+
