@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^5.1.1",
-    "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.1.8",
+    "@astrojs/preact": "^6.0.2",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.6",
     "fuse.js": "^7.0.0",
     "preact": "^10.24.0"
   },
