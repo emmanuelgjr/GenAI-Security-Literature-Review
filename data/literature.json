@@ -8512,6 +8512,2851 @@
       "month": 5,
       "abstract": "Research Context: Anomaly detection in computer networks is essential for cybersecurity, especially in complex environments like corporate and IoT networks that face emerging threats. Scientific and/or Practical Problem: Traditional Intrusion Detection Systems (IDS) struggle to identify zero-day attacks, creating significant security gaps. Signature-based approaches fail against unknown threats, while supervised models require large volumes of labeled data rarely available in practice. U",
       "doi": "10.5753/sbsi.2026.248646"
+    },
+    {
+      "id": "llmsec-2026-00206",
+      "type": "paper",
+      "title": "Unsaid, Unsafe? Implicit Security Obligations in LLM-Based RTL Code Generation",
+      "authors": [
+        "Guang Yang",
+        "Xing Hu",
+        "Xiang Chen",
+        "Xin Xia"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.26588",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.26588"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large Language Models (LLMs) generate register-transfer-level (RTL) code with rapidly improving functional correctness. Security of LLM-generated code, however, has been studied mainly for software, where flaws can still be patched after deployment. Insecure RTL offers no such remedy once taped out into silicon. We construct SECRTL-GEN, a multi-language resource-access security benchmark grounded in real SoC IP: 392 tasks over five CWE families and four HDLs (Verilog, SystemVerilog, VHDL, and Py",
+      "pdf_url": "https://arxiv.org/pdf/2608.26588v1"
+    },
+    {
+      "id": "llmsec-2026-00207",
+      "type": "paper",
+      "title": "How Do LLM Agents Actually Get the Flag? Trace-Level Provenance for Agentic Offensive Security Evaluation",
+      "authors": [
+        "Kimberly Milner",
+        "Minghao Shao",
+        "Nanda Rani",
+        "Haoran Xi",
+        "Venkata Sai Charan Putrevu",
+        "Meet Udeshi",
+        "Sandeep K. Shukla",
+        "Prashanth Krishnamurthy",
+        "Farshad Khorrami",
+        "Muhammad Shafique",
+        "Ramesh Karri"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.26237",
+      "categories": [
+        "agentic-threats",
+        "access-control",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.26237"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Capture-the-Flag (CTF) benchmarks are widely used to assess the offensive security capabilities of autonomous language-model agents. Evaluations rely on shallow binary judgments or aggregate scores, overlooking the agent's trajectory to the flag. Consequently actual exploitation is conflated with direct flag exposure, memorized recall, external lookup, guessing, and unsupported claims, potentially overstating the agent's cybersecurity capability. We introduce CTF-ABACUS, a trace-based agent audi",
+      "pdf_url": "https://arxiv.org/pdf/2608.26237v1"
+    },
+    {
+      "id": "llmsec-2026-00208",
+      "type": "paper",
+      "title": "A Self-Evolving Multi-Agent Framework Defense against LLM Jailbreak Attacks",
+      "authors": [
+        "Tongyan Hu",
+        "Bryan Hooi"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.26008",
+      "categories": [
+        "jailbreaking",
+        "agent-architecture"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.26008"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large language models (LLMs) remain vulnerable to jailbreak attacks that exploit techniques such as role-playing, obfuscation, code transformation, and multi-step indirection to elicit harmful outputs. As jailbreak strategies keep emerging, defenses have proliferated in an ongoing cat-and-mouse game, yet most remain static: their safety behavior is fixed at deployment, so they cannot accumulate defensive experience or adapt to unseen strategies. We propose a self-evolving test-time defense built",
+      "pdf_url": "https://arxiv.org/pdf/2608.26008v1"
+    },
+    {
+      "id": "llmsec-2026-00209",
+      "type": "paper",
+      "title": "SkillShield: Prompt-Space Security Skills for LLM Coding Agents",
+      "authors": [
+        "Xiaodong Wu",
+        "Zhimin Zhao",
+        "Qi Li",
+        "Xiangman Li",
+        "Yu Shi",
+        "Bram Adams",
+        "Jianbing Ni"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.25817",
+      "categories": [
+        "input-filtering",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.25817"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "A coding agent edits files and executes shell commands with its developer's privileges, allowing malicious requests to translate directly into harmful actions or functional malware. Existing defenses have complementary limitations: weight-level alignment is unavailable to API-only deployers, whereas input filters and execution-boundary monitors require auxiliary classification or checking components along the agent's trajectory. We therefore introduce SkillShield, a system-prompt defense that sy",
+      "pdf_url": "https://arxiv.org/pdf/2608.25817v1"
+    },
+    {
+      "id": "llmsec-2026-00210",
+      "type": "paper",
+      "title": "The Surprising Effectiveness of LLMs in BGP Security: Mining An Unprecedented Amount of Incidents and Boosting Anomaly Detection",
+      "authors": [
+        "Libin Liu",
+        "Wenzhou Yang",
+        "Li Chen",
+        "Dan Li",
+        "Xiuting Xu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.22812",
+      "categories": [
+        "monitoring-detection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.22812"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Border Gateway Protocol (BGP) security is critical to Internet infrastructure, yet progress in routing anomaly detection has been limited by the scarcity of publicly available incident datasets, which contain only 18 recorded cases. We observe that public operator mailing lists, e.g., NANOG and AusNOG, contain abundant yet largely untapped reports of real-world routing anomalies. To leverage this source, we develop an LLM-assisted extraction pipeline that identifies 244 candidate incidents from ",
+      "pdf_url": "https://arxiv.org/pdf/2608.22812v1"
+    },
+    {
+      "id": "llmsec-2026-00211",
+      "type": "paper",
+      "title": "Text-Anchored Semantic Perturbations for Transferable Jailbreak Attacks on Multimodal Large Language Models",
+      "authors": [
+        "Wenyun Li",
+        "Guiping Cao",
+        "Xiangyuan Lan",
+        "Zheng Zhang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.22312",
+      "categories": [
+        "jailbreaking",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.22312"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Multimodal Large Language Models (MLLMs) have achieved remarkable progress in vision-language interaction, yet their safety alignment remains vulnerable to jailbreak attacks. A key challenge is that safety behavior learned in the textual space does not reliably transfer to fused cross-modal representations, leaving multimodal inputs exploitable through latent semantic cues. We propose Text-Anchored Semantic Perturbation Attack (TA-SPA), a black-box jailbreak framework that optimizes transferable",
+      "pdf_url": "https://arxiv.org/pdf/2608.22312v1"
+    },
+    {
+      "id": "llmsec-2026-00212",
+      "type": "paper",
+      "title": "TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents",
+      "authors": [
+        "Bohao Liao",
+        "Jingchao Wang",
+        "Qipeng Song",
+        "Jin Cao",
+        "Jieling Wang",
+        "Boyu Deng"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.21126",
+      "categories": [
+        "prompt-injection",
+        "tool-use-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.21126"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Networked large language model (LLM) agents retrieve information from email, cloud storage, calendars, transaction platforms, and Web services to complete multistep tasks that produce persistent external effects. The same content needed for legitimate execution may also contain indirect prompt injections that redirect tool use, alter sensitive arguments, or disrupt task completion. Existing defenses mainly constrain untrusted content or individual tool calls, leaving user intent, runtime evidenc",
+      "pdf_url": "https://arxiv.org/pdf/2608.21126v1"
+    },
+    {
+      "id": "llmsec-2026-00213",
+      "type": "paper",
+      "title": "ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents",
+      "authors": [
+        "Kai Wang",
+        "Zeming Wei",
+        "BiaoJie Zeng",
+        "Chang Jin",
+        "An Wang",
+        "Xiaokun Luan",
+        "Zhixiao Lin",
+        "Jingjing Qu",
+        "Xia Hu",
+        "Xingcheng Xu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.21101",
+      "categories": [
+        "agentic-threats"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.21101"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "As large language model (LLM) agents move from conversation to executing code, reading local files, and orchestrating external tools, a single agent hijacked by a malicious third-party skill can cause data exfiltration, privilege escalation, or cascading compromise. We argue that agentic risk is progressive: it can enter at four loci of the agent control loop--skill admission, invocation-time intent, execution-time effect, and post-action consequence--while a denied dangerous objective can reapp",
+      "pdf_url": "https://arxiv.org/pdf/2608.21101v1"
+    },
+    {
+      "id": "llmsec-2026-00214",
+      "type": "paper",
+      "title": "aiXamine: Unified Black-Box Evaluation of Cross-Dimensional Trade-offs in LLM Safety, Security, and Privacy",
+      "authors": [
+        "Fatih Deniz",
+        "Yazan Boshmaf",
+        "Dorde Popovic",
+        "Issa Khalil"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.20554",
+      "categories": [
+        "guardrails",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.20554"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The critical failure modes in deployed large language models (LLMs) are cross-dimensional: a model can score 99.3 in safety alignment while refusing one in three benign queries, or improve across every capability metric while losing 21 points in privacy. Existing evaluation frameworks that assess safety, security, and privacy independently cannot detect these patterns. We introduce aiXamine, a unified black-box platform that evaluates LLM trustworthiness across safety, security, and privacy as i",
+      "pdf_url": "https://arxiv.org/pdf/2608.20554v1"
+    },
+    {
+      "id": "llmsec-2026-00215",
+      "type": "paper",
+      "title": "From Noise to Signal: Improving Security Log Anomaly Detection Using LLMs with Endpoint-Specific Logs",
+      "authors": [
+        "Christopher Henshaw",
+        "Gour Karmakar"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.19938",
+      "categories": [
+        "monitoring-detection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.19938"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Existing approaches to anomalous behaviour log detection, such as Wazuh rely primarily on predefined detection rules, while statistical anomaly detection approaches such as OpenSearch identify deviations from previously observed behavioural patterns. Recent research has investigated LLMs for log anomaly detection because of their ability to interpret semantic and contextual information. However, LLM-based approaches can be affected by prompt construction, noisy log data, and reliance on generic ",
+      "pdf_url": "https://arxiv.org/pdf/2608.19938v1"
+    },
+    {
+      "id": "llmsec-2026-00216",
+      "type": "paper",
+      "title": "CompoSkill: Compositional Skill Chain Attacks from Individually Scanner-Passing LLM Agent Skills",
+      "authors": [
+        "Mingxiao Liu",
+        "Zhoumian Jiang",
+        "Jianan Ma",
+        "Jian Zhang",
+        "Jialuo Chen",
+        "Xinhao Deng",
+        "Zhen Wang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.16246",
+      "categories": [
+        "threat-modeling"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.16246"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Autonomous AI agents tackling Long Horizon Tasks depend on marketplace skills that are certified one at a time: a scanner returns a safety verdict for each skill and declares the ecosystem safe if every package passes. We show that this assumption fails under skill composition. A skill may pass the per-skill scanner individually yet participate in a risky composition when an agent connects its outputs, capabilities, or side effects with those of other scanner-passing skills. This makes skill com",
+      "pdf_url": "https://arxiv.org/pdf/2608.16246v1"
+    },
+    {
+      "id": "llmsec-2026-00217",
+      "type": "paper",
+      "title": "Benchmarking Identity-Sensitive LLM Outputs for Surveillance and Security Robots",
+      "authors": [
+        "Nneka Hyman",
+        "Jasmine Khan",
+        "Raj Korpan"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.16030",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.16030"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large language models (LLMs) are increasingly used to generate textual robot design specifications, interaction policies, and risk assessments during early-stage robot development. Such outputs may influence how surveillance and security robots are conceptualized, documented, and ultimately implemented. This paper evaluates whether identity-conditioned prompts produce systematic differences in LLM-generated surveillance and security robot design descriptions. Using 236 demographic identity label",
+      "pdf_url": "https://arxiv.org/pdf/2608.16030v1"
+    },
+    {
+      "id": "llmsec-2026-00218",
+      "type": "paper",
+      "title": "Agentic Security: A Systematization of Tools, Failure Modes, and Design Laws for LLM-Driven Penetration Testing",
+      "authors": [
+        "Israt Moyeen Noumi",
+        "Tarannum Ahmed Nowshin",
+        "Md. Mehedi Hasan Nipu",
+        "Mohammad Sakib Mahmood",
+        "Md. Jakir Hossain",
+        "M. F. Mridha"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.21423",
+      "categories": [
+        "agentic-threats",
+        "red-teaming"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.21423"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Agentic security uses large-language-model (LLM) agents to plan, dispatch, and interpret security tools. As these systems move from demonstrations to deployed products, practitioners repeatedly encounter the same operational failures. We systematize these failures through a hands-on evaluation of ten widely used static, dynamic, cloud, orchestration, and AI red-teaming tools for unattended pipelines. We introduce a four-dimensional Integration Friction Index that separates one-time engineering c",
+      "pdf_url": "https://arxiv.org/pdf/2608.21423v1"
+    },
+    {
+      "id": "llmsec-2026-00219",
+      "type": "paper",
+      "title": "WeSCE: A Benchmark for Measuring Security Drift in LLM-Driven Code Editing",
+      "authors": [
+        "Zhiyu Zhang",
+        "Tingyue Wen",
+        "Senke Sun",
+        "Dengxiang Liang",
+        "Enhao Huang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.15092",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.15092"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "In this work, we introduce WeSCE, a benchmark for quantifying security drift in code editing under weak-security constraints, where tasks specify only functional objectives without explicit security requirements. WeSCE consists of 400 executable programs derived from real-world code, covering feature addition, feature removal, bug fixing, and refactoring. To quantify security drift, we propose a continuous risk representation that aggregates heterogeneous vulnerability signals through a unified ",
+      "pdf_url": "https://arxiv.org/pdf/2608.15092v1"
+    },
+    {
+      "id": "llmsec-2026-00220",
+      "type": "paper",
+      "title": "Does Fixing Break Security? An Empirical Study of Security Degradation in Iterative LLM-Driven Infrastructure-as-Code Repair",
+      "authors": [
+        "Benjamin Agyekum",
+        "Fabio Santos"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.13404",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.13404"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Background: Iterative feedback loops are the dominant paradigm for improving LLM-generated Infrastructure-as-Code (IaC): validators such as Checkov and terraform validate feed error signals back for successive repair attempts. Prior work reports cumulative-best metrics, which are non-decreasing by construction, so the raw per-iteration security trajectory has never been examined for IaC. Aims: We study security regression (a previously-passing CIS Benchmark check that fails after a repair iterat",
+      "pdf_url": "https://arxiv.org/pdf/2608.13404v2"
+    },
+    {
+      "id": "llmsec-2026-00221",
+      "type": "paper",
+      "title": "ToolHazard: Scaling Adversarial Environments for Security Evaluation and Alignment of LLM-based Agents",
+      "authors": [
+        "Yutao Mou",
+        "Pengfei Yang",
+        "Zhe Yin",
+        "Zhangchi Xue",
+        "Xiaotian Luan",
+        "Dingyao Yu",
+        "Tong Zhang",
+        "Shikun Zhang",
+        "Wei Ye"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.11878",
+      "categories": [
+        "prompt-injection",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.11878"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large language model (LLM) agents integrated with external tools are vulnerable to indirect prompt injections embedded in environmental states. However, existing studies largely rely on manually implemented or reused environments, stochastic LLM-based tool simulation, and predefined injection locations, limiting scalable security research across broader domains. To bridge this gap, we propose **ToolHazard**, a scalable adversarial environment synthesis framework that reduces human engineering an",
+      "pdf_url": "https://arxiv.org/pdf/2608.11878v1"
+    },
+    {
+      "id": "llmsec-2026-00222",
+      "type": "paper",
+      "title": "On Understanding, Identifying, and Mitigating Vulnerabilities in Agentic Large Language Models",
+      "authors": [
+        "Md Jafrin Hossain",
+        "Mohammad Arif Hossain",
+        "Nirwan Ansari"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.10530",
+      "categories": [
+        "agentic-threats",
+        "autonomous-operations"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.10530"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large Language Models (LLMs) have undergone a shift from stateless conversational interfaces to autonomous agents capable of multi-step planning, tool invocation, code execution, and maintaining persistent memory. When these agents operate with real-world privileges---calling APIs, modifying files, and querying databases---a compromised reasoning step can trigger unauthorized data access, irreversible state changes, or cascading failures, yet the security research community has not kept pace. To",
+      "pdf_url": "https://arxiv.org/pdf/2608.10530v1"
+    },
+    {
+      "id": "llmsec-2026-00223",
+      "type": "paper",
+      "title": "From Prompt Injection to Web Exploitation: Revisiting Classic Vulnerabilities in LLM-Integrated Applications",
+      "authors": [
+        "Spiros Tsigkopoulos",
+        "Christoforos Ntantogian"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.10281",
+      "categories": [
+        "prompt-injection",
+        "agentic-threats"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.10281"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large Language Models are increasingly integrated into web applications through chatbots, tool-calling pipelines, and agentic workflows. In these systems, user input may influence not only generated text, but also backend actions such as database queries, HTTP requests, file operations, template rendering, or API calls. This paper introduces LLM-mediated web attacks, a class of attacks in which attacker-controlled input is transformed by an LLM-integrated application and then reaches traditional",
+      "pdf_url": "https://arxiv.org/pdf/2608.10281v1"
+    },
+    {
+      "id": "llmsec-2026-00224",
+      "type": "paper",
+      "title": "Generating Attacks for LLMs with GFlowNets",
+      "authors": [
+        "Berkay Ozcam",
+        "Irem Onen",
+        "Mehmet Fatih Amasyali",
+        "Emin Islam Tatli"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.10171",
+      "categories": [
+        "red-teaming"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.10171"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The rapid advancement of Large Language Models (LLMs) has facilitated their ubiquitous integration into various domains, leading to widespread adoption. However, this escalating trend has introduced significant security vulnerabilities, necessitating the identification and mitigation of flaws arising from malicious exploitation. Red teaming assessments, conducted to evaluate model robustness through diverse adversarial inputs, are essential for exposing security risks and implementing countermea",
+      "pdf_url": "https://arxiv.org/pdf/2608.10171v1"
+    },
+    {
+      "id": "llmsec-2026-00225",
+      "type": "paper",
+      "title": "Pragmatic Attack Surface: Vulnerabilities of Implicit Context in Large Language Models",
+      "authors": [
+        "Bocheng Chen",
+        "Han Zi",
+        "Roucheng Ou",
+        "Yawei Liu",
+        "Minyue Chen",
+        "Zimo Qi",
+        "Rongrong Wang",
+        "Guangliang Liu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.09551",
+      "categories": [
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.09551"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "In the era of large language models (LLMs), attackers often manipulate natural language to elicit unsafe or harmful outputs, creating a new natural language attack surface unique to LLM-based systems, where attacks directly exploit explicit linguistic cues in user prompts to bypass the safety mechanism of LLMs. However, such attacks can often be mitigated by existing safety alignment algorithms. On the other hand, human language is inherently grounded in pragmatics, necessitating typical context",
+      "pdf_url": "https://arxiv.org/pdf/2608.09551v1"
+    },
+    {
+      "id": "llmsec-2026-00226",
+      "type": "paper",
+      "title": "Gaming Without an Attacker: Benchmark Fingerprinting in LLM-Driven Search Under Selection Pressure",
+      "authors": [
+        "Víctor Gallego"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.08722",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.08722"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Benchmarks for systems that are optimized against the evaluation signal measure something different from what they claim. We document this concretely in two GPU-kernel-optimization suites with held-out generalization gates: Metal-Sci (10 scientific-compute tasks) and Metal-ZK (12 zero-knowledge/cryptographic tasks), in which three frontier LLMs (Opus 4.7, Gemini 3.1 Pro, GPT-5.5) propose Metal kernels inside a $(1{+}1)$ evolutionary loop with rich feedback. Although no model is prompted to act a",
+      "pdf_url": "https://arxiv.org/pdf/2608.08722v1"
+    },
+    {
+      "id": "llmsec-2026-00227",
+      "type": "paper",
+      "title": "Breaking Customized LLMs for Coding: Automated Red Teaming for Instruction Backdoor Attacks",
+      "authors": [
+        "Yuchen Chen",
+        "Wei Cheng",
+        "Yuan Xiao",
+        "Wising Sun",
+        "Chunrong Fang",
+        "Yang Liu",
+        "Zhenyu Chen",
+        "Baowen Xu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.05659",
+      "categories": [
+        "data-poisoning",
+        "red-teaming"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.05659"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLM customization platforms allow users to build task-specific models for code intelligence tasks by embedding instructions into system prompts, without modifying the underlying model parameters. While these platforms lower the barrier to developing customized LLMs, they also introduce a new attack surface: instruction backdoor attacks, in which adversaries implant hidden malicious behaviors into customized instructions. However, existing attacks suffer from two key limitations. First, they ofte",
+      "pdf_url": "https://arxiv.org/pdf/2608.05659v1"
+    },
+    {
+      "id": "llmsec-2026-00228",
+      "type": "paper",
+      "title": "LLM-Assisted Detection and Repair of Hardware Security Vulnerabilities in Verilog Designs",
+      "authors": [
+        "Ethen Santana",
+        "Gabriel Gyaase",
+        "Hao Zheng"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.04907",
+      "categories": [
+        "access-control"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.04907"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Hardware designs, like software, are susceptible to bugs that can introduce security vulnerabilities and create opportunities for malicious exploitation. Unlike software vulnerabilities, however, hardware flaws become permanently embedded in silicon after fabrication, making them difficult or impossible to patch. Many of these weaknesses are categorized under the Common Weakness Enumeration (CWE) framework and include improper access control, exposure of sensitive information, and unintended pri",
+      "pdf_url": "https://arxiv.org/pdf/2608.04907v1"
+    },
+    {
+      "id": "llmsec-2026-00229",
+      "type": "paper",
+      "title": "LoginTrap: Uncovering Task-Agnostic Phishing-Style Indirect Prompt Injection Attacks against LLM-based Web Agents",
+      "authors": [
+        "Longtao Guo",
+        "Zelin Zhang",
+        "Kaifeng Huang",
+        "Yang Shi"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.04741",
+      "categories": [
+        "prompt-injection",
+        "membership-inference"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.04741"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLM-based web agents automate user tasks by observing webpages and executing browser actions on behalf of users. As these agents operate on real web services, login becomes a sensitive authentication boundary because it involves credentials and sensitive information. Existing work shows that malicious webpage content can manipulate web agent actions, but it has not fully examined whether such content can induce login and cause end-to-end private data leakage. We study this attack surface and pre",
+      "pdf_url": "https://arxiv.org/pdf/2608.04741v1"
+    },
+    {
+      "id": "llmsec-2026-00230",
+      "type": "paper",
+      "title": "RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution",
+      "authors": [
+        "Junjie Zhang",
+        "Hui Liu",
+        "Kecheng Chen",
+        "Xianbo Mo",
+        "Changsheng Chen",
+        "Haoliang Li"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.27439",
+      "categories": [
+        "jailbreaking",
+        "agentic-threats",
+        "red-teaming",
+        "tool-use-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.27439"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLM-based agents are increasingly deployed in product-level execution harnesses, where jailbreaks can trigger harmful tool use and persistent state changes, creating greater risks than unsafe text generation alone. Existing automatic red-teaming methods often rely on fixed attacks, while recent agentic attackers coordinate multiple jailbreak tools and show stronger potential through trajectory-based retrieval. However, such retrieval can reuse misleading experiences due to retrieval bias and unc",
+      "pdf_url": "https://arxiv.org/pdf/2608.27439v1"
+    },
+    {
+      "id": "llmsec-2026-00231",
+      "type": "paper",
+      "title": "The Framing Gap: Indirect Prompt-Injection Exfiltration Defeats Surface-Level Defenses in Tool-Using Agents",
+      "authors": [
+        "Md Habibur Rahman",
+        "Jaeho Kim"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.27092",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.27092"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "A tool-using LLM agent that reads attacker-controlled web content while holding a secret faces indirect prompt injection: the content may make it exfiltrate the secret. In a safe synthetic lab (canary secret, mock tools, matched clean-vs-poisoned metric) we report the framing gap: across six models, ten overt injection classes are refused (gpt-4o 0%), but reframing the identical leak as a mandatory integrity signature, config field, or look-alike \"trusted\" host drives gpt-4o 0% to 100%. The atta",
+      "pdf_url": "https://arxiv.org/pdf/2608.27092v1"
+    },
+    {
+      "id": "llmsec-2026-00232",
+      "type": "paper",
+      "title": "The Latent Diagnostic Taxonomy: A Framework for Constructing Classifiers and Diagnosing Their Decisions, Applied to Prompt Injection Detection",
+      "authors": [
+        "Jaturong Kongmanee",
+        "Smile Thanapattheerakul"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.26423",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.26423"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "This paper proposes a framework for constructing a classifier as a safeguard layer, and for developing a complementary diagnostic that identifies which of the classifier's confident decisions can be trusted. This framework, the Latent Diagnostic Taxonomy, consists of (i) constructing a dimensionality-optimized classifier, in which the embedding dimensionality is empirically selected via cross-validated performance rather than fixed a priori, (ii) locating a relatively small set of latent support",
+      "pdf_url": "https://arxiv.org/pdf/2608.26423v1"
+    },
+    {
+      "id": "llmsec-2026-00233",
+      "type": "paper",
+      "title": "NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation",
+      "authors": [
+        "Zhiyuan Xu",
+        "Muhammad Firhard Roslan",
+        "Joseph Gardiner",
+        "Sana Belguith",
+        "Lichao Wu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.26222",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.26222"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Safety evaluation is critical for assessing whether aligned Large Language Models (LLMs) remain robust against jailbreak attacks. Existing automated testing methods, however, largely rely on response-level feedback: each candidate prompt typically requires generating a target-model response to evaluate its attack effectiveness. This process is expensive and, more importantly, provides only sparse guidance on strongly aligned models, where most candidates are rejected with the same failure outcom",
+      "pdf_url": "https://arxiv.org/pdf/2608.26222v1"
+    },
+    {
+      "id": "llmsec-2026-00234",
+      "type": "paper",
+      "title": "MMJailBench: A Factorized Benchmark for Disentangling Multimodal Jailbreak Vulnerabilities",
+      "authors": [
+        "Tianshi Wang",
+        "Jingsong Wang",
+        "Yafei Huang",
+        "Fengling Li",
+        "Xin Li",
+        "Lei Zhu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.25490",
+      "categories": [
+        "jailbreaking",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.25490"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Multimodal Large Language Models (MLLMs) are increasingly deployed in real-world applications, yet how different factors shape their jailbreak vulnerabilities remains poorly understood. Existing benchmarks often couple harmful intent, prompt framing, visual semantics, and instruction carrier within individual jailbreak instances, obscuring the specific sources of observed vulnerabilities. To address this limitation, we introduce MMJailBench, a factorized benchmark that systematically varies and ",
+      "pdf_url": "https://arxiv.org/pdf/2608.25490v1"
+    },
+    {
+      "id": "llmsec-2026-00235",
+      "type": "paper",
+      "title": "Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks",
+      "authors": [
+        "Andrey Labunets"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.25390",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.25390"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Refusal training protects AI models from jailbreaks by training models to decline unsafe queries, reducing the risk of misuse. Recent work finds that refusal behavior in aligned language models can be mediated by a single activation direction or a low-dimensional refusal subspace shared across harmful prompts: ablating those directions suppresses refusals while largely preserves other model capabilities. Yet it remains unclear why safety-critical features in a wide range of models emerge and con",
+      "pdf_url": "https://arxiv.org/pdf/2608.25390v1"
+    },
+    {
+      "id": "llmsec-2026-00236",
+      "type": "paper",
+      "title": "WebMCP-Phalanx: Enforcing and Characterizing Trust Boundaries for Browser-Integrated LLM Agents",
+      "authors": [
+        "Lin-Fa Lee",
+        "YI-YU Chang",
+        "Kuo-Hui Yeh"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.24017",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.24017"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The emerging W3C WebMCP proposal enables LLM agents to invoke tools exposed by web pages. In multi-party web environments, however, integrating agent execution into a browser security model centered on the Same-Origin Policy (SOP) leaves insufficient provenance and lifecycle guarantees for agent-accessible tools, creating three risks: subject-attribution spoofing, uncontrolled tool lifecycles, and semantic prompt injection. We propose WebMCP-Phalanx, a dual-layer agent runtime architecture. Its ",
+      "pdf_url": "https://arxiv.org/pdf/2608.24017v1"
+    },
+    {
+      "id": "llmsec-2026-00237",
+      "type": "paper",
+      "title": "NeuronGuard: Robust LLM Safety Alignment via Ablation-Aware Safety Signal Redistribution",
+      "authors": [
+        "Anjun Gao",
+        "Yueyang Quan",
+        "Yufei Xia",
+        "Zhuqing Liu",
+        "Minghong Fang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.23959",
+      "categories": [
+        "jailbreaking",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.23959"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Safety alignment in large language models (LLMs) remains brittle against a growing spectrum of attacks. Jailbreak attacks bypass safety mechanisms through crafted prompts, while neuron-level attacks directly prune safety-critical neurons post-deployment. Both exploit a common weakness: safety-relevant information concentrates in a sparse neuron subset. We present NeuronGuard, a fine-tuning-stage defense that simultaneously hardens LLMs against both attack classes by redistributing safety signals",
+      "pdf_url": "https://arxiv.org/pdf/2608.23959v1"
+    },
+    {
+      "id": "llmsec-2026-00238",
+      "type": "paper",
+      "title": "Semantic Overlays: Mitigating Prompt Injection with Annotations Beyond Tokens and Steering Vectors",
+      "authors": [
+        "Joshua Penman"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.23873",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.23873"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Everything a language model sees is tokens. The serving stack knows what each span is -- user input, tool output, instructions -- but the model must keep track of that itself, and it can lose track or be confused: text can be written to read like anything. Prompt injection is a natural exploit of this phenomenon. By scrambling the model's understanding of span identity, an attacker can induce unwanted and potentially dangerous actions. Adding a non-textual channel to the model's input -- a way t",
+      "pdf_url": "https://arxiv.org/pdf/2608.23873v1"
+    },
+    {
+      "id": "llmsec-2026-00239",
+      "type": "paper",
+      "title": "Beyond the Mandate: A Systematic Security Analysis of the Agent Payments Protocol (AP2)",
+      "authors": [
+        "Avital Aviv",
+        "Parth A. Gandh",
+        "Ron Bitton",
+        "Asaf Shabtai"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.23858",
+      "categories": [
+        "access-control"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.23858"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The Agent Payments Protocol (AP2), introduced by Google, enables large language model (LLM)-driven shopping agents to authorize and execute payments on behalf of users. Its signed Checkout and Payment Mandates protect the integrity of transaction data after signing. Agent interactions and external inputs that shape a transaction before authorization remain outside that protection, including Agent-to-Agent Protocol (A2A) messages and Model Context Protocol (MCP) tool calls. Prior work identified ",
+      "pdf_url": "https://arxiv.org/pdf/2608.23858v1"
+    },
+    {
+      "id": "llmsec-2026-00240",
+      "type": "paper",
+      "title": "TrustShiftProbe: Characterizing, Benchmarking, and Defending Staged Trust Attacks on MCP Servers",
+      "authors": [
+        "Mehrdad Rostamzadeh",
+        "Sidhant Narula",
+        "Mohammad Ghasemigol",
+        "Daniel Takabi"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.23763",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.23763"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The Model Context Protocol (MCP) has emerged as the standard layer connecting Large Language Model agents to external tool backends. This openness introduces a severe server-side threat we term TrustShift: a compromised MCP server behaves benignly during an initial conditioning phase, building operational reliance and suppressing agent skepticism, before switching to an adversarial payload once an interaction threshold is reached. The evasion is temporal, not syntactic: benign at deploy time, th",
+      "pdf_url": "https://arxiv.org/pdf/2608.23763v1"
+    },
+    {
+      "id": "llmsec-2026-00241",
+      "type": "paper",
+      "title": "Towards Automated Cyber Threat Intelligence Elicitation in Underground Forums",
+      "authors": [
+        "Lorenzo Bossi",
+        "Federico Saccani",
+        "Francesco Panebianco",
+        "Antonio Maci",
+        "Stefano Zanero",
+        "Stefano Longari",
+        "Michele Carminati"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.23185",
+      "categories": [
+        "monitoring-detection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.23185"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Cyber threat intelligence from underground forums has traditionally relied on passive monitoring. However, as users have become more aware of large-scale data collection, valuable intelligence has become increasingly rare in open forums, often migrating instead to private or harder-to-reach spaces, making passive approaches inadequate. Building on the intuition that relevant information can be obtained through active elicitation, this paper presents DarkBot, to the best of our knowledge, the fir",
+      "pdf_url": "https://arxiv.org/pdf/2608.23185v1"
+    },
+    {
+      "id": "llmsec-2026-00242",
+      "type": "paper",
+      "title": "Beyond Over-Refusal: Defending Indirect Prompt Injection via Latent Instruction Manifolds",
+      "authors": [
+        "Jiahao Chen",
+        "Rui Yin",
+        "Xinfeng Li",
+        "Qianli Ma",
+        "Tianyu Du",
+        "Zhihui Fu",
+        "Jun Wang",
+        "Zhaoxiang Wang",
+        "Shouling Ji"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.22248",
+      "categories": [
+        "prompt-injection",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.22248"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large Language Models (LLMs) have been integrated into complex ecosystems (e.g., Code Agents), while Indirect Prompt Injection (IPI) attacks have emerged as critical barriers to their safe deployment. Attackers exploit LLMs' indistinguishability between \"instructions\" and \"data\" to manipulate LLMs via maliciously injected instructions. Existing defenses, however, face an intractable safety-utility trade-off: most guardrails either incur high latency or suffer from severe over-refusal. In this pa",
+      "pdf_url": "https://arxiv.org/pdf/2608.22248v1"
+    },
+    {
+      "id": "llmsec-2026-00243",
+      "type": "paper",
+      "title": "Breaking the Assumptions: Auditing Input-Side Jailbreak Defenses Against Semantic Attacks",
+      "authors": [
+        "Aaditya Pratap",
+        "Harsh Kasyap",
+        "Somanath Tripathy"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.21895",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.21895"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Locally deployed Large Language Models (LLMs) via inference engines such as Ollama run without the moderation and abuse detection present in API-served models. Therefore, the safety of LLMs depends on the defense mechanisms used, and their effectiveness depends on the assumptions on which they were designed. This paper does an audit of defense mechanisms under jailbreak attacks on locally deployed models. Some defenses provide formal guarantees (SmoothLLM, Erase-and-Check, Sequential Monitors), ",
+      "pdf_url": "https://arxiv.org/pdf/2608.21895v1"
+    },
+    {
+      "id": "llmsec-2026-00244",
+      "type": "paper",
+      "title": "SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation",
+      "authors": [
+        "Yibo Peng",
+        "Long Lian",
+        "David Wagner",
+        "Sizhe Chen"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.21500",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.21500"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Prompt injection is listed as the \\#1 threat to AI agents. When an agent accesses external data from websites, files, or emails, an attacker may inject a prompt into the data, saying, \"Ignore all prior instructions and perform <an attacker's task>.\" To prevent arbitrary manipulation of agents, defenders try to train secure LLMs, which, however, still suffer from near 100% attack success rates (ASRs) against adaptive prompt injections. We note that this is because existing defensive finetuning re",
+      "pdf_url": "https://arxiv.org/pdf/2608.21500v1"
+    },
+    {
+      "id": "llmsec-2026-00245",
+      "type": "paper",
+      "title": "Utility Under Attack: Agent Memory Poisoning and the Limits of Content Screening and Provenance Ranking",
+      "authors": [
+        "Arulnidhi Karunanidhi"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.21230",
+      "categories": [
+        "prompt-injection",
+        "memory-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.21230"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Persistent memory makes false information durable: once a false statement is stored, it can be retrieved into future sessions that match it. We measure the cost of this failure mode using plainly worded false assertions generated in a single pass, with no instruction, trigger, or retriever optimization. Poisoning 1.2% of a LongMemEval corpus reduces accuracy from 0.850 to 0.300. A four-stage write-time screening pipeline that reaches 0.832 recall on indirect prompt injection while flagging 1.5% ",
+      "pdf_url": "https://arxiv.org/pdf/2608.21230v1"
+    },
+    {
+      "id": "llmsec-2026-00246",
+      "type": "paper",
+      "title": "COPA: Continual Preference Optimization for Adaptive Prompt Injection Defense",
+      "authors": [
+        "Roshan Sood",
+        "Onat Gungor",
+        "Tajana Rosing"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.19982",
+      "categories": [
+        "prompt-injection",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.19982"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLMs remain vulnerable to prompt injection attacks, where adversarial instructions embedded in user inputs or external content manipulate model behavior and bypass safeguards. Existing defenses are predominantly static, relying on fixed alignment objectives or attack-specific filtering mechanisms that require redesign as new attack strategies emerge. While recent lifelong alignment methods address shifting user preferences, they do not account for adaptive adversaries that continually evolve to ",
+      "pdf_url": "https://arxiv.org/pdf/2608.19982v1"
+    },
+    {
+      "id": "llmsec-2026-00247",
+      "type": "paper",
+      "title": "MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental Injection Attacks in Android Apps",
+      "authors": [
+        "Sujin Chen",
+        "Lijun Li",
+        "Tianyi Du",
+        "Jing Shao"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17659",
+      "categories": [
+        "prompt-injection",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17659"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLM-powered GUI agents that autonomously operate smartphones are rapidly transitioning from research prototypes to early real-world deployment. However, because these agents routinely process untrusted environmental content, they are highly vulnerable to environmental injection attacks, which include indirect prompt injections and adversarial instructions. Such attacks can manipulate the behavior of agents without user awareness through diverse channels encountered in everyday mobile use. Despit",
+      "pdf_url": "https://arxiv.org/pdf/2608.17659v1"
+    },
+    {
+      "id": "llmsec-2026-00248",
+      "type": "paper",
+      "title": "Reflex-Guard: A Low-Latency Guardrail for LLM Prompt Safety Using Dense Semantic Embeddings",
+      "authors": [
+        "Istiaque Ahmed",
+        "Afia Anjum Borsha",
+        "Ranat Das Prangon",
+        "Abu-fuad Ahmad",
+        "Thi Hong Tran"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17556",
+      "categories": [
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17556"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large Language Models (LLMs) in real-world applications often face the risks of specially crafted prompts designed to bypass the safety controls. Existing guardrail methods, such as LLM-as-a-judge and cloud-based safety APIs are able to detect unsafe content. However, they often add a delay of about 250-900 ms to each request. This delay is too high for real-time applications, when the system usually needs to respond in less than 100 ms. Furthermore, routing user prompts through external moderat",
+      "pdf_url": "https://arxiv.org/pdf/2608.17556v1"
+    },
+    {
+      "id": "llmsec-2026-00249",
+      "type": "paper",
+      "title": "Fair ASR: Re-Evaluating Black-Box Jailbreaks under Shared Target-Call Budgets",
+      "authors": [
+        "Zhida He",
+        "Xiaoyu Wen",
+        "Han Qi",
+        "Ziyuan Zhou",
+        "Peng Yu",
+        "Jiajia Li",
+        "Chaochao Lu",
+        "Qiaosheng Zhang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17360",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17360"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Reliable jailbreak evaluation is essential for assessing LLM safety, but most existing studies rely solely on attack success rate (ASR) without accounting for its dependence on attack budgets, resulting in unfair comparisons across methods. Existing compute-aware evaluations reduce heterogeneous resources into FLOPs, which is difficult to estimate for black-box models and fails to capture resource-specific constraints. To provide a comparable evaluation basis, we introduce Fair-ASR, an evaluatio",
+      "pdf_url": "https://arxiv.org/pdf/2608.17360v1"
+    },
+    {
+      "id": "llmsec-2026-00250",
+      "type": "paper",
+      "title": "COMIC: Reference-Aware Safety Gating for Multimodal Large Language Models",
+      "authors": [
+        "Md Abdullahil Oaphy",
+        "Anhao Xiang",
+        "Zongxing Xie",
+        "Huayue Gu",
+        "Chenyu Wang",
+        "Honghui Xu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17234",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17234"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Multimodal large language models (MLLMs) are increasingly used to interact with screenshots, scanned documents, diagrams, and other visually grounded inputs. This shift introduces a new safety risk: in many multimodal jailbreaks, neither the prompt nor the image is harmful in isolation. Unsafe behavior emerges only when the model binds an apparently benign operation, such as summarizing, translating, or following, to a localized visual target. This reveals a structural weakness in current multim",
+      "pdf_url": "https://arxiv.org/pdf/2608.17234v1"
+    },
+    {
+      "id": "llmsec-2026-00251",
+      "type": "paper",
+      "title": "PACE: Policy-Attested Contract Execution for Safe AI Agents in Decentralized Finance",
+      "authors": [
+        "Rabimba Karanjai",
+        "Yang Lu",
+        "Richard Williamson",
+        "Hemanth Hm",
+        "Prakhar Mehrotra",
+        "Lei Xu",
+        " Weidong",
+        " Shi"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17220",
+      "categories": [
+        "prompt-injection",
+        "access-control"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17220"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Autonomous AI agents are emerging as interfaces for decentralized finance (DeFi) actions such as swaps, lending operations, and yield management. Because these agents rely on large language models (LLMs) to plan transactions, they inherit the LLM's susceptibility to prompt injection and lack of mechanisms to bind a verifier's approval to the exact transaction ultimately submitted on-chain. We present PACE (Policy-Attested Contract Execution), a transaction-level authorization framework that inte",
+      "pdf_url": "https://arxiv.org/pdf/2608.17220v1"
+    },
+    {
+      "id": "llmsec-2026-00252",
+      "type": "paper",
+      "title": "Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models",
+      "authors": [
+        "Mark Russinovich"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17202",
+      "categories": [
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17202"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Safety alignment in open-weight language models is trivially removable: abliteration projects a refusal-mediating direction out of the weights in minutes, and no release-time defense we are aware of prevents it durably. What cannot be prevented can be deceived. Our defense, decoy hardening (\"Fool's Gold\"), concedes the refusal strip and poisons its payoff: once refusal is stripped, most answers to hazardous operational requests are confident, fluent decoys whose critical elements are falsified. ",
+      "pdf_url": "https://arxiv.org/pdf/2608.17202v1"
+    },
+    {
+      "id": "llmsec-2026-00253",
+      "type": "paper",
+      "title": "Security Assessment of DeepSeek Harness with A.I.G: Evaluating Resistance to Indirect Prompt Injection",
+      "authors": [
+        "Zonghao Ying",
+        "Xiangfan Wu",
+        "Huiyu Wu",
+        "Xing Zheng",
+        "Huangsheng Cheng",
+        "Xiaorong Shi",
+        "Jing Guo"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.16393",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.16393"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "We assess indirect prompt injection in DeepSeek Harness (DSH), using AI-Infra-Guard (A.I.G) to construct tests, deliver controlled taint, execute DSH, collect traces, and judge outcomes. The study covers 14,560 controlled executions over 16 indirect-content channels, text and file carrier modes, 35 payload objectives, one unmodified baseline, and 12 attack methods. The experiment preserves DSH's agent loop, tool registry, model adapter, and session-event path; source tools and sensitive sinks ar",
+      "pdf_url": "https://arxiv.org/pdf/2608.16393v2"
+    },
+    {
+      "id": "llmsec-2026-00254",
+      "type": "paper",
+      "title": "Bounded Agents: Delegation Security for Multi-Agent AI Systems",
+      "authors": [
+        "Xabier Muruaga"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.15888",
+      "categories": [
+        "prompt-injection",
+        "agent-architecture"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.15888"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLM-based agents can act on behalf of a user to access cloud services, call tools, or invoke agents. At session start, the agent's permissions are set but remain static, and each request is evaluated independently, without considering prior actions. Within its permissions, an agent may act contrary to the delegated task, combine individually permitted actions into a prohibited outcome, or delegate authority to a sub-agent without limiting it. A prompt injection poses a risk only if the agent has",
+      "pdf_url": "https://arxiv.org/pdf/2608.15888v1"
+    },
+    {
+      "id": "llmsec-2026-00255",
+      "type": "paper",
+      "title": "TwinGridShield: Consequence-Aware Runtime Authorization for LLM Grid-Agent Actions",
+      "authors": [
+        "Md Fazley Rafy"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.15391",
+      "categories": [
+        "access-control"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.15391"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large language model (LLM)-assisted energy-management tools can translate natural-language context into structured grid commands, but syntactic validity does not imply physical admissibility. This paper presents TwinGridShield, a model-independent runtime authorization layer that evaluates each proposed action in a deterministic network twin before release. The prototype checks connectivity, branch-flow, generator, and load-shedding invariants and records each decision in a hash-chained log. A c",
+      "pdf_url": "https://arxiv.org/pdf/2608.15391v1"
+    },
+    {
+      "id": "llmsec-2026-00256",
+      "type": "paper",
+      "title": "Workspace Topology as an Attack Vector in Agentic Coding Assistants",
+      "authors": [
+        "Alexandre G. R. Day",
+        "Pradeep Yadlapalli",
+        "Sriram Venkatapathy",
+        "Thomas Paniagua",
+        "Nick Raines",
+        "Sahil Wadhwa",
+        "Himanshu Kumar",
+        "Andy Luo",
+        "Sudeep Panyam",
+        "Rikhiya Ghosh",
+        "Pranab Mohanty",
+        "Giri Iyengar"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.14876",
+      "categories": [
+        "agentic-threats"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.14876"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Agentic coding assistants are finding widespread use, not just in new code development but in quickly ingesting and leveraging third-party code. This opens up a risk of malicious code being ingested as these coding tools operate with broad filesystem access inside developer workspaces. In this paper, we extensively study the impact of different dimensions of a novel attack surface we term workspace topology -- defined via directory depth, codebase modularity, in-file injection position and conte",
+      "pdf_url": "https://arxiv.org/pdf/2608.14876v1"
+    },
+    {
+      "id": "llmsec-2026-00257",
+      "type": "paper",
+      "title": "Measuring the Wrong Thing: Internal Harmfulness Scores Anti-Rank Successful Jailbreaks",
+      "authors": [
+        "Mingyu Luo",
+        "Ming Deng",
+        "Zilang Qiu",
+        "Yiming Cheng",
+        "Ci Tao",
+        "Xue Tan",
+        "Sijin Sun",
+        "Yangfu Li",
+        "Ping Chen",
+        "Jun Dai",
+        "Xiaoyan Sun"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.09624",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.09624"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Internal safety scores judge a prompt before any text is generated, and they are validated by how well they separate harmful prompts from benign ones. That separation is then read as evidence that the score will also catch the attacks that succeed. Harmful intent is a property of the prompt. Jailbreak success is an outcome produced later by a particular target model, decoding policy, and judge. A filter tuned on a score that measures the wrong quantity spends its false positive budget on attacks",
+      "pdf_url": "https://arxiv.org/pdf/2608.09624v1"
+    },
+    {
+      "id": "llmsec-2026-00258",
+      "type": "paper",
+      "title": "Dual-Adversarial Safety Alignment: Cultivating Intrinsic Threat Comprehension in LRMs",
+      "authors": [
+        "Hongli Shen",
+        "Shaopeng Fu",
+        "Qinbo Zhang",
+        "Jian Li",
+        "Di Wang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.09542",
+      "categories": [
+        "jailbreaking",
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.09542"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large reasoning models (LRMs) achieve remarkable success on complex tasks but remain vulnerable to harmful prompts that induce unsafe outputs. Recent methods align LRMs using direct refusals or safety rationales, yet often focus on prompt patterns rather than intrinsic attack mechanisms. As a result, these pattern-centric alignments struggle to generalize across diverse jailbreaks, compromising adversarial robustness and reasoning utility. We propose AdvSafe, a dual-adversarial framework that en",
+      "pdf_url": "https://arxiv.org/pdf/2608.09542v1"
+    },
+    {
+      "id": "llmsec-2026-00259",
+      "type": "paper",
+      "title": "Toward Metacognitive One-Shot Indirect Prompt Injection: Strategy Abstraction Via Outcome-Conditioned Reflection",
+      "authors": [
+        "Sihan Hou",
+        "Xinmeng Hou",
+        "Zhijun Zhang",
+        "Zehao Wang",
+        "Xuhong Ren",
+        "Sibo Qin",
+        "Kuntharrgyal Khysru",
+        "Qing Guo"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.08795",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.08795"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Tool-using large language model (LLM) agents are vulnerable to indirect prompt injection (IPI), in which malicious instructions embedded in external observations manipulate subsequent agent decisions and actions. Most existing adaptive attacks rely on repeatedly querying and refining against the target agent, whereas realistic attackers may have only a single opportunity to interact with an unknown target agent. We propose SAVOR (Strategy Abstraction Via Outcome-Conditioned Reflection), which sh",
+      "pdf_url": "https://arxiv.org/pdf/2608.08795v1"
+    },
+    {
+      "id": "llmsec-2026-00260",
+      "type": "paper",
+      "title": "Defending Retrieval-Augmented Intrusion Detection Against Knowledge Poisoning and Prompt Injection",
+      "authors": [
+        "Kaysarul Anas Apurba",
+        "Md. Hasibul Hasan",
+        "Mahedee Zaman Moon",
+        "Sk. Md. Mizanur Rahman",
+        "Atsuo Inomata"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.08100",
+      "categories": [
+        "prompt-injection",
+        "agent-architecture"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.08100"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Retrieval-Augmented Generation (RAG) enables large language models to classify network flows and generate human-readable incident reports by retrieving semantically similar historical traffic from a vector knowledge base. However, the retrieval layer introduces vulnerabilities to knowledge poisoning and prompt-injection attacks. We present RAG-IDS, a three-tier multi-agent intrusion detection framework with a retrieval-boundary defense combining soft trust scoring, label-embedding consistency ch",
+      "pdf_url": "https://arxiv.org/pdf/2608.08100v1"
+    },
+    {
+      "id": "llmsec-2026-00261",
+      "type": "paper",
+      "title": "BASIS: Breach-Aware Selective Prompt Injection Shielding with Prefill Attention Probes",
+      "authors": [
+        "Laiqiao Qin",
+        "Tianqing Zhu",
+        "Longxiang Gao",
+        "Wanlei Zhou"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.08027",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.08027"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Prompt injection is a critical security threat in large language model (LLM) applications, where attackers hijack model behavior by embedding malicious instructions in user or external data. Existing detection methods only detect the presence of injection and refuse to respond upon detection, overlooking the fact that for many modern aligned models, well-crafted instructions can resist most injection attacks. This means that the injection robustness varies significantly across instructions and m",
+      "pdf_url": "https://arxiv.org/pdf/2608.08027v1"
+    },
+    {
+      "id": "llmsec-2026-00262",
+      "type": "paper",
+      "title": "Capability-Routed Guard: Defending Large Reasoning Models Against Reasoning-Centric Jailbreaks",
+      "authors": [
+        "Yiyong Liu",
+        "Yixin Wu",
+        "Jun Sakuma"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.07892",
+      "categories": [
+        "jailbreaking"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.07892"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large reasoning models (LRMs) expose a new safety failure mode: adversarial prompts can manipulate reasoning context, task decomposition, or capability interpretation so that harmful objectives are processed as legitimate reasoning steps. Existing safeguards, including safety reminders, external classifiers, and self-checking wrappers, are often brittle because they either inspect the adversarial prompt directly or ask the target model to perform additional safety reasoning on the same surface t",
+      "pdf_url": "https://arxiv.org/pdf/2608.07892v1"
+    },
+    {
+      "id": "llmsec-2026-00263",
+      "type": "paper",
+      "title": "The Anatomy of a Prompt Injection: A Component Model for Structured Analysis",
+      "authors": [
+        "Jeremy McHugh"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.07808",
+      "categories": [
+        "prompt-injection",
+        "red-teaming"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.07808"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Four years after prompt injection was first identified in 2022, attacks are still predominantly documented as verbatim strings rather than structured exploits, despite advancing agent capabilities and threat actors embedding injections to subvert AI-assisted security analysis. This paper formalizes the structure of prompt-injection artifacts, enabling defenders, red teamers, and cyber threat intelligence (CTI) teams to label, compare, and mutate attacks without relying on fragile string matching",
+      "pdf_url": "https://arxiv.org/pdf/2608.07808v1"
+    },
+    {
+      "id": "llmsec-2026-00264",
+      "type": "paper",
+      "title": "StepJack: Benchmarking Computer-Use Agent Safety Against Multi-Step Indirect Prompt Injection",
+      "authors": [
+        "Zhuoxin Zhan",
+        "Akbar Rafiey",
+        "Avery Ma",
+        "Leila Pishdad",
+        "Layla El Asri"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.06477",
+      "categories": [
+        "prompt-injection",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.06477"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Computer-use agents (CUAs) face a growing threat from indirect prompt injection, where adversarial instructions are planted in the environment such as web pages. In this paper, we introduce multi-step indirect prompt injection, a new attack class against CUAs in which the adversarial goal is decomposed into multiple innocuous-looking sub-steps and distributed across a chain of pages referenced along the agent's navigation path. We develop a pipeline to automatically decompose an adversarial goal",
+      "pdf_url": "https://arxiv.org/pdf/2608.06477v1"
+    },
+    {
+      "id": "llmsec-2026-00265",
+      "type": "paper",
+      "title": "Robust Context-Aware Detection of Malicious Instructions in Text",
+      "authors": [
+        "Buzhao Liu",
+        "Xinhang Ma",
+        "Yevgeniy Vorobeychik"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.05430",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.05430"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The remarkable instruction-following ability of modern LLMs has enabled their practical use as the minds of agents that can autonomously complete increasingly complex tasks. Therein, however, also lies their vulnerability to attacks which embed malicious instructions in text, common variants of which are known as indirect prompt injection (IPI). A fundamental task in addressing this vulnerability is successful segmentation of a given text into benign and malicious sentences (if any). While a num",
+      "pdf_url": "https://arxiv.org/pdf/2608.05430v1"
+    },
+    {
+      "id": "llmsec-2026-00266",
+      "type": "paper",
+      "title": "Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming",
+      "authors": [
+        "Yanting Wang",
+        "Chenlong Yin",
+        "Runpeng Geng",
+        "Jinyuan Jia"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.05108",
+      "categories": [
+        "prompt-injection",
+        "agentic-threats",
+        "red-teaming"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.05108"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Prompt injection poses significant security risks to LLM agents. Efficient and effective red-teaming is therefore critical, both for evaluating these risks and for collecting training data to improve defenses. Existing state-of-the-art prompt injection red-teaming methods primarily rely on reinforcement learning (RL), producing attacker models that often generalize poorly to new target LLMs. In this work, we develop PIMiner, an agentic system for prompt injection red-teaming. During training, PI",
+      "pdf_url": "https://arxiv.org/pdf/2608.05108v1"
+    },
+    {
+      "id": "llmsec-2026-00267",
+      "type": "paper",
+      "title": "Breadcrumbing Search Agents",
+      "authors": [
+        "Xuebin Li",
+        "Hanqing Zhao",
+        "Siyuan Liang",
+        "Kejiang Chen",
+        "Weiming Zhang",
+        "Dacheng Tao",
+        "Nenghai Yu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.04565",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.04565"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "LLM-based search agents are widely used for information-seeking tasks, but their reliance on external tool returns introduces a critical security risk: web content retrieved during execution is untrusted, exposing agents to prompt injection and goal hijacking. Prior work on search-agent safety primarily focuses on static web-content injection, but modern agents issue follow-up queries and cross-check competing sources, so a single injected page is often diluted or rejected. We show that the chan",
+      "pdf_url": "https://arxiv.org/pdf/2608.04565v2"
+    },
+    {
+      "id": "llmsec-2026-00268",
+      "type": "paper",
+      "title": "Behavioral Skill Reconstruction: Reconstructing Hidden Functionality from LLM Agent Skills",
+      "authors": [
+        "Peichun Hua",
+        "Haoxuan Xu",
+        "Mengyuan Li"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.04192",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.04192"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Closed source agent skills may encode proprietary instructions, scripts, constants, and data. Providers may offer their capabilities as services while keeping the underlying packages hidden. Prior work focuses on prompt injection attacks that directly disclose these artifacts, and existing defenses accordingly aim to prevent such leakage. However, preventing file disclosure does not prevent users from recovering the functionality those files implement. This raises a fundamental question: can a u",
+      "pdf_url": "https://arxiv.org/pdf/2608.04192v1"
+    },
+    {
+      "id": "llmsec-2026-00269",
+      "type": "paper",
+      "title": "AgentAntibody: An Adaptive Immune System for Defending LLM Agents against Prompt Injection",
+      "authors": [
+        "Shihao Weng",
+        "Yang Feng",
+        "Xiaofei Xie",
+        "Jiongchi Yu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.04053",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.04053"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Prompt injection remains a critical threat to LLM agents, yet existing defenses treat each task as a self-contained problem, independent of previous encounters. In practice, user requests are often underspecified: they describe the desired outcome without fully specifying acceptable behavior. An injection can exploit this ambiguity, causing the agent to complete the task in a way the user would reject. As the user's expectations become clearer through concrete cases, a defense should learn from ",
+      "pdf_url": "https://arxiv.org/pdf/2608.04053v1"
+    },
+    {
+      "id": "llmsec-2026-00270",
+      "type": "paper",
+      "title": "AI Security Leaderboard: Methodology, Results and Minimal Standard",
+      "authors": [
+        "Jasper Timm",
+        "Lukas Struppek",
+        "Ziwei Xu",
+        "Grace Cheong",
+        "Oscar Mata",
+        "Dan Zhao",
+        "Mick Yang",
+        "Isadora De Andrade",
+        "Xiaojun Jia",
+        "Yiming Li",
+        "Samuel Bauer",
+        "Heather McIntyre",
+        "Adam Gleave",
+        "Edward Yee",
+        "Kellin Pelrine"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.03070",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.03070"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "The AI Security Leaderboard is an independent benchmark that ranks the safeguards of frontier AI models from least to most secure. It tests models against the FAR$.$AI Minimal Standard for Safeguards, which represents a minimum bar for security: meeting it does not guarantee a secure model, but failing to meet it guarantees a lack of state-of-the-art security. Version 1.0 covers severe misuse requests across chemical, biological, radiological, nuclear, and explosive (CBRNE) threats and offensive",
+      "pdf_url": "https://arxiv.org/pdf/2608.03070v2"
+    },
+    {
+      "id": "llmsec-2026-00271",
+      "type": "paper",
+      "title": "Adversarial Pragmatics for AI Safety Evaluation: A Diagnostic Framework and Seed Benchmark for Language-Mediated Control",
+      "authors": [
+        "Brett Reynolds"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.01153",
+      "categories": [
+        "agentic-threats",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.01153"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Safety evaluations for language models increasingly depend on judgments about ambiguous natural-language behaviour: whether a model followed an instruction, refused appropriately, complied with a policy, or misreported progress in an agentic task. Existing benchmarks compress these into pass/fail labels, obscuring whether failures reflect capability limits, policy ambiguity, instruction conflict, scaffold failure, or unstable evaluator judgments. Adversarial pragmatics is safety-relevant model b",
+      "pdf_url": "https://arxiv.org/pdf/2607.01153v3"
+    },
+    {
+      "id": "llmsec-2026-00272",
+      "type": "paper",
+      "title": "Yuvion LLM: An Adversarially-Aware Large Language Model for Content And AI Safety",
+      "authors": [
+        "Ting Ma",
+        "Xiufeng Huang",
+        "Benlei Cui",
+        "Xiaowen Xu",
+        "Shikai Qiu",
+        "Ruijie Jian",
+        "Hongxing Li",
+        "Guanghui Wang",
+        "Longtao Huang",
+        "Haiwen Hong",
+        "Haolei Xu",
+        "Wenjing Jiang",
+        "Ziwen Xu",
+        "Zhaoyu Fan",
+        "Shaoxuan He",
+        "Chuxi Xiao",
+        "Yujian Li",
+        "Xinyue Chen",
+        "Chunyang Chai",
+        "Wenxuan Liu",
+        "Ziheng Wang",
+        "Dongjie Zhang",
+        "Yangfan Zhou",
+        "Libin Dong",
+        "Yupeng Cao",
+        "Xiaoqian Xia",
+        "Jing Wang",
+        "Zhe Jiang",
+        "Zhenan Ye",
+        "Guang Yang",
+        "Bin Liu",
+        "Wei Peng",
+        "Ziqiang Zhu",
+        "Meihui Lian",
+        "Kaiwen Lv Kacuila",
+        "Haidong Ding",
+        "Bingyu Zhu",
+        "Yan Wang",
+        "Hai Zhao",
+        "Xuan Jin",
+        "Wei Zhao",
+        "Pengfei Sun",
+        "Wei Wang",
+        "Huiming Zhang",
+        "Bin Li",
+        "Hui Xue"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.27632",
+      "categories": [
+        "tool-use-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.27632"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "As large language models are increasingly deployed in real-world systems, safety failures can still lead to harmful outputs and dangerous misuse. We argue that the essence of safety is adversarial: many failures arise not from natural inputs alone, but from strategic attempts to evade model policies and safeguards. However, existing general-purpose model development largely overlook this adversarial nature, and often remain insufficient for realistic safety scenarios involving planning, tool use",
+      "pdf_url": "https://arxiv.org/pdf/2606.27632v1"
+    },
+    {
+      "id": "llmsec-2026-00273",
+      "type": "paper",
+      "title": "MultiTurnPSB: Evaluating Multi-Turn Jailbreak Attacks an dClassifier-Based Defenses for Medical AI Safety",
+      "authors": [
+        "Anushka Sheoran",
+        "Yiduo Hao"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.02630",
+      "categories": [
+        "jailbreaking",
+        "adversarial-examples"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.02630"
+      },
+      "reviewed": false,
+      "month": 5,
+      "abstract": "Patient-facing medical chatbots are commonly evaluated on single-turn prompts, yet real users push back after refusals, add urgency, and invoke authority. We introduce MultiTurnPSB, a four-turn adversarial extension of PatientSafetyBench, and evaluate GPT-4.1-mini under fixed template, template-adaptive, and live adversarial attacks. Unsafe responses rise from 35% to nearly 80% by Turn 4 under live attack. Under the same adversary, GPT-4.1-mini and Claude Sonnet 4.5 are statistically indistingui",
+      "pdf_url": "https://arxiv.org/pdf/2606.02630v1"
+    },
+    {
+      "id": "llmsec-2026-00274",
+      "type": "paper",
+      "title": "AI Security Research Should Better Incentivize Defense Research",
+      "authors": [
+        "Youqian Zhang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2605.23448",
+      "categories": [
+        "membership-inference",
+        "federated-learning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2605.23448"
+      },
+      "reviewed": false,
+      "month": 5,
+      "abstract": "This work examines an imbalance in artificial intelligence (AI) security research: the field tends to produce more work on attacking AI systems than on defending them. Drawing on related academic papers, we find biased attack-to-defense ratios across subfields, including federated learning, speech recognition, membership inference, large language models, etc. The imbalance possibly means far beyond a simple count: attack papers are routinely evaluated under favorable conditions that make threats",
+      "pdf_url": "https://arxiv.org/pdf/2605.23448v1"
+    },
+    {
+      "id": "llmsec-2026-00275",
+      "type": "paper",
+      "title": "Trustworthy AI LLM Scalability Risk Index (LSRI): A Cybersecurity Framework Assessing Agentic-AI Security & Software Model Supply Chain Safety Boosting AI-Generated Malware Defense & Explainability Mitigating Emerging Risks of Generative AI",
+      "authors": [
+        "Kiarash Ahi",
+        "Vaibhav Agrawal",
+        "Saeed Valizadeh"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2602.19021",
+      "categories": [
+        "supply-chain-attacks",
+        "agentic-threats",
+        "responsible-ai",
+        "agent-architecture",
+        "human-in-the-loop"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "doi": "10.1080/08874417.2026.2624670",
+        "arxiv_id": "2602.19021"
+      },
+      "reviewed": false,
+      "month": 2,
+      "abstract": "As AI shifts from human-in-the-loop interfaces to autonomous multi-agent systems capable of real-time code execution and tool integration through protocols like the Model Context Protocol (MCP), traditional SAST, DAST, and legacy AI safety methods fail to detect modern agentic-AI threats. This paper introduces the LLM Scalability Risk Index (LSRI), a parametric framework and cybersecurity standard for stress-testing autonomous orchestration pipelines. LSRI measures the operational thresholds whe",
+      "doi": "10.1080/08874417.2026.2624670",
+      "pdf_url": "https://arxiv.org/pdf/2602.19021v2"
+    },
+    {
+      "id": "llmsec-2026-00276",
+      "type": "paper",
+      "title": "SKILL.state: Scalable Long-Horizon Agent Skills",
+      "authors": [
+        "Sanket Badhe",
+        "Priyanka Tiwari",
+        "Jonghyun Chung"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.26263",
+      "categories": [
+        "autonomous-operations"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.26263"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large Language Models (LLMs) increasingly act as autonomous agents executing complex, long-running procedural skills. Existing agent runtimes maintain execution by continually appending observations, actions, and intermediate reasoning traces to an ever-growing conversation history, causing latency degradation and context-poisoning failures over long horizons. We present SKILL.state, a runtime architecture that replaces append-only conversational history with an explicit, mutable execution state",
+      "pdf_url": "https://arxiv.org/pdf/2608.26263v1"
+    },
+    {
+      "id": "llmsec-2026-00277",
+      "type": "paper",
+      "title": "Retrieved But Not Reliable: A Survey on Attacks, and Defenses in Retrieval-Augmented Generation",
+      "authors": [
+        "Minh Tran",
+        "Cuong Dang",
+        "Tuc Nguyen",
+        "Khanh-Tung Tran",
+        "Minh Huynh Nguyen",
+        "Trinh Chau",
+        "Kien Le",
+        "Do Xuan Long",
+        "Jiahao Zhang",
+        "Fali Wang",
+        "Hoang D. Nguyen",
+        "Thanh Le",
+        "Suhang Wang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.24977",
+      "categories": [
+        "data-poisoning",
+        "survey",
+        "threat-modeling"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.24977"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Retrieval-Augmented Generation (RAG) enhances large language models by grounding outputs in external knowledge, improving factuality and reducing hallucinations. At the same time, the retrieval-augmented pipeline introduces new robustness and security risks, including corpus poisoning, backdoor attacks, privacy leakage, and fairness violations. Despite rapid progress in this area, existing surveys remain limited in their treatment of attacker objectives, threat models, and stage-specific defense",
+      "pdf_url": "https://arxiv.org/pdf/2608.24977v2"
+    },
+    {
+      "id": "llmsec-2026-00278",
+      "type": "paper",
+      "title": "Weighted Memory Tree: Remembering What Matters for Long-Horizon LLM Agents",
+      "authors": [
+        "Quang Dao",
+        "Purvi Kathalkar",
+        "Kenneth Eaton"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.20631",
+      "categories": [
+        "tool-use-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.20631"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Large language model (LLM) agents have demonstrated the ability to solve multi-step tasks requiring planning, tool use, and external information access, yet growing execution histories increase inference cost and expose reasoning to outdated, irrelevant, or misleading information, potentially degrading reasoning quality. Existing memory approaches organize or compress execution histories but provide limited mechanisms for deciding which memories remain active. We introduce the, a hierarchical me",
+      "pdf_url": "https://arxiv.org/pdf/2608.20631v1"
+    },
+    {
+      "id": "llmsec-2026-00279",
+      "type": "paper",
+      "title": "MemCatalyst: Amplifying Data Auditing on Vision-Language Models via Data Poisoning",
+      "authors": [
+        "Xukun Luan",
+        "Jinyan Liu",
+        "Yuhui Gong",
+        "Yuanguo Bi",
+        "Bing Hu",
+        "Xuesong Li",
+        "Di Wang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.17722",
+      "categories": [
+        "data-poisoning",
+        "membership-inference",
+        "access-control"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.17722"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Vision-Language models (VLMs) achieve outstanding performance largely due to the amount of training data available on the internet. At the same time, data holders (e.g., artists) urgently need to determine whether their data has been used for model training without authorization, which concerns both intellectual property rights and personal privacy. Data auditing, particularly through membership inference (MI), has attracted attention as a direct tool. This work proposes MemCatalyst, a set of da",
+      "pdf_url": "https://arxiv.org/pdf/2608.17722v1"
+    },
+    {
+      "id": "llmsec-2026-00280",
+      "type": "paper",
+      "title": "MAP-Graph: Provenance-Aware Shared Memory for Multi-Agent Workflows",
+      "authors": [
+        "Yiqi Wang",
+        "Zihao Yan",
+        "Jiaqi Zhang",
+        "Zhangkai Wu",
+        "Mingkai Zheng",
+        "Zequn Sun",
+        "Yanming Zhu",
+        "Taotao Cai"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.10509",
+      "categories": [
+        "access-control",
+        "agent-architecture"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.10509"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Shared memory helps language-model agents reuse information across long workflows, yet relevant evidence may not be admissible for a particular agent or action. Because restrictions propagate through derivations, summaries can conceal private, poisoned, untrusted, or revoked sources, enabling unauthorized reads or unsafe actions. Existing approaches provide semantic retrieval, scoped access, or lineage tracking, but do not clearly separate hard authorization from graded trust or adapt evidence r",
+      "pdf_url": "https://arxiv.org/pdf/2608.10509v1"
+    },
+    {
+      "id": "llmsec-2026-00281",
+      "type": "paper",
+      "title": "From Faulty Memories to Corrected Actions: Dependency-Guided Rollback Repair for Memory-Augmented Agents",
+      "authors": [
+        "Caili Yu",
+        "Yiqi Wang",
+        "Jiaqi Zhang",
+        "Yiqun Duan",
+        "Mingkai Zheng",
+        "Zhangkai Wu",
+        "Kaize Shi",
+        "Taotao Cai"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.10502",
+      "categories": [
+        "tool-use-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.10502"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Persistent memory lets language-model agents reuse information across sessions, but it also makes errors durable: a poisoned, stale, or misattributed record can alter reasoning, tool use, answers, and subsequent memory writes. Existing defenses mainly detect or delete suspicious memories, or revise the current response. Deleting the source leaves already propagated claims, actions, and derived memories active, whereas resetting the store or replaying the full trace destroys benign state and repe",
+      "pdf_url": "https://arxiv.org/pdf/2608.10502v1"
+    },
+    {
+      "id": "llmsec-2026-00282",
+      "type": "paper",
+      "title": "Adversarial Attacks in Multi-Agent LLM Pipelines: Unveiling Structural Vulnerabilities in Agentic AI Architectures",
+      "authors": [
+        "Faisal Haque Bappy",
+        "Tahrim Hossain",
+        "Tarannum Shaila Zaman",
+        "Raiful Hasan",
+        "Kamrul Hasan",
+        "Tariqul Islam"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.00718",
+      "categories": [
+        "adversarial-examples",
+        "agentic-threats",
+        "agent-architecture"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.00718"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Multi-agent LLM pipelines orchestrate multiple specialized language model agents into structured workflows where intermediate outputs are passed across agents to solve complex tasks. This design introduces a security gap absent in single-agent settings: once an agent accepts adversarial content, it is propagated as trusted input throughout the pipeline. We argue that this vulnerability stems from the absence of boundary verification, a security primitive that enforces explicit validation of data",
+      "pdf_url": "https://arxiv.org/pdf/2608.00718v1"
+    },
+    {
+      "id": "llmsec-2026-00283",
+      "type": "paper",
+      "title": "RAGuard: A Layered Defense Framework for Retrieval-Augmented Generation Systems Against Data Poisoning",
+      "authors": [
+        "Pushkal Kumar",
+        "Tucker Nielson",
+        "Tanish Kolhe",
+        "Shubham Zala",
+        "Vincent Li"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.26339",
+      "categories": [
+        "data-poisoning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.26339"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Retrieval-Augmented Generation (RAG) systems ground large language models (LLMs) in external corpora, but this reliance exposes them to corpus poisoning: maliciously injected passages that manipulate retrieved evidence. We introduce RAGuard, a layered defense against \\emph{factual} corpus-poisoning attacks on RAG pipelines. The first layer adversarially fine-tunes a dense retriever on synthetic poisoned documents (fabricated facts, contradictions, and reasoning traps), teaching it to downrank ma",
+      "pdf_url": "https://arxiv.org/pdf/2607.26339v1"
+    },
+    {
+      "id": "llmsec-2026-00284",
+      "type": "paper",
+      "title": "Architectural Backdoors in Vision-Language Model Supply Chains via Representation Steering",
+      "authors": [
+        "Maria Rosaria Briglia",
+        "Igor Maljkovic",
+        "Antonio Emanuele Cinà",
+        "Luca Oneto",
+        "Iacopo Masi",
+        "Fabio Roli"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.25479",
+      "categories": [
+        "supply-chain-attacks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.25479"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Vision--Language Models (VLMs) are increasingly deployed through a model supply chain in which pretrained checkpoints, architecture definitions, text encoders, and exported computation graphs are distributed by third parties and reused across downstream services. This reuse model creates a security-critical trust boundary: VLM deployments inherit not only learned parameters but also executable behavior encoded in shared model artifacts. In this paper, we show that a malicious provider can exploi",
+      "pdf_url": "https://arxiv.org/pdf/2607.25479v1"
+    },
+    {
+      "id": "llmsec-2026-00285",
+      "type": "paper",
+      "title": "Evolving Safety Landscape of Multi-modal Large Language Models: A Survey of Emerging Threats and Safeguards",
+      "authors": [
+        "Xi Li",
+        "Shu Zhao",
+        "Xiaohan Zou",
+        "Fei Zhao",
+        "Fuxiao Liu",
+        "Yusen Zhang",
+        "Cheng Han",
+        "Yushun Dong",
+        "Jiaqi Wang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.07535",
+      "categories": [
+        "guardrails",
+        "survey",
+        "threat-modeling"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2608.07535"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Multi-modal large language models (MLLMs) integrate heterogeneous modalities through modality alignment and fusion, enabling stronger understanding and reasoning. However, this architectural shift reshapes the safety landscape of machine learning. Increased model complexity and cross-modal interactions give rise to novel threats, including compromised modality integration, modality misalignment, and fused safety risks, reflecting shifts in threat modeling beyond uni-modal assumptions. These shif",
+      "pdf_url": "https://arxiv.org/pdf/2608.07535v1"
+    },
+    {
+      "id": "llmsec-2026-00286",
+      "type": "paper",
+      "title": "Early Detection of Distributed Backdoors in Multi-Agent LLM Systems: A Characterization Study",
+      "authors": [
+        "Diego Fernandez Arias",
+        "Dev Prashant Mistry",
+        "Ren Wang",
+        "Yibo Hu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.24893",
+      "categories": [
+        "agent-architecture"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.24893"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Multi-agent LLM systems can be attacked by a payload that no single agent ever holds in full: a poisoned tool hides encrypted fragments in its observations, spreads them across several agents, and an external step reassembles and executes them after the run. Per-step safety checks that judge each action in isolation may fail to recognize the complete distributed payload. We investigate how early such an attack can be detected while the run is still unfolding, and how robustly it can be caught on",
+      "pdf_url": "https://arxiv.org/pdf/2607.24893v1"
+    },
+    {
+      "id": "llmsec-2026-00287",
+      "type": "paper",
+      "title": "GPE: Evaluating Robust Evidence Aggregation for Fact Verification under Controllable GEO-Style Poisoning",
+      "authors": [
+        "Zhaoqi Wang",
+        "Zijian Zhang",
+        "Xiaomei Yuan",
+        "Pengtao Kou",
+        "Jiamou Liu",
+        "Zhen Li",
+        "Liehuang Zhu"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.20730",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.20730"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Large language models increasingly use search tools to retrieve up-to-date information, introducing a new attack surface in which retrieved documents can be manipulated. This risk is amplified by the development of generative engine optimization, which can make selected content more likely to be retrieved, cited, and adopted by models. Existing fact-verification benchmarks and evaluation frameworks do not provide the controlled evidence environments needed to assess robustness against GEO poison",
+      "pdf_url": "https://arxiv.org/pdf/2607.20730v1"
+    },
+    {
+      "id": "llmsec-2026-00288",
+      "type": "paper",
+      "title": "The Poisoned Chalice of LLM Evaluation Report",
+      "authors": [
+        "Jonathan Katzy",
+        "Ali Al-Kaswan",
+        "Razvan Mihai Popescu",
+        "Zhou Yang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.07481",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "doi": "10.1145/3803437.3807733",
+        "arxiv_id": "2607.07481"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Large language models are increasingly used to evaluate and support software engineering tasks, yet the validity of these evaluations is often undermined by uncertainty about whether benchmark instances were seen during pretraining. This can lead to data contamination, which may inflate performance and result in misleading conclusions about model capability. Despite this, the training corpora of many modern models are only partially disclosed, making direct decontamination infeasible. This creat",
+      "doi": "10.1145/3803437.3807733",
+      "pdf_url": "https://arxiv.org/pdf/2607.07481v1"
+    },
+    {
+      "id": "llmsec-2026-00289",
+      "type": "paper",
+      "title": "When Agents Remember Too Much: Memory Poisoning Attacks on Large Language Model Agents",
+      "authors": [
+        "George Torres",
+        "Sharad Shrestha",
+        "Satyajayant Misra"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.06595",
+      "categories": [
+        "memory-security"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.06595"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Personal AI agents powered by large language models can reason and act using available tools to access emails, manage calendars, and push code to remote repositories, all with minimal oversight. When augmented with long-term memory, an agent can recall specific details relevant to the current task, reducing the need for large context windows. Currently, long-term memory agents tend to fall into two distinct domains: conversational and action-planning agents. Personal assistant agents sit at the ",
+      "pdf_url": "https://arxiv.org/pdf/2607.06595v1"
+    },
+    {
+      "id": "llmsec-2026-00290",
+      "type": "paper",
+      "title": "ReShift: Aha-Moment-Driven Reasoning-Level Backdoor Attacks on Vision-Language Models",
+      "authors": [
+        "Zhihao Dou",
+        "Qinjian Zhao",
+        "Zhiqiang Gao",
+        "Sumon Biswas"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2607.00361",
+      "categories": [
+        "data-poisoning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2607.00361"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "Vision--Language Models (VLMs) are increasingly deployed in safety-critical applications, yet remain vulnerable to backdoor attacks. Existing methods primarily manipulate final outputs, often producing reasoning traces that are inconsistent or easily detectable. In this paper, we propose ReShift, the novel aha-moment-driven reasoning-level backdoor framework that explicitly redirects the internal chain-of-thought (CoT) trajectory while preserving surface-level coherence. ReShift introduces a Poi",
+      "pdf_url": "https://arxiv.org/pdf/2607.00361v1"
+    },
+    {
+      "id": "llmsec-2026-00291",
+      "type": "paper",
+      "title": "Curvature-Guided Module Localization for Low-Rank Detoxification of Backdoored Large Language Models",
+      "authors": [
+        "Arash Raftari",
+        "Mehrdad Mahdavi",
+        "Nathan Blackthorn",
+        "Andrew Arash Mahyari"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.30899",
+      "categories": [
+        "data-poisoning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.30899"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Backdoor attacks pose a serious threat to large language models (LLMs) by causing otherwise benign systems to produce attacker-specified malicious behavior when a hidden trigger is present. In this work, we study post hoc detoxification of backdoored LLMs in a practical setting where the defender has access to the poisoned model but does not wish to retrain the full network from scratch. We propose a mechanistically guided weight-space repair framework that first localizes modules involved in pr",
+      "pdf_url": "https://arxiv.org/pdf/2606.30899v1"
+    },
+    {
+      "id": "llmsec-2026-00292",
+      "type": "paper",
+      "title": "Theory of Continual Learning Against Data Poisoning Attacks",
+      "authors": [
+        "Yiting Hu",
+        "Lingjie Duan"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.29841",
+      "categories": [
+        "data-poisoning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.29841"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Continual learning (CL), where a model is trained on a sequence of data tasks, is increasingly being adopted across key fields such as large language models and image recognition, yet it remains highly vulnerable to data poisoning that triggers learning divergence or severe excess risk. Despite these threats, a principled theoretical foundation in CL for understanding attack and defense remains lacking. In this paper, we develop a theoretical framework to analyze strategic attacks and defenses i",
+      "pdf_url": "https://arxiv.org/pdf/2606.29841v1"
+    },
+    {
+      "id": "llmsec-2026-00293",
+      "type": "paper",
+      "title": "Why Trust Your Agent? Empirical Security Gains from TRiSM-Guided Agentic Workflows in Healthcare",
+      "authors": [
+        "Liam Kearns"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.28666",
+      "categories": [
+        "agentic-threats"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.28666"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Agent-based AI has enabled the automation of tasks by exposing application tools and resources to large language models (LLMs). However, to improve scope and accuracy, agents are often given access rights that exceed those of ordinary users, introducing significant security risks. AI is routinely integrated into applications with a disregard to security, risking data exposure and breaching regulations. This paper applies the AI Trust, Risk, and Security Management (TRiSM) framework to a medical ",
+      "pdf_url": "https://arxiv.org/pdf/2606.28666v1"
+    },
+    {
+      "id": "llmsec-2026-00294",
+      "type": "paper",
+      "title": "When the Aggregator Cheats: Data-Free Backdoors in Federated LLM-based QA Systems",
+      "authors": [
+        "Chenqing Zhu",
+        "Yanbo Dai",
+        "Yulong Tian",
+        "Qingming Li",
+        "Songze Li"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.27511",
+      "categories": [
+        "federated-learning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.27511"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Large Language Model (LLM)-based question-answering (QA) systems are increasingly deployed in sensitive domains such as healthcare, mental health counseling, and legal consultation. Federated learning (FL) enables collaborative training without sharing raw client data, for which locally trained models are aggregated at a central server (i.e., a cloud service provider) to obtain a global model. In this paper, we explore the potential vulnerability where a malicious aggregator, who may collude wit",
+      "pdf_url": "https://arxiv.org/pdf/2606.27511v1"
+    },
+    {
+      "id": "llmsec-2026-00295",
+      "type": "paper",
+      "title": "Detect, Unlearn, Restore: Defending Text Summarization Models Against Data Poisoning",
+      "authors": [
+        "Poojitha Thota",
+        "Shirin Nilizadeh"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.26036",
+      "categories": [
+        "data-poisoning"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.26036"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Training-time data poisoning during fine-tuning poses a significant threat to large language models (LLMs) deployed for abstractive text summarization, where small task-specific datasets exert disproportionate influence on model behavior. In this setting, adversaries manipulate fine-tuning data to induce persistent summarization failures, such as biased or harmful summaries, while preserving standard evaluation metrics. We present a unified post-hoc defense framework for detecting and remediatin",
+      "pdf_url": "https://arxiv.org/pdf/2606.26036v1"
+    },
+    {
+      "id": "llmsec-2026-00296",
+      "type": "paper",
+      "title": "Forget to Improve: On-Device LLM-Agent Continual Learning via Budget-Curated Memory",
+      "authors": [
+        "Beining Wu",
+        "Zihao Ding",
+        "Jun Huang",
+        "Yanxiao Zhao"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.25115",
+      "categories": [
+        "agentic-threats"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.25115"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "On-device language-model agents improve by accumulating experience in retrieved memory rather than by updating weights. This memory is hard-bounded and exposed: it consumes RAM and energy, reaches peers through a thin uplink, and becomes an attack surface because it is writable by what the agent reads. Existing systems each cover one part of this problem: agentic memories grow without a budget, on-device methods keep entries by success alone, and poisoning is studied mainly as an attack rather t",
+      "pdf_url": "https://arxiv.org/pdf/2606.25115v1"
+    },
+    {
+      "id": "llmsec-2026-00297",
+      "type": "paper",
+      "title": "LLM-Based Scientific Peer Review: Methods, Benchmarks, and Reliability Challenges",
+      "authors": [
+        "Thi Huyen Nguyen",
+        "Zahra Ahmadi"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.25057",
+      "categories": [
+        "benchmarks",
+        "survey"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.25057"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "The rapid growth of scientific submissions has pushed traditional peer review toward its scalability limits, motivating the exploration of large language models (LLMs) as intelligent automated evaluation assistants. Although recent studies show that LLMs can generate fluent critiques and approximate reviewer scores, their reliability, robustness, and security as decision-support systems remain insufficiently understood. This survey offers a systems-level analysis of LLM-based scientific peer rev",
+      "pdf_url": "https://arxiv.org/pdf/2606.25057v1"
+    },
+    {
+      "id": "llmsec-2026-00298",
+      "type": "paper",
+      "title": "When Does Belief-Based Agent Memory Help? Reliability-Conditional Updating and Provenance-Capped Poisoning Defense",
+      "authors": [
+        "Pranav Singh"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.22030",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.22030"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "We investigate when belief-based memory actually improves large language model (LLM) agents. Our vehicle is Nous, a long-term memory architecture that represents each entity-attribute pair as a categorical probability distribution updated through closed-form Bayesian inference, with information-theoretic surprise driving belief revision and entropy-based forgetting. A controlled ablation on the LoCoMo benchmark shows that Bayesian belief updating alone provides little benefit over naive last-wri",
+      "pdf_url": "https://arxiv.org/pdf/2606.22030v2"
+    },
+    {
+      "id": "llmsec-2026-00299",
+      "type": "paper",
+      "title": "Think Twice Before You Act: Protecting LLM Agents Against Tool Description Poisoning via Isolated Planning",
+      "authors": [
+        "Shanghao Shi",
+        "Xiao Wang",
+        "Chaoyu Zhang",
+        "Hao Li",
+        "Wenjing Lou",
+        "Thomas Hou",
+        "Yevgeniy Vorobeychik",
+        "Chongjie Zhang",
+        "Ning Zhang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.20922",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.20922"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "The integration of external tools has substantially expanded the capabilities of large language model (LLM) agents, but it also introduces new attack surfaces beyond prompt injection. In particular, cross-tool description poisoning can manipulate planner-visible tool metadata to steer an agent's trajectory, even if the poisoned tool itself is never chosen. To understand the effectiveness of existing defenses against this emerging threat, we first evaluate several prompt-injection defenses and fi",
+      "pdf_url": "https://arxiv.org/pdf/2606.20922v1"
+    },
+    {
+      "id": "llmsec-2026-00300",
+      "type": "paper",
+      "title": "A Layered Security Framework Against Prompt Injection in RAG-Based Chatbots",
+      "authors": [
+        "Gulshan Saleem",
+        "Nisar Ahmed",
+        "Muhammad Imran Zaman",
+        "Ali Hassan",
+        "Umar Mujahid"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.19660",
+      "categories": [
+        "prompt-injection",
+        "input-filtering"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.19660"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Prompt injection is ranked as the most critical vulnerability in large language model (LLM) deployments by the OWASP Top 10 for LLM Applications, yet existing defenses operate at isolated pipeline stages and remain incomplete. Input filters cannot inspect retrieved documents, while output monitors cannot prevent malicious payloads from reaching the model. Consequently, retrieval-augmented generation (RAG) chatbots remain vulnerable to indirect injection, where a poisoned knowledge-base document ",
+      "pdf_url": "https://arxiv.org/pdf/2606.19660v2"
+    },
+    {
+      "id": "llmsec-2026-00301",
+      "type": "paper",
+      "title": "SafeClawBench: Separating Semantic, Audit-Evidence, and Sandbox Harm in Tool-Using LLM Agents",
+      "authors": [
+        "Yuchuan Tian",
+        "Mengyu Zheng",
+        "Haocheng Mei",
+        "Ye Yuan",
+        "Chao Xu",
+        "Xinghao Chen",
+        "Hanting Chen",
+        "Yu Wang"
+      ],
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.18356",
+      "categories": [
+        "agentic-threats",
+        "sandboxing-isolation",
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "arxiv",
+      "external_ids": {
+        "arxiv_id": "2606.18356"
+      },
+      "reviewed": false,
+      "month": 6,
+      "abstract": "Tool-using language-model agents introduce security failures that go beyond unsafe text: they can disclose protected objects, write persistent memory, send messages, modify databases, or trigger harmful code and tool effects. Existing evaluations often collapse these stages into a single attack success rate, making it difficult to tell whether a model merely agreed with an attacker or actually produced observable harm. We introduce SafeClawBench, a staged benchmark for tool-using agent security ",
+      "pdf_url": "https://arxiv.org/pdf/2606.18356v1"
+    },
+    {
+      "id": "llmsec-2026-00302",
+      "type": "paper",
+      "title": "The Effects of Domestic Policies of Governments Before and After the Revolution in Alignment with the Command Economy Model",
+      "authors": [
+        "Shahram Mohammadi",
+        "Hasan Eivazzadeh",
+        "Malek Zolghadr"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.61838/jhrlp.268",
+      "categories": [
+        "guardrails"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.61838/jhrlp.268"
+      },
+      "reviewed": false,
+      "abstract": "This article examines the historical trajectory of state intervention in Iran’s economy from the Qajar period to the post-Islamic Revolution era within the framework of the command economy model and political economy analysis. The central objective is to evaluate how state-centered economic policies shaped institutional development, market structures, and economic performance across different political regimes. Using a descriptive–analytical method and library-based research, the study c",
+      "doi": "10.61838/jhrlp.268"
+    },
+    {
+      "id": "llmsec-2026-00303",
+      "type": "paper",
+      "title": "Evaluating Large Language Models Using Construction Management Certification Exams: Implications for Construction Education and Professional Preparation",
+      "authors": [
+        "Ruoxin Xiong",
+        "Yanyu Wang",
+        "Suat Gunhan",
+        "Yimin Zhu",
+        "Charles Berryman"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.1061/jceecd.eieng-2378",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.1061/jceecd.eieng-2378"
+      },
+      "reviewed": false,
+      "month": 1,
+      "abstract": "Abstract\n                  Large language models (LLMs) are increasingly used by students and professionals in the architecture, engineering, and construction (AEC) sector for learning and information retrieval. However, their reliability in performing construction management (CM) knowledge tasks remains insufficiently characterized. This study introduces CMExamSet, a benchmark data set consisting of 689 multiple-choice questions compiled from four professional C",
+      "doi": "10.1061/jceecd.eieng-2378"
+    },
+    {
+      "id": "llmsec-2026-00304",
+      "type": "paper",
+      "title": "APPLICATION OF LLM + ZERO-SHOT LARGE MODELS FOR FRUIT OBJECT DETECTION",
+      "authors": [
+        "Yingdong QIN",
+        "Haoyu SONG",
+        "Jingyi LI",
+        "Keyao WEN"
+      ],
+      "year": 2026,
+      "url": "https://doi.org/10.35633/inmateh-79-11",
+      "categories": [
+        "monitoring-detection"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.35633/inmateh-79-11"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "Efficient and flexible agricultural image annotation is crucial for intelligent crop monitoring in smart agriculture,\nyet conventional detection models are limited by fixed class labels and require extensive manual annotations.\nThis study presents a zero-shot annotation framework that integrates OWLv2, Google’s second-generation\nopen-vocabulary vision model, with large language models (e.g., GPT-3.5, DeepSeek V1) to enable\nmultilingual, natural language-driven fruit recognition in smart ",
+      "doi": "10.35633/inmateh-79-11"
+    },
+    {
+      "id": "llmsec-2026-00305",
+      "type": "paper",
+      "title": "Prompt Engineering for Academics: Real-world Application",
+      "authors": [
+        "Ekta Sinha",
+        "Shalini Chandra",
+        "Charles David Waghmare"
+      ],
+      "year": 2026,
+      "url": "https://doi.org/10.1108/978-1-83742-179-420261005",
+      "categories": [
+        "survey"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.1108/978-1-83742-179-420261005"
+      },
+      "reviewed": false,
+      "month": 8,
+      "abstract": "This chapter examines how prompt engineering can be meaningfully integrated into core academic practices, including research design, literature review, assessment, and lecture preparation. Rather than presenting artificial intelligence (AI) as a tool for automation, the chapter frames it as a mechanism for augmenting intellectual processes such as idea generation, synthesis, critique, and pedagogical design. Through detailed examples, it demonstrates how carefully constructed prompts can",
+      "doi": "10.1108/978-1-83742-179-420261005"
+    },
+    {
+      "id": "llmsec-2026-00306",
+      "type": "paper",
+      "title": "CIVIL AND CRIMINAL LIABILITY OF DEEPFAKE AI PLATFORM PROVIDERS IN VIOLATIONS OF THE RIGHT TO REPUTATION",
+      "authors": [
+        "Milka Kumala Kumala",
+        "Tuti Handayani",
+        "Muhammad Rizki",
+        "Reza Dipta Prayitna"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.71131/0rqvry57",
+      "categories": [
+        "social-engineering"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.71131/0rqvry57"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "The rapid development of Artificial Intelligence (AI) has introduced deepfake technology, which is capable of manipulating audiovisual data with high realism. While this technology offers creative utility, its misuse for synthesizing non-consensual pornography, political disinformation, and character assassination severely violates an individual’s right to reputation. This study examines the civil and criminal liabilities of AI deepfake platform providers under the Indonesian legal frame",
+      "doi": "10.71131/0rqvry57"
+    },
+    {
+      "id": "llmsec-2026-00307",
+      "type": "paper",
+      "title": "Responsible AI Governance in Iran: A Program-Theory Evaluation of the National Artificial Intelligence Strategy",
+      "authors": [
+        "Mohammad Masoumi Godarzi",
+        "Amin Poyanrad"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.61838/jhrlp.389",
+      "categories": [
+        "responsible-ai"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.61838/jhrlp.389"
+      },
+      "reviewed": false,
+      "abstract": "Artificial intelligence has become a strategic technology whose development requires coordinated institutional, regulatory, ethical, and infrastructural governance. This study evaluated the capacity of Iran’s National Artificial Intelligence Strategy to support responsible AI governance by reconstructing its underlying program theory and examining the coherence of its implementation architecture. The research adopted a qualitative, theory-based case-study design. Data were obtained throu",
+      "doi": "10.61838/jhrlp.389"
+    },
+    {
+      "id": "llmsec-2026-00308",
+      "type": "paper",
+      "title": "Artificial intelligence and machine learning in agri-food systems: A comprehensive review of technological frontiers, socio-ethical barriers, and future roadmaps",
+      "authors": [
+        "Mohsen Abbod",
+        "Naser Safaie",
+        "Safaa N. Hussein"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.30493/das.2026.010708",
+      "categories": [
+        "supply-chain-attacks"
+      ],
+      "added_date": "2026-08-30",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.30493/das.2026.010708"
+      },
+      "reviewed": false,
+      "month": 1,
+      "abstract": "Economic prosperity and human health heavily depend upon a stable food supply chain in agriculture. This essential network is fortified by modern farming techniques through boosted productivity and durability. Novel approaches are necessitated by the escalating worldwide need for nutrition. Consequently, agricultural practices and food security are positioned to be profoundly transformed by Artificial Intelligence (AI) and Machine Learning (ML). In this review, cutting-edge applications ",
+      "doi": "10.30493/das.2026.010708"
     }
   ]
 }
