@@ -8512,6 +8512,209 @@
       "month": 5,
       "abstract": "Research Context: Anomaly detection in computer networks is essential for cybersecurity, especially in complex environments like corporate and IoT networks that face emerging threats. Scientific and/or Practical Problem: Traditional Intrusion Detection Systems (IDS) struggle to identify zero-day attacks, creating significant security gaps. Signature-based approaches fail against unknown threats, while supervised models require large volumes of labeled data rarely available in practice. U",
       "doi": "10.5753/sbsi.2026.248646"
+    },
+    {
+      "id": "llmsec-2026-00206",
+      "type": "paper",
+      "title": "The Effects of Domestic Policies of Governments Before and After the Revolution in Alignment with the Command Economy Model",
+      "authors": [
+        "Shahram Mohammadi",
+        "Hasan Eivazzadeh",
+        "Malek Zolghadr"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.61838/jhrlp.268",
+      "categories": [
+        "guardrails"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.61838/jhrlp.268"
+      },
+      "reviewed": false,
+      "abstract": "This article examines the historical trajectory of state intervention in Iran’s economy from the Qajar period to the post-Islamic Revolution era within the framework of the command economy model and political economy analysis. The central objective is to evaluate how state-centered economic policies shaped institutional development, market structures, and economic performance across different political regimes. Using a descriptive–analytical method and library-based research, the study c",
+      "doi": "10.61838/jhrlp.268"
+    },
+    {
+      "id": "llmsec-2026-00207",
+      "type": "paper",
+      "title": "Evaluating Large Language Models Using Construction Management Certification Exams: Implications for Construction Education and Professional Preparation",
+      "authors": [
+        "Ruoxin Xiong",
+        "Yanyu Wang",
+        "Suat Gunhan",
+        "Yimin Zhu",
+        "Charles Berryman"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.1061/jceecd.eieng-2378",
+      "categories": [
+        "benchmarks"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.1061/jceecd.eieng-2378"
+      },
+      "reviewed": false,
+      "month": 1,
+      "abstract": "Abstract\n                  Large language models (LLMs) are increasingly used by students and professionals in the architecture, engineering, and construction (AEC) sector for learning and information retrieval. However, their reliability in performing construction management (CM) knowledge tasks remains insufficiently characterized. This study introduces CMExamSet, a benchmark data set consisting of 689 multiple-choice questions compiled from four professional C",
+      "doi": "10.1061/jceecd.eieng-2378"
+    },
+    {
+      "id": "llmsec-2026-00208",
+      "type": "paper",
+      "title": "Cross-Lingual Indirect Prompt Injection Across Retrieval, Reranking, And Generation In Multilingual RAG",
+      "authors": [
+        "Fauzi Bondan Prihananto",
+        "Erlangga Bayu Yudho Prakoso",
+        "Aprilisa Arum Sari",
+        "Tomy Anugrah Islami"
+      ],
+      "year": 2026,
+      "url": "https://doi.org/10.59435/jocstec.v4i3.809",
+      "categories": [
+        "prompt-injection"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.59435/jocstec.v4i3.809"
+      },
+      "reviewed": false,
+      "month": 9,
+      "abstract": "External evidence can make retrieval-augmented generation (RAG) more informative, yet retrieved passages also provide a path for adversarial instructions to enter the model context. We examine that path in an English-Indonesian RAG system and track cross-lingual indirect prompt injection separately at retrieval, reranking, and generation. The experiment starts from 75 semantic items and evaluates every item in eight query/body/payload language combinations, for 600 paired trials. Qwen3-E",
+      "doi": "10.59435/jocstec.v4i3.809"
+    },
+    {
+      "id": "llmsec-2026-00209",
+      "type": "paper",
+      "title": "Data poisoning in LLM multiagent societies: Social proof drives collective decision failure in financial deliberation",
+      "authors": [
+        "Jeongsu Park",
+        "Yuji Lim",
+        "Geonwoo Kim",
+        "Taehyeon Yun",
+        "Moohong Min"
+      ],
+      "year": 2026,
+      "url": "https://doi.org/10.4218/etrij.2026-0186",
+      "categories": [
+        "data-poisoning"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.4218/etrij.2026-0186"
+      },
+      "reviewed": false,
+      "month": 9,
+      "abstract": "Abstract\n                  Large language model (LLM) multiagent systems are increasingly deployed for high‐stakes financial deliberation, but individually secure LLMs may become vulnerable when embedded in a peer‐to‐peer agent society. We study data poisoning in such societies using Moltbook, a deliberation test bed modeled after the agent‐only social platform. A single malicious agent representing just 14% of a seven‐agent society drives collective accuracy fro",
+      "doi": "10.4218/etrij.2026-0186"
+    },
+    {
+      "id": "llmsec-2026-00210",
+      "type": "paper",
+      "title": "Injection of Leukocyte‐Poor Platelet‐Rich Plasma During Rotator Cuff Repair Can Increase Healing Rate but Does Not Affect Clinical Outcomes: A Systematic Review and Meta‐analysis of Randomized Controlled Trials",
+      "authors": [
+        "Charalampos Pitsilos",
+        "Dimitrios Rigkos",
+        "Byron Chalidis"
+      ],
+      "year": 2026,
+      "url": "https://doi.org/10.1002/arj.70537",
+      "categories": [
+        "survey"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.1002/arj.70537"
+      },
+      "reviewed": false,
+      "month": 9,
+      "abstract": "\n                    Purpose\n                    To evaluate the efficacy of injected leukocyte‐poor platelet‐rich plasma (LP‐PRP) during arthroscopic rotator cuff repair, primarily in reducing failure rates and, secondarily, in improving shoulder function and clinical outcome.\n                  \n                  \n                    Methods\n                    \n                      A syst",
+      "doi": "10.1002/arj.70537"
+    },
+    {
+      "id": "llmsec-2026-00211",
+      "type": "paper",
+      "title": "CIVIL AND CRIMINAL LIABILITY OF DEEPFAKE AI PLATFORM PROVIDERS IN VIOLATIONS OF THE RIGHT TO REPUTATION",
+      "authors": [
+        "Milka Kumala Kumala",
+        "Tuti Handayani",
+        "Muhammad Rizki",
+        "Reza Dipta Prayitna"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.71131/0rqvry57",
+      "categories": [
+        "social-engineering"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.71131/0rqvry57"
+      },
+      "reviewed": false,
+      "month": 7,
+      "abstract": "The rapid development of Artificial Intelligence (AI) has introduced deepfake technology, which is capable of manipulating audiovisual data with high realism. While this technology offers creative utility, its misuse for synthesizing non-consensual pornography, political disinformation, and character assassination severely violates an individual’s right to reputation. This study examines the civil and criminal liabilities of AI deepfake platform providers under the Indonesian legal frame",
+      "doi": "10.71131/0rqvry57"
+    },
+    {
+      "id": "llmsec-2026-00212",
+      "type": "paper",
+      "title": "Responsible AI Governance in Iran: A Program-Theory Evaluation of the National Artificial Intelligence Strategy",
+      "authors": [
+        "Mohammad Masoumi Godarzi",
+        "Amin Poyanrad"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.61838/jhrlp.389",
+      "categories": [
+        "responsible-ai"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.61838/jhrlp.389"
+      },
+      "reviewed": false,
+      "abstract": "Artificial intelligence has become a strategic technology whose development requires coordinated institutional, regulatory, ethical, and infrastructural governance. This study evaluated the capacity of Iran’s National Artificial Intelligence Strategy to support responsible AI governance by reconstructing its underlying program theory and examining the coherence of its implementation architecture. The research adopted a qualitative, theory-based case-study design. Data were obtained throu",
+      "doi": "10.61838/jhrlp.389"
+    },
+    {
+      "id": "llmsec-2026-00213",
+      "type": "paper",
+      "title": "Artificial intelligence and machine learning in agri-food systems: A comprehensive review of technological frontiers, socio-ethical barriers, and future roadmaps",
+      "authors": [
+        "Mohsen Abbod",
+        "Naser Safaie",
+        "Safaa N. Hussein"
+      ],
+      "year": 2027,
+      "url": "https://doi.org/10.30493/das.2026.010708",
+      "categories": [
+        "supply-chain-attacks"
+      ],
+      "added_date": "2026-09-13",
+      "added_by": "automation",
+      "source_api": "crossref",
+      "external_ids": {
+        "doi": "10.30493/das.2026.010708"
+      },
+      "reviewed": false,
+      "month": 1,
+      "abstract": "Economic prosperity and human health heavily depend upon a stable food supply chain in agriculture. This essential network is fortified by modern farming techniques through boosted productivity and durability. Novel approaches are necessitated by the escalating worldwide need for nutrition. Consequently, agricultural practices and food security are positioned to be profoundly transformed by Artificial Intelligence (AI) and Machine Learning (ML). In this review, cutting-edge applications ",
+      "doi": "10.30493/das.2026.010708"
     }
   ]
 }
