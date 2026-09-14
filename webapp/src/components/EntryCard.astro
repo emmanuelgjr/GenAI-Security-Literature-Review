@@ -22,6 +22,13 @@ interface Props {
 const { entry } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
+// Cards clamp the abstract to two lines; shipping all ~500 characters of every
+// abstract made long category listings needlessly heavy.
+const ABSTRACT_PREVIEW = 280;
+const abstractPreview = entry.abstract && entry.abstract.length > ABSTRACT_PREVIEW
+  ? `${entry.abstract.slice(0, ABSTRACT_PREVIEW).replace(/\s+\S*$/, '')}…`
+  : entry.abstract;
+
 const typeColors: Record<string, string> = {
   paper: 'badge-blue',
   book: 'badge-purple',
@@ -41,8 +48,10 @@ const typeColors: Record<string, string> = {
         <span class={`badge ${typeColors[entry.type] || 'badge-gray'}`}>
           {entry.type}
         </span>
-        {entry.reviewed && (
+        {entry.reviewed ? (
           <span class="badge badge-green" title="Human-reviewed">reviewed</span>
+        ) : (
+          <span class="badge badge-amber" title="Added automatically; not yet human-reviewed">unreviewed</span>
         )}
         {entry.open_access && (
           <span class="badge badge-blue" title="Open access">open access</span>
@@ -56,10 +65,10 @@ const typeColors: Record<string, string> = {
       </h3>
       <p class="text-sm text-gray-600 mb-2">
         {entry.authors.slice(0, 3).join(', ')}{entry.authors.length > 3 ? ` + ${entry.authors.length - 3} more` : ''}
-        {entry.venue && <span class="text-gray-400"> &mdash; {entry.venue}</span>}
+        {entry.venue && <span class="text-gray-500"> &mdash; {entry.venue}</span>}
       </p>
-      {entry.abstract && (
-        <p class="text-sm text-gray-700 line-clamp-2 mb-3">{entry.abstract}</p>
+      {abstractPreview && (
+        <p class="text-sm text-gray-700 line-clamp-2 mb-3">{abstractPreview}</p>
       )}
       <div class="flex items-center gap-2 flex-wrap">
         {entry.categories.slice(0, 4).map((cat) => (
@@ -74,8 +83,8 @@ const typeColors: Record<string, string> = {
         )}
       </div>
     </div>
-    <a href={entry.url} target="_blank" rel="noopener noreferrer" class="shrink-0 text-gray-400 hover:text-primary-600" title="Open resource">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <a href={entry.url} target="_blank" rel="noopener noreferrer" class="shrink-0 text-gray-500 hover:text-primary-600" title="Open resource" aria-label={`Open resource: ${entry.title} (new tab)`}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
       </svg>
     </a>

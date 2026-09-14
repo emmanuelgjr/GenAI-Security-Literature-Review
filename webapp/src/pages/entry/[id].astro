@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FrameworkBadge from '../../components/FrameworkBadge.astro';
 import { getCategoryClasses } from '../../categoryColors';
+import { generateBibtex } from '../../lib/bibtex';
+import { citationKeys } from '../../lib/dataset';
 import literature from '../../data/literature.json';
 
 export function getStaticPaths() {
@@ -25,28 +27,20 @@ const typeColors: Record<string, string> = {
   dataset: 'badge-green',
 };
 
-// Generate BibTeX
-function generateBibtex(e: typeof entry): string {
-  const key = e.id.replace(/-/g, '');
-  const authorStr = e.authors.join(' and ');
-  const lines = [
-    `@article{${key},`,
-    `  title = {${e.title}},`,
-    `  author = {${authorStr}},`,
-    `  year = {${e.year}},`,
-  ];
-  if (e.venue) lines.push(`  journal = {${e.venue}},`);
-  if (e.doi) lines.push(`  doi = {${e.doi}},`);
-  if (e.url) lines.push(`  url = {${e.url}},`);
-  lines.push('}');
-  return lines.join('\n');
-}
+// Same key as in the combined literature.bib download
+const bibtex = generateBibtex(entry as any, citationKeys.get(entry.id));
 
-const bibtex = generateBibtex(entry);
+const authorsShort = entry.authors.length > 3 ? `${entry.authors.slice(0, 3).join(', ')} et al.` : entry.authors.join(', ');
+const summary = !entry.abstract
+  ? `${entry.type} on GenAI security.`
+  : entry.abstract.length > 200
+    ? `${entry.abstract.slice(0, 200).replace(/\s+\S*$/, '')}…`
+    : entry.abstract;
+const description = `${authorsShort} (${entry.year}). ${summary}`;
 const frameworkMappings: Record<string, string[]> | undefined = (entry as any).framework_mappings;
 ---
 
-<BaseLayout title={entry.title}>
+<BaseLayout title={entry.title} description={description} ogType="article">
   <div class="max-w-4xl mx-auto">
     <!-- Back link -->
     <a href={`${base}search/`} class="text-sm text-gray-500 hover:text-primary-600 mb-4 inline-block">
@@ -57,12 +51,21 @@ const frameworkMappings: Record<string, string[]> | undefined = (entry as any).f
     <div class="card mb-6">
       <div class="flex items-center gap-2 mb-3 flex-wrap">
         <span class={`badge ${typeColors[entry.type] || 'badge-gray'}`}>{entry.type}</span>
-        {entry.reviewed && <span class="badge badge-green">reviewed</span>}
+        {entry.reviewed
+          ? <span class="badge badge-green">reviewed</span>
+          : <span class="badge badge-amber">unreviewed</span>}
         {entry.open_access && <span class="badge badge-blue">open access</span>}
         <span class="text-sm text-gray-500">{entry.id}</span>
       </div>
 
       <h1 class="text-2xl font-bold text-gray-900 mb-3">{entry.title}</h1>
+
+      {!entry.reviewed && (
+        <p class="text-sm bg-amber-50 border border-amber-200 text-amber-900 rounded-md px-3 py-2 mb-3">
+          This entry was added automatically from {entry.source_api || 'an academic API'} and has not been reviewed yet.
+          Its categories were assigned by keyword matching and may be inaccurate.
+        </p>
+      )}
 
       <p class="text-gray-700 mb-2">
         {entry.authors.join(', ')}
@@ -76,7 +79,7 @@ const frameworkMappings: Record<string, string[]> | undefined = (entry as any).f
         )}
       </div>
 
-      <div class="flex gap-3">
+      <div class="flex flex-wrap gap-3">
         <a href={entry.url} target="_blank" rel="noopener noreferrer" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 no-underline">
           View Resource
         </a>
@@ -142,6 +145,7 @@ const frameworkMappings: Record<string, string[]> | undefined = (entry as any).f
       <div class="relative">
         <pre class="bg-gray-50 rounded-md p-4 text-sm overflow-x-auto"><code>{bibtex}</code></pre>
         <button
+          type="button"
           id="copy-bibtex"
           class="absolute top-2 right-2 bg-white border border-gray-300 rounded px-2 py-1 text-xs text-gray-600 hover:bg-gray-50"
           data-bibtex={bibtex}
