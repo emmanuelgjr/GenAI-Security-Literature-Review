@@ -4,10 +4,28 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  ogType?: 'website' | 'article';
 }
 
-const { title, description = "Comprehensive literature review of LLM and AI security research, standards, tools, and resources." } = Astro.props;
+const SITE_NAME = 'GenAI Security Literature Review';
+const {
+  title,
+  description = 'Comprehensive literature review of LLM and AI security research, standards, tools, and resources.',
+  ogType = 'website',
+} = Astro.props;
 const base = import.meta.env.BASE_URL;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const fullTitle = `${title} | ${SITE_NAME}`;
+
+const navLinks = [
+  { href: base, label: 'Home' },
+  { href: `${base}browse/`, label: 'Browse' },
+  { href: `${base}search/`, label: 'Search' },
+  { href: `${base}frameworks/`, label: 'Frameworks' },
+  { href: `${base}about/`, label: 'About' },
+];
+const isCurrent = (href: string) =>
+  href === base ? Astro.url.pathname === base : Astro.url.pathname.startsWith(href);
 ---
 
 <!doctype html>
@@ -16,10 +34,22 @@ const base = import.meta.env.BASE_URL;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-    <title>{title} | GenAI Security Literature Review</title>
+    <link rel="sitemap" href={`${base}sitemap-index.xml`} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <title>{fullTitle}</title>
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-primary-700 focus:px-3 focus:py-2 focus:rounded-md focus:shadow">
+      Skip to content
+    </a>
     <header class="bg-primary-900 text-white shadow-lg">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -27,16 +57,18 @@ const base = import.meta.env.BASE_URL;
             GenAI Security Lit Review
           </a>
           <div class="hidden sm:flex space-x-6">
-            <a href={base} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Home</a>
-            <a href={`${base}browse/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Browse</a>
-            <a href={`${base}search/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Search</a>
-            <a href={`${base}frameworks/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">Frameworks</a>
-            <a href={`${base}about/`} class="text-primary-200 hover:text-white no-underline text-sm font-medium">About</a>
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                aria-current={isCurrent(link.href) ? 'page' : undefined}
+                class={`no-underline text-sm font-medium hover:text-white ${isCurrent(link.href) ? 'text-white' : 'text-primary-200'}`}
+              >{link.label}</a>
+            ))}
           </div>
           <!-- Mobile menu button -->
           <div class="sm:hidden">
-            <button id="mobile-menu-btn" class="text-primary-200 hover:text-white" aria-label="Toggle menu">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="mobile-menu-btn" type="button" class="text-primary-200 hover:text-white" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -44,16 +76,18 @@ const base = import.meta.env.BASE_URL;
         </div>
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden sm:hidden pb-4">
-          <a href={base} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Home</a>
-          <a href={`${base}browse/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Browse</a>
-          <a href={`${base}search/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Search</a>
-          <a href={`${base}frameworks/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">Frameworks</a>
-          <a href={`${base}about/`} class="block py-2 text-primary-200 hover:text-white no-underline text-sm">About</a>
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              class="block py-2 text-primary-200 hover:text-white no-underline text-sm"
+            >{link.label}</a>
+          ))}
         </div>
       </nav>
     </header>
 
-    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <main id="main" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
       <slot />
     </main>
 
@@ -80,8 +114,10 @@ const base = import.meta.env.BASE_URL;
     </footer>
 
     <script>
-      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-        document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', (event) => {
+        const button = event.currentTarget as HTMLButtonElement;
+        const hidden = document.getElementById('mobile-menu')?.classList.toggle('hidden');
+        button.setAttribute('aria-expanded', String(!hidden));
       });
     </script>
   </body>
