@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Fetch new LLM security papers from CrossRef API."""
 
+import html
 import json
+import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -21,15 +23,26 @@ QUERIES = [
 ]
 
 MAX_RESULTS_PER_QUERY = 30
+LOOKBACK_DAYS = 365
+
+
+def clean_text(value: str) -> str:
+    """Strip JATS/HTML markup and entities that CrossRef leaves in titles and abstracts."""
+    # Unescape first: some records double-encode markup as "&lt;b&gt;".
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(value))).strip()
 
 
 def fetch_query(query: str, max_results: int = MAX_RESULTS_PER_QUERY) -> list[dict]:
     """Fetch papers from CrossRef for a single query."""
+    # Sort by relevance, not date: CrossRef matches documents containing *any*
+    # query word, so date-sorted results are just the newest papers that mention
+    # "security" or "injection" in any field. Recency comes from the date filter.
+    from_date = (datetime.now() - timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
     params = {
-        "query": query,
+        "query.bibliographic": query,
         "rows": max_results,
-        "filter": "has-abstract:true",
-        "sort": "published",
+        "filter": f"has-abstract:true,from-pub-date:{from_date}",
+        "sort": "relevance",
         "order": "desc",
         "select": "DOI,title,author,published-print,published-online,abstract,URL,is-referenced-by-count",
     }
@@ -44,7 +57,7 @@ def fetch_query(query: str, max_results: int = MAX_RESULTS_PER_QUERY) -> list[di
     papers = []
     for item in data.get("message", {}).get("items", []):
         title_list = item.get("title", [])
-        title = title_list[0] if title_list else ""
+        title = clean_text(title_list[0]) if title_list else ""
         if not title:
             continue
 
@@ -62,10 +75,7 @@ def fetch_query(query: str, max_results: int = MAX_RESULTS_PER_QUERY) -> list[di
         year = date_parts[0] if len(date_parts) > 0 else 0
         month = date_parts[1] if len(date_parts) > 1 else 0
 
-        abstract = (item.get("abstract") or "")[:500]
-        # Strip JATS XML tags from abstract
-        import re
-        abstract = re.sub(r"<[^>]+>", "", abstract)
+        abstract = clean_text(item.get("abstract") or "")[:500]
 
         citation_count = item.get("is-referenced-by-count", 0)
 
