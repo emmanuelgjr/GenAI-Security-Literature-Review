@@ -47,6 +47,15 @@ export function escapeLatex(value: string): string {
   return value.replace(/[\\{}&%$#_~^]/g, (ch) => LATEX_SPECIALS[ch]);
 }
 
+/**
+ * URL-like fields (url, doi, eprint) are read verbatim by url-aware styles, so
+ * LaTeX escaping would corrupt them; only characters that break BibTeX's brace
+ * parsing are percent-encoded, plus whitespace.
+ */
+export function escapeBibUrl(value: string): string {
+  return value.trim().replace(/[{}\\\s]/g, (ch) => `%${ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0')}`);
+}
+
 function formatAuthor(name: string): string {
   const escaped = escapeLatex(name.trim());
   return ORGANIZATION_RE.test(name) ? `{${escaped}}` : escaped;
@@ -135,10 +144,10 @@ export function generateBibtex(entry: BibEntry, key: string = citationKey(entry)
 
   const arxiv = entry.external_ids?.arxiv_id;
   if (arxiv) {
-    fields.push(['eprint', arxiv], ['archivePrefix', 'arXiv']);
+    fields.push(['eprint', escapeBibUrl(arxiv)], ['archivePrefix', 'arXiv']);
   }
-  if (entry.doi) fields.push(['doi', entry.doi]);
-  if (entry.url) fields.push(['url', entry.url]);
+  if (entry.doi) fields.push(['doi', escapeBibUrl(entry.doi)]);
+  if (entry.url) fields.push(['url', escapeBibUrl(entry.url)]);
 
   const body = fields
     .map(([name, value]) => (name === 'month' ? `  ${name} = ${value}` : `  ${name} = {${value}}`))

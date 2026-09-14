@@ -28,15 +28,15 @@ const totalCategories = taxonomy.domains.reduce((s, d) => s + d.categories.lengt
         <div class="space-y-4 text-gray-700">
           <div>
             <h3 class="font-semibold text-gray-900">Auto-Discovery</h3>
-            <p>A weekly GitHub Action queries academic APIs (arXiv, Semantic Scholar, CrossRef) for new LLM security publications. New entries are submitted as pull requests for human review before merging into the database.</p>
+            <p>A weekly GitHub Action collects new papers from arXiv, Semantic Scholar and CrossRef and proposes them in a pull request for human review before they are merged into the database.</p>
           </div>
           <div>
             <h3 class="font-semibold text-gray-900">Human Curation</h3>
-            <p>Every entry is categorized using our taxonomy, mapped to relevant security frameworks (OWASP, NIST, MITRE ATLAS, ISO 42001), and tagged. Entries can be community-submitted via GitHub Issues.</p>
+            <p>Curated entries are categorized using our taxonomy, mapped to relevant security frameworks (OWASP, NIST, MITRE ATLAS, ISO 42001), and tagged. Automatically added entries get keyword-based categories and stay marked as not yet reviewed until a maintainer vets them. Anyone can suggest a resource via GitHub Issues.</p>
           </div>
           <div>
             <h3 class="font-semibold text-gray-900">Quality Signals</h3>
-            <p>Entries marked as "reviewed" have been vetted by a human. Citation counts, open-access status, and venue information help you prioritize what to read.</p>
+            <p>Entries marked as "reviewed" have been vetted by a human; unreviewed entries carry a badge. Every change to the data is validated against the schema in CI. Citation counts, open-access status, and venue information help you prioritize what to read.</p>
           </div>
         </div>
       </div>
@@ -56,10 +56,10 @@ const totalCategories = taxonomy.domains.reduce((s, d) => s + d.categories.lengt
 
       <div class="card mb-6">
         <h2 class="text-xl font-semibold mb-3">Framework Mappings</h2>
-        <p class="text-gray-700 mb-3">Every entry is mapped (where applicable) to these security frameworks:</p>
+        <p class="text-gray-700 mb-3">Entries are mapped (where applicable) to these security frameworks:</p>
         <ul class="list-disc pl-5 text-gray-700 space-y-1">
           <li><strong>OWASP Top 10 for LLM Applications</strong> -- the most widely adopted LLM security standard</li>
-          <li><strong>OWASP Top 10 for Agentic AI</strong> -- security risks specific to autonomous AI agents</li>
+          <li><strong>OWASP Top 10 for Agentic Applications</strong> -- security risks specific to autonomous AI agents</li>
           <li><strong>MITRE ATLAS</strong> -- adversarial tactics, techniques, and case studies for AI systems</li>
           <li><strong>NIST AI RMF</strong> -- the US government's AI risk management framework</li>
           <li><strong>ISO/IEC 42001</strong> -- international standard for AI management systems</li>
