@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import FrameworkBadge from '../../components/FrameworkBadge.astro';
 import { getCategoryClasses } from '../../categoryColors';
 import { generateBibtex } from '../../lib/bibtex';
+import { citationKeys } from '../../lib/dataset';
 import literature from '../../data/literature.json';
 
 export function getStaticPaths() {
@@ -26,7 +27,8 @@ const typeColors: Record<string, string> = {
   dataset: 'badge-green',
 };
 
-const bibtex = generateBibtex(entry as any);
+// Same key as in the combined literature.bib download
+const bibtex = generateBibtex(entry as any, citationKeys.get(entry.id));
 
 const authorsShort = entry.authors.length > 3 ? `${entry.authors.slice(0, 3).join(', ')} et al.` : entry.authors.join(', ');
 const summary = !entry.abstract

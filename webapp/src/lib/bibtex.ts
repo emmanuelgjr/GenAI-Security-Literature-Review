@@ -47,6 +47,15 @@ export function escapeLatex(value: string): string {
   return value.replace(/[\\{}&%$#_~^]/g, (ch) => LATEX_SPECIALS[ch]);
 }
 
+/**
+ * URL-like fields (url, doi, eprint) are read verbatim by url-aware styles, so
+ * LaTeX escaping would corrupt them; only characters that break BibTeX's brace
+ * parsing are percent-encoded, plus whitespace.
+ */
+export function escapeBibUrl(value: string): string {
+  return value.trim().replace(/[{}\\\s]/g, (ch) => `%${ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0')}`);
+}
+
 function formatAuthor(name: string): string {
   const escaped = escapeLatex(name.trim());
   return ORGANIZATION_RE.test(name) ? `{${escaped}}` : escaped;
@@ -93,7 +102,36 @@ function entryType(entry: BibEntry): { kind: string; venueField?: string } {
   }
 }
 
-export function generateBibtex(entry: BibEntry): string {
+/**
+ * Citation keys that are unique across the whole dataset.
+ *
+ * author-year-word keys collide (same first author, year and first title word),
+ * which breaks a combined .bib file. Colliding keys get a/b/c suffixes in entry
+ * id order, so a key only changes when another entry joins its collision group.
+ */
+export function uniqueCitationKeys(entries: BibEntry[]): Map<string, string> {
+  const groups = new Map<string, string[]>();
+  for (const entry of [...entries].sort((a, b) => a.id.localeCompare(b.id))) {
+    const key = citationKey(entry);
+    groups.set(key, [...(groups.get(key) ?? []), entry.id]);
+  }
+  const keys = new Map<string, string>();
+  for (const [key, ids] of groups) {
+    ids.forEach((id, i) => keys.set(id, ids.length === 1 ? key : `${key}${suffix(i)}`));
+  }
+  return keys;
+}
+
+// a..z, then aa, ab, ... for (unlikely) groups larger than 26
+function suffix(index: number): string {
+  let out = '';
+  for (let n = index + 1; n > 0; n = Math.floor((n - 1) / 26)) {
+    out = String.fromCharCode(97 + ((n - 1) % 26)) + out;
+  }
+  return out;
+}
+
+export function generateBibtex(entry: BibEntry, key: string = citationKey(entry)): string {
   const { kind, venueField } = entryType(entry);
   const fields: [string, string][] = [
     // Double braces keep acronyms like "LLM" from being lower-cased by styles.
@@ -106,13 +144,13 @@ export function generateBibtex(entry: BibEntry): string {
 
   const arxiv = entry.external_ids?.arxiv_id;
   if (arxiv) {
-    fields.push(['eprint', arxiv], ['archivePrefix', 'arXiv']);
+    fields.push(['eprint', escapeBibUrl(arxiv)], ['archivePrefix', 'arXiv']);
   }
-  if (entry.doi) fields.push(['doi', entry.doi]);
-  if (entry.url) fields.push(['url', entry.url]);
+  if (entry.doi) fields.push(['doi', escapeBibUrl(entry.doi)]);
+  if (entry.url) fields.push(['url', escapeBibUrl(entry.url)]);
 
   const body = fields
     .map(([name, value]) => (name === 'month' ? `  ${name} = ${value}` : `  ${name} = {${value}}`))
     .join(',\n');
-  return `@${kind}{${citationKey(entry)},\n${body}\n}`;
+  return `@${kind}{${key},\n${body}\n}`;
 }
