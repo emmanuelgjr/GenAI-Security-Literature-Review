@@ -85,8 +85,14 @@ jobs:
             echo "### New Entries"
             echo
             echo '```'
-            cat new_entries_summary.txt
+            # PR bodies are capped at 65536 characters; a long-lived rolling
+            # PR can accumulate more entries than that. The diff has them all.
+            head -c 60000 new_entries_summary.txt
             echo '```'
+            if [ "$(wc -c < new_entries_summary.txt)" -gt 60000 ]; then
+              echo
+              echo "*Summary truncated -- see the Files changed tab for the full list.*"
+            fi
             echo
             echo "---"
             echo "*Last updated by the weekly paper fetch workflow (run #${{ github.run_number }}, trigger: ${{ github.event_name }}).*"
