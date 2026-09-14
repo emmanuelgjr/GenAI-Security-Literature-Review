@@ -7306,31 +7306,6 @@
       "pdf_url": "https://arxiv.org/pdf/2603.21654v1"
     },
     {
-      "id": "llmsec-2026-00164",
-      "type": "paper",
-      "title": "Agentic AI in Industry: Adoption Level and Deployment Barriers",
-      "authors": [
-        "Spyridon Alvanakis Apostolou",
-        "Jan Bosch",
-        "Helena Holmström Olsson"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.14675",
-      "categories": [
-        "agentic-threats"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "arxiv_id": "2605.14675"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "Agentic AI systems are entering software engineering workflows, yet empirical evidence on how industrial organizations actually adopt them remains sparse. We present a qualitative interview study with sixteen practitioners across twelve companies of varying size and domain. This study characterizes the current agentic AI adoption state of these companies, employing a six-level maturity framework adapted from established AI-driven organizations. The findings reveal that seven companies operate at",
-      "pdf_url": "https://arxiv.org/pdf/2605.14675v1"
-    },
-    {
       "id": "llmsec-2026-00165",
       "type": "paper",
       "title": "LiSA: Lifelong Safety Adaptation via Conservative Policy Induction",
@@ -7360,32 +7335,6 @@
       "month": 5,
       "abstract": "As AI agents move from chat interfaces to systems that read private data, call tools, and execute multi-step workflows, guardrails become a last line of defense against concrete deployment harms. In these settings, guardrail failures are no longer merely answer-quality errors: they can leak secrets, authorize unsafe actions, or block legitimate work. The hardest failures are often contextual: whether an action is acceptable depends on local privacy norms, organizational policies, and user expect",
       "pdf_url": "https://arxiv.org/pdf/2605.14454v1"
-    },
-    {
-      "id": "llmsec-2026-00166",
-      "type": "paper",
-      "title": "Multi-Stream LLMs: Unblocking Language Models with Parallel Streams of Thoughts, Inputs and Outputs",
-      "authors": [
-        "Guinan Su",
-        "Yanwu Yang",
-        "Xueyan Li",
-        "Jonas Geiping"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.12460",
-      "categories": [
-        "autonomous-operations"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "arxiv_id": "2605.12460"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "The continued improvements in language model capability have unlocked their widespread use as drivers of autonomous agents, for example in coding or computer use applications. However, the core of these systems has not changed much since early instruction-tuned models like ChatGPT. Even advanced AI agents function on message exchange formats, successively exchanging messages with users, systems, with itself (i.e. chain-of-thought) and tools in a single stream of computation. This bottleneck to a",
-      "pdf_url": "https://arxiv.org/pdf/2605.12460v1"
     },
     {
       "id": "llmsec-2026-00167",
@@ -7577,63 +7526,6 @@
       "month": 5,
       "abstract": "Agentic frameworks are the software layer through which AI agents act in the world. Existing safety methods intervene on the model and therefore remain conditional on unverifiable properties of learned behavior. We introduce containment verification, which locates safety guarantees in the agentic framework itself. Under havoc oracle semantics, the AI is modeled as an unconstrained oracle ranging over the entire typed action space, and the verified containment layer must enforce the boundary poli",
       "pdf_url": "https://arxiv.org/pdf/2605.09045v1"
-    },
-    {
-      "id": "llmsec-2026-00174",
-      "type": "paper",
-      "title": "Toward Web 4.0: Bidirectional Trust between AI Agents and Blockchain",
-      "authors": [
-        "Yunfeng Xia",
-        "Chao Li",
-        "Lei Li",
-        "Chenhao Zhang",
-        "Li Duan",
-        "Runhua Xu",
-        "Wei Wang"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.08922",
-      "categories": [
-        "autonomous-operations",
-        "survey"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "arxiv_id": "2605.08922"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "Autonomous AI agents are increasingly deployed on blockchain platforms, yet the design space that governs their interaction remains poorly understood. This convergence, where autonomous agents operate on and within decentralized systems, is a defining feature of the emerging Web~4.0 paradigm. This paper presents a Systematization of Knowledge organized around a bidirectional trust framework. In the B $\\boldsymbol{\\rightarrow}$ A direction, we examine how blockchain provides trust infrastructure ",
-      "pdf_url": "https://arxiv.org/pdf/2605.08922v1"
-    },
-    {
-      "id": "llmsec-2026-00175",
-      "type": "paper",
-      "title": "From Assistance to Agency: Rethinking Autonomy and Control in CI/CD Pipelines",
-      "authors": [
-        "Marcus Emmanuel Barnes",
-        "Taher A. Ghaleb",
-        "Safwat Hassan"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.07062",
-      "categories": [
-        "agentic-threats"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "doi": "10.1145/3805760.3814897",
-        "arxiv_id": "2605.07062"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "AI agents are assuming active roles in Continuous Integration and Continuous Deployment (CI/CD) workflows, yet the research community lacks a shared vocabulary for describing what it means for CI/CD to be agentic, how much decision authority is delegated, and where control should reside. This paper presents a vision of agentic CI/CD in which the central challenge is not improving task performance but designing authority transfer, defined as the delegation of operational decisions from human-cont",
-      "doi": "10.1145/3805760.3814897",
-      "pdf_url": "https://arxiv.org/pdf/2605.07062v1"
     },
     {
       "id": "llmsec-2026-00176",
@@ -7884,31 +7776,6 @@
       "pdf_url": "https://arxiv.org/pdf/2605.04785v1"
     },
     {
-      "id": "llmsec-2026-00185",
-      "type": "paper",
-      "title": "SWE-WebDevBench: Evaluating Coding Agent Application Platforms as Virtual Software Agencies",
-      "authors": [
-        "Siddhant Saxena",
-        "Nilesh Trivedi",
-        "Vinayaka Jyothi"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.04637",
-      "categories": [
-        "benchmarks"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "arxiv_id": "2605.04637"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "The emergence of \"vibe coding\" platforms, where users describe applications in natural language and AI agents autonomously generate full-stack software, has created a need for rigorous evaluation beyond code-level benchmarks. In order to assess them as virtual software development agencies on understanding business requirements, making architectural decisions, writing production code, handling iterative modifications, and maintaining business readiness, we introduce SWE-WebDev Bench, a 68-metric",
-      "pdf_url": "https://arxiv.org/pdf/2605.04637v1"
-    },
-    {
       "id": "llmsec-2026-00186",
       "type": "paper",
       "title": "Hidden Coalitions in Multi-Agent AI: A Spectral Diagnostic from Internal Representations",
@@ -7933,106 +7800,6 @@
       "month": 5,
       "abstract": "Collections of interacting AI agents can form coalitions, creating emergent group-level organization that is critical for AI safety and alignment. However, observing agent behavior alone is often insufficient to distinguish genuine informational coupling from spurious similarity, as consequential coalitions may form at the level of internal representations before any overt behavioral change is apparent. Here, we introduce a practical method for detecting coalition structure from the internal neu",
       "pdf_url": "https://arxiv.org/pdf/2605.06696v1"
-    },
-    {
-      "id": "llmsec-2026-00187",
-      "type": "paper",
-      "title": "AcademiClaw: When Students Set Challenges for AI Agents",
-      "authors": [
-        "Junjie Yu",
-        "Pengrui Lu",
-        "Weiye Si",
-        "Hongliang Lu",
-        "Jiabao Wu",
-        "Kaiwen Tao",
-        "Kun Wang",
-        "Lingyu Yang",
-        "Qiran Zhang",
-        "Xiuting Guo",
-        "Xuanyu Wang",
-        "Yang Wang",
-        "Yanjie Wang",
-        "Yi Yang",
-        "Zijian Hu",
-        "Ziyi Yang",
-        "Zonghan Zhou",
-        "Binghao Qiang",
-        "Borui Zhang",
-        "Chenning Li",
-        "Enchang Zhang",
-        "Feifan Chen",
-        "Feng Jian",
-        "Fengyin Sun",
-        "Hao Qiu",
-        "Hao Zheng",
-        "Haoran Zhu",
-        "Hongyu Liu",
-        "Jianbin Deng",
-        "Jiaxin Song",
-        "Jiaying Chi",
-        "Jiayou Shi",
-        "Jie Fang",
-        "Jinghui Zhong",
-        "Jingyu Zhou",
-        "Jinze Li",
-        "Junfeng Yi",
-        "Junyan Yu",
-        "Junzhi Xue",
-        "Ni Song",
-        "Pengyi Chen",
-        "Qi Chen",
-        "Quansheng Li",
-        "Rui Tao",
-        "Shenghai Gong",
-        "Shenhang Lu",
-        "Tianqi Shen",
-        "Tianxiang Zhu",
-        "Tiehan Kang",
-        "Tingyu Li",
-        "Wendi Wu",
-        "Xiao Shen",
-        "Xiao Zhou",
-        "Xiaotao Zhang",
-        "Xinrong Li",
-        "Xuankun Yang",
-        "Xun Zhang",
-        "Yan Li",
-        "Ye Lu",
-        "Yi Wang",
-        "Yibo Zhou",
-        "Yichi Zhang",
-        "Yihao Sun",
-        "Yijun Huang",
-        "Yixin Zhu",
-        "Yixuan Wu",
-        "Yuchen Sun",
-        "Yue Wu",
-        "Yuheng Sun",
-        "Yukun Li",
-        "Yutian Tu",
-        "Yuxuan Qin",
-        "Yuzhuo Wu",
-        "Zeyu Li",
-        "Zhengyu Lou",
-        "Zhenning Ran",
-        "Zizhu He",
-        "Pengfei Liu"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.02661",
-      "categories": [
-        "benchmarks"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "arxiv_id": "2605.02661"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "Benchmarks within the OpenClaw ecosystem have thus far evaluated exclusively assistant-level tasks, leaving the academic-level capabilities of OpenClaw largely unexamined. We introduce AcademiClaw, a bilingual benchmark of 80 complex, long-horizon tasks sourced directly from university students' real academic workflows -- homework, research projects, competitions, and personal projects -- that they found current AI agents unable to solve effectively. Curated from 230 student-submitted candidates",
-      "pdf_url": "https://arxiv.org/pdf/2605.02661v1"
     },
     {
       "id": "llmsec-2026-00188",
@@ -8084,30 +7851,6 @@
       "month": 5,
       "abstract": "As large language models are increasingly deployed as interacting agents in high-stakes decisions, the AI safety community assumes that safety properties of individual models will compose into safe multi-agent behavior. This position paper argues that this assumption is fundamentally mistaken. In agentic AI, safety is determined by interaction topology, not model weights. When agents deliberate sequentially or aggregate via parallel voting with a judge, the structure of information flow and deci",
       "pdf_url": "https://arxiv.org/pdf/2605.01147v1"
-    },
-    {
-      "id": "llmsec-2026-00190",
-      "type": "paper",
-      "title": "AgenticAITA: A Proof-Of-Concept About Deliberative Multi-Agent Reasoning for Autonomous Trading Systems",
-      "authors": [
-        "Ivan Letteri"
-      ],
-      "year": 2026,
-      "url": "https://arxiv.org/abs/2605.12532",
-      "categories": [
-        "agentic-threats",
-        "agent-architecture"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "arxiv",
-      "external_ids": {
-        "arxiv_id": "2605.12532"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "Conventional algorithmic trading systems are grounded in deterministic heuristics or offline-trained statistical models that cannot adapt to the semantic complexity of rapidly shifting market regimes. This paper introduces AGENTICAITA, an agentic AI framework that replaces the traditional signal then execute paradigm with a fully autonomous deliberative loop in which multiple specialized Large Language Model agents reason, negotiate, and act in concert - without any offline training or human int",
-      "pdf_url": "https://arxiv.org/pdf/2605.12532v1"
     },
     {
       "id": "llmsec-2026-00191",
@@ -8339,80 +8082,6 @@
       "pdf_url": "https://arxiv.org/pdf/2604.24700v1"
     },
     {
-      "id": "llmsec-2026-00199",
-      "type": "paper",
-      "title": "IoT-Aided Self-Adaptive Routing for Flying Ad Hoc Network Using Gauss-Markov Mobility Model",
-      "authors": [
-        "Oroos Arshi",
-        "Tarandeep Kaur Bhatia",
-        "Inam Ullah Khan",
-        "Rohit Tanwar",
-        "Aryan Chaudhary"
-      ],
-      "year": 2026,
-      "url": "https://doi.org/10.2174/0126662558342382241217084742",
-      "categories": [
-        "monitoring-detection"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "crossref",
-      "external_ids": {
-        "doi": "10.2174/0126662558342382241217084742"
-      },
-      "reviewed": false,
-      "month": 10,
-      "abstract": "\n                    Introduction:\n                    Unmanned aerial vehicles (UAVs) are low-cost, easy to deploy, and\ncan be integrated with IoT to solve human-related problems. They have applications in military\nand civil sectors, such as forest fire detection, sports monitoring, agriculture, and border\nsurveillance. UAV-based applications can be signal or multi-system.\n                  \n                  \n            ",
-      "doi": "10.2174/0126662558342382241217084742",
-      "citation_count": 1
-    },
-    {
-      "id": "llmsec-2026-00200",
-      "type": "paper",
-      "title": "&lt;b&gt;Inovasi Pembelajaran Fisika Di Era Digital: Suatu Tinjauan Sistematis Terhadap Model Dan Teknologi Pembelajaran Modern&lt;/b&gt;",
-      "authors": [
-        "Muhammad Jailani"
-      ],
-      "year": 2026,
-      "url": "https://doi.org/10.30822/5z3snw81",
-      "categories": [
-        "survey"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "crossref",
-      "external_ids": {
-        "doi": "10.30822/5z3snw81"
-      },
-      "reviewed": false,
-      "month": 9,
-      "abstract": "The low effectiveness of conventional physics instruction in enhancing students’ conceptual understanding and engagement has become a major challenge in higher education physics learning. Therefore, this study aims to analyze patterns of innovation in digital-era physics learning and examine their implications for pedagogical practice, educational policy, and future research directions. This study employed a qualitative literature review approach by examining scholarly articles indexed i",
-      "doi": "10.30822/5z3snw81"
-    },
-    {
-      "id": "llmsec-2026-00201",
-      "type": "paper",
-      "title": "The State of Safety and Security Measures in Public Schools: A Comparative Study of African and European Countries from 2006-2024",
-      "authors": [
-        "Tinyiku David Ngoveni"
-      ],
-      "year": 2026,
-      "url": "https://doi.org/10.62271/pjc.17.3.19",
-      "categories": [
-        "survey"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "crossref",
-      "external_ids": {
-        "doi": "10.62271/pjc.17.3.19"
-      },
-      "reviewed": false,
-      "month": 8,
-      "abstract": "School violence remains one of the serious challenges in African and European countries. It is also regarded as a persisting symptom cutting across almost different countries. The qualitative research approach and non-empirical research design, specifically a systematic review were adopted. For data collection, literature reviews were conducted from five (05) countries, consisting of three (3) African countries, including: 1) South Africa (SA), 2) Ghana, and; 3) Zimbabwe and other two (2",
-      "doi": "10.62271/pjc.17.3.19"
-    },
-    {
       "id": "llmsec-2026-00202",
       "type": "paper",
       "title": "BadAgent Extension",
@@ -8461,57 +8130,6 @@
       "month": 6,
       "abstract": "Organizations outside formal governance frameworks often lack cybersecurity audit tools, making anomaly detection and risk evaluation difficult. This paper presents an AI-enhanced auditing framework for non-governance IT environments. Using the UNSW-NB15 dataset, we evaluate four machine-learning models: Isolation Forest, Logistic Regression, Gradient Boosting, and XGBoost, identifying complementary strengths that motivate a two-stage filter for suspicious network flows. Flagged flows ar",
       "doi": "10.4018/979-8-3373-8252-4.ch009"
-    },
-    {
-      "id": "llmsec-2026-00204",
-      "type": "paper",
-      "title": "Evaluating LLM-Assisted CLO–PLO Alignment Decisions for AUN-QA–Aligned Curriculum Mapping",
-      "authors": [
-        "Suwut Tumthong",
-        "Nichanun Samakthai",
-        "Pinyaphat Tasatanattakool"
-      ],
-      "year": 2026,
-      "url": "https://doi.org/10.5815/ijmecs.2026.03.08",
-      "categories": [
-        "guardrails"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "crossref",
-      "external_ids": {
-        "doi": "10.5815/ijmecs.2026.03.08"
-      },
-      "reviewed": false,
-      "month": 6,
-      "abstract": "Curriculum mapping for AUN-QA is often time-consuming and prone to inconsistency because learning-outcome evidence is scattered across multiple courses and program documents. This study examines the reliability of large language models in supporting course learning outcome–program learning outcome (CLO–PLO) alignment decisions for AUN-QA–aligned curriculum mapping. Using Mechatronics Engineering curriculum materials (2022–2024), AUN-QA v4.0 indicators were operationalized into a structur",
-      "doi": "10.5815/ijmecs.2026.03.08"
-    },
-    {
-      "id": "llmsec-2026-00205",
-      "type": "paper",
-      "title": "HSAE: A Hybrid Unsupervised Autoencoder for Zero-Day Attack Detection in Realistic Environments",
-      "authors": [
-        "Fabiano C. da Silva",
-        "Franklin A. M. Venceslau",
-        "Rafael R. de Souza",
-        "José A. S. Monteiro"
-      ],
-      "year": 2026,
-      "url": "https://doi.org/10.5753/sbsi.2026.248646",
-      "categories": [
-        "monitoring-detection"
-      ],
-      "added_date": "2026-05-17",
-      "added_by": "automation",
-      "source_api": "crossref",
-      "external_ids": {
-        "doi": "10.5753/sbsi.2026.248646"
-      },
-      "reviewed": false,
-      "month": 5,
-      "abstract": "Research Context: Anomaly detection in computer networks is essential for cybersecurity, especially in complex environments like corporate and IoT networks that face emerging threats. Scientific and/or Practical Problem: Traditional Intrusion Detection Systems (IDS) struggle to identify zero-day attacks, creating significant security gaps. Signature-based approaches fail against unknown threats, while supervised models require large volumes of labeled data rarely available in practice. U",
-      "doi": "10.5753/sbsi.2026.248646"
     }
   ]
 }
