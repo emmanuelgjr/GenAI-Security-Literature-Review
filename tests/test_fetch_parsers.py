@@ -2,61 +2,110 @@
 
 import pytest
 
-from fetch_arxiv import build_query, parse_feed
+from fetch_arxiv import harvest_set, parse_records, submission_month
 from fetch_crossref import clean_text
 from fetch_crossref import parse_items as parse_crossref
 from fetch_semantic_scholar import parse_items as parse_s2
 
-ARXIV_FEED = b"""<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom">
-  <entry>
-    <id>http://arxiv.org/abs/2609.01234v2</id>
-    <published>2026-09-10T17:00:00Z</published>
-    <title>Prompt Injection
-      Against Web Agents</title>
-    <summary>  We study   indirect prompt injection. </summary>
-    <author><name>A. Author</name></author>
-    <author><name>B. Author</name></author>
-    <link title="pdf" href="https://arxiv.org/pdf/2609.01234v2"/>
-    <arxiv:doi>10.1000/xyz</arxiv:doi>
-    <category term="cs.CR"/>
-  </entry>
-</feed>"""
+OAI_PAGE = b"""<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/">
+  <ListRecords>
+    <record>
+      <header><identifier>oai:arXiv.org:2609.01234</identifier><datestamp>2026-09-11</datestamp></header>
+      <metadata>
+        <arXiv xmlns="http://arxiv.org/OAI/arXiv/">
+          <id>2609.01234</id>
+          <created>2026-09-10</created>
+          <authors>
+            <author><keyname>Author</keyname><forenames>Ada</forenames></author>
+            <author><keyname>Collaboration</keyname></author>
+          </authors>
+          <title>Prompt Injection
+            Against Web Agents</title>
+          <categories>cs.CR cs.CL</categories>
+          <doi>10.1000/xyz</doi>
+          <abstract>  We study   indirect prompt injection. </abstract>
+        </arXiv>
+      </metadata>
+    </record>
+    <record>
+      <header status="deleted"><identifier>oai:arXiv.org:2609.09999</identifier></header>
+    </record>
+    <resumptionToken expirationDate="2026-09-15T00:00:00Z">verb%3DListRecords%26skip%3D1</resumptionToken>
+  </ListRecords>
+</OAI-PMH>"""
 
-ARXIV_ERROR = b"""<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <entry><id>http://arxiv.org/api/errors#incorrect_id</id><summary>bad query</summary></entry>
-</feed>"""
+OAI_LAST_PAGE = b"""<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"><ListRecords><resumptionToken/></ListRecords></OAI-PMH>"""
+
+OAI_NO_RECORDS = b"""<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"><error code="noRecordsMatch">none</error></OAI-PMH>"""
+
+OAI_BAD_ARGUMENT = b"""<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"><error code="badArgument">bad set</error></OAI-PMH>"""
 
 ENTITY_PAYLOAD = b"""<?xml version="1.0"?>
-<!DOCTYPE feed [<!ENTITY a "aaaa">]>
-<feed xmlns="http://www.w3.org/2005/Atom">&a;</feed>"""
+<!DOCTYPE OAI-PMH [<!ENTITY a "aaaa">]>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/">&a;</OAI-PMH>"""
 
 
-def test_parse_feed_extracts_normalised_fields():
-    [paper] = parse_feed(ARXIV_FEED)
+def test_parse_records_extracts_normalised_fields_and_token():
+    papers, token = parse_records(OAI_PAGE)
+    assert token == "verb%3DListRecords%26skip%3D1"
+    [paper] = papers  # the deleted record is skipped
     assert paper["title"] == "Prompt Injection Against Web Agents"
     assert paper["abstract"] == "We study indirect prompt injection."
     assert paper["arxiv_id"] == "2609.01234"
     assert paper["url"] == "https://arxiv.org/abs/2609.01234"
-    assert (paper["year"], paper["month"], paper["published"]) == (2026, 9, "2026-09-10")
-    assert paper["authors"] == ["A. Author", "B. Author"]
+    assert (paper["year"], paper["month"]) == (2026, 9)
+    assert paper["authors"] == ["Ada Author", "Collaboration"]
     assert paper["doi"] == "10.1000/xyz"
-    assert paper["arxiv_categories"] == ["cs.CR"]
+    assert paper["arxiv_categories"] == ["cs.CR", "cs.CL"]
 
 
-def test_parse_feed_raises_on_api_error_entry():
-    with pytest.raises(ValueError, match="bad query"):
-        parse_feed(ARXIV_ERROR)
+def test_parse_records_treats_empty_token_and_no_records_as_done():
+    assert parse_records(OAI_LAST_PAGE) == ([], None)
+    assert parse_records(OAI_NO_RECORDS) == ([], None)
 
 
-def test_parse_feed_refuses_entity_declarations():
+def test_parse_records_raises_on_protocol_error():
+    with pytest.raises(ValueError, match="badArgument"):
+        parse_records(OAI_BAD_ARGUMENT)
+
+
+def test_parse_records_refuses_entity_declarations():
     with pytest.raises(Exception):
-        parse_feed(ENTITY_PAYLOAD)
+        parse_records(ENTITY_PAYLOAD)
 
 
-def test_build_query_ors_parenthesised_terms():
-    assert build_query(["a AND b", "c"]) == "(a AND b) OR (c)"
+@pytest.mark.parametrize("arxiv_id, expected", [
+    ("2609.01234", (2026, 9)),
+    ("2204.07228", (2022, 4)),  # revised in 2026, but first submitted in 2022
+    ("0704.0001", (2007, 4)),
+    ("cs/9901001", (1999, 1)),
+    ("not-an-id", None),
+])
+def test_submission_month_reads_the_identifier(arxiv_id, expected):
+    assert submission_month(arxiv_id) == expected
+
+
+def test_harvest_set_follows_resumption_tokens(monkeypatch):
+    pages = [OAI_PAGE, OAI_LAST_PAGE]
+    requests_made = []
+
+    class Response:
+        def __init__(self, content):
+            self.content = content
+
+    def fake_get(url, *, params, **kwargs):
+        requests_made.append(params)
+        return Response(pages[len(requests_made) - 1])
+
+    monkeypatch.setattr("fetch_arxiv.get_with_retry", fake_get)
+    papers = harvest_set("https://oai", "cs:cs:CR", "2026-09-01", sleep=lambda _: None)
+    assert len(papers) == 1
+    assert requests_made[0]["set"] == "cs:cs:CR" and requests_made[0]["from"] == "2026-09-01"
+    assert requests_made[1] == {"verb": "ListRecords", "resumptionToken": "verb%3DListRecords%26skip%3D1"}
 
 
 def test_parse_s2_maps_external_ids_and_skips_untitled():

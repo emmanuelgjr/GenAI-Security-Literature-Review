@@ -38,14 +38,16 @@ def load_source(source_id: str, path: Path = SOURCES_FILE) -> dict:
 def retry_delay(response: requests.Response | None, attempt: int, backoff: float) -> float:
     """Seconds to wait before retry number `attempt` (0-based).
 
-    Honours a numeric Retry-After header; otherwise exponential backoff with a
-    little jitter so parallel runs don't retry in lockstep.
+    Exponential backoff with a little jitter so parallel runs don't retry in
+    lockstep. A numeric Retry-After header can lengthen the wait but not shorten
+    it: arXiv sends "Retry-After: 0" with 503s that keep failing.
     """
+    delay = backoff * (2 ** attempt) + random.uniform(0, 1)
     if response is not None:
         retry_after = response.headers.get("Retry-After", "")
         if retry_after.isdigit():
-            return min(float(retry_after), MAX_RETRY_WAIT)
-    return min(backoff * (2 ** attempt) + random.uniform(0, 1), MAX_RETRY_WAIT)
+            delay = max(delay, float(retry_after))
+    return min(delay, MAX_RETRY_WAIT)
 
 
 def get_with_retry(

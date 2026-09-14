@@ -63,8 +63,9 @@ def test_get_with_retry_sends_user_agent_and_extra_headers(monkeypatch):
     assert "LLMSecLitReview" in calls[0]["headers"]["User-Agent"]
 
 
-def test_retry_delay_honours_retry_after_with_cap():
-    assert retry_delay(FakeResponse(429, {"Retry-After": "7"}), 0, 10) == 7
+def test_retry_delay_lets_retry_after_lengthen_but_not_shorten_the_wait():
+    assert retry_delay(FakeResponse(429, {"Retry-After": "90"}), 0, 10) == 90
+    assert 10 <= retry_delay(FakeResponse(503, {"Retry-After": "0"}), 0, 10) < 11
     assert retry_delay(FakeResponse(429, {"Retry-After": "9999"}), 0, 10) == fetch_common.MAX_RETRY_WAIT
 
 
@@ -81,8 +82,9 @@ def test_exit_code_only_fails_when_nothing_was_fetched():
 def test_every_configured_source_is_loadable():
     for source_id in ("arxiv", "semantic-scholar", "crossref"):
         config = load_source(source_id)
-        assert config["query_terms"]
-        assert config["max_results"] > 0
+        config.setdefault("query_terms", [])
+        config.setdefault("oai_sets", [])
+        assert config["query_terms"] or config["oai_sets"]
         assert config["lookback_days"] > 0
 
 

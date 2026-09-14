@@ -3,18 +3,14 @@
     {
       "id": "arxiv",
       "name": "arXiv",
-      "api_url": "https://export.arxiv.org/api/query",
+      "api_url": "https://oaipmh.arxiv.org/oai",
       "enabled": true,
       "candidates_file": "candidates_arxiv.json",
-      "query_terms": [
-        "(ti:\"large language model\" OR ti:LLM) AND (ti:security OR ti:attack OR ti:vulnerability)",
-        "(abs:\"prompt injection\" OR abs:jailbreak) AND cat:cs.CR",
-        "(ti:\"AI safety\" OR ti:\"AI security\") AND (ti:adversarial OR ti:defense)",
-        "(abs:\"language model\" AND abs:poisoning)",
-        "(abs:\"AI agent\" OR abs:\"agentic AI\") AND (abs:security OR abs:safety)"
+      "oai_sets": [
+        "cs:cs:CR",
+        "cs:cs:CL"
       ],
-      "max_results": 300,
-      "lookback_days": 45
+      "lookback_days": 14
     },
     {
       "id": "semantic-scholar",
