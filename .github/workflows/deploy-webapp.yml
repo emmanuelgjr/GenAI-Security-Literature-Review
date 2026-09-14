@@ -6,15 +6,20 @@ on:
     paths:
       - 'webapp/**'
       - 'data/**'
+      - '.github/workflows/deploy-webapp.yml'
+  pull_request:
+    paths:
+      - 'webapp/**'
+      - 'data/**'
+      - '.github/workflows/deploy-webapp.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  # PR builds get their own group so they never cancel a production deploy.
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.event.pull_request.number) || 'pages' }}
   cancel-in-progress: true
 
 jobs:
@@ -36,25 +41,24 @@ jobs:
         working-directory: webapp
         run: npm ci
 
-      - name: Copy data files
-        run: |
-          mkdir -p webapp/src/data
-          cp data/literature.json webapp/src/data/
-          cp data/taxonomy.json webapp/src/data/
-          cp data/frameworks.json webapp/src/data/
-
+      # `prebuild` copies data/*.json into webapp/src/data before `astro build`.
       - name: Build
         working-directory: webapp
         run: npm run build
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: webapp/dist
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

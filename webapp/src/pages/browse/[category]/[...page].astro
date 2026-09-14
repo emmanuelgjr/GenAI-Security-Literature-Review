@@ -1,0 +1,83 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EntryCard from '../../../components/EntryCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { getCategoryColor } from '../../../categoryColors';
+import literature from '../../../data/literature.json';
+import taxonomy from '../../../data/taxonomy.json';
+
+// Popular categories hold hundreds of entries; one page per category grew past
+// 600 KB of HTML. Page 1 keeps the /browse/<category>/ URL, later pages are
+// /browse/<category>/2/, ...
+
+interface Category {
+  id: string;
+  label: string;
+  domainLabel: string;
+  description?: string;
+}
+
+export const getStaticPaths = (({ paginate }) => {
+  // Declared here: Astro hoists getStaticPaths out of the component scope.
+  const PAGE_SIZE = 50;
+  return taxonomy.domains.flatMap((domain) =>
+    domain.categories.flatMap((c) => {
+      const cat: Category = { id: c.id, label: c.label, domainLabel: domain.label, description: c.description };
+      const entries = literature.entries
+        .filter((e: any) => e.categories.includes(cat.id))
+        .sort((a: any, b: any) => b.year - a.year || (b.citation_count || 0) - (a.citation_count || 0));
+      return paginate(entries, { params: { category: cat.id }, props: { cat }, pageSize: PAGE_SIZE });
+    })
+  );
+}) satisfies GetStaticPaths;
+
+interface Props {
+  cat: Category;
+  page: Page<any>;
+}
+
+const { cat, page } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const color = getCategoryColor(cat.id);
+const pageSuffix = page.currentPage > 1 ? ` (page ${page.currentPage} of ${page.lastPage})` : '';
+const description = `${page.total} GenAI security ${page.total === 1 ? 'resource' : 'resources'} on ${cat.label}${cat.description ? `: ${cat.description}` : '.'}`;
+---
+
+<BaseLayout title={`${cat.label}${pageSuffix}`} description={description}>
+  <div>
+    <a href={`${base}browse/`} class="text-sm text-gray-500 hover:text-primary-600 mb-4 inline-block">
+      &larr; Back to all categories
+    </a>
+
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-2">
+        <h1 class="text-3xl font-bold text-gray-900">{cat.label}</h1>
+        <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${color.bg} ${color.text}`}>
+          {page.total} {page.total === 1 ? 'resource' : 'resources'}
+        </span>
+      </div>
+      <p class="text-sm text-gray-500">{cat.domainLabel}</p>
+      {cat.description && (
+        <p class="text-gray-600 mt-2">{cat.description}</p>
+      )}
+    </div>
+
+    {page.total > 0 ? (
+      <>
+        <Pagination page={page} />
+        <div class="space-y-4">
+          {page.data.map((entry: any) => <EntryCard entry={entry} />)}
+        </div>
+        <Pagination page={page} />
+      </>
+    ) : (
+      <div class="text-center py-12">
+        <p class="text-gray-500 text-lg">No resources in this category yet.</p>
+        <p class="text-gray-500 text-sm mt-2">
+          <a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md">Submit one</a>
+        </p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

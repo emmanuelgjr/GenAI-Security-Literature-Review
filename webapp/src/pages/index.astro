@@ -19,8 +19,10 @@ const stats = [
   { label: 'Resource Types', value: typeCount },
 ];
 
-// Recent and most cited
-const recentEntries = [...entries].sort((a, b) => b.year - a.year || (b.citation_count || 0) - (a.citation_count || 0)).slice(0, 5);
+// Recent additions are by date added (not publication year), newest first
+const recentEntries = [...entries]
+  .sort((a, b) => (b.added_date || '').localeCompare(a.added_date || '') || b.year - a.year)
+  .slice(0, 5);
 const topCited = [...entries].filter(e => e.citation_count).sort((a, b) => (b.citation_count || 0) - (a.citation_count || 0)).slice(0, 5);
 
 // Category distribution
@@ -56,6 +58,17 @@ const frameworkCounts = frameworkDefs.map(fw => {
       <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
         A comprehensive, community-driven, auto-updating database of GenAI and LLM security research, standards, tools, and resources.
       </p>
+      <form action={`${base}search/`} method="get" role="search" class="max-w-xl mx-auto mb-6 flex gap-2">
+        <label for="hero-search" class="sr-only">Search resources</label>
+        <input
+          id="hero-search"
+          name="q"
+          type="search"
+          placeholder="Search papers, authors, topics..."
+          class="flex-1 min-w-0 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+        />
+        <button type="submit" class="bg-primary-600 text-white px-5 py-3 rounded-lg font-medium hover:bg-primary-700">Search</button>
+      </form>
       <div class="flex justify-center gap-4">
         <a href={`${base}search/`} class="bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 no-underline transition-colors">
           Search Resources

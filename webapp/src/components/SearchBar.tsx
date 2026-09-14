@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'preact/hooks';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 import Fuse from 'fuse.js';
 
 // Category -> domain color mapping (mirrors categoryColors.ts for Preact island)
@@ -38,6 +38,7 @@ function getCatColor(cat: string): string {
   return domainColorClasses[domain] || 'bg-gray-100 text-gray-700';
 }
 
+// Shape of search-index.json (see src/pages/search-index.json.ts)
 interface Entry {
   id: string;
   type: string;
@@ -48,15 +49,12 @@ interface Entry {
   abstract?: string;
   url: string;
   categories: string[];
-  framework_mappings?: Record<string, string[]>;
-  citation_count?: number;
-  open_access?: boolean;
-  reviewed?: boolean;
   tags?: string[];
+  citation_count?: number;
+  reviewed: boolean;
 }
 
 interface Props {
-  entries: Entry[];
   basePath: string;
 }
 
@@ -71,15 +69,46 @@ const typeColors: Record<string, string> = {
   dataset: 'bg-green-100 text-green-800',
 };
 
-export default function SearchBar({ entries, basePath }: Props) {
+const PAGE_SIZE = 50;
+const selectClass =
+  'border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:ring-primary-500 focus:border-primary-500';
+
+export default function SearchBar({ basePath }: Props) {
+  const [entries, setEntries] = useState<Entry[] | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [query, setQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [yearFilter, setYearFilter] = useState('all');
   const [reviewedFilter, setReviewedFilter] = useState('all');
+  const [limit, setLimit] = useState(PAGE_SIZE);
+
+  useEffect(() => {
+    // Support shareable links such as /search/?q=prompt+injection
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) setQuery(q);
+
+    fetch(`${basePath}search-index.json`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data: Entry[]) => setEntries(data))
+      .catch(() => setLoadError(true));
+  }, [basePath]);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (query.trim()) url.searchParams.set('q', query);
+    else url.searchParams.delete('q');
+    window.history.replaceState(null, '', url);
+    setLimit(PAGE_SIZE);
+  }, [query, typeFilter, yearFilter, reviewedFilter]);
+
+  const list = useMemo(() => entries ?? [], [entries]);
 
   const fuse = useMemo(
     () =>
-      new Fuse(entries, {
+      new Fuse(list, {
         keys: [
           { name: 'title', weight: 0.4 },
           { name: 'abstract', weight: 0.2 },
@@ -88,21 +117,17 @@ export default function SearchBar({ entries, basePath }: Props) {
           { name: 'tags', weight: 0.1 },
           { name: 'venue', weight: 0.05 },
         ],
-        threshold: 0.35,
-        includeScore: true,
+        // By default Fuse only scores matches near the start of a field, so a
+        // term past the first ~100 characters of an abstract was never found.
+        ignoreLocation: true,
+        threshold: 0.25,
         minMatchCharLength: 2,
       }),
-    [entries]
+    [list]
   );
 
-  const years = useMemo(() => {
-    const yrs = [...new Set(entries.map((e) => e.year))].sort((a, b) => b - a);
-    return yrs;
-  }, [entries]);
-
-  const types = useMemo(() => {
-    return [...new Set(entries.map((e) => e.type))].sort();
-  }, [entries]);
+  const years = useMemo(() => [...new Set(list.map((e) => e.year))].sort((a, b) => b - a), [list]);
+  const types = useMemo(() => [...new Set(list.map((e) => e.type))].sort(), [list]);
 
   const filteredResults = useMemo(() => {
     let results: Entry[];
@@ -110,7 +135,7 @@ export default function SearchBar({ entries, basePath }: Props) {
     if (query.trim().length >= 2) {
       results = fuse.search(query).map((r) => r.item);
     } else {
-      results = [...entries].sort((a, b) => b.year - a.year || (b.citation_count || 0) - (a.citation_count || 0));
+      results = [...list].sort((a, b) => b.year - a.year || (b.citation_count || 0) - (a.citation_count || 0));
     }
 
     if (typeFilter !== 'all') {
@@ -125,18 +150,20 @@ export default function SearchBar({ entries, basePath }: Props) {
     }
 
     return results;
-  }, [query, typeFilter, yearFilter, reviewedFilter, fuse, entries]);
+  }, [query, typeFilter, yearFilter, reviewedFilter, fuse, list]);
 
   return (
     <div>
       {/* Search input */}
       <div class="mb-6">
+        <label for="search-query" class="sr-only">Search resources</label>
         <div class="relative">
           <svg
             class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -146,7 +173,8 @@ export default function SearchBar({ entries, basePath }: Props) {
             />
           </svg>
           <input
-            type="text"
+            id="search-query"
+            type="search"
             value={query}
             onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
             placeholder="Search papers, authors, topics..."
@@ -159,9 +187,10 @@ export default function SearchBar({ entries, basePath }: Props) {
       {/* Filters */}
       <div class="flex flex-wrap gap-3 mb-6">
         <select
+          aria-label="Filter by resource type"
           value={typeFilter}
           onChange={(e) => setTypeFilter((e.target as HTMLSelectElement).value)}
-          class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:ring-primary-500 focus:border-primary-500"
+          class={selectClass}
         >
           <option value="all">All types</option>
           {types.map((t) => (
@@ -170,9 +199,10 @@ export default function SearchBar({ entries, basePath }: Props) {
         </select>
 
         <select
+          aria-label="Filter by year"
           value={yearFilter}
           onChange={(e) => setYearFilter((e.target as HTMLSelectElement).value)}
-          class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:ring-primary-500 focus:border-primary-500"
+          class={selectClass}
         >
           <option value="all">All years</option>
           {years.map((y) => (
@@ -181,23 +211,35 @@ export default function SearchBar({ entries, basePath }: Props) {
         </select>
 
         <select
+          aria-label="Filter by review status"
           value={reviewedFilter}
           onChange={(e) => setReviewedFilter((e.target as HTMLSelectElement).value)}
-          class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:ring-primary-500 focus:border-primary-500"
+          class={selectClass}
         >
           <option value="all">All entries</option>
           <option value="true">Reviewed only</option>
           <option value="false">Unreviewed</option>
         </select>
 
-        <span class="text-sm text-gray-500 self-center ml-auto">
-          {filteredResults.length} result{filteredResults.length !== 1 ? 's' : ''}
+        <span class="text-sm text-gray-500 self-center ml-auto" role="status" aria-live="polite">
+          {entries
+            ? `${filteredResults.length} result${filteredResults.length !== 1 ? 's' : ''}`
+            : loadError ? '' : 'Loading…'}
         </span>
       </div>
 
+      {loadError && (
+        <div class="text-center py-12" role="alert">
+          <p class="text-gray-700 text-lg">The search index could not be loaded.</p>
+          <p class="text-gray-500 text-sm mt-2">
+            Try reloading, or <a href={`${basePath}browse/`}>browse by category</a>.
+          </p>
+        </div>
+      )}
+
       {/* Results */}
       <div class="space-y-4">
-        {filteredResults.slice(0, 50).map((entry) => (
+        {filteredResults.slice(0, limit).map((entry) => (
           <div key={entry.id} class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow">
             <div class="flex items-start justify-between gap-4">
               <div class="flex-1 min-w-0">
@@ -205,9 +247,16 @@ export default function SearchBar({ entries, basePath }: Props) {
                   <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${typeColors[entry.type] || 'bg-gray-100 text-gray-800'}`}>
                     {entry.type}
                   </span>
-                  {entry.reviewed && (
+                  {entry.reviewed ? (
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                       reviewed
+                    </span>
+                  ) : (
+                    <span
+                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-900"
+                      title="Added automatically; not yet human-reviewed"
+                    >
+                      unreviewed
                     </span>
                   )}
                   <span class="text-xs text-gray-500">{entry.year}</span>
@@ -220,12 +269,10 @@ export default function SearchBar({ entries, basePath }: Props) {
                 <p class="text-sm text-gray-600 mb-2">
                   {entry.authors.slice(0, 3).join(', ')}
                   {entry.authors.length > 3 ? ` + ${entry.authors.length - 3} more` : ''}
-                  {entry.venue && <span class="text-gray-400"> &mdash; {entry.venue}</span>}
+                  {entry.venue && <span class="text-gray-500"> &mdash; {entry.venue}</span>}
                 </p>
                 {entry.abstract && (
-                  <p class="text-sm text-gray-700 mb-3" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                    {entry.abstract}
-                  </p>
+                  <p class="text-sm text-gray-700 mb-3 line-clamp-2">{entry.abstract}</p>
                 )}
                 <div class="flex items-center gap-2 flex-wrap">
                   {entry.categories.slice(0, 4).map((cat) => (
@@ -244,25 +291,35 @@ export default function SearchBar({ entries, basePath }: Props) {
                 href={entry.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="shrink-0 text-gray-400 hover:text-primary-600"
+                class="shrink-0 text-gray-500 hover:text-primary-600"
                 title="Open resource"
+                aria-label={`Open resource: ${entry.title} (new tab)`}
               >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
             </div>
           </div>
         ))}
-        {filteredResults.length > 50 && (
-          <p class="text-center text-gray-500 py-4">
-            Showing first 50 of {filteredResults.length} results. Refine your search to see more.
-          </p>
+        {filteredResults.length > limit && (
+          <div class="text-center py-4">
+            <p class="text-gray-500 mb-3">
+              Showing {limit} of {filteredResults.length} results.
+            </p>
+            <button
+              type="button"
+              onClick={() => setLimit(limit + PAGE_SIZE)}
+              class="bg-white text-primary-600 px-4 py-2 rounded-md text-sm font-medium border border-primary-600 hover:bg-primary-50"
+            >
+              Show more
+            </button>
+          </div>
         )}
-        {filteredResults.length === 0 && (
+        {entries && filteredResults.length === 0 && (
           <div class="text-center py-12">
             <p class="text-gray-500 text-lg">No results found</p>
-            <p class="text-gray-400 text-sm mt-2">Try different keywords or adjust the filters</p>
+            <p class="text-gray-500 text-sm mt-2">Try different keywords or adjust the filters</p>
           </div>
         )}
       </div>

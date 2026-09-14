@@ -51,7 +51,7 @@ Browse `data/taxonomy.json` for valid category IDs. If you think a new category 
 ### Prerequisites
 
 - Python 3.9+ (for automation scripts)
-- Node.js 18+ (for the webapp)
+- Node.js 22.12+ (for the webapp)
 
 ### Local Setup
 
