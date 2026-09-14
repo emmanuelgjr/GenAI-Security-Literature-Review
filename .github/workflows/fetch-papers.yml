@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  # merge-base with auto/papers needs history
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -44,15 +46,17 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           open=$(gh pr list --head auto/papers --state open --json number --jq length)
-          if [ "$open" != "0" ] && git fetch --depth=1 origin auto/papers; then
+          if [ "$open" != "0" ] && git fetch origin auto/papers; then
             git show FETCH_HEAD:data/literature.json > pending_literature.json
+            # Entries inherited from main at branch time are not the PR's own
+            git show "$(git merge-base HEAD FETCH_HEAD)":data/literature.json > pending_base.json
           fi
 
       - name: Deduplicate and merge
         id: dedup
         run: |
           pending=()
-          [ -f pending_literature.json ] && pending=(--pending pending_literature.json)
+          [ -f pending_literature.json ] && pending=(--pending pending_literature.json --pending-base pending_base.json)
           python scripts/deduplicate.py "${pending[@]}" | tee dedup_output.txt
           # Check if new entries were added
           if grep -q "No new entries to add" dedup_output.txt; then
@@ -114,4 +118,4 @@ jobs:
 
       - name: Clean up candidate files
         if: always()
-        run: rm -f scripts/candidates_*.json pending_literature.json dedup_output.txt new_entries_summary.txt pr_body.md
+        run: rm -f scripts/candidates_*.json pending_literature.json pending_base.json dedup_output.txt new_entries_summary.txt pr_body.md

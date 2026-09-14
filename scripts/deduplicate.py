@@ -105,18 +105,23 @@ def entry_lookup_keys(entry: dict) -> dict:
     }
 
 
-def pending_entries(pending: dict, index: dict) -> list[dict]:
-    """Entries from the open auto-fetch PR that main does not have yet.
+def pending_entries(pending: dict, index: dict, base: dict | None = None) -> list[dict]:
+    """Entries the open auto-fetch PR adds that main does not have yet.
 
     The weekly run rebuilds that PR from main, so without this anything found in
     an earlier week and not yet merged would silently drop off the PR. Entries
     are kept verbatim (a reviewer may have fixed categories on the branch); only
     their IDs are reassigned by the caller.
+
+    `base` is literature.json at the PR's merge base. Entries already there were
+    inherited from main rather than added by the PR, so if main has since
+    deleted them they must stay deleted, not be carried back in.
     """
+    base_index = build_existing_index(base) if base else None
     kept = []
     for entry in pending.get("entries", []):
         keys = entry_lookup_keys(entry)
-        if is_duplicate(keys, index):
+        if is_duplicate(keys, index) or (base_index and is_duplicate(keys, base_index)):
             continue
         add_to_index(keys, index)
         kept.append(dict(entry))
@@ -337,6 +342,11 @@ def main():
         type=Path,
         help="literature.json from the open auto-fetch PR branch; its unmerged entries are carried over",
     )
+    parser.add_argument(
+        "--pending-base",
+        type=Path,
+        help="literature.json at the merge base of that branch and main (see pending_entries)",
+    )
     args = parser.parse_args()
 
     # Load existing literature
@@ -352,8 +362,12 @@ def main():
     seen_in_candidates = set()
 
     if args.pending and args.pending.exists():
+        base = None
+        if args.pending_base and args.pending_base.exists():
+            with open(args.pending_base, encoding="utf-8") as f:
+                base = json.load(f)
         with open(args.pending, encoding="utf-8") as f:
-            carried = pending_entries(json.load(f), index)
+            carried = pending_entries(json.load(f), index, base)
         for entry in carried:
             entry["id"] = f"llmsec-{year}-{next_num:05d}"
             next_num += 1

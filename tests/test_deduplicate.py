@@ -264,3 +264,12 @@ def test_pending_entries_dedupes_within_pending(small_library):
     entry = {"title": "Memory Poisoning in LLM Agents", "external_ids": {}}
     kept = pending_entries({"entries": [dict(entry, id="a"), dict(entry, id="b")]}, index)
     assert len(kept) == 1
+
+
+def test_pending_entries_does_not_resurrect_entries_deleted_from_main(small_library):
+    _, index = small_library
+    removed = {"id": "llmsec-2026-00009", "title": "Off-topic Paper Removed From Main", "external_ids": {}}
+    added = {"id": "llmsec-2026-00010", "title": "Memory Poisoning in LLM Agents", "external_ids": {}}
+    base = {"entries": [removed]}  # main when the PR branch was created
+    kept = pending_entries({"entries": [removed, added]}, index, base)
+    assert [e["title"] for e in kept] == ["Memory Poisoning in LLM Agents"]
