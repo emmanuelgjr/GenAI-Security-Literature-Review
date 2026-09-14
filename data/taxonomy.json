@@ -8,37 +8,87 @@
         {
           "id": "prompt-injection",
           "label": "Prompt Injection",
-          "description": "Direct, indirect, and multi-turn prompt injection attacks"
+          "description": "Direct, indirect, and multi-turn prompt injection attacks",
+          "framework_mappings": {
+            "owasp_llm_top10": [
+              "LLM01"
+            ],
+            "mitre_atlas": [
+              "AML.T0051"
+            ]
+          }
         },
         {
           "id": "jailbreaking",
           "label": "Jailbreaking",
-          "description": "Guardrail bypass and alignment subversion techniques"
+          "description": "Guardrail bypass and alignment subversion techniques",
+          "framework_mappings": {
+            "owasp_llm_top10": [
+              "LLM01"
+            ],
+            "mitre_atlas": [
+              "AML.T0054"
+            ]
+          }
         },
         {
           "id": "data-poisoning",
           "label": "Data Poisoning",
-          "description": "Training data, fine-tuning, and RAG poisoning attacks"
+          "description": "Training data, fine-tuning, and RAG poisoning attacks",
+          "framework_mappings": {
+            "owasp_llm_top10": [
+              "LLM04"
+            ],
+            "mitre_atlas": [
+              "AML.T0020"
+            ]
+          }
         },
         {
           "id": "model-extraction",
           "label": "Model Extraction",
-          "description": "Model stealing, distillation attacks, and weight extraction"
+          "description": "Model stealing, distillation attacks, and weight extraction",
+          "framework_mappings": {
+            "mitre_atlas": [
+              "AML.T0049"
+            ]
+          }
         },
         {
           "id": "membership-inference",
           "label": "Membership Inference",
-          "description": "Determining whether specific data was used in training"
+          "description": "Determining whether specific data was used in training",
+          "framework_mappings": {
+            "owasp_llm_top10": [
+              "LLM02"
+            ],
+            "mitre_atlas": [
+              "AML.T0024"
+            ]
+          }
         },
         {
           "id": "adversarial-examples",
           "label": "Adversarial Examples",
-          "description": "Evasion attacks and adversarial perturbations"
+          "description": "Evasion attacks and adversarial perturbations",
+          "framework_mappings": {
+            "mitre_atlas": [
+              "AML.T0043"
+            ]
+          }
         },
         {
           "id": "supply-chain-attacks",
           "label": "Supply Chain Attacks",
-          "description": "Model supply chain, plugin, and dependency attacks"
+          "description": "Model supply chain, plugin, and dependency attacks",
+          "framework_mappings": {
+            "owasp_llm_top10": [
+              "LLM03"
+            ],
+            "mitre_atlas": [
+              "AML.T0010"
+            ]
+          }
         },
         {
           "id": "social-engineering",
@@ -171,7 +221,12 @@
         {
           "id": "red-teaming",
           "label": "Red Teaming",
-          "description": "AI red team methodology, automation, and frameworks"
+          "description": "AI red team methodology, automation, and frameworks",
+          "framework_mappings": {
+            "nist_ai_rmf": [
+              "MEASURE"
+            ]
+          }
         },
         {
           "id": "benchmarks",
@@ -203,7 +258,12 @@
         {
           "id": "rag-security",
           "label": "RAG Security",
-          "description": "Vector database security, retrieval poisoning, and embedding attacks"
+          "description": "Vector database security, retrieval poisoning, and embedding attacks",
+          "framework_mappings": {
+            "owasp_llm_top10": [
+              "LLM08"
+            ]
+          }
         },
         {
           "id": "fine-tuning-security",
@@ -235,17 +295,32 @@
         {
           "id": "tool-use-security",
           "label": "Tool Use Security",
-          "description": "Function calling security, plugin safety, and API tool governance"
+          "description": "Function calling security, plugin safety, and API tool governance",
+          "framework_mappings": {
+            "owasp_agentic_top10": [
+              "AGT02"
+            ]
+          }
         },
         {
           "id": "memory-security",
           "label": "Memory Security",
-          "description": "Context window attacks, long-term memory poisoning, and memory isolation"
+          "description": "Context window attacks, long-term memory poisoning, and memory isolation",
+          "framework_mappings": {
+            "owasp_agentic_top10": [
+              "AGT04"
+            ]
+          }
         },
         {
           "id": "human-in-the-loop",
           "label": "Human-in-the-Loop",
-          "description": "Oversight mechanisms, approval workflows, and escalation patterns"
+          "description": "Oversight mechanisms, approval workflows, and escalation patterns",
+          "framework_mappings": {
+            "owasp_agentic_top10": [
+              "AGT06"
+            ]
+          }
         },
         {
           "id": "autonomous-operations",

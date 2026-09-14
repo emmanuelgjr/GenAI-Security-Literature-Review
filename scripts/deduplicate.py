@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Deduplicate candidate papers against existing literature and merge new entries."""
 
+from __future__ import annotations
+
 import argparse
 import json
 import re
 import sys
 from datetime import datetime
 from pathlib import Path
+
+from framework_mappings import category_mappings, fill_missing
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -159,8 +163,12 @@ def is_valid_candidate(paper: dict) -> tuple[bool, str]:
     return True, ""
 
 
-def paper_to_entry(paper: dict, entry_id: str, source: str) -> dict:
-    """Convert a candidate paper to a literature entry."""
+def paper_to_entry(paper: dict, entry_id: str, source: str, mappings: dict | None = None) -> dict:
+    """Convert a candidate paper to a literature entry.
+
+    `mappings` (see framework_mappings.category_mappings) adds suggested
+    framework mappings derived from the entry's categories.
+    """
     entry = {
         "id": entry_id,
         "type": "paper",
@@ -200,6 +208,7 @@ def paper_to_entry(paper: dict, entry_id: str, source: str) -> dict:
     text = f"{paper.get('title', '')} {paper.get('abstract', '')}".lower()
     categories = auto_categorize(text)
     entry["categories"] = categories
+    fill_missing(entry, mappings or {})
 
     return entry
 
@@ -354,6 +363,9 @@ def main():
     with open(lit_path, encoding="utf-8") as f:
         literature = json.load(f)
 
+    with open(DATA_DIR / "taxonomy.json", encoding="utf-8") as f:
+        mappings = category_mappings(json.load(f))
+
     index = build_existing_index(literature)
     next_num = get_next_id(literature)
     year = datetime.now().year
@@ -370,6 +382,7 @@ def main():
             carried = pending_entries(json.load(f), index, base)
         for entry in carried:
             entry["id"] = f"llmsec-{year}-{next_num:05d}"
+            fill_missing(entry, mappings)
             next_num += 1
             seen_in_candidates.add(normalize_title(entry["title"]))
         new_entries.extend(carried)
@@ -413,7 +426,7 @@ def main():
             seen_in_candidates.add(norm)
 
             entry_id = f"llmsec-{year}-{next_num:05d}"
-            entry = paper_to_entry(paper, entry_id, source)
+            entry = paper_to_entry(paper, entry_id, source, mappings)
             new_entries.append(entry)
             next_num += 1
             added += 1

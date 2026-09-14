@@ -6,6 +6,8 @@ with HTTP 429 even for a single request, so this harvests whole categories from
 the OAI-PMH endpoint instead and leaves relevance to deduplicate.is_on_topic.
 """
 
+from __future__ import annotations
+
 import re
 import sys
 import time

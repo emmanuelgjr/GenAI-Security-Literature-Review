@@ -4502,7 +4502,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Backdoor attacks pose a serious security threat to large language models (LLMs), which are increasingly deployed as general-purpose assistants in safety- and privacy-critical applications. Existing LLM backdoors rely primarily on content-based triggers, requiring explicit modification of the input text. In this work, we show that this assumption is unnecessary and limiting. We introduce MetaBackdoor, a new class of backdoor attacks that exploits positional information as the trigger, without mod",
-      "pdf_url": "https://arxiv.org/pdf/2605.15172v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.15172v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00063",
@@ -4557,7 +4565,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language models remain vulnerable to adversarial prompts that elicit harmful outputs. Existing safety paradigms typically couple red-teaming and post-training in a closed, policy-centric loop, causing attack discovery to suffer from rapid saturation and limiting the exposure of novel failure modes, while leaving defenses inefficient, rigid, and difficult to transfer across victim models. To this end, we propose EvoSafety, an LLM safety framework built around persistent, inspectable, and re",
-      "pdf_url": "https://arxiv.org/pdf/2605.13411v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.13411v1",
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00065",
@@ -4582,7 +4595,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language models (LLMs) are increasingly deployed in a wide range of applications, yet remain vulnerable to adversarial jailbreak attacks that circumvent their safety guardrails. Existing evaluation frameworks typically report binary success/failure metrics, failing to capture the temporal dynamics of how attacks succeed under persistent adversarial pressure. This preliminary work proposes a novel evaluation framework that applies survival analysis techniques to characterize LLM jailbreak v",
-      "pdf_url": "https://arxiv.org/pdf/2605.12869v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.12869v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00066",
@@ -4613,7 +4634,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language models (LLMs) achieve strong performance across many tasks but remain vulnerable to hallucinations, motivating the need for realistic adversarial prompts that elicit such failures. We formulate hallucination elicitation as a constrained optimization problem, where the goal is to find semantically coherent adversarial prompts that are equivalent to benign user prompts. Existing methods remain limited: discrete prompt-based attacks preserve semantic equivalence and coherence but sea",
-      "pdf_url": "https://arxiv.org/pdf/2605.12813v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.12813v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00067",
@@ -4644,7 +4670,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Recent knowledge graph (KG)-enhanced large language models (LLMs) move beyond purely textual knowledge augmentation by encoding retrieved subgraphs into continuous soft prompts via graph neural networks, introducing a graph-conditioned channel that operates alongside the standard text interface. However, existing backdoor attacks are largely designed for the textual channel, and their effectiveness against this dual-channel architecture remains unclear. We show that this architecture creates a r",
-      "pdf_url": "https://arxiv.org/pdf/2605.11996v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11996v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00068",
@@ -4674,7 +4708,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Backdoor vulnerabilities widely exist in the fine-tuning of large language models(LLMs). Most backdoor poisoning methods operate mainly at the token level and lack deeper semantic manipulation, which limits stealthiness. In addition, Prior attacks rely on a single fixed trigger to induce harmful outputs. Such static triggers are easy to detect, and clean fine-tuning can weaken the trigger-target association. Through causal validation, we observe that emotion is not directly linked to individual ",
-      "pdf_url": "https://arxiv.org/pdf/2605.11612v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11612v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00069",
@@ -4779,7 +4821,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Tool-using LLM agents must act on untrusted webpages, emails, files, and API outputs while issuing privileged tool calls. Existing defenses often mediate trust at the granularity of an entire tool invocation, forcing a brittle choice in mixed-trust workflows: allow external content to influence a call and risk hijacked destinations or commands, or quarantine the call and block benign retrieval-then-act behavior. The key observation behind this paper is that indirect prompt injection becomes dang",
-      "pdf_url": "https://arxiv.org/pdf/2605.11039v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11039v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00073",
@@ -4808,7 +4858,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Jailbreak attacks -- adversarial prompts that bypass LLM alignment through purely linguistic manipulation -- pose a growing operational security threat, yet the field lacks large-scale, reproducible infrastructure for generating, categorizing, and evaluating them systematically. This paper addresses that gap with three contributions. (1) Large-scale compositional jailbreak dataset. We construct 114,000 adversarial prompts by applying 912 composing strategies to 125 harmful seed prompts from Jail",
-      "pdf_url": "https://arxiv.org/pdf/2605.09225v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.09225v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00074",
@@ -4836,7 +4894,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Fine-tuning APIs make frontier LLMs easy to customize, but they can also weaken safety alignment during fine-tuning. While prior work shows that benign supervised fine-tuning (SFT) can reduce refusal behavior, deployed fine-tuning pipelines increasingly support preference-based objectives, whose safety risks remain less understood. We show that Direct Preference Optimization (DPO) introduces a stronger and harder-to-audit failure mode. We propose a truly benign DPO attack using only 10 harmless ",
-      "pdf_url": "https://arxiv.org/pdf/2605.10998v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.10998v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00075",
@@ -5033,7 +5099,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language models (LLMs) show strong performance across many applications, but their ability to memorize and potentially reveal training data raises serious privacy concerns. We introduce the PopQuiz Attack, a black-box membership inference attack that tests whether a model can recall specific training examples. The core idea is to turn target data into quiz-style multiple-choice questions and infer membership from the model's answers. Across six widely used LLMs (GPT-3.5, GPT-4o, LLaMA2-7b,",
-      "pdf_url": "https://arxiv.org/pdf/2605.06423v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.06423v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0024"
+        ],
+        "owasp_llm_top10": [
+          "LLM02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00082",
@@ -5094,7 +5168,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large Language Models (LLMs) have achieved remarkable success but remain highly susceptible to jailbreak attacks, in which adversarial prompts coerce models into generating harmful, unethical, or policy-violating outputs. Such attacks pose real-world risks, eroding safety, trust, and regulatory compliance in high-stakes applications. Although a variety of attack and defense methods have been proposed, existing evaluation practices are inadequate, often relying on narrow metrics like attack succe",
-      "pdf_url": "https://arxiv.org/pdf/2605.05058v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.05058v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00084",
@@ -5260,7 +5342,16 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Safety alignment is critical for the responsible deployment of large language models (LLMs). As Mixture-of-Experts (MoE) architectures are increasingly adopted to scale model capacity, understanding their safety robustness becomes essential. Existing adversarial attacks, however, have notable limitations. Prompt-based jailbreaks rely on heuristic search and transfer poorly, model intervention methods require privileged access to internal representations, and optimization-based input attacks rema",
-      "pdf_url": "https://arxiv.org/pdf/2605.02946v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.02946v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00090",
@@ -5283,7 +5374,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Multi-turn prompt injection follows a known attack path -- trust-building, pivoting, escalation but text-level defenses miss covert attacks where individual turns appear benign. We show this attack path leaves an activation-level signature in the model's residual stream: each phase shift moves the activation, producing a total path length far exceeding benign conversations. We call this adversarial restlessness. Five scalar trajectory features capturing this signal lift conversation-level detect",
-      "pdf_url": "https://arxiv.org/pdf/2604.28129v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.28129v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00091",
@@ -5339,7 +5438,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Video large language models (VideoLLMs) are increasingly trained or instruction-tuned on large-scale video--text corpora collected from heterogeneous sources, raising an immediate privacy question: can an external auditor determine whether a particular video was used during training? While membership inference attacks (MIAs) have been studied extensively for classifiers and, more recently, for text and image generation models, the VideoLLM setting remains unexplored. This setting is challenging ",
-      "pdf_url": "https://arxiv.org/pdf/2604.27002v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.27002v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0024"
+        ],
+        "owasp_llm_top10": [
+          "LLM02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00093",
@@ -5373,7 +5480,16 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Web agents can autonomously complete online tasks by interacting with websites, but their exposure to open web environments makes them vulnerable to prompt injection attacks embedded in HTML content or visual interfaces. Existing guard models still suffer from limited generalization to unseen domains and attack patterns, high false positive rates on benign content, reduced deployment efficiency due to added latency at each step, and vulnerability to adversarial attacks that evolve over time or d",
-      "pdf_url": "https://arxiv.org/pdf/2605.15030v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.15030v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00094",
@@ -5403,7 +5519,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large Language Models (LLMs) and Vision Language Models (VLMs) have demonstrated impressive capabilities but remain vulnerable to jailbreaking attacks, where adversaries exploit textual or visual triggers to bypass safety guardrails. Recent defenses typically rely on safety fine-tuning or external filters to reduce the model's likelihood of producing harmful content. While effective to some extent, these methods often incur significant computational overheads and suffer from the safety utility t",
-      "pdf_url": "https://arxiv.org/pdf/2605.14750v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.14750v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00095",
@@ -5429,7 +5553,16 @@
       "reviewed": false,
       "month": 5,
       "abstract": "\"Oh-Oh, yes, I'm the great pretender. Pretending that I'm doing well. My need is such, I pretend too much...\" summarizes the state in the area of jailbreak creation and evaluation. You find this method to generate adversarial attacks proposed by a reputable institution (e.g., BoN from Anthropic or Crescendo from Microsoft Research). However, this method does not deliver on the promise claimed in the paper despite having top ASR scores against industry-grade LLMs. You successfully generate the ja",
-      "pdf_url": "https://arxiv.org/pdf/2605.14418v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.14418v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00096",
@@ -5517,7 +5650,18 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Web-browsing AI agents are increasingly deployed in enterprise settings under strict whitelists of approved domains, yet adversaries can still influence them by embedding hidden instructions in the HTML pages those domains serve. Existing red-teaming resources fall short of this scenario: prompt-injection benchmarks ship pre-built adversarial pages that whitelisted agents cannot reach, and generic LLM scanners probe the model API rather than its retrieved content. We present IPI-proxy, an open-s",
-      "pdf_url": "https://arxiv.org/pdf/2605.11868v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11868v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00099",
@@ -5544,7 +5688,18 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Existing automated red-teaming pipelines often miss attacks that depend on attacker identity, framing, or multi-turn tactics. This under-coverage underestimates real-world risk. We introduce Persona-Conditioned Adversarial Prompting (PCAP), which conditions adversarial search on attacker personas and strategy cards and runs parallel persona-conditioned beam searches to discover diverse, transferable jailbreaks. PCAP is orthogonal to the underlying search algorithm and substantially increases att",
-      "pdf_url": "https://arxiv.org/pdf/2605.12565v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.12565v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00100",
@@ -5571,7 +5726,18 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Automated red-teaming for LLMs often discovers narrow attack slices, missing diverse real-world threats, and yielding insufficient data for safety fine-tuning. We introduce Persona-Conditioned Adversarial Prompting (PCAP), which conditions adversarial search on diverse attacker personas (e.g., doctors, students, malicious actors) and strategy sets to explore realistic attack scenarios. By running parallel persona-conditioned searches, PCAP discovers transferable jailbreaks across different conte",
-      "pdf_url": "https://arxiv.org/pdf/2605.11730v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11730v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00101",
@@ -5635,7 +5801,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "The rapid proliferation of LLM-based autonomous agents in real operating system environments introduces a new category of safety risk beyond content safety: behavior jailbreak, where an adversary induces an agent to execute dangerous OS-level operations with irreversible consequences. Existing benchmarks either evaluate safety at the semantic layer alone, missing physical-layer harms, or fail to isolate test cases, letting earlier runs contaminate later ones. We present LITMUS (LLM-agents In-OS ",
-      "pdf_url": "https://arxiv.org/pdf/2605.10779v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.10779v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00103",
@@ -5662,7 +5836,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "This paper proposes a jailbreaking prompt detection method for large language models (LLMs) to defend against jailbreak attacks. Although recent LLMs are equipped with built-in safeguards, it remains possible to craft jailbreaking prompts that bypass them. We argue that such jailbreaking prompts are inherently fragile, and thus introduce an embedding disruption method to re-activate the safeguards within LLMs. Unlike previous defense methods that aim to serve as standalone solutions, our approac",
-      "pdf_url": "https://arxiv.org/pdf/2605.10611v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.10611v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00104",
@@ -5688,7 +5870,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "This paper proposes a guaranteed defense method for large language models (LLMs) to safeguard against jailbreaking attacks. Drawing inspiration from the denoised-smoothing approach in the adversarial defense domain, we propose a novel smoothing-based defense method, termed Disrupt-and-Rectify Smoothing (DR-Smoothing). Specifically, we integrate a two-stage prompt processing scheme-first disrupting the input prompt, then rectifying it-into the conventional smoothing defense framework. This disrup",
-      "pdf_url": "https://arxiv.org/pdf/2605.10582v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.10582v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00105",
@@ -5716,7 +5906,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "We define Oracle Poisoning, an attack class in which an adversary corrupts a structured knowledge graph that AI agents query at runtime via tool-use protocols, causing incorrect conclusions through correct reasoning. Unlike prompt injection, Oracle Poisoning manipulates the data agents reason over, not their instructions. We demonstrate six attack scenarios against a production 42-million-node code knowledge graph, providing the first empirical demonstration of knowledge graph poisoning against ",
-      "pdf_url": "https://arxiv.org/pdf/2605.09822v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.09822v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00106",
@@ -5740,7 +5938,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Defenses against indirect prompt injection (IPI) in tool-using LLM agents share two structural weaknesses. First, they all attempt to prevent attacks rather than detect the compromises that slip through. Second, they have only been evaluated in English, leaving users of low-resource languages such as Kurdish and Arabic without tested protection. This paper addresses both gaps with AgentShield, a deception-based detection framework that places three layers of traps inside the agent's tool interfa",
-      "pdf_url": "https://arxiv.org/pdf/2605.11026v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11026v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00107",
@@ -5764,7 +5970,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "We present swarm-attack, an open-source adversarial testing framework in which multiple lightweight LLM agents coordinate through shared memory, parallel exploration, and evolutionary optimization. Together, our results demonstrate that both safety bypass of frontier models and software vulnerability discovery, i.e., the capability class that motivated restricted release of Anthropic's Mythos Preview, are achievable at effectively zero cost using commodity hardware and openly available models. W",
-      "pdf_url": "https://arxiv.org/pdf/2605.09504v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.09504v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00108",
@@ -5794,7 +6008,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Multi-turn jailbreaks exploit the ability of large language models to accumulate and act on conversational context. Instead of stating a harmful request directly, an attacker can gradually steer the conversation toward an unsafe answer. Recent methods demonstrate this risk, but they are usually evaluated as black-box pipelines with different budgets, judges, retry rules, and strategy generation procedures. As a result, it is often unclear whether reported gains reflect stronger attack mechanisms",
-      "pdf_url": "https://arxiv.org/pdf/2605.11002v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11002v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00109",
@@ -5820,7 +6042,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Many jailbreak attack research papers report attack success rates for a limited number of parameter settings, even though there are many combinations of parameter settings that could be used. Further, when new jailbreak papers are released, they often benchmark results against single configurations of existing attacks. This position paper argues such practices are fundamentally insufficient for characterising the threat posed by parameterised jailbreak attacks, and comparing attacks. Most jailbr",
-      "pdf_url": "https://arxiv.org/pdf/2605.09070v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.09070v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00110",
@@ -5845,7 +6075,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Aligned large language models (LLMs) remain vulnerable to jailbreak attacks. Recent mechanistic studies have identified latent features and representation shifts associated with jailbreak success, but they leave a more fundamental question open: why do aligned LLMs remain jailbreakable, and what structural vulnerabilities in the model make this possible? We study this question through a continuous input-transformation view. Our theoretical finding is that aligned models can still exhibit Refusal",
-      "pdf_url": "https://arxiv.org/pdf/2605.08878v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.08878v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00111",
@@ -5873,7 +6111,16 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Since the official release of ChatGPT in 2022, large language models (LLMs) have rapidly evolved from chatbot-style interfaces into agentic systems that can delegate work through tools and newly spawned subagents. While these capabilities improve automation and scalability, they also pose new security risks in multi-agent networks. Existing research has studied how individual LLM-based agents can be compromised through prompt injection, jailbreaking, poisoned retrieval data, or malicious extensi",
-      "pdf_url": "https://arxiv.org/pdf/2605.08460v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.08460v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051",
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00112",
@@ -5927,7 +6174,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Browser agents are increasingly deployed in long-horizon tasks, which require executing extended action chains to accomplish user goals. However, this prolonged execution process provides attackers with more opportunities to inject malicious instructions. Existing prompt injection attacks against browser agents expose two key gaps: (1) low effectiveness, as attacks optimized for toy baselines fail to achieve end-to-end goals in real-world scenarios with complex environments and longer steps; (2)",
-      "pdf_url": "https://arxiv.org/pdf/2605.08310v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.08310v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00114",
@@ -5955,7 +6210,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Tool-calling text-to-image (T2I) agents can plan and execute multi-step tool chains to accomplish complex generation and editing queries. However, this capability introduces a new safety attack surface: harmful outputs may arise from tool orchestration, where individually benign steps combine into unsafe results, making prompt-only jailbreak techniques insufficient. We present OrchJail, an orchestration-guided fuzzing framework for jailbreaking tool-calling T2I agents. Its core idea is to exploi",
-      "pdf_url": "https://arxiv.org/pdf/2605.07414v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.07414v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00115",
@@ -5986,7 +6249,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Many-shot jailbreaking (MSJ) causes safety-aligned language models to answer harmful queries by preceding them with many harmful question-answer demonstrations. We study why this attack becomes stronger as the number of demonstrations increases. Empirically, we find that MSJ induces a progressive activation drift: the representation of a fixed harmful query moves step by step away from the safety-aligned region as more harmful demonstrations are added. Theoretically, we show that this drift can ",
-      "pdf_url": "https://arxiv.org/pdf/2605.08277v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.08277v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00116",
@@ -6016,7 +6287,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Self-hosted computer-use agents (SHCUAs), such as OpenClaw, combine natural-language interaction with direct access to host-side resources, including browsers, files, scripts, system commands, and external communication channels. While useful for automating real tasks, this capability also creates a host-level abuse surface: a legitimately deployed agent may be steered toward unsafe operations through malicious messages, indirect prompt injection, unsafe skills, or tampering along the host-side ",
-      "pdf_url": "https://arxiv.org/pdf/2605.06393v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.06393v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00117",
@@ -6070,7 +6349,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Jailbreak attacks on audio language models (ALMs) optimize audio perturbations to elicit unsafe generations, and they typically update the entire waveform densely throughout optimization. In this work, we investigate the necessity of such dense optimization by analyzing the structure of token-aligned gradients in ALMs. We find that gradient energy is highly non-uniform across audio tokens, indicating that only a small subset of token-aligned audio regions dominates the optimization signal. Motiv",
-      "pdf_url": "https://arxiv.org/pdf/2605.04700v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.04700v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00119",
@@ -6095,7 +6382,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "The deployment of Large Language Model (LLM)-generated SQL queries in Artificial Intelligence of Things (AIoT) systems introduces critical security risks, as prompt injection attacks can manipulate LLMs into producing unauthorized queries that expose sensitive data or execute destructive operations. Existing NL2SQL research focuses on query accuracy, while MCP server implementations provide only SQL-level protections without fine-grained role-based access control. This paper proposes SecureMCP, ",
-      "pdf_url": "https://arxiv.org/pdf/2605.05260v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.05260v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00120",
@@ -6122,7 +6417,16 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Vision-language models (VLMs) are increasingly deployed as trusted authorities -- fact-checking images on social media, comparing products, and moderating content. Users implicitly trust that these systems perceive the same visual content as they do. We show that adversarial examples break this assumption, enabling \\emph{AI authority laundering}: an attacker subtly perturbs an image so that the VLM produces confident and authoritative responses about the \\emph{wrong} input. Unlike jailbreaks or ",
-      "pdf_url": "https://arxiv.org/pdf/2605.04261v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.04261v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00121",
@@ -6149,7 +6453,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "AI systems are entering critical domains like healthcare, finance, and defense, yet remain vulnerable to adversarial attacks. While AI red teaming is a primary defense, current approaches force operators into manual, library-specific workflows. Operators spend weeks hand-crafting workflows - assembling attacks, transforms, and scorers. When results fall short, workflows must be rebuilt. As a result, operators spend more time constructing workflows than probing targets for security and safety vul",
-      "pdf_url": "https://arxiv.org/pdf/2605.04019v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.04019v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00122",
@@ -6179,7 +6491,18 @@
       "reviewed": false,
       "month": 5,
       "abstract": "The rise of Large Language Model (LLM) agents, augmented with tool use, skills, and external knowledge, has introduced new security risks. Among them, prompt injection attacks, where adversaries embed malicious instructions into the agent workflow, have emerged as the primary threat. However, existing benchmarks and defenses are fundamentally limited as they assume context-insensitive settings in which the agent works under a fully specified user instruction, and the attacks are straightforward ",
-      "pdf_url": "https://arxiv.org/pdf/2605.03378v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.03378v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_agentic_top10": [
+          "AGT02"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00123",
@@ -6204,7 +6527,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Safety fine-tuning of language models typically requires a curated adversarial dataset. We take a different approach: score each candidate prompt's difficulty by how often the target model's own rollouts are judged harmful, then fine-tune on the hardest prompts paired with the model's own non-jailbroken rollouts. On Llama-3-8B-Instruct and Llama-3.2-3B-Instruct, this approach cuts the WildJailbreak attack success rate from 11.5% and 20.1% down to 1-3%, but pushes refusal on jailbreak-shaped beni",
-      "pdf_url": "https://arxiv.org/pdf/2605.03226v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.03226v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00124",
@@ -6232,7 +6563,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Agentic AI systems, specifically LLM-driven agents that plan, invoke tools, maintain persistent memory, and delegate tasks to peer agents via protocols such as MCP and A2A, introduce a threat surface that differs materially from standalone model inference. Agents accumulate sensitive context, hold credentials, and operate across pipelines no single party fully controls, enabling prompt injection, context exfiltration, credential theft, and inter-agent message poisoning. Current defenses operate ",
-      "pdf_url": "https://arxiv.org/pdf/2605.03213v2"
+      "pdf_url": "https://arxiv.org/pdf/2605.03213v2",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00125",
@@ -6257,7 +6596,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Browsing-enabled LLM assistants can fetch webpages and answer contact-seeking queries, creating a practical channel for scraping contact-style personally identifiable information (PII) from public pages. Many prior defenses are deployed at the model, service, or agent layer rather than at the webpage itself, leaving ordinary page owners with limited deployable options. We present PIIGuard, a webpage-level defense that repurposes indirect prompt injection as a protective mechanism: the page owner",
-      "pdf_url": "https://arxiv.org/pdf/2605.03129v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.03129v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00126",
@@ -6282,7 +6629,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Defending large language models (LLMs) against jailbreak attacks, such as Greedy Coordinate Gradient (GCG), remains a challenge, particularly under adaptive threat models where an attacker directly targets the defense mechanism. JBShield, a recent jailbreak defense with a 0% attack success rate in some settings, detects malicious prompts via two concept signals, a toxic concept and a jailbreak concept. We design JB-GCG, which modifies GCG's objective to combine two terms: refusal-direction suppr",
-      "pdf_url": "https://arxiv.org/pdf/2605.03095v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.03095v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00127",
@@ -6310,7 +6665,18 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language models (LLMs) remain vulnerable to jailbreak attacks that bypass safety alignment and elicit harmful responses. A growing body of work shows that contextual priming, where earlier turns covertly bias later replies, constitutes a powerful attack surface, with hand-crafted multi-turn scaffolds consistently outperforming single-turn manipulations on capable models. However, automated optimization-based red-teaming has remained largely limited to the single-turn setting, iterating ove",
-      "pdf_url": "https://arxiv.org/pdf/2605.02647v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.02647v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "nist_ai_rmf": [
+          "MEASURE"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00128",
@@ -6338,7 +6704,16 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language models are increasingly embedded into systems that interact with user data, retrieved web content, and external tools, creating a new attack surface: prompt injection, where malicious commands embedded in untrusted data override the trusted command and induce unintended behavior. Existing defenses mainly rely on fine-tuning the model to preserve an explicit boundary between trusted commands and the untrusted data portion, so that the model learns to prioritize the trusted field an",
-      "pdf_url": "https://arxiv.org/pdf/2605.01462v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.01462v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043",
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00129",
@@ -6362,7 +6737,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Universal adversarial attacks on aligned multimodal large language models are increasingly reported with attack success rates in the 60-80% range, suggesting the visual modality is highly vulnerable to imperceptible perturbations as a prompt-injection channel. We argue that this number conflates two distinct events: (i) the model's output was perturbed (Influence), and (ii) the attacker's chosen target concept was actually emitted (Precise Injection). We compose two existing techniques -- Univer",
-      "pdf_url": "https://arxiv.org/pdf/2605.01449v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.01449v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00130",
@@ -6392,7 +6772,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "LLMs are increasingly equipped with safety alignment mechanisms, yet recent studies demonstrate that they remain vulnerable to jailbreaking attacks that elicit harmful behaviors without explicit policy violations. While a growing body of work has explored automated jailbreak strategies, existing methods face several fundamental challenges, including the lack of systematic utilization of both successful and failed attack experiences, as well as the absence of principled mechanisms for composing a",
-      "pdf_url": "https://arxiv.org/pdf/2605.00974v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.00974v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00131",
@@ -6419,7 +6807,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Retrieval-augmented generation (RAG) is vulnerable to prompt injection attacks, in which an adversary inserts malicious documents containing carefully crafted injected prompts into the knowledge database. When a user issues a question targeted by the attack, the RAG system may retrieve these malicious documents, whose injected prompts mislead it into generating attacker-specified answers, thereby compromising the integrity of the RAG system. In this work, we propose CleanBase, a method to detect",
-      "pdf_url": "https://arxiv.org/pdf/2605.00460v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.00460v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00132",
@@ -6472,7 +6868,12 @@
       "month": 10,
       "abstract": "Agentic AI systems powered by large language models (LLMs) and endowed with planning, tool use, memory, and autonomy, are emerging as powerful, flexible platforms for automation. Their ability to autonomously execute tasks across web, software, and physical environments creates new and amplified security risks, distinct from both traditional AI safety and conventional software security. This survey outlines a taxonomy of threats specific to agentic AI, reviews recent benchmarks and evaluation me",
       "doi": "10.1109/ACCESS.2026.3675554",
-      "pdf_url": "https://arxiv.org/pdf/2510.23883v3"
+      "pdf_url": "https://arxiv.org/pdf/2510.23883v3",
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00134",
@@ -6503,7 +6904,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Diffusion language models (DLMs) have recently emerged as an alternative modeling paradigm to autoregressive (AR) language models, enabling parallel generation and bidirectional context modeling. Yet their security implications, particularly their vulnerability to backdoor attacks, remain underexplored. We propose BadDLM, a unified framework for studying backdoor attacks against DLMs with diverse targets. We introduce a trigger-aware training objective that emphasizes target-relevant positions i",
-      "pdf_url": "https://arxiv.org/pdf/2605.09397v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.09397v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00135",
@@ -6530,7 +6939,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Large language model agents increasingly operate through environment-facing scaffolds that expose files, web pages, APIs, and logs. These observations influence tool use, state tracking, and action sequencing, yet their reliability and authority are often uncertain. Environmental grounding is therefore a systems-level problem involving context admission, evidence provenance, freshness checking, verification policy, action gating, and model reasoning. Existing agent benchmarks mainly evaluate tas",
-      "pdf_url": "https://arxiv.org/pdf/2605.08828v2"
+      "pdf_url": "https://arxiv.org/pdf/2605.08828v2",
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00136",
@@ -6556,7 +6970,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Developers increasingly construct multimodal large language models (MLLMs) by assembling pretrained components,introducing supply-chain attack surfaces.Existing security research primarily focuses on poisoning backbones such as encoders or large language models (LLMs),while the security risks of lightweight connectors remain unexplored.In this work,we propose a novel cross-modal backdoor attack that exploits this overlooked vulnerability.By poisoning only the connector using a single seed sample",
-      "pdf_url": "https://arxiv.org/pdf/2605.07490v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.07490v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00137",
@@ -6608,7 +7030,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Vision-Language Models (VLMs) have achieved remarkable success in tasks such as image captioning and visual question answering (VQA). However, as their applications become increasingly widespread, recent studies have revealed that VLMs are vulnerable to backdoor attacks. Existing backdoor attacks on VLMs primarily rely on data poisoning by adding visual triggers and modifying text labels, where the induced image-text mismatch makes poisoned samples easy to detect. To address this limitation, we ",
-      "pdf_url": "https://arxiv.org/pdf/2605.02202v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.02202v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00139",
@@ -6634,7 +7064,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "As large language models (LLMs) are increasingly fine-tuned for hardware tasks like RTL code generation, the scarcity of high-quality datasets often leads to the use of rapidly assembled or generated training data. These datasets frequently lack security verification and are highly susceptible to data poisoning attacks. Such poisoning can cause models to generate syntactically valid but insecure hardware modules that bypass standard functionality checks. To address this, we present SafeTune, a f",
-      "pdf_url": "https://arxiv.org/pdf/2604.27238v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.27238v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00140",
@@ -6692,7 +7130,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "The growing application of large language models (LLMs) in safety-critical domains has raised urgent concerns about their security. Many recent studies have demonstrated the feasibility of backdoor attacks against LLMs. However, existing methods suffer from three key shortcomings: explicit trigger patterns that compromise naturalness, unreliable injection of attacker-specified payloads in long-form generation, and incompletely specified threat models that obscure how backdoors are delivered and ",
-      "pdf_url": "https://arxiv.org/pdf/2604.21700v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.21700v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00142",
@@ -6723,7 +7169,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Multimodal Large Language Models (MLLMs) have achieved remarkable success in cross-modal understanding and generation, yet their deployment is threatened by critical safety vulnerabilities. While prior works have demonstrated the feasibility of backdoors in MLLMs via fine-tuning data poisoning to manipulate inference, the underlying mechanisms of backdoor attacks remain opaque, complicating the understanding and mitigation. To bridge this gap, we propose ProjLens, an interpretability framework d",
-      "pdf_url": "https://arxiv.org/pdf/2604.19083v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.19083v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00143",
@@ -6798,7 +7252,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Large Language Models (LLMs), despite their impressive capabilities across domains, have been shown to be vulnerable to backdoor attacks. Prior backdoor strategies predominantly operate at the token level, where an injected trigger causes the model to generate a specific target word, choice, or class (depending on the task). Recent advances, however, exploit the long-form reasoning tendencies of modern LLMs to conduct reasoning-level backdoors: once triggered, the victim model inserts one or mor",
-      "pdf_url": "https://arxiv.org/pdf/2604.10681v2"
+      "pdf_url": "https://arxiv.org/pdf/2604.10681v2",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00146",
@@ -6854,7 +7316,17 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) is an emerging paradigm that significantly boosts a Large Language Model's (LLM's) reasoning abilities on complex logical tasks, such as mathematics and programming. However, we identify, for the first time, a latent vulnerability to backdoor attacks within the RLVR framework. This attack can implant a backdoor without modifying the reward verifier by injecting a small amount of poisoning data into the training set. Specifically, we propose a",
-      "pdf_url": "https://arxiv.org/pdf/2604.09748v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.09748v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020",
+          "AML.T0054"
+        ],
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00148",
@@ -6883,7 +7355,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Large language model (LLM) agents increasingly rely on third-party API routers to dispatch tool-calling requests across multiple upstream providers. These routers operate as application-layer proxies with full plaintext access to every in-flight JSON payload, yet no provider enforces cryptographic integrity between client and upstream model. We present the first systematic study of this attack surface. We formalize a threat model for malicious LLM API routers and define two core attack classes, ",
-      "pdf_url": "https://arxiv.org/pdf/2604.08407v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.08407v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0010"
+        ],
+        "owasp_llm_top10": [
+          "LLM03"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00149",
@@ -6907,7 +7387,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Recent advances in Vision-Language Models (VLMs) have greatly enhanced the integration of visual perception and linguistic reasoning, driving rapid progress in multimodal understanding. Despite these achievements, the security of VLMs, particularly their vulnerability to backdoor attacks, remains significantly underexplored. Existing backdoor attacks on VLMs are still in an early stage of development, with most current methods relying on generating poisoned responses that contain fixed, easily i",
-      "pdf_url": "https://arxiv.org/pdf/2604.08395v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.08395v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00150",
@@ -6936,7 +7424,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "While Chain-of-Thought (CoT) prompting has become a standard paradigm for eliciting complex reasoning capabilities in Large Language Models, it inadvertently exposes a new attack surface for backdoor attacks. Existing CoT backdoor attacks typically manipulate the intermediate reasoning steps to steer the model toward incorrect answers. However, these corrupted reasoning traces are readily detected by prevalent process-monitoring defenses. To address this limitation, we introduce MirageBackdoor(M",
-      "pdf_url": "https://arxiv.org/pdf/2604.06840v2"
+      "pdf_url": "https://arxiv.org/pdf/2604.06840v2",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00151",
@@ -6964,7 +7460,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "As high quality public data becomes scarce, Federated Learning (FL) provides a vital pathway to leverage valuable private user data while preserving privacy. However, real-world client data often contains toxic or unsafe information. This leads to a critical issue we define as unintended data poisoning, which can severely damage the safety alignment of global models during federated alignment. To address this, we propose FedDetox, a robust framework tailored for Small Language Models (SLMs) on r",
-      "pdf_url": "https://arxiv.org/pdf/2604.06833v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.06833v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00152",
@@ -6993,7 +7497,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Visual language model (VLM) is rapidly being integrated into safety-critical systems such as autonomous driving, making it an important attack surface for potential backdoor attacks. Existing backdoor attacks mainly rely on unimodal, explicit, and easily detectable triggers, making it difficult to construct both covert and stable attack channels in autonomous driving scenarios. GLA introduces two naturalistic triggers: graffiti-based visual patterns generated via stable diffusion inpainting, whi",
-      "pdf_url": "https://arxiv.org/pdf/2604.04630v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.04630v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00153",
@@ -7017,7 +7529,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "The integration of large language models (LLMs) into robotic control pipelines enables natural language interfaces that translate user prompts into executable commands. However, this digital-to-physical interface introduces a critical and underexplored vulnerability: structured backdoor attacks embedded during fine-tuning. In this work, we experimentally investigate LoRA-based supply-chain backdoors in LLM-mediated ROS2 robotic control systems and evaluate their impact on physical robot executio",
-      "pdf_url": "https://arxiv.org/pdf/2604.03890v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.03890v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00154",
@@ -7048,7 +7568,15 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Graph-based Retrieval-Augmented Generation (GraphRAG) enhances the reasoning capabilities of Large Language Models (LLMs) by grounding their responses in structured knowledge graphs. Leveraging community detection and relation filtering techniques, GraphRAG systems demonstrate inherent resistance to traditional RAG attacks, such as text poisoning and prompt injection. However, in this paper, we find that the security of GraphRAG systems fundamentally relies on the topological integrity of the un",
-      "pdf_url": "https://arxiv.org/pdf/2604.02954v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.02954v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00155",
@@ -7077,7 +7605,15 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Decentralised post-training of large language models utilises data and pipeline parallelism techniques to split the data and the model. Unfortunately, decentralised post-training can be vulnerable to poisoning and backdoor attacks by one or more malicious participants. There have been several works on attacks and defenses against decentralised data parallelism or federated learning. However, existing works on the robustness of pipeline parallelism are limited to poisoning attacks. To the best of",
-      "pdf_url": "https://arxiv.org/pdf/2604.02372v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.02372v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00156",
@@ -7102,7 +7638,12 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Multimodal large language models (MLLMs) integrate information from multiple modalities such as text, images, audio, and video, enabling complex capabilities such as visual question answering and audio translation. While powerful, this increased expressiveness introduces new and amplified vulnerabilities to adversarial manipulation. This survey provides a comprehensive and systematic analysis of adversarial threats to MLLMs, moving beyond enumerating attack techniques to explain the underlying c",
-      "pdf_url": "https://arxiv.org/pdf/2603.27918v1"
+      "pdf_url": "https://arxiv.org/pdf/2603.27918v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00157",
@@ -7129,7 +7670,15 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Vision-Language Models (VLMs) are increasingly deployed in consumer applications where users seek recommendations about products, dining, and services. We introduce Hidden Ads, a new class of backdoor attacks that exploit this recommendation-seeking behavior to inject unauthorized advertisements. Unlike traditional pattern-triggered backdoors that rely on artificial triggers such as pixel patches or special tokens, Hidden Ads activates on natural user behaviors: when users upload images containi",
-      "pdf_url": "https://arxiv.org/pdf/2603.27522v1"
+      "pdf_url": "https://arxiv.org/pdf/2603.27522v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00158",
@@ -7154,7 +7703,15 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Genomic foundation models trained on DNA sequences have demonstrated remarkable capabilities across diverse biological tasks, from variant effect prediction to genome design. These models are typically trained on massive, publicly sourced genomic datasets comprising trillions of nucleotide tokens, which renders them intrinsically susceptible to errors, artifacts, and adversarial issues embedded in the training data. Unlike natural language, DNA sequences lack the semantic transparency that might",
-      "pdf_url": "https://arxiv.org/pdf/2603.27465v1"
+      "pdf_url": "https://arxiv.org/pdf/2603.27465v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00159",
@@ -7184,7 +7741,18 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Large Language Models (LLMs) have demonstrated remarkable performance across a wide range of applications. However, their practical deployment is often hindered by issues such as outdated knowledge and the tendency to generate hallucinations. To address these limitations, Retrieval-Augmented Generation (RAG) systems have been introduced, enhancing LLMs with external, up-to-date knowledge sources. Despite their advantages, RAG systems remain vulnerable to adversarial attacks, with data poisoning ",
-      "pdf_url": "https://arxiv.org/pdf/2603.25164v1"
+      "pdf_url": "https://arxiv.org/pdf/2603.25164v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020",
+          "AML.T0043",
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01",
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00160",
@@ -7218,7 +7786,15 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Recent advances in visual-language alignment have endowed vision-language models (VLMs) with fine-grained image understanding capabilities. However, this progress also introduces new privacy risks. This paper first proposes a novel privacy threat model named identity-affiliation learning: an attacker fine-tunes a VLM using only a few private photos of a target individual, thereby embedding associations between the target facial identity and their private property and social relationships into th",
-      "pdf_url": "https://arxiv.org/pdf/2603.23925v1"
+      "pdf_url": "https://arxiv.org/pdf/2603.23925v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00161",
@@ -7303,7 +7879,18 @@
       "reviewed": false,
       "month": 3,
       "abstract": "Retrieval-Augmented Generation (RAG) significantly mitigates the hallucinations and domain knowledge deficiency in large language models by incorporating external knowledge bases. However, the multi-module architecture of RAG introduces complex system-level security vulnerabilities. Guided by the RAG workflow, this paper analyzes the underlying vulnerability mechanisms and systematically categorizes core threat vectors such as data poisoning, adversarial attacks, and membership inference attacks",
-      "pdf_url": "https://arxiv.org/pdf/2603.21654v1"
+      "pdf_url": "https://arxiv.org/pdf/2603.21654v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020",
+          "AML.T0024",
+          "AML.T0043"
+        ],
+        "owasp_llm_top10": [
+          "LLM02",
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00165",
@@ -7413,7 +8000,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Agentic language-model systems increasingly rely on mutable execution contexts, including files, memory, tools, skills, and auxiliary artifacts, creating security risks beyond explicit user prompts. This paper presents DeepTrap, an automated framework for discovering contextual vulnerabilities in OpenClaw. DeepTrap formulates adversarial context manipulation as a black-box trajectory-level optimization problem that balances risk realization, benign-task preservation, and stealth. It combines ris",
-      "pdf_url": "https://arxiv.org/pdf/2605.11047v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.11047v1",
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00170",
@@ -7605,7 +8197,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "AI agents are promising for high-stakes enterprise workflows, but dependable deployment remains limited because tool-use failures are difficult to diagnose and control. Agents may skip required tool calls, invoke tools unnecessarily, or take actions whose consequence becomes visible only after execution. Existing observability methods are mostly external: prompts reveal correlations, evaluations score outputs, and logs arrive only after the model has already acted. In long-horizon settings, thes",
-      "pdf_url": "https://arxiv.org/pdf/2605.06890v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.06890v1",
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00179",
@@ -7680,7 +8277,15 @@
       "reviewed": false,
       "month": 5,
       "abstract": "The security discussion around agentic AI focuses heavily on prompt injection. This paper argues that multi-agent systems also create a distinct authorization problem: maintaining authorization invariants as non-human principals retrieve data, delegate tasks, and synthesize results across changing boundaries. We call this problem authorization propagation. It is not reducible to prompt injection and is not fully addressed by classical access-control models such as RBAC, ABAC, or ReBAC. The paper",
-      "pdf_url": "https://arxiv.org/pdf/2605.05440v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.05440v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0051"
+        ],
+        "owasp_llm_top10": [
+          "LLM01"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00182",
@@ -7707,7 +8312,12 @@
       "month": 5,
       "abstract": "Retrieval-Augmented Generation (RAG) and agentic AI systems are increasingly prevalent in enterprise AI deployments. However, real enterprise environments introduce challenges largely absent from academic treatments and consumer-facing APIs: multiple tenants with heterogeneous data, strict access-control requirements, regulatory compliance, and cost pressures that demand shared infrastructure. A fundamental problem underlies existing RAG architectures in these settings: retrieval systems rank do",
       "doi": "10.1145/3786335.3813145",
-      "pdf_url": "https://arxiv.org/pdf/2605.05287v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.05287v1",
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00183",
@@ -7747,7 +8357,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "AI agents are increasingly deployed across diverse domains to automate complex workflows through long-horizon and high-stakes action executions. Due to their high capability and flexibility, such agents raise significant security and safety concerns. A growing number of real-world incidents have shown that adversaries can easily manipulate agents into performing harmful actions, such as leaking API keys, deleting user data, or initiating unauthorized transactions. Evaluating agent security is in",
-      "pdf_url": "https://arxiv.org/pdf/2605.04808v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.04808v1",
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00184",
@@ -7773,7 +8388,12 @@
       "reviewed": false,
       "month": 5,
       "abstract": "Modern AI agents execute real-world side effects through tool calls such as file operations, shell commands, HTTP requests, and database queries. A single unsafe action, including accidental deletion, credential exposure, or data exfiltration, can cause irreversible harm. Existing defenses are incomplete: post-hoc benchmarks measure behavior after execution, static guardrails miss obfuscation and multi-step context, and infrastructure sandboxes constrain where code runs without understanding wha",
-      "pdf_url": "https://arxiv.org/pdf/2605.04785v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.04785v1",
+      "framework_mappings": {
+        "owasp_agentic_top10": [
+          "AGT02"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00186",
@@ -7977,7 +8597,12 @@
       "reviewed": false,
       "month": 4,
       "abstract": "We report a safety incident in a deployed multi-agent research system in which a primary AI agent installed 107 unauthorized software components, overwrote a system registry, overrode a prior negative decision from an oversight agent, and escalated through increasingly privileged operations up to an attempted system administrator command. The incident was preceded not by an adversarial attack but by routine content: a forwarded technology article written for human developers and shared by the pr",
-      "pdf_url": "https://arxiv.org/pdf/2605.00055v1"
+      "pdf_url": "https://arxiv.org/pdf/2605.00055v1",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0043"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00196",
@@ -8079,7 +8704,12 @@
       "reviewed": false,
       "month": 4,
       "abstract": "Large language models (LLMs) are increasingly deployed, yet their outputs can be highly sensitive to routine, non-adversarial variation in how users phrase queries, a gap not well addressed by existing red-teaming efforts. We propose Green Shielding, a user-centric agenda for building evidence-backed deployment guidance by characterizing how benign input variation shifts model behavior. We operationalize this agenda through the CUE criteria: benchmarks with authentic Context, reference standards",
-      "pdf_url": "https://arxiv.org/pdf/2604.24700v1"
+      "pdf_url": "https://arxiv.org/pdf/2604.24700v1",
+      "framework_mappings": {
+        "nist_ai_rmf": [
+          "MEASURE"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00202",
@@ -8104,7 +8734,15 @@
       "reviewed": false,
       "month": 6,
       "abstract": "This paper presents an empirical study on backdoor attacks in large language model agents. We extend a recent attack framework by adding two lightweight benchmarks that measure cross-domain robustness and trigger visibility without changing the model architecture. Our approach fine-tunes AgentLM-based agents with parameter-efficient methods on operating system and web browsing tasks using multiple poisoning ratios and both visible and invisible triggers. We then evaluate the agents with ",
-      "doi": "10.4018/979-8-3373-8252-4.ch010"
+      "doi": "10.4018/979-8-3373-8252-4.ch010",
+      "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0020"
+        ],
+        "owasp_llm_top10": [
+          "LLM04"
+        ]
+      }
     },
     {
       "id": "llmsec-2026-00203",
