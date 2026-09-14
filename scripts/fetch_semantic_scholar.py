@@ -71,7 +71,9 @@ def main() -> int:
             while True:
                 if token:
                     params["token"] = token
-                data = get_with_retry(config["api_url"], params=params, headers=headers, backoff=15).json()
+                data = get_with_retry(
+                    config["api_url"], params=params, headers=headers, attempts=6, backoff=20
+                ).json()
                 papers.extend(parse_items(data.get("data") or []))
                 token = data.get("token")
                 print(f"  {len(papers)} papers so far (total matching: {data.get('total')})")

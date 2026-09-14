@@ -76,7 +76,8 @@ def main() -> int:
     }
     papers, errors = [], []
     try:
-        response = get_with_retry(config["api_url"], params=params, timeout=90, backoff=20)
+        # A weekly job can afford a few minutes of patience; a missed week cannot be recovered
+        response = get_with_retry(config["api_url"], params=params, timeout=90, attempts=5, backoff=30)
         papers = parse_feed(response.content)
         print(f"arXiv returned {len(papers)} papers")
     except Exception as exc:  # report, don't crash: other sources still run
