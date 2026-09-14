@@ -4,6 +4,7 @@ node_modules/
 # Build output
 webapp/dist/
 webapp/.astro/
+webapp/src/data/
 
 # Python
 __pycache__/
