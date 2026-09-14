@@ -11,12 +11,26 @@ from fetch_common import SCRIPTS_DIR, exit_code, get_with_retry, load_source, wr
 
 # CrossRef's "polite pool" asks clients to identify themselves with a contact address.
 HEADERS = {"User-Agent": "LLMSecLitReview/1.0 (mailto:emmanuelgjr@gmail.com)"}
+DATE_FIELDS = ("published-online", "published-print", "published", "issued")
 
 
 def clean_text(value: str) -> str:
     """Strip JATS/HTML markup and entities that CrossRef leaves in titles and abstracts."""
     # Unescape first: some records double-encode markup as "&lt;b&gt;".
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(value))).strip()
+
+
+def first_date(item: dict) -> list[int]:
+    """[year, month, ...] from the first populated date field, or [0].
+
+    Preprints and posted content often carry only "published"/"issued", and
+    CrossRef sometimes sends placeholders like {"date-parts": [[null]]}.
+    """
+    for key in DATE_FIELDS:
+        parts = ((item.get(key) or {}).get("date-parts") or [[]])[0]
+        if parts and parts[0]:
+            return parts
+    return [0]
 
 
 def parse_items(items: list[dict]) -> list[dict]:
@@ -28,8 +42,7 @@ def parse_items(items: list[dict]) -> list[dict]:
         if not title:
             continue
         doi = item.get("DOI", "")
-        pub = item.get("published-online") or item.get("published-print") or {}
-        date_parts = (pub.get("date-parts") or [[0]])[0]
+        date_parts = first_date(item)
         venues = item.get("container-title") or []
         papers.append({
             "title": title,
@@ -38,7 +51,7 @@ def parse_items(items: list[dict]) -> list[dict]:
                 for a in item.get("author", [])
                 if (name := f"{a.get('given', '')} {a.get('family', '')}".strip())
             ],
-            "year": date_parts[0] if date_parts else 0,
+            "year": date_parts[0],
             "month": date_parts[1] if len(date_parts) > 1 else 0,
             "abstract": clean_text(item.get("abstract") or "")[:500],
             "url": item.get("URL") or f"https://doi.org/{doi}",
@@ -69,8 +82,8 @@ def main() -> int:
             "filter": f"has-abstract:true,from-pub-date:{from_date}",
             "sort": "relevance",
             "order": "desc",
-            "select": "DOI,title,author,published-print,published-online,abstract,URL,"
-                      "is-referenced-by-count,container-title",
+            "select": "DOI,title,author,published-print,published-online,published,issued,"
+                      "abstract,URL,is-referenced-by-count,container-title",
         }
         try:
             items = get_with_retry(config["api_url"], params=params, headers=HEADERS).json()

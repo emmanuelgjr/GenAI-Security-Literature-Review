@@ -143,6 +143,16 @@ def test_parse_crossref_cleans_markup_and_reads_venue():
     assert paper["abstract"] == "Abstract"
 
 
+def test_parse_crossref_falls_back_to_issued_date():
+    [paper] = parse_crossref([{
+        "DOI": "10.3/c", "title": ["PIDL: A Prompt Injection Detection Layer"],
+        "author": [{"given": "A", "family": "B"}],
+        "published-online": {"date-parts": [[None]]},
+        "issued": {"date-parts": [[2026, 9, 3]]},
+    }])
+    assert (paper["year"], paper["month"]) == (2026, 9)
+
+
 def test_clean_text_strips_jats_tags():
     assert clean_text("<jats:p>Prompt   injection</jats:p>") == "Prompt injection"
 

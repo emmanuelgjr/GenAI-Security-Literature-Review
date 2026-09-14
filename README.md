@@ -39,7 +39,9 @@ Every entry is mapped (where applicable) to:
 
 ### Auto-Discovery
 
-A weekly GitHub Action queries academic APIs (arXiv, Semantic Scholar, CrossRef) for new GenAI security publications. New entries are submitted as pull requests for human review before merging.
+A weekly GitHub Action harvests new publications from arXiv (OAI-PMH, cs.CR and cs.CL), Semantic Scholar and CrossRef, keeps only papers that are about both generative AI and security, and proposes them in a single rolling pull request for human review. Sources, queries and look-back windows are configured in [`data/sources.json`](data/sources.json); each run's job summary and the PR show a per-source health table.
+
+Maintainers can add an optional `SEMANTIC_SCHOLAR_API_KEY` repository secret ([free key](https://www.semanticscholar.org/product/api#api-key-form)) to avoid the shared rate limit, and run *Fetch New Papers* manually with `dry_run` to preview results without touching the PR.
 
 ### Community Contributions
 
