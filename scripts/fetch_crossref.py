@@ -1,29 +1,16 @@
 #!/usr/bin/env python3
-"""Fetch new LLM security papers from CrossRef API."""
+"""Fetch new LLM security papers from the CrossRef API (queries in data/sources.json)."""
 
 import html
-import json
 import re
 import sys
 import time
 from datetime import datetime, timedelta
-from pathlib import Path
 
-import requests
+from fetch_common import SCRIPTS_DIR, exit_code, get_with_retry, load_source, write_candidates
 
-ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_FILE = ROOT / "scripts" / "candidates_crossref.json"
-
-CROSSREF_API = "https://api.crossref.org/works"
-
-QUERIES = [
-    "large language model security",
-    "LLM prompt injection attack",
-    "AI safety adversarial machine learning",
-]
-
-MAX_RESULTS_PER_QUERY = 30
-LOOKBACK_DAYS = 365
+# CrossRef's "polite pool" asks clients to identify themselves with a contact address.
+HEADERS = {"User-Agent": "LLMSecLitReview/1.0 (mailto:emmanuelgjr@gmail.com)"}
 
 
 def clean_text(value: str) -> str:
@@ -32,98 +19,77 @@ def clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(value))).strip()
 
 
-def fetch_query(query: str, max_results: int = MAX_RESULTS_PER_QUERY) -> list[dict]:
-    """Fetch papers from CrossRef for a single query."""
-    # Sort by relevance, not date: CrossRef matches documents containing *any*
-    # query word, so date-sorted results are just the newest papers that mention
-    # "security" or "injection" in any field. Recency comes from the date filter.
-    from_date = (datetime.now() - timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
-    params = {
-        "query.bibliographic": query,
-        "rows": max_results,
-        "filter": f"has-abstract:true,from-pub-date:{from_date}",
-        "sort": "relevance",
-        "order": "desc",
-        "select": "DOI,title,author,published-print,published-online,abstract,URL,is-referenced-by-count",
-    }
-    headers = {
-        "User-Agent": "LLMSecLitReview/1.0 (mailto:emmanuelgjr@gmail.com)",
-    }
-
-    resp = requests.get(CROSSREF_API, params=params, headers=headers, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-
+def parse_items(items: list[dict]) -> list[dict]:
+    """Turn CrossRef work records into candidate papers."""
     papers = []
-    for item in data.get("message", {}).get("items", []):
-        title_list = item.get("title", [])
-        title = clean_text(title_list[0]) if title_list else ""
+    for item in items:
+        titles = item.get("title") or []
+        title = clean_text(titles[0]) if titles else ""
         if not title:
             continue
-
-        authors = []
-        for a in item.get("author", []):
-            name = f"{a.get('given', '')} {a.get('family', '')}".strip()
-            if name:
-                authors.append(name)
-
         doi = item.get("DOI", "")
-
-        # Get year/month from published date
         pub = item.get("published-online") or item.get("published-print") or {}
-        date_parts = pub.get("date-parts", [[0]])[0]
-        year = date_parts[0] if len(date_parts) > 0 else 0
-        month = date_parts[1] if len(date_parts) > 1 else 0
-
-        abstract = clean_text(item.get("abstract") or "")[:500]
-
-        citation_count = item.get("is-referenced-by-count", 0)
-
+        date_parts = (pub.get("date-parts") or [[0]])[0]
+        venues = item.get("container-title") or []
         papers.append({
             "title": title,
-            "authors": authors,
-            "year": year,
-            "month": month,
-            "abstract": abstract,
-            "url": item.get("URL", f"https://doi.org/{doi}"),
+            "authors": [
+                name
+                for a in item.get("author", [])
+                if (name := f"{a.get('given', '')} {a.get('family', '')}".strip())
+            ],
+            "year": date_parts[0] if date_parts else 0,
+            "month": date_parts[1] if len(date_parts) > 1 else 0,
+            "abstract": clean_text(item.get("abstract") or "")[:500],
+            "url": item.get("URL") or f"https://doi.org/{doi}",
             "doi": doi,
-            "citation_count": citation_count,
-            "venue": "",
+            "citation_count": item.get("is-referenced-by-count", 0),
+            "venue": clean_text(venues[0]) if venues else "",
         })
-
     return papers
 
 
-def main():
-    all_papers = []
-    seen_dois = set()
+def main() -> int:
+    config = load_source("crossref")
+    output = SCRIPTS_DIR / config["candidates_file"]
+    if not config.get("enabled", True):
+        print("CrossRef source disabled in sources.json")
+        return 0
 
-    for i, query in enumerate(QUERIES):
-        print(f"Query {i+1}/{len(QUERIES)}: {query}...")
+    from_date = (datetime.now() - timedelta(days=config["lookback_days"])).strftime("%Y-%m-%d")
+    papers, errors, seen = [], [], set()
+    for i, query in enumerate(config["query_terms"]):
+        print(f"Query {i + 1}/{len(config['query_terms'])}: {query}")
+        # Sort by relevance, not date: CrossRef matches documents containing *any*
+        # query word, so date-sorted results are just the newest papers that
+        # mention "security" or "injection". Recency comes from the date filter.
+        params = {
+            "query.bibliographic": query,
+            "rows": config["max_results"],
+            "filter": f"has-abstract:true,from-pub-date:{from_date}",
+            "sort": "relevance",
+            "order": "desc",
+            "select": "DOI,title,author,published-print,published-online,abstract,URL,"
+                      "is-referenced-by-count,container-title",
+        }
         try:
-            papers = fetch_query(query)
-            for p in papers:
-                key = p["doi"] or p["title"].lower()
-                if key not in seen_dois:
-                    seen_dois.add(key)
-                    all_papers.append(p)
-            print(f"  Found {len(papers)} papers ({len(all_papers)} unique total)")
-        except Exception as e:
-            print(f"  Error: {e}", file=sys.stderr)
-
-        if i < len(QUERIES) - 1:
+            items = get_with_retry(config["api_url"], params=params, headers=HEADERS).json()
+            batch = parse_items(items.get("message", {}).get("items", []))
+            for paper in batch:
+                key = paper["doi"] or paper["title"].lower()
+                if key not in seen:
+                    seen.add(key)
+                    papers.append(paper)
+            print(f"  {len(batch)} papers ({len(papers)} unique so far)")
+        except Exception as exc:  # report, don't crash: other queries still run
+            errors.append(f"{query}: {exc}")
+            print(f"  Error: {exc}", file=sys.stderr)
+        if i < len(config["query_terms"]) - 1:
             time.sleep(2)
 
-    # Filter to recent (2023+)
-    filtered = [p for p in all_papers if p["year"] >= 2023]
-
-    print(f"\n{len(filtered)} papers from 2023+ (from {len(all_papers)} total)")
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump({"source": "crossref", "fetched_at": datetime.now().isoformat(), "papers": filtered}, f, indent=2)
-
-    print(f"Written to {OUTPUT_FILE}")
+    write_candidates(output, "crossref", papers, errors)
+    return exit_code(papers, errors)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

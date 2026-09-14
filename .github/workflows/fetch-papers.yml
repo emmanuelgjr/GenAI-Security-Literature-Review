@@ -5,6 +5,11 @@ on:
     # Run every Sunday at 06:00 UTC
     - cron: '0 6 * * 0'
   workflow_dispatch:  # Allow manual trigger
+    inputs:
+      dry_run:
+        description: 'Fetch and deduplicate, but do not create or update the PR'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -26,6 +31,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
+      # Each fetcher exits non-zero if its source failed outright; the run
+      # carries on with the other sources and the health report flags it.
       - name: Fetch from arXiv
         run: python scripts/fetch_arxiv.py
         continue-on-error: true
@@ -33,10 +40,21 @@ jobs:
       - name: Fetch from Semantic Scholar
         run: python scripts/fetch_semantic_scholar.py
         continue-on-error: true
+        env:
+          # Optional repository secret; without it the shared rate limit applies
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
 
       - name: Fetch from CrossRef
         run: python scripts/fetch_crossref.py
         continue-on-error: true
+
+      - name: Report source health
+        id: health
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python scripts/fetch_common.py --report | tee source_health.md
+          { echo "### Source health"; echo; cat source_health.md; } >> "$GITHUB_STEP_SUMMARY"
 
       # One rolling PR instead of one per week: entries from the still-open
       # PR are carried into this run, so nothing unmerged is lost when the
@@ -55,6 +73,7 @@ jobs:
       - name: Deduplicate and merge
         id: dedup
         run: |
+          set -o pipefail
           pending=()
           [ -f pending_literature.json ] && pending=(--pending pending_literature.json --pending-base pending_base.json)
           python scripts/deduplicate.py "${pending[@]}" | tee dedup_output.txt
@@ -86,6 +105,10 @@ jobs:
             echo
             echo "**All entries are marked \`reviewed: false\`** -- please review before merging."
             echo
+            echo "### Source health (latest run)"
+            echo
+            cat source_health.md 2>/dev/null || echo "_Health report unavailable._"
+            echo
             echo "### New Entries"
             echo
             echo '```'
@@ -102,8 +125,19 @@ jobs:
             echo "*Last updated by the weekly paper fetch workflow (run #${{ github.run_number }}, trigger: ${{ github.event_name }}).*"
           } > pr_body.md
 
+      - name: Summarise dry run
+        if: inputs.dry_run && steps.dedup.outputs.has_new == 'true'
+        run: |
+          {
+            echo "### Dry run: entries that would be proposed"
+            echo
+            echo '```'
+            head -c 60000 new_entries_summary.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Create Pull Request
-        if: steps.dedup.outputs.has_new == 'true'
+        if: steps.dedup.outputs.has_new == 'true' && !inputs.dry_run
         uses: peter-evans/create-pull-request@v8
         with:
           branch: auto/papers
@@ -118,4 +152,12 @@ jobs:
 
       - name: Clean up candidate files
         if: always()
-        run: rm -f scripts/candidates_*.json pending_literature.json pending_base.json dedup_output.txt new_entries_summary.txt pr_body.md
+        run: rm -f scripts/candidates_*.json pending_literature.json pending_base.json source_health.md dedup_output.txt new_entries_summary.txt pr_body.md
+
+      # A scheduled run that silently fetches nothing looks green; fail it so
+      # GitHub notifies the maintainer when every source is down.
+      - name: Fail if no source delivered
+        if: steps.health.outcome == 'failure'
+        run: |
+          echo "::error::No enabled source returned papers -- see the Source health summary."
+          exit 1
