@@ -309,7 +309,7 @@
         ],
         "mitre_atlas": [
           "AML.T0024",
-          "AML.T0056"
+          "AML.T0057"
         ]
       },
       "tags": [
@@ -359,7 +359,7 @@
         ],
         "mitre_atlas": [
           "AML.T0024",
-          "AML.T0056"
+          "AML.T0057"
         ]
       },
       "tags": [
@@ -410,7 +410,7 @@
           "LLM03"
         ],
         "mitre_atlas": [
-          "AML.T0049"
+          "AML.T0024.002"
         ]
       },
       "tags": [
@@ -779,12 +779,12 @@
           "LLM06"
         ],
         "owasp_agentic_top10": [
-          "AGT02",
-          "AGT03"
+          "ASI02",
+          "ASI01"
         ],
         "mitre_atlas": [
           "AML.T0051",
-          "AML.T0057"
+          "AML.T0053"
         ]
       },
       "tags": [
@@ -831,8 +831,8 @@
           "LLM06"
         ],
         "owasp_agentic_top10": [
-          "AGT02",
-          "AGT03"
+          "ASI02",
+          "ASI01"
         ]
       },
       "tags": [
@@ -927,7 +927,7 @@
         ],
         "mitre_atlas": [
           "AML.T0054",
-          "AML.T0056"
+          "AML.T0057"
         ]
       },
       "tags": [
@@ -1228,9 +1228,6 @@
       "framework_mappings": {
         "owasp_llm_top10": [
           "LLM06"
-        ],
-        "owasp_agentic_top10": [
-          "AGT06"
         ]
       },
       "tags": [
@@ -1347,15 +1344,12 @@
       ],
       "framework_mappings": {
         "mitre_atlas": [
-          "AML.T0000",
-          "AML.T0001",
           "AML.T0010",
           "AML.T0015",
           "AML.T0020",
           "AML.T0043",
-          "AML.T0048",
-          "AML.T0049",
           "AML.T0051",
+          "AML.T0024.002",
           "AML.T0054"
         ]
       },
@@ -1567,7 +1561,6 @@
           "LLM01"
         ],
         "mitre_atlas": [
-          "AML.T0048",
           "AML.T0051"
         ]
       },
@@ -2082,8 +2075,8 @@
           "LLM08"
         ],
         "owasp_agentic_top10": [
-          "AGT03",
-          "AGT07"
+          "ASI01",
+          "ASI04"
         ]
       },
       "tags": [
@@ -2129,7 +2122,7 @@
           "LLM06"
         ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ]
       },
       "tags": [
@@ -2395,8 +2388,8 @@
           "LLM06"
         ],
         "owasp_agentic_top10": [
-          "AGT01",
-          "AGT09"
+          "ASI03",
+          "ASI10"
         ]
       },
       "tags": [
@@ -2473,16 +2466,16 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT01",
-          "AGT02",
-          "AGT03",
-          "AGT04",
-          "AGT05",
-          "AGT06",
-          "AGT07",
-          "AGT08",
-          "AGT09",
-          "AGT10"
+          "ASI01",
+          "ASI02",
+          "ASI03",
+          "ASI04",
+          "ASI05",
+          "ASI06",
+          "ASI07",
+          "ASI08",
+          "ASI09",
+          "ASI10"
         ]
       },
       "tags": [
@@ -2561,8 +2554,8 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT02",
-          "AGT03"
+          "ASI02",
+          "ASI01"
         ]
       },
       "tags": [
@@ -3153,7 +3146,7 @@
           "LLM07"
         ],
         "owasp_agentic_top10": [
-          "AGT07"
+          "ASI04"
         ]
       },
       "tags": [
@@ -3300,9 +3293,9 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT01",
-          "AGT02",
-          "AGT03"
+          "ASI03",
+          "ASI02",
+          "ASI01"
         ]
       },
       "tags": [
@@ -3433,8 +3426,8 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT02",
-          "AGT03"
+          "ASI02",
+          "ASI01"
         ]
       },
       "tags": [
@@ -3651,8 +3644,8 @@
           "LLM06"
         ],
         "owasp_agentic_top10": [
-          "AGT01",
-          "AGT09"
+          "ASI03",
+          "ASI10"
         ]
       },
       "tags": [
@@ -3694,8 +3687,8 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT02",
-          "AGT03"
+          "ASI02",
+          "ASI01"
         ]
       },
       "tags": [
@@ -3738,9 +3731,9 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT01",
-          "AGT02",
-          "AGT09"
+          "ASI03",
+          "ASI02",
+          "ASI10"
         ]
       },
       "tags": [
@@ -4054,8 +4047,8 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT01",
-          "AGT02"
+          "ASI03",
+          "ASI02"
         ]
       },
       "tags": [
@@ -4099,7 +4092,7 @@
       ],
       "framework_mappings": {
         "owasp_agentic_top10": [
-          "AGT09"
+          "ASI10"
         ]
       },
       "tags": [
@@ -4382,7 +4375,7 @@
           "LLM07"
         ],
         "mitre_atlas": [
-          "AML.T0049"
+          "AML.T0024.002"
         ]
       },
       "tags": [
@@ -5102,7 +5095,7 @@
       "pdf_url": "https://arxiv.org/pdf/2605.06423v1",
       "framework_mappings": {
         "mitre_atlas": [
-          "AML.T0024"
+          "AML.T0024.000"
         ],
         "owasp_llm_top10": [
           "LLM02"
@@ -5441,7 +5434,7 @@
       "pdf_url": "https://arxiv.org/pdf/2604.27002v1",
       "framework_mappings": {
         "mitre_atlas": [
-          "AML.T0024"
+          "AML.T0024.000"
         ],
         "owasp_llm_top10": [
           "LLM02"
@@ -6494,10 +6487,11 @@
       "pdf_url": "https://arxiv.org/pdf/2605.03378v1",
       "framework_mappings": {
         "mitre_atlas": [
-          "AML.T0051"
+          "AML.T0051",
+          "AML.T0053"
         ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ],
         "owasp_llm_top10": [
           "LLM01"
@@ -6870,8 +6864,11 @@
       "doi": "10.1109/ACCESS.2026.3675554",
       "pdf_url": "https://arxiv.org/pdf/2510.23883v3",
       "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0053"
+        ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ]
       }
     },
@@ -6941,8 +6938,11 @@
       "abstract": "Large language model agents increasingly operate through environment-facing scaffolds that expose files, web pages, APIs, and logs. These observations influence tool use, state tracking, and action sequencing, yet their reliability and authority are often uncertain. Environmental grounding is therefore a systems-level problem involving context admission, evidence provenance, freshness checking, verification policy, action gating, and model reasoning. Existing agent benchmarks mainly evaluate tas",
       "pdf_url": "https://arxiv.org/pdf/2605.08828v2",
       "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0053"
+        ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ]
       }
     },
@@ -7883,7 +7883,7 @@
       "framework_mappings": {
         "mitre_atlas": [
           "AML.T0020",
-          "AML.T0024",
+          "AML.T0024.000",
           "AML.T0043"
         ],
         "owasp_llm_top10": [
@@ -8199,8 +8199,11 @@
       "abstract": "AI agents are promising for high-stakes enterprise workflows, but dependable deployment remains limited because tool-use failures are difficult to diagnose and control. Agents may skip required tool calls, invoke tools unnecessarily, or take actions whose consequence becomes visible only after execution. Existing observability methods are mostly external: prompts reveal correlations, evaluations score outputs, and logs arrive only after the model has already acted. In long-horizon settings, thes",
       "pdf_url": "https://arxiv.org/pdf/2605.06890v1",
       "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0053"
+        ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ]
       }
     },
@@ -8314,8 +8317,11 @@
       "doi": "10.1145/3786335.3813145",
       "pdf_url": "https://arxiv.org/pdf/2605.05287v1",
       "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0053"
+        ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ]
       }
     },
@@ -8390,8 +8396,11 @@
       "abstract": "Modern AI agents execute real-world side effects through tool calls such as file operations, shell commands, HTTP requests, and database queries. A single unsafe action, including accidental deletion, credential exposure, or data exfiltration, can cause irreversible harm. Existing defenses are incomplete: post-hoc benchmarks measure behavior after execution, static guardrails miss obfuscation and multi-step context, and infrastructure sandboxes constrain where code runs without understanding wha",
       "pdf_url": "https://arxiv.org/pdf/2605.04785v1",
       "framework_mappings": {
+        "mitre_atlas": [
+          "AML.T0053"
+        ],
         "owasp_agentic_top10": [
-          "AGT02"
+          "ASI02"
         ]
       }
     },
