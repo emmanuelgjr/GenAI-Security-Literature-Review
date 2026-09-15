@@ -4,7 +4,7 @@ import pytest
 
 import verify_entries
 from check_links import Result, classify, link_targets, report as link_report
-from verify_entries import arxiv_id_of, doi_of, verify
+from verify_entries import arxiv_id_of, author_overlap, doi_of, verify
 
 
 # --- check_links ---
@@ -61,18 +61,18 @@ def test_doi_of_reads_either_field():
 
 
 def fake_sources(monkeypatch, arxiv=None, crossref=None):
-    monkeypatch.setattr(verify_entries, "arxiv_title", lambda _id: arxiv)
-    monkeypatch.setattr(verify_entries, "crossref_title", lambda _doi: crossref)
+    monkeypatch.setattr(verify_entries, "arxiv_record", lambda _id: arxiv)
+    monkeypatch.setattr(verify_entries, "crossref_record", lambda _doi: crossref)
 
 
 def test_verify_accepts_matching_titles_despite_case_and_punctuation(monkeypatch):
-    fake_sources(monkeypatch, arxiv="The AI security pyramid of pain")
+    fake_sources(monkeypatch, arxiv=("The AI security pyramid of pain", ["Chris M. Ward"]))
     entry = {"id": "e", "title": "The AI Security Pyramid of Pain", "external_ids": {"arxiv_id": "2402.11082"}}
     assert verify(entry, sleep=lambda _: None) == []
 
 
 def test_verify_flags_identifier_pointing_at_another_paper(monkeypatch):
-    fake_sources(monkeypatch, arxiv="Wing Optimisation for a tractor propeller driven Micro Aerial Vehicle")
+    fake_sources(monkeypatch, arxiv=("Wing Optimisation for a tractor propeller driven Micro Aerial Vehicle", []))
     entry = {"id": "e", "title": "ConfusedPilot: Confused Deputy Attacks Against RAG-based Code Assistants",
              "url": "https://arxiv.org/abs/2409.12345"}
     [finding] = verify(entry, sleep=lambda _: None)
@@ -85,3 +85,22 @@ def test_verify_flags_unknown_identifier(monkeypatch):
     entry = {"id": "e", "title": "T", "url": "https://example.org", "doi": "10.5555/3489212.3489351"}
     [finding] = verify(entry, sleep=lambda _: None)
     assert finding.problem == "identifier not found"
+
+
+def test_verify_flags_right_title_with_wrong_authors(monkeypatch):
+    fake_sources(monkeypatch, arxiv=(
+        "Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks",
+        ["Maksym Andriushchenko", "Francesco Croce", "Nicolas Flammarion"],
+    ))
+    entry = {"id": "e", "title": "Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks",
+             "authors": ["Jingwei Yi", "Yueqi Xie", "Bin Zhu"], "external_ids": {"arxiv_id": "2404.02151"}}
+    [finding] = verify(entry, sleep=lambda _: None)
+    assert finding.problem == "author mismatch"
+    assert "Andriushchenko" in finding.found_title
+
+
+def test_author_overlap_folds_accents_and_ignores_organisations():
+    assert author_overlap(["Florian Tramer"], ["Florian Tramèr"]) == 1.0
+    assert author_overlap(["Microsoft AI Red Team"], ["Someone Else"]) is None
+    assert author_overlap(["Ada Lovelace", "Alan Turing"], ["A. Lovelace", "C. Babbage"]) == 0.5
+    assert author_overlap(["Ada Lovelace"], []) is None

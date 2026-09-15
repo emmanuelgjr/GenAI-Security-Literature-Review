@@ -147,14 +147,14 @@ def test_is_on_topic_false_for_unrelated_paper():
 
 # Titles the weekly fetch actually proposed before the GenAI + security gate.
 @pytest.mark.parametrize("title", [
-    "Injection of Leukocyte-Poor Platelet-Rich Plasma During Rotator Cuff Repair: "
-    "A Systematic Review and Meta-analysis",
+    ("Injection of Leukocyte-Poor Platelet-Rich Plasma During Rotator Cuff Repair: "
+     "A Systematic Review and Meta-analysis"),
     "The Effects of Domestic Policies of Governments in Alignment with the Command Economy Model",
-    "Evaluating Large Language Models Using Construction Management Certification Exams: "
-    "a benchmark",
+    ("Evaluating Large Language Models Using Construction Management Certification Exams: "
+     "a benchmark"),
     "Artificial intelligence and machine learning in agri-food systems: supply chain and food security",
-    "Random Forest Approach for Enhancing Resilience Against False Data Injection Attacks "
-    "in Power Distribution Systems",
+    ("Random Forest Approach for Enhancing Resilience Against False Data Injection Attacks "
+     "in Power Distribution Systems"),
     "HSAE: A Hybrid Unsupervised Autoencoder for Zero-Day Attack Detection with anomaly monitoring",
 ])
 def test_is_on_topic_rejects_past_false_positives(title):

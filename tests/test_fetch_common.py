@@ -6,7 +6,12 @@ import pytest
 import requests
 
 import fetch_common
-from fetch_common import exit_code, get_with_retry, load_source, report, retry_delay
+
+exit_code = fetch_common.exit_code
+get_with_retry = fetch_common.get_with_retry
+load_source = fetch_common.load_source
+report = fetch_common.report
+retry_delay = fetch_common.retry_delay
 
 
 class FakeResponse:
