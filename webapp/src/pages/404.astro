@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Page not found" description="This page does not exist.">
+  <div class="mx-auto max-w-xl py-16 text-center">
+    <p class="eyebrow">Error 404</p>
+    <h1 class="display mt-4 text-5xl">This page isn't in the index</h1>
+    <p class="mt-5 text-lg leading-relaxed text-gray-600">
+      The link may be outdated. Entries are occasionally removed when a review finds they don't meet the criteria.
+    </p>
+    <form action={`${base}search/`} method="get" role="search" class="mx-auto mt-8 max-w-md">
+      <label for="notfound-search" class="sr-only">Search resources</label>
+      <div class="field flex items-center gap-2 p-1.5 pl-4 focus-within:border-primary-600 focus-within:ring-4 focus-within:ring-primary-600/15">
+        <input id="notfound-search" name="q" type="search" placeholder="Search the index…" class="min-w-0 flex-1 border-0 bg-transparent py-2 focus:outline-none focus:ring-0" />
+        <button type="submit" class="btn-primary rounded-lg px-4">Search</button>
+      </div>
+    </form>
+    <div class="mt-6 flex justify-center gap-6 text-sm">
+      <a href={base} class="link-arrow">Home</a>
+      <a href={`${base}browse/`} class="link-arrow">Browse categories</a>
+    </div>
+  </div>
+</BaseLayout>

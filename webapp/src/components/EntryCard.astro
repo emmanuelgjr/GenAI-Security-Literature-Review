@@ -1,5 +1,5 @@
 ---
-import { getCategoryClasses } from '../categoryColors';
+import { categoryLabel, getCategoryClasses } from '../categoryColors';
 
 interface Props {
   entry: {
@@ -28,65 +28,65 @@ const ABSTRACT_PREVIEW = 280;
 const abstractPreview = entry.abstract && entry.abstract.length > ABSTRACT_PREVIEW
   ? `${entry.abstract.slice(0, ABSTRACT_PREVIEW).replace(/\s+\S*$/, '')}…`
   : entry.abstract;
-
-const typeColors: Record<string, string> = {
-  paper: 'badge-blue',
-  book: 'badge-purple',
-  report: 'badge-orange',
-  tool: 'badge-green',
-  standard: 'badge-red',
-  talk: 'badge-gray',
-  blog: 'badge-gray',
-  dataset: 'badge-green',
-};
+const authors = `${entry.authors.slice(0, 3).join(', ')}${entry.authors.length > 3 ? ` +${entry.authors.length - 3}` : ''}`;
 ---
 
-<div class="card">
-  <div class="flex items-start justify-between gap-4">
-    <div class="flex-1 min-w-0">
-      <div class="flex items-center gap-2 mb-2 flex-wrap">
-        <span class={`badge ${typeColors[entry.type] || 'badge-gray'}`}>
-          {entry.type}
+<article class="surface-interactive group relative p-5 sm:p-6">
+  <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+    <span class="meta-label">{entry.type}</span>
+    <span class="text-gray-300" aria-hidden="true">/</span>
+    <span class="num font-mono text-[11px] text-gray-500">{entry.year}</span>
+    {entry.venue && (
+      <span class="max-w-[16rem] truncate text-xs text-gray-500" title={entry.venue}>{entry.venue}</span>
+    )}
+    <span class="ml-auto">
+      {entry.reviewed ? (
+        <span class="status-reviewed" title="Human-reviewed">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 11.2 3.2 8l1-1 2.2 2.2 5.4-5.4 1 1z" /></svg>
+          Reviewed
         </span>
-        {entry.reviewed ? (
-          <span class="badge badge-green" title="Human-reviewed">reviewed</span>
-        ) : (
-          <span class="badge badge-amber" title="Added automatically; not yet human-reviewed">unreviewed</span>
-        )}
-        {entry.open_access && (
-          <span class="badge badge-blue" title="Open access">open access</span>
-        )}
-        <span class="text-xs text-gray-500">{entry.year}</span>
-      </div>
-      <h3 class="text-lg font-semibold mb-1">
-        <a href={`${base}entry/${entry.id}/`} class="hover:underline">
-          {entry.title}
-        </a>
-      </h3>
-      <p class="text-sm text-gray-600 mb-2">
-        {entry.authors.slice(0, 3).join(', ')}{entry.authors.length > 3 ? ` + ${entry.authors.length - 3} more` : ''}
-        {entry.venue && <span class="text-gray-500"> &mdash; {entry.venue}</span>}
-      </p>
-      {abstractPreview && (
-        <p class="text-sm text-gray-700 line-clamp-2 mb-3">{abstractPreview}</p>
+      ) : (
+        <span class="status-unreviewed" title="Added automatically; not yet human-reviewed">Unreviewed</span>
       )}
-      <div class="flex items-center gap-2 flex-wrap">
-        {entry.categories.slice(0, 4).map((cat) => (
-          <a href={`${base}browse/${cat}/`} class={`text-xs px-2 py-0.5 rounded no-underline font-medium ${getCategoryClasses(cat)}`}>
-            {cat.replace(/-/g, ' ')}
-          </a>
-        ))}
-        {entry.citation_count !== undefined && entry.citation_count > 0 && (
-          <span class="text-xs text-gray-500 ml-auto" title="Citation count">
-            {entry.citation_count} citations
-          </span>
-        )}
-      </div>
-    </div>
-    <a href={entry.url} target="_blank" rel="noopener noreferrer" class="shrink-0 text-gray-500 hover:text-primary-600" title="Open resource" aria-label={`Open resource: ${entry.title} (new tab)`}>
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-      </svg>
-    </a>
+    </span>
   </div>
-</div>
+
+  <h3 class="mt-2.5 text-[17px] font-semibold leading-snug tracking-[-0.01em] text-gray-900">
+    <a
+      href={`${base}entry/${entry.id}/`}
+      class="text-gray-900 no-underline after:absolute after:inset-0 after:rounded-2xl after:content-[''] group-hover:text-primary-800"
+    >{entry.title}</a>
+  </h3>
+
+  <p class="mt-1 text-sm text-gray-600">{authors}</p>
+
+  {abstractPreview && (
+    <p class="mt-2.5 line-clamp-2 text-sm leading-relaxed text-gray-600">{abstractPreview}</p>
+  )}
+
+  <div class="relative z-10 mt-4 flex flex-wrap items-center gap-1.5">
+    {entry.categories.slice(0, 4).map((cat) => (
+      <a href={`${base}browse/${cat}/`} class={getCategoryClasses(cat)}>{categoryLabel(cat)}</a>
+    ))}
+    <span class="ml-auto flex items-center gap-3 pl-2">
+      {entry.open_access && <span class="text-xs text-gray-500">Open access</span>}
+      {entry.citation_count !== undefined && entry.citation_count > 0 && (
+        <span class="num font-mono text-[11px] text-gray-500" title="Citation count">
+          {entry.citation_count.toLocaleString('en-US')} cit.
+        </span>
+      )}
+      <a
+        href={entry.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-md p-1 text-gray-400 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900"
+        title="Open resource"
+        aria-label={`Open resource: ${entry.title} (new tab)`}
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-8 8M17 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h4" />
+        </svg>
+      </a>
+    </span>
+  </div>
+</article>

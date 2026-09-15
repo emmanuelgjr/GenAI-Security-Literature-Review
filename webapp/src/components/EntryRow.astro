@@ -1,0 +1,38 @@
+---
+/** Compact entry line for home-page lists: title, authors and one metadata line. */
+interface Props {
+  entry: {
+    id: string;
+    type: string;
+    title: string;
+    authors: string[];
+    year: number;
+    venue?: string;
+    citation_count?: number;
+    reviewed?: boolean;
+  };
+  /** What the trailing figure shows */
+  metric?: 'citations' | 'year';
+}
+
+const { entry, metric = 'year' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const lead = entry.authors[0] ? `${entry.authors[0]}${entry.authors.length > 1 ? ' et al.' : ''}` : '';
+---
+
+<li class="group relative flex items-start gap-4 py-4">
+  <div class="min-w-0 flex-1">
+    <a
+      href={`${base}entry/${entry.id}/`}
+      class="line-clamp-2 font-medium leading-snug text-gray-900 no-underline after:absolute after:inset-0 after:content-[''] group-hover:text-primary-800"
+    >{entry.title}</a>
+    <p class="mt-1 truncate text-sm text-gray-500">
+      {lead}{entry.venue && <span> · {entry.venue}</span>}
+    </p>
+  </div>
+  <span class="num shrink-0 pt-0.5 text-right font-mono text-xs text-gray-500">
+    {metric === 'citations' && entry.citation_count
+      ? <><span class="text-gray-900">{entry.citation_count.toLocaleString('en-US')}</span><span class="block text-[10px] uppercase tracking-wider">cited</span></>
+      : entry.year}
+  </span>
+</li>

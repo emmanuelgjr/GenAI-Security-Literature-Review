@@ -5,6 +5,7 @@ import literature from '../../data/literature.json';
 import taxonomy from '../../data/taxonomy.json';
 
 const entries = literature.entries;
+const categoryTotal = taxonomy.domains.reduce((s: number, d: any) => s + d.categories.length, 0);
 
 // Count entries per category
 const entryCounts: Record<string, number> = {};
@@ -16,11 +17,14 @@ entries.forEach((e: any) => {
 ---
 
 <BaseLayout title="Browse by Category" description="Browse GenAI and LLM security resources by domain and category: attacks, defenses, privacy, governance, red teaming, infrastructure, and agentic AI.">
-  <div>
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">Browse by Category</h1>
-    <p class="text-gray-600 mb-8">
-      Explore {entries.length} resources across {taxonomy.domains.length} domains and {taxonomy.domains.reduce((s: number, d: any) => s + d.categories.length, 0)} categories.
+  <header class="max-w-2xl">
+    <p class="eyebrow">Browse</p>
+    <h1 class="display mt-3 text-4xl sm:text-5xl">Categories</h1>
+    <p class="mt-4 text-lg leading-relaxed text-gray-600">
+      {entries.length.toLocaleString('en-US')} resources across {taxonomy.domains.length} domains and {categoryTotal} categories. A resource can belong to several.
     </p>
+  </header>
+  <div class="mt-10">
     <CategoryTree domains={taxonomy.domains} entryCounts={entryCounts} />
   </div>
 </BaseLayout>

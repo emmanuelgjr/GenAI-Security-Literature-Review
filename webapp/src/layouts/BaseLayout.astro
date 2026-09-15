@@ -5,27 +5,29 @@ interface Props {
   title: string;
   description?: string;
   ogType?: 'website' | 'article';
+  /** Pages that manage their own width (e.g. the home page) opt out of the container. */
+  wide?: boolean;
 }
 
 const SITE_NAME = 'GenAI Security Literature Review';
+const REPO = 'https://github.com/emmanuelgjr/GenAI-Security-Literature-Review';
 const {
   title,
   description = 'Comprehensive literature review of LLM and AI security research, standards, tools, and resources.',
   ogType = 'website',
+  wide = false,
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = `${title} | ${SITE_NAME}`;
 
 const navLinks = [
-  { href: base, label: 'Home' },
   { href: `${base}browse/`, label: 'Browse' },
   { href: `${base}search/`, label: 'Search' },
   { href: `${base}frameworks/`, label: 'Frameworks' },
   { href: `${base}about/`, label: 'About' },
 ];
-const isCurrent = (href: string) =>
-  href === base ? Astro.url.pathname === base : Astro.url.pathname.startsWith(href);
+const isCurrent = (href: string) => Astro.url.pathname.startsWith(href);
 ---
 
 <!doctype html>
@@ -34,6 +36,7 @@ const isCurrent = (href: string) =>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f6f2" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="sitemap" href={`${base}sitemap-index.xml`} />
@@ -46,71 +49,112 @@ const isCurrent = (href: string) =>
     <title>{fullTitle}</title>
     <slot name="head" />
   </head>
-  <body class="min-h-screen flex flex-col">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-primary-700 focus:px-3 focus:py-2 focus:rounded-md focus:shadow">
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:shadow-lift"
+    >
       Skip to content
     </a>
-    <header class="bg-primary-900 text-white shadow-lg">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <a href={base} class="text-white hover:text-primary-200 font-bold text-lg no-underline">
-            GenAI Security Lit Review
-          </a>
-          <div class="hidden sm:flex space-x-6">
-            {navLinks.map((link) => (
-              <a
-                href={link.href}
-                aria-current={isCurrent(link.href) ? 'page' : undefined}
-                class={`no-underline text-sm font-medium hover:text-white ${isCurrent(link.href) ? 'text-white' : 'text-primary-200'}`}
-              >{link.label}</a>
-            ))}
-          </div>
-          <!-- Mobile menu button -->
-          <div class="sm:hidden">
-            <button id="mobile-menu-btn" type="button" class="text-primary-200 hover:text-white" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden sm:hidden pb-4">
+
+    <header class="sticky top-0 z-40 border-b border-gray-200/70 bg-paper/85 backdrop-blur-md supports-[backdrop-filter]:bg-paper/70">
+      <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6" aria-label="Main">
+        <a href={base} class="group flex items-center gap-2.5 text-gray-900 no-underline hover:text-gray-900">
+          <img src={`${base}favicon.svg`} alt="" width="28" height="28" class="h-7 w-7 transition-transform duration-300 group-hover:-rotate-6" />
+          <span class="text-[15px] font-semibold tracking-tight">
+            GenAI Security <span class="hidden font-normal text-gray-500 md:inline">Literature Review</span>
+          </span>
+        </a>
+
+        <div class="hidden items-center gap-1 sm:flex">
           {navLinks.map((link) => (
             <a
               href={link.href}
               aria-current={isCurrent(link.href) ? 'page' : undefined}
-              class="block py-2 text-primary-200 hover:text-white no-underline text-sm"
+              class:list={[
+                'relative rounded-lg px-3 py-2 text-sm font-medium no-underline transition-colors',
+                isCurrent(link.href)
+                  ? 'text-gray-900 after:absolute after:inset-x-3 after:-bottom-[13px] after:h-0.5 after:rounded-full after:bg-primary-600'
+                  : 'text-gray-600 hover:bg-gray-900/[0.04] hover:text-gray-900',
+              ]}
             >{link.label}</a>
           ))}
+          <a
+            href={REPO}
+            class="ml-2 rounded-lg p-2 text-gray-500 no-underline transition-colors hover:bg-gray-900/[0.04] hover:text-gray-900"
+            aria-label="Source on GitHub"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+            </svg>
+          </a>
         </div>
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="-mr-2 rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-900/[0.05] sm:hidden"
+          aria-label="Toggle menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h10" />
+          </svg>
+        </button>
       </nav>
+      <div id="mobile-menu" class="hidden border-t border-gray-200/70 px-4 pb-4 pt-2 sm:hidden">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+            class:list={[
+              'block rounded-lg px-3 py-2.5 text-[15px] font-medium no-underline',
+              isCurrent(link.href) ? 'bg-gray-900/[0.05] text-gray-900' : 'text-gray-700 hover:bg-gray-900/[0.04]',
+            ]}
+          >{link.label}</a>
+        ))}
+        <a href={REPO} class="block rounded-lg px-3 py-2.5 text-[15px] font-medium text-gray-700 no-underline hover:bg-gray-900/[0.04]">GitHub</a>
+      </div>
     </header>
 
-    <main id="main" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <main id="main" class:list={['w-full flex-1', !wide && 'mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6']}>
       <slot />
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 mt-auto">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 class="text-white font-semibold mb-2">GenAI Security Literature Review</h3>
-            <p class="text-sm">A comprehensive, community-driven, auto-updating resource for LLM and AI security research.</p>
-          </div>
-          <div>
-            <h3 class="text-white font-semibold mb-2">Contribute</h3>
-            <ul class="text-sm space-y-1">
-              <li><a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md" class="text-gray-300 hover:text-white">Submit a Resource</a></li>
-              <li><a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review" class="text-gray-300 hover:text-white">GitHub Repository</a></li>
-              <li><a href={`${base}about/#download`} class="text-gray-300 hover:text-white">Download the Dataset</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-white font-semibold mb-2">License</h3>
-            <p class="text-sm">MIT License. Maintained by <a href="https://github.com/emmanuelgjr" class="text-gray-300 hover:text-white">@emmanuelgjr</a>.</p>
-          </div>
+    <footer class="border-t border-gray-200/80">
+      <div class="mx-auto grid max-w-6xl gap-10 px-4 pb-10 pt-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <a href={base} class="flex items-center gap-2.5 text-gray-900 no-underline hover:text-gray-900">
+            <img src={`${base}favicon.svg`} alt="" width="24" height="24" class="h-6 w-6" />
+            <span class="font-semibold tracking-tight">GenAI Security Literature Review</span>
+          </a>
+          <p class="mt-3 max-w-sm text-sm leading-relaxed text-gray-600">
+            An open, weekly-updated index of research, standards and tools on the security of generative AI.
+          </p>
         </div>
+        <div>
+          <h2 class="meta-label">Explore</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            {navLinks.map((link) => (
+              <li><a href={link.href} class="text-gray-700 no-underline hover:text-gray-900">{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="meta-label">Contribute</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href={`${REPO}/issues/new?template=add-resource.md`} class="text-gray-700 no-underline hover:text-gray-900">Suggest a resource</a></li>
+            <li><a href={`${base}about/#download`} class="text-gray-700 no-underline hover:text-gray-900">Download the dataset</a></li>
+            <li><a href={REPO} class="text-gray-700 no-underline hover:text-gray-900">Source on GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-200/80">
+        <p class="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-4 py-5 text-xs text-gray-500 sm:px-6">
+          <span>MIT License. Maintained by <a href="https://github.com/emmanuelgjr" class="text-gray-600 hover:text-gray-900">@emmanuelgjr</a>.</span>
+          <span>Unreviewed entries are added automatically and not yet curated.</span>
+        </p>
       </div>
     </footer>
 
