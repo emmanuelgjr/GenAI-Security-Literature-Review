@@ -17,6 +17,7 @@ import json
 import re
 import sys
 import time
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -31,6 +32,8 @@ LITERATURE = ROOT / "data" / "literature.json"
 OAI_URL = "https://oaipmh.arxiv.org/oai"
 CROSSREF_URL = "https://api.crossref.org/works/"
 MATCH_THRESHOLD = 0.6  # Jaccard on title words; tolerant of subtitles and version renames
+AUTHOR_THRESHOLD = 0.5  # share of claimed author surnames found at the source
+ORG_WORDS = re.compile(r"\b(?:team|foundation|institute|corporation|inc|ltd|group|project|agency|national|university|google|microsoft|openai|anthropic|nist|owasp|mitre)\b", re.I)
 
 
 @dataclass
@@ -39,7 +42,7 @@ class Finding:
     title: str
     identifier: str
     problem: str
-    found_title: str = ""
+    found_title: str = ""  # title (and authors) at the source
 
 
 def arxiv_id_of(entry: dict) -> str:
@@ -54,39 +57,66 @@ def doi_of(entry: dict) -> str:
     return entry.get("doi") or (entry.get("external_ids") or {}).get("doi", "")
 
 
-def arxiv_title(arxiv_id: str) -> str | None:
+def arxiv_record(arxiv_id: str) -> tuple[str, list[str]] | None:
+    """(title, authors) for an arXiv ID, or None if the ID does not exist."""
     params = {"verb": "GetRecord", "identifier": f"oai:arXiv.org:{arxiv_id}", "metadataPrefix": "arXiv"}
     try:
         papers, _ = parse_records(get_with_retry(OAI_URL, params=params, attempts=3, backoff=10).content)
     except ValueError:  # OAI "idDoesNotExist"
         return None
-    return papers[0]["title"] if papers else None
+    return (papers[0]["title"], papers[0]["authors"]) if papers else None
 
 
-def crossref_title(doi: str) -> str | None:
+def crossref_record(doi: str) -> tuple[str, list[str]] | None:
+    """(title, authors) for a DOI registered with CrossRef, or None if unknown."""
     try:
-        data = get_with_retry(CROSSREF_URL + doi, attempts=3, backoff=5).json()
+        message = get_with_retry(CROSSREF_URL + doi, attempts=3, backoff=5).json().get("message", {})
     except requests.HTTPError as exc:
         if exc.response is not None and exc.response.status_code == 404:
             return None
         raise
-    titles = data.get("message", {}).get("title") or []
-    return titles[0] if titles else ""
+    titles = message.get("title") or [""]
+    authors = [f"{a.get('given', '')} {a.get('family', '')}".strip() for a in message.get("author", [])]
+    return titles[0], [a for a in authors if a]
+
+
+def _fold(text: str) -> str:
+    return unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
+
+
+def author_overlap(claimed: list[str], actual: list[str]) -> float | None:
+    """Share of claimed authors whose surname appears among the actual authors.
+
+    None when there is nothing to compare (organisations as authors, or no
+    author data at the source).
+    """
+    people = [a for a in claimed if len(a.split()) >= 2 and not ORG_WORDS.search(a)]
+    if not people or not actual:
+        return None
+    haystack = " ".join(_fold(a) for a in actual)
+    hits = sum(1 for a in people if re.search(rf"\b{re.escape(_fold(a.split()[-1]))}\b", haystack))
+    return hits / len(people)
 
 
 def verify(entry: dict, sleep=time.sleep) -> list[Finding]:
     findings = []
     checks = []
     if arxiv_id := arxiv_id_of(entry):
-        checks.append((f"arXiv:{arxiv_id}", lambda: arxiv_title(arxiv_id)))
+        checks.append((f"arXiv:{arxiv_id}", lambda: arxiv_record(arxiv_id)))
     if doi := doi_of(entry):
-        checks.append((f"doi:{doi}", lambda: crossref_title(doi)))
+        checks.append((f"doi:{doi}", lambda: crossref_record(doi)))
     for identifier, lookup in checks:
-        found = lookup()
-        if found is None:
+        record = lookup()
+        if record is None:
             findings.append(Finding(entry["id"], entry["title"], identifier, "identifier not found"))
-        elif found and title_similarity(entry["title"], found) < MATCH_THRESHOLD:
-            findings.append(Finding(entry["id"], entry["title"], identifier, "title mismatch", found))
+        else:
+            title, authors = record
+            if title and title_similarity(entry["title"], title) < MATCH_THRESHOLD:
+                findings.append(Finding(entry["id"], entry["title"], identifier, "title mismatch", title))
+            overlap = author_overlap(entry.get("authors", []), authors)
+            if overlap is not None and overlap < AUTHOR_THRESHOLD:
+                found = f"{title} -- by {', '.join(authors[:4])}{' et al.' if len(authors) > 4 else ''}"
+                findings.append(Finding(entry["id"], entry["title"], identifier, "author mismatch", found))
         sleep(3)  # be polite to arXiv and CrossRef
     return findings
 
