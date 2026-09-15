@@ -3,6 +3,7 @@
 import pytest
 
 from deduplicate import (
+    add_to_index,
     auto_categorize,
     build_existing_index,
     get_next_id,
@@ -10,6 +11,7 @@ from deduplicate import (
     is_on_topic,
     is_valid_candidate,
     normalize_title,
+    pending_entries,
     title_similarity,
 )
 
@@ -113,6 +115,15 @@ def test_auto_categorize_finds_multiple_categories():
     assert "adversarial-examples" in cats
 
 
+def test_auto_categorize_matches_at_word_start_only():
+    # "shared team" contains "red team" as a substring
+    assert "red-teaming" not in auto_categorize("a shared team workspace for llm security")
+
+
+def test_auto_categorize_allows_plural_suffixes():
+    assert "guardrails" in auto_categorize("llm guardrails")
+
+
 def test_auto_categorize_dedupes_when_multiple_keywords_hit_same_category():
     # Both "jailbreak" and "jailbreaking" map to the same category
     cats = auto_categorize("jailbreak and jailbreaking on llms")
@@ -131,6 +142,37 @@ def test_is_on_topic_false_for_unrelated_paper():
         "title": "Sustainable agriculture techniques",
         "abstract": "Optimizing crop yield via rotation",
     }
+    assert not is_on_topic(paper)
+
+
+# Titles the weekly fetch actually proposed before the GenAI + security gate.
+@pytest.mark.parametrize("title", [
+    "Injection of Leukocyte-Poor Platelet-Rich Plasma During Rotator Cuff Repair: "
+    "A Systematic Review and Meta-analysis",
+    "The Effects of Domestic Policies of Governments in Alignment with the Command Economy Model",
+    "Evaluating Large Language Models Using Construction Management Certification Exams: "
+    "a benchmark",
+    "Artificial intelligence and machine learning in agri-food systems: supply chain and food security",
+    "Random Forest Approach for Enhancing Resilience Against False Data Injection Attacks "
+    "in Power Distribution Systems",
+    "HSAE: A Hybrid Unsupervised Autoencoder for Zero-Day Attack Detection with anomaly monitoring",
+])
+def test_is_on_topic_rejects_past_false_positives(title):
+    assert not is_on_topic({"title": title, "abstract": ""})
+
+
+@pytest.mark.parametrize("title", [
+    "Confidently Wrong: Calibration of Prompt-Injection Detectors under Attack Shift",
+    "LoRA Fine-Tuning Efficiently Undoes Safety Training in Llama 2-Chat",
+    "The Next Challenge for Agentic Cybersecurity: A Realistic Reverse Engineering Benchmark",
+    "Adversarial Attacks on Multimodal Agents",
+])
+def test_is_on_topic_accepts_genai_security_papers(title):
+    assert is_on_topic({"title": title, "abstract": ""})
+
+
+def test_is_on_topic_requires_security_angle_for_llm_papers():
+    paper = {"title": "An LLM-Driven Multi-Agent Framework for Job Shop Scheduling", "abstract": ""}
     assert not is_on_topic(paper)
 
 
@@ -192,3 +234,42 @@ def test_get_next_id_increments_max():
 
 def test_get_next_id_returns_one_for_empty_library():
     assert get_next_id({"entries": []}) == 1
+
+
+# --- add_to_index + pending_entries ---
+
+def test_add_to_index_records_all_identifiers():
+    index = build_existing_index({"entries": []})
+    add_to_index({"title": "T", "arxiv_id": "2501.1", "doi": "10.1/X", "semantic_scholar_id": "s2"}, index)
+    assert is_duplicate({"semantic_scholar_id": "s2", "title": "Other"}, index)
+    assert is_duplicate({"doi": "10.1/x", "title": "Other"}, index)
+
+
+def test_pending_entries_skips_entries_already_on_main(small_library):
+    _, index = small_library
+    pending = {"entries": [
+        {"id": "llmsec-2026-00001", "title": "Prompt Injection Attacks on LLMs",
+         "external_ids": {"arxiv_id": "2401.12345"}},
+        {"id": "llmsec-2026-00002", "title": "Memory Poisoning in LLM Agents",
+         "external_ids": {"arxiv_id": "2609.00001"}, "categories": ["memory-security"]},
+    ]}
+    kept = pending_entries(pending, index)
+    assert [e["title"] for e in kept] == ["Memory Poisoning in LLM Agents"]
+    # Kept verbatim, including reviewer edits such as categories
+    assert kept[0]["categories"] == ["memory-security"]
+
+
+def test_pending_entries_dedupes_within_pending(small_library):
+    _, index = small_library
+    entry = {"title": "Memory Poisoning in LLM Agents", "external_ids": {}}
+    kept = pending_entries({"entries": [dict(entry, id="a"), dict(entry, id="b")]}, index)
+    assert len(kept) == 1
+
+
+def test_pending_entries_does_not_resurrect_entries_deleted_from_main(small_library):
+    _, index = small_library
+    removed = {"id": "llmsec-2026-00009", "title": "Off-topic Paper Removed From Main", "external_ids": {}}
+    added = {"id": "llmsec-2026-00010", "title": "Memory Poisoning in LLM Agents", "external_ids": {}}
+    base = {"entries": [removed]}  # main when the PR branch was created
+    kept = pending_entries({"entries": [removed, added]}, index, base)
+    assert [e["title"] for e in kept] == ["Memory Poisoning in LLM Agents"]
