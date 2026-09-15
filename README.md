@@ -5,7 +5,7 @@
 [![Fetch Papers](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/fetch-papers.yml/badge.svg)](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/actions/workflows/fetch-papers.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive, community-driven, auto-updating literature review of **GenAI and LLM security** research, standards, tools, and resources. Currently tracking **232 resources** across **43 of 46 categories** with weekly automated updates from academic APIs.
+A comprehensive, community-driven, auto-updating literature review of **GenAI and LLM security** research, standards, tools, and resources. Currently tracking **227 resources** across **42 of 46 categories** with weekly automated updates from academic APIs.
 
 **[Browse the Interactive Webapp](https://emmanuelgjr.github.io/GenAI-Security-Literature-Review/)**
 
@@ -43,6 +43,10 @@ A weekly GitHub Action harvests new publications from arXiv (OAI-PMH, cs.CR and 
 
 Maintainers can add an optional `SEMANTIC_SCHOLAR_API_KEY` repository secret ([free key](https://www.semanticscholar.org/product/api#api-key-form)) to avoid the shared rate limit, and run *Fetch New Papers* manually with `dry_run` to preview results without touching the PR.
 
+### Data Quality
+
+CI validates every change against the JSON schemas and checks for duplicate papers, malformed links, and category and framework IDs that don't exist. A monthly *Data Audit* workflow checks links and verifies that each curated entry's arXiv ID or DOI resolves to the paper it claims (title and authors), and keeps an issue labelled `data-audit` open while problems remain.
+
 ### Community Contributions
 
 Anyone can submit resources via [GitHub Issues](https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md) or pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
@@ -60,7 +64,7 @@ The static webapp (deployed to GitHub Pages) provides:
 
 ```
 data/
-  literature.json      # Core database (232 curated entries)
+  literature.json      # Core database (227 curated entries)
   taxonomy.json        # 8 domains, 46 category definitions
   frameworks.json      # OWASP/NIST/MITRE/ISO framework definitions
   sources.json         # Automation source configuration
