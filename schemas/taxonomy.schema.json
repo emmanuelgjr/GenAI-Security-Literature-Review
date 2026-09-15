@@ -2,6 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LLM Security Taxonomy",
   "type": "object",
+  "$defs": {
+    "frameworkIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
   "required": ["domains"],
   "properties": {
     "domains": {
@@ -39,6 +47,18 @@
                 "description": {
                   "type": "string",
                   "description": "Brief description of what this category covers"
+                },
+                "framework_mappings": {
+                  "type": "object",
+                  "description": "Framework entries that apply to every resource in this category; suggested for automated entries",
+                  "properties": {
+                    "owasp_llm_top10": { "$ref": "#/$defs/frameworkIds" },
+                    "owasp_agentic_top10": { "$ref": "#/$defs/frameworkIds" },
+                    "mitre_atlas": { "$ref": "#/$defs/frameworkIds" },
+                    "nist_ai_rmf": { "$ref": "#/$defs/frameworkIds" },
+                    "iso_42001": { "$ref": "#/$defs/frameworkIds" }
+                  },
+                  "additionalProperties": false
                 }
               },
               "additionalProperties": false

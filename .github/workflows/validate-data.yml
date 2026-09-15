@@ -27,46 +27,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Validate data against schemas
+      # Schemas (incl. date formats), unique IDs, duplicate arXiv IDs/DOIs, URLs,
+      # and category and framework references
+      - name: Validate data
         run: python scripts/validate_data.py
-
-      - name: Check for duplicate IDs
-        run: |
-          python -c "
-          import json
-          with open('data/literature.json') as f:
-              data = json.load(f)
-          ids = [e['id'] for e in data['entries']]
-          dupes = [x for x in ids if ids.count(x) > 1]
-          if dupes:
-              print(f'Duplicate IDs found: {set(dupes)}')
-              exit(1)
-          print(f'All {len(ids)} IDs are unique')
-          "
-
-      - name: Validate category references
-        run: |
-          python -c "
-          import json
-          with open('data/taxonomy.json') as f:
-              tax = json.load(f)
-          valid_cats = set()
-          for domain in tax['domains']:
-              for cat in domain['categories']:
-                  valid_cats.add(cat['id'])
-          with open('data/literature.json') as f:
-              lit = json.load(f)
-          invalid = []
-          for entry in lit['entries']:
-              for cat in entry.get('categories', []):
-                  if cat not in valid_cats:
-                      invalid.append((entry['id'], cat))
-          if invalid:
-              for eid, cat in invalid:
-                  print(f'Invalid category \"{cat}\" in entry {eid}')
-              exit(1)
-          print(f'All category references are valid ({len(valid_cats)} categories)')
-          "
 
       - name: Check README counts match the data
         run: python scripts/sync_readme_counts.py --check

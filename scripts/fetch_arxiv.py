@@ -1,134 +1,128 @@
 #!/usr/bin/env python3
-"""Fetch new LLM security papers from arXiv API."""
+"""Fetch new papers from arXiv via OAI-PMH (sets and window in data/sources.json).
 
-import json
+The arXiv search API (export.arxiv.org/api/query) answers GitHub-hosted runners
+with HTTP 429 even for a single request, so this harvests whole categories from
+the OAI-PMH endpoint instead and leaves relevance to deduplicate.is_on_topic.
+"""
+
+from __future__ import annotations
+
 import re
 import sys
 import time
-import urllib.parse
-import urllib.request
-import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
-from pathlib import Path
+from xml.etree.ElementTree import Element
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT / "data"
-OUTPUT_FILE = ROOT / "scripts" / "candidates_arxiv.json"
+from defusedxml import ElementTree as ET
 
-ARXIV_API = "https://export.arxiv.org/api/query"
-CATEGORIES = ["cs.CR", "cs.AI", "cs.CL", "cs.LG"]
+from fetch_common import SCRIPTS_DIR, exit_code, get_with_retry, load_source, write_candidates
 
-QUERIES = [
-    '(ti:"large language model" OR ti:LLM) AND (ti:security OR ti:attack OR ti:vulnerability)',
-    '(abs:"prompt injection" OR abs:jailbreak) AND cat:cs.CR',
-    '(ti:"AI safety" OR ti:"AI security") AND (ti:adversarial OR ti:defense)',
-    '(abs:"language model" AND abs:poisoning)',
-    '(abs:"AI agent" OR abs:"agentic AI") AND (abs:security OR abs:safety)',
-]
-
-MAX_RESULTS_PER_QUERY = 50
+NS = {"oai": "http://www.openarchives.org/OAI/2.0/", "arxiv": "http://arxiv.org/OAI/arXiv/"}
+MAX_PAGES_PER_SET = 20
+PAGE_DELAY_SECONDS = 5  # arXiv asks harvesters to pace resumption requests
 
 
-def fetch_query(query: str, max_results: int = MAX_RESULTS_PER_QUERY) -> list[dict]:
-    """Fetch papers from arXiv for a single query."""
-    params = urllib.parse.urlencode({
-        "search_query": query,
-        "start": 0,
-        "max_results": max_results,
-        "sortBy": "submittedDate",
-        "sortOrder": "descending",
-    })
-    url = f"{ARXIV_API}?{params}"
+def _text(node: Element | None, path: str) -> str:
+    found = node.find(path, NS) if node is not None else None
+    return re.sub(r"\s+", " ", found.text or "").strip() if found is not None else ""
 
-    req = urllib.request.Request(url, headers={"User-Agent": "LLMSecLitReview/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        xml_data = resp.read()
 
-    ns = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
+def submission_month(arxiv_id: str) -> tuple[int, int] | None:
+    """(year, month) of first submission, read from the identifier.
+
+    OAI datestamps and <created> move when a paper is revised, so a 2022 paper
+    with a new version would otherwise look brand new.
+    """
+    match = re.match(r"^(\d{2})(\d{2})\.\d{4,5}$", arxiv_id) or re.search(r"/(\d{2})(\d{2})\d{3}$", arxiv_id)
+    if not match:
+        return None
+    yy, mm = int(match.group(1)), int(match.group(2))
+    return (2000 + yy if yy < 90 else 1900 + yy), mm
+
+
+def parse_records(xml_data: bytes) -> tuple[list[dict], str | None]:
+    """Parse a ListRecords page (or a GetRecord response) into papers and the resumption token."""
     root = ET.fromstring(xml_data)
+    error = root.find("oai:error", NS)
+    if error is not None:
+        if error.get("code") == "noRecordsMatch":
+            return [], None
+        raise ValueError(f"OAI-PMH error {error.get('code')}: {(error.text or '').strip()}")
 
     papers = []
-    for entry in root.findall("atom:entry", ns):
-        title = entry.find("atom:title", ns).text.strip().replace("\n", " ")
-        title = re.sub(r"\s+", " ", title)
-
-        abstract = entry.find("atom:summary", ns).text.strip().replace("\n", " ")
-        abstract = re.sub(r"\s+", " ", abstract)
-
-        authors = [a.find("atom:name", ns).text for a in entry.findall("atom:author", ns)]
-
-        arxiv_id_full = entry.find("atom:id", ns).text.strip()
-        arxiv_id = arxiv_id_full.split("/abs/")[-1]
-        arxiv_id = re.sub(r"v\d+$", "", arxiv_id)
-
-        published = entry.find("atom:published", ns).text[:10]
-        year = int(published[:4])
-        month = int(published[5:7])
-
-        pdf_url = ""
-        for link in entry.findall("atom:link", ns):
-            if link.get("title") == "pdf":
-                pdf_url = link.get("href", "")
-
-        categories = []
-        for cat in entry.findall("atom:category", ns):
-            categories.append(cat.get("term", ""))
-
-        doi_el = entry.find("arxiv:doi", ns)
-        doi = doi_el.text.strip() if doi_el is not None else ""
-
+    for record in root.iterfind("./*/oai:record", NS):  # ListRecords or GetRecord
+        header = record.find("oai:header", NS)
+        meta = record.find("oai:metadata/arxiv:arXiv", NS)
+        if meta is None or (header is not None and header.get("status") == "deleted"):
+            continue
+        arxiv_id = _text(meta, "arxiv:id")
+        year, month = submission_month(arxiv_id) or (0, 0)
+        authors = [
+            " ".join(filter(None, [_text(a, "arxiv:forenames"), _text(a, "arxiv:keyname")]))
+            for a in meta.iterfind("arxiv:authors/arxiv:author", NS)
+        ]
         papers.append({
-            "title": title,
-            "authors": authors,
+            "title": _text(meta, "arxiv:title"),
+            "authors": [a for a in authors if a],
             "year": year,
             "month": month,
-            "abstract": abstract[:500],
+            "abstract": _text(meta, "arxiv:abstract")[:500],
             "url": f"https://arxiv.org/abs/{arxiv_id}",
-            "pdf_url": pdf_url or f"https://arxiv.org/pdf/{arxiv_id}",
-            "doi": doi,
+            "pdf_url": f"https://arxiv.org/pdf/{arxiv_id}",
+            "doi": _text(meta, "arxiv:doi"),
             "arxiv_id": arxiv_id,
-            "arxiv_categories": categories,
+            "arxiv_categories": _text(meta, "arxiv:categories").split(),
         })
+    token = _text(root, "oai:ListRecords/oai:resumptionToken") or None
+    return papers, token
 
+
+def harvest_set(api_url: str, set_spec: str, since: str, sleep=time.sleep) -> list[dict]:
+    """All records in one OAI set changed since `since`, following resumption tokens."""
+    params = {"verb": "ListRecords", "metadataPrefix": "arXiv", "set": set_spec, "from": since}
+    papers: list[dict] = []
+    for page in range(MAX_PAGES_PER_SET):
+        # OAI-PMH flow control answers 503 + Retry-After; get_with_retry honours it
+        response = get_with_retry(api_url, params=params, timeout=180, attempts=5, backoff=30)
+        batch, token = parse_records(response.content)
+        papers.extend(batch)
+        print(f"  {set_spec} page {page + 1}: {len(batch)} records")
+        if not token:
+            break
+        params = {"verb": "ListRecords", "resumptionToken": token}
+        sleep(PAGE_DELAY_SECONDS)
     return papers
 
 
-def main():
-    all_papers = []
-    seen_ids = set()
+def main() -> int:
+    config = load_source("arxiv")
+    output = SCRIPTS_DIR / config["candidates_file"]
+    if not config.get("enabled", True):
+        print("arXiv source disabled in sources.json")
+        return 0
 
-    for i, query in enumerate(QUERIES):
-        print(f"Query {i+1}/{len(QUERIES)}: {query[:80]}...")
+    since_date = datetime.now() - timedelta(days=config["lookback_days"])
+    since = since_date.strftime("%Y-%m-%d")
+    papers, errors, seen = [], [], set()
+    for set_spec in config["oai_sets"]:
         try:
-            papers = fetch_query(query)
-            for p in papers:
-                if p["arxiv_id"] not in seen_ids:
-                    seen_ids.add(p["arxiv_id"])
-                    all_papers.append(p)
-            print(f"  Found {len(papers)} papers ({len(all_papers)} unique total)")
-        except Exception as e:
-            print(f"  Error: {e}", file=sys.stderr)
+            for paper in harvest_set(config["api_url"], set_spec, since):
+                if paper["arxiv_id"] not in seen:
+                    seen.add(paper["arxiv_id"])
+                    papers.append(paper)
+        except Exception as exc:  # report, don't crash: other sets and sources still run
+            errors.append(f"{set_spec}: {exc}")
+            print(f"Error harvesting {set_spec}: {exc}", file=sys.stderr)
 
-        # arXiv rate limit: 1 request per 3 seconds
-        if i < len(QUERIES) - 1:
-            time.sleep(3)
+    cutoff = (since_date.year, since_date.month)
+    recent = [p for p in papers if (p["year"], p["month"]) >= cutoff]
+    print(f"{len(recent)} papers first submitted since {cutoff[0]}-{cutoff[1]:02d} "
+          f"(of {len(papers)} records updated since {since})")
 
-    # Filter to recent papers (last 12 months)
-    cutoff = datetime.now() - timedelta(days=365)
-    cutoff_year = cutoff.year
-    cutoff_month = cutoff.month
-    recent = [
-        p for p in all_papers
-        if p["year"] > cutoff_year or (p["year"] == cutoff_year and p["month"] >= cutoff_month)
-    ]
-
-    print(f"\n{len(recent)} recent papers (last 12 months) out of {len(all_papers)} total")
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump({"source": "arxiv", "fetched_at": datetime.now().isoformat(), "papers": recent}, f, indent=2)
-
-    print(f"Written to {OUTPUT_FILE}")
+    write_candidates(output, "arxiv", recent, errors)
+    return exit_code(recent, errors)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

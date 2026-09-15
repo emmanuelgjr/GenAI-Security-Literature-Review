@@ -3,44 +3,40 @@
     {
       "id": "arxiv",
       "name": "arXiv",
-      "api_url": "https://export.arxiv.org/api/query",
+      "api_url": "https://oaipmh.arxiv.org/oai",
       "enabled": true,
-      "query_terms": [
-        "(\"large language model\" OR \"LLM\" OR \"generative AI\") AND (security OR attack OR vulnerability OR adversarial OR privacy OR jailbreak OR \"prompt injection\")"
+      "candidates_file": "candidates_arxiv.json",
+      "oai_sets": [
+        "cs:cs:CR",
+        "cs:cs:CL"
       ],
-      "categories": ["cs.CR", "cs.AI", "cs.CL"],
-      "max_results_per_fetch": 100,
-      "last_fetched": null
+      "lookback_days": 14
     },
     {
       "id": "semantic-scholar",
       "name": "Semantic Scholar",
-      "api_url": "https://api.semanticscholar.org/graph/v1/paper/search",
+      "api_url": "https://api.semanticscholar.org/graph/v1/paper/search/bulk",
       "enabled": true,
+      "candidates_file": "candidates_s2.json",
       "query_terms": [
-        "LLM security attack defense",
-        "large language model vulnerability",
-        "AI agent security",
-        "prompt injection defense",
-        "LLM privacy differential"
+        "(\"large language model\" | \"large language models\" | LLM | LLMs | \"generative AI\" | \"AI agent\" | \"AI agents\" | \"LLM agent\" | \"vision-language model\" | \"foundation model\") + (\"prompt injection\" | jailbreak | jailbreaking | \"adversarial attack\" | poisoning | backdoor | \"membership inference\" | \"red teaming\" | guardrail | guardrails | \"model extraction\" | watermarking | \"privacy leakage\" | \"LLM security\" | \"AI security\")"
       ],
-      "fields_of_study": ["Computer Science"],
-      "min_citation_count_older_than_6mo": 3,
-      "max_results_per_fetch": 100,
-      "last_fetched": null
+      "max_results": 1000,
+      "lookback_days": 45
     },
     {
       "id": "crossref",
       "name": "CrossRef",
       "api_url": "https://api.crossref.org/works",
       "enabled": true,
+      "candidates_file": "candidates_crossref.json",
       "query_terms": [
         "large language model security",
-        "AI safety adversarial",
-        "LLM prompt injection"
+        "LLM prompt injection attack",
+        "AI safety adversarial machine learning"
       ],
-      "max_results_per_fetch": 50,
-      "last_fetched": null
+      "max_results": 30,
+      "lookback_days": 365
     }
   ]
 }

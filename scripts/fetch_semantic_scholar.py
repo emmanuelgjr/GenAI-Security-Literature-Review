@@ -1,129 +1,100 @@
 #!/usr/bin/env python3
-"""Fetch new LLM security papers from Semantic Scholar API."""
+"""Fetch new LLM security papers from the Semantic Scholar bulk search API.
 
-import json
+Uses /paper/search/bulk with a boolean query from data/sources.json and a
+publication-date window: one request returns up to 1000 papers, whereas the
+relevance search needed one request per query and was rate-limited (429) on
+every query of every run from shared CI runners. Set SEMANTIC_SCHOLAR_API_KEY
+for a dedicated rate limit.
+"""
+
+import os
 import sys
 import time
 from datetime import datetime, timedelta
-from pathlib import Path
 
-import requests
+from fetch_common import SCRIPTS_DIR, exit_code, get_with_retry, load_source, write_candidates
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = ROOT / "data"
-OUTPUT_FILE = ROOT / "scripts" / "candidates_s2.json"
-
-S2_API = "https://api.semanticscholar.org/graph/v1/paper/search"
 S2_FIELDS = "paperId,title,authors,year,abstract,url,externalIds,citationCount,isOpenAccess,venue,publicationDate"
 
-QUERIES = [
-    "LLM security attack defense",
-    "large language model vulnerability prompt injection",
-    "AI agent security agentic",
-    "LLM jailbreak adversarial",
-    "language model privacy data leakage",
-    "RAG retrieval augmented generation security",
-    "AI red teaming evaluation safety",
-]
 
-MAX_RESULTS_PER_QUERY = 50
-
-
-def fetch_query(query: str, max_results: int = MAX_RESULTS_PER_QUERY) -> list[dict]:
-    """Fetch papers from Semantic Scholar for a single query."""
-    params = {
-        "query": query,
-        "limit": max_results,
-        "fields": S2_FIELDS,
-        "fieldsOfStudy": "Computer Science",
-    }
-    headers = {"User-Agent": "LLMSecLitReview/1.0"}
-
-    resp = requests.get(S2_API, params=params, headers=headers, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-
+def parse_items(items: list[dict]) -> list[dict]:
+    """Turn Semantic Scholar paper records into candidate papers."""
     papers = []
-    for item in data.get("data", []):
+    for item in items:
         if not item.get("title"):
             continue
-
-        authors = [a.get("name", "") for a in (item.get("authors") or []) if a.get("name")]
-
         ext_ids = item.get("externalIds") or {}
-        arxiv_id = ext_ids.get("ArXiv", "")
-        doi = ext_ids.get("DOI", "")
-
-        pub_date = item.get("publicationDate", "")
-        year = item.get("year") or 0
-        month = 0
-        if pub_date and len(pub_date) >= 7:
-            try:
-                month = int(pub_date[5:7])
-            except ValueError:
-                pass
-
-        abstract = (item.get("abstract") or "")[:500]
-
+        pub_date = item.get("publicationDate") or ""
+        month = int(pub_date[5:7]) if len(pub_date) >= 7 and pub_date[5:7].isdigit() else 0
         papers.append({
             "title": item["title"],
-            "authors": authors,
-            "year": year,
+            "authors": [a["name"] for a in (item.get("authors") or []) if a.get("name")],
+            "year": item.get("year") or 0,
             "month": month,
-            "abstract": abstract,
+            "abstract": (item.get("abstract") or "")[:500],
             "url": item.get("url", ""),
-            "doi": doi,
-            "arxiv_id": arxiv_id,
+            "doi": ext_ids.get("DOI", ""),
+            "arxiv_id": ext_ids.get("ArXiv", ""),
             "semantic_scholar_id": item.get("paperId", ""),
             "citation_count": item.get("citationCount", 0),
             "open_access": item.get("isOpenAccess", False),
             "venue": item.get("venue", ""),
         })
-
     return papers
 
 
-def main():
-    all_papers = []
-    seen_ids = set()
+def main() -> int:
+    config = load_source("semantic-scholar")
+    output = SCRIPTS_DIR / config["candidates_file"]
+    if not config.get("enabled", True):
+        print("Semantic Scholar source disabled in sources.json")
+        return 0
 
-    for i, query in enumerate(QUERIES):
-        print(f"Query {i+1}/{len(QUERIES)}: {query}...")
+    headers = {}
+    if os.environ.get("SEMANTIC_SCHOLAR_API_KEY"):
+        headers["x-api-key"] = os.environ["SEMANTIC_SCHOLAR_API_KEY"]
+    else:
+        print("SEMANTIC_SCHOLAR_API_KEY not set; using the shared unauthenticated rate limit")
+
+    since = (datetime.now() - timedelta(days=config["lookback_days"])).strftime("%Y-%m-%d")
+    papers, errors = [], []
+    for query in config["query_terms"]:
+        params = {
+            "query": query,
+            "fields": S2_FIELDS,
+            "publicationDateOrYear": f"{since}:",
+            "sort": "publicationDate:desc",
+        }
+        token = None
         try:
-            papers = fetch_query(query)
-            for p in papers:
-                key = p["semantic_scholar_id"] or p["doi"] or p["title"].lower()
-                if key not in seen_ids:
-                    seen_ids.add(key)
-                    all_papers.append(p)
-            print(f"  Found {len(papers)} papers ({len(all_papers)} unique total)")
-        except Exception as e:
-            print(f"  Error: {e}", file=sys.stderr)
+            while True:
+                if token:
+                    params["token"] = token
+                data = get_with_retry(
+                    config["api_url"], params=params, headers=headers, attempts=6, backoff=20
+                ).json()
+                papers.extend(parse_items(data.get("data") or []))
+                token = data.get("token")
+                print(f"  {len(papers)} papers so far (total matching: {data.get('total')})")
+                if not token or len(papers) >= config["max_results"]:
+                    break
+                time.sleep(1.5)  # keyed limit is 1 request/second
+        except Exception as exc:  # report, don't crash: other sources still run
+            errors.append(str(exc))
+            print(f"Error: {exc}", file=sys.stderr)
 
-        # S2 rate limit: 100 requests per 5 minutes
-        if i < len(QUERIES) - 1:
-            time.sleep(3)
+    seen, unique = set(), []
+    for paper in papers[: config["max_results"]]:
+        key = paper["semantic_scholar_id"] or paper["title"].lower()
+        if key not in seen:
+            seen.add(key)
+            unique.append(paper)
+    print(f"{len(unique)} unique papers published since {since}")
 
-    # Filter: recent papers, and older ones need citations
-    cutoff = datetime.now() - timedelta(days=180)
-    cutoff_year = cutoff.year
-    cutoff_month = cutoff.month
-
-    filtered = []
-    for p in all_papers:
-        if not p["year"]:
-            continue
-        is_recent = p["year"] > cutoff_year or (p["year"] == cutoff_year and p["month"] >= cutoff_month)
-        if is_recent or p.get("citation_count", 0) >= 3:
-            filtered.append(p)
-
-    print(f"\n{len(filtered)} papers after filtering (from {len(all_papers)} unique)")
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump({"source": "semantic-scholar", "fetched_at": datetime.now().isoformat(), "papers": filtered}, f, indent=2)
-
-    print(f"Written to {OUTPUT_FILE}")
+    write_candidates(output, "semantic-scholar", unique, errors)
+    return exit_code(unique, errors)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
