@@ -1,0 +1,82 @@
+name: Data Audit
+
+# Monthly: dead links, and curated entries whose arXiv ID / DOI resolves to a
+# different paper (or none). Findings are kept in one issue labelled
+# "data-audit", which is updated while problems remain and closed when clean.
+
+on:
+  schedule:
+    - cron: '0 7 1 * *'  # 07:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: data-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Check links
+        run: python scripts/check_links.py --output link_report.md
+
+      - name: Verify identifiers of curated entries
+        run: python scripts/verify_entries.py --output verify_report.md
+
+      - name: Compose report
+        id: report
+        run: |
+          problems=0
+          grep -q '\*\*0 broken\*\*' link_report.md || problems=1
+          grep -q '\*\*0 problem(s)\*\*' verify_report.md || problems=1
+          echo "problems=$problems" >> "$GITHUB_OUTPUT"
+          {
+            echo "Automated monthly audit of \`data/literature.json\` (run [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))."
+            echo
+            echo "## Links"
+            echo
+            cat link_report.md
+            echo
+            echo "## Identifiers (curated entries)"
+            echo
+            cat verify_report.md
+            echo
+            echo "A title or author mismatch usually means the arXiv ID or DOI belongs to a different paper."
+            echo "Fix the entry (or remove it if the work cannot be found), then re-run *Data Audit*."
+          } > audit_report.md
+          cat audit_report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open, update or close the audit issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROBLEMS: ${{ steps.report.outputs.problems }}
+        run: |
+          gh label create data-audit --color d93f0b --description "Automated data audit findings" --force >/dev/null
+          issue=$(gh issue list --label data-audit --state open --json number --jq '.[0].number // empty')
+          if [ "$PROBLEMS" = "1" ]; then
+            if [ -n "$issue" ]; then
+              gh issue edit "$issue" --body-file audit_report.md
+            else
+              gh issue create --title "Data audit: broken links or mismatched identifiers" \
+                --label data-audit --body-file audit_report.md
+            fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "Latest audit found no problems (run #${{ github.run_number }})."
+          fi

@@ -6,6 +6,8 @@ with HTTP 429 even for a single request, so this harvests whole categories from
 the OAI-PMH endpoint instead and leaves relevance to deduplicate.is_on_topic.
 """
 
+from __future__ import annotations
+
 import re
 import sys
 import time
@@ -40,7 +42,7 @@ def submission_month(arxiv_id: str) -> tuple[int, int] | None:
 
 
 def parse_records(xml_data: bytes) -> tuple[list[dict], str | None]:
-    """Parse one ListRecords page into candidate papers and the resumption token."""
+    """Parse a ListRecords page (or a GetRecord response) into papers and the resumption token."""
     root = ET.fromstring(xml_data)
     error = root.find("oai:error", NS)
     if error is not None:
@@ -49,7 +51,7 @@ def parse_records(xml_data: bytes) -> tuple[list[dict], str | None]:
         raise ValueError(f"OAI-PMH error {error.get('code')}: {(error.text or '').strip()}")
 
     papers = []
-    for record in root.iterfind("oai:ListRecords/oai:record", NS):
+    for record in root.iterfind("./*/oai:record", NS):  # ListRecords or GetRecord
         header = record.find("oai:header", NS)
         meta = record.find("oai:metadata/arxiv:arXiv", NS)
         if meta is None or (header is not None and header.get("status") == "deleted"):
