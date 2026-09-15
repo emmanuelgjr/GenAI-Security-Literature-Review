@@ -7,23 +7,24 @@ interface Props {
 
 const { page } = Astro.props;
 const first = page.total === 0 ? 0 : page.start + 1;
-const linkClass = 'px-3 py-1.5 rounded-md border border-gray-300 bg-white text-sm no-underline hover:bg-gray-50';
+const linkClass = 'btn-secondary px-3 py-2';
+const disabledClass = 'btn px-3 py-2 border border-gray-200 text-gray-300 cursor-not-allowed';
 ---
 
 {page.lastPage > 1 && (
-  <nav class="flex items-center justify-between gap-4 my-6" aria-label="Pagination">
+  <nav class="flex items-center justify-between gap-4" aria-label="Pagination">
     {page.url.prev ? (
-      <a href={page.url.prev} class={linkClass} rel="prev">&larr; Previous</a>
+      <a href={page.url.prev} class={linkClass} rel="prev"><span aria-hidden="true">←</span> Previous</a>
     ) : (
-      <span />
+      <span class={disabledClass} aria-hidden="true">← Previous</span>
     )}
-    <span class="text-sm text-gray-600">
-      {first}&ndash;{page.end + 1} of {page.total} &middot; page {page.currentPage} of {page.lastPage}
+    <span class="num text-center font-mono text-xs text-gray-500">
+      {first}–{page.end + 1} of {page.total}<span class="hidden sm:inline"> · page {page.currentPage}/{page.lastPage}</span>
     </span>
     {page.url.next ? (
-      <a href={page.url.next} class={linkClass} rel="next">Next &rarr;</a>
+      <a href={page.url.next} class={linkClass} rel="next">Next <span aria-hidden="true">→</span></a>
     ) : (
-      <span />
+      <span class={disabledClass} aria-hidden="true">Next →</span>
     )}
   </nav>
 )}

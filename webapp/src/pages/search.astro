@@ -10,11 +10,15 @@ const base = import.meta.env.BASE_URL;
   description="Full-text search across GenAI and LLM security papers, standards, tools, and reports, with filters by type, year, and review status."
 >
   <link slot="head" rel="preload" href={`${base}search-index.json`} as="fetch" crossorigin="anonymous" />
-  <div>
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Search Resources</h1>
-    <SearchBar client:load basePath={base} />
+  <div class="mx-auto max-w-4xl">
+    <p class="eyebrow">Search</p>
+    <h1 class="display mt-3 text-4xl sm:text-5xl">Find a resource</h1>
+    <p class="mt-3 text-gray-600">Matches titles, abstracts, authors, venues and categories. Links are shareable.</p>
+    <div class="mt-8">
+      <SearchBar client:load basePath={base} />
+    </div>
     <noscript>
-      <p class="text-gray-700">
+      <p class="mt-6 text-gray-700">
         Search needs JavaScript. You can still <a href={`${base}browse/`}>browse all resources by category</a>.
       </p>
     </noscript>

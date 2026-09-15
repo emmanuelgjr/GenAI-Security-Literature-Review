@@ -4,122 +4,142 @@ import taxonomy from '../data/taxonomy.json';
 import { allEntries, reviewedEntries } from '../lib/dataset';
 
 const base = import.meta.env.BASE_URL;
+const REPO = 'https://github.com/emmanuelgjr/GenAI-Security-Literature-Review';
 const totalEntries = allEntries.length;
 const totalCategories = taxonomy.domains.reduce((s, d) => s + d.categories.length, 0);
+const fmt = (n: number) => n.toLocaleString('en-US');
+
+const steps = [
+  {
+    title: 'Auto-discovery',
+    body: 'A weekly GitHub Action collects new papers from arXiv, Semantic Scholar and CrossRef and proposes them in a pull request for human review before they are merged into the database.',
+  },
+  {
+    title: 'Curation',
+    body: 'Curated entries are categorized using the taxonomy, mapped to security frameworks (OWASP, NIST, MITRE ATLAS, ISO 42001) and tagged. Automatically added entries get keyword-based categories and stay marked as not yet reviewed until a maintainer vets them.',
+  },
+  {
+    title: 'Quality signals',
+    body: 'Entries marked "reviewed" have been vetted by a human; unreviewed entries carry a badge. Every change to the data is validated against the schema in CI. Citation counts, open-access status and venue help you prioritize what to read.',
+  },
+];
+
+const frameworkList = [
+  ['OWASP Top 10 for LLM Applications', 'The most widely adopted LLM security risk list'],
+  ['OWASP Top 10 for Agentic Applications', 'Security risks specific to autonomous AI agents'],
+  ['MITRE ATLAS', 'Adversarial tactics, techniques and case studies for AI systems'],
+  ['NIST AI RMF', "The US government's AI risk management framework"],
+  ['ISO/IEC 42001', 'International standard for AI management systems'],
+];
 ---
 
 <BaseLayout title="About" description="How the GenAI Security Literature Review is built: sources, taxonomy, framework mappings, automated discovery, and how to contribute.">
-  <div class="max-w-3xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">About This Project</h1>
+  <div class="mx-auto max-w-3xl">
+    <header>
+      <p class="eyebrow">About</p>
+      <h1 class="display mt-3 text-4xl leading-tight sm:text-5xl">An open index of research on securing generative AI</h1>
+      <p class="mt-6 text-lg leading-relaxed text-gray-600">
+        The GenAI Security Literature Review is a community-driven, auto-updating database of research, standards, tools and resources on the security of large language models and AI systems. It currently tracks{' '}
+        <strong class="font-semibold text-gray-900">{fmt(totalEntries)} resources</strong>{' '}across{' '}
+        <strong class="font-semibold text-gray-900">{totalCategories} categories</strong>{' '}in{' '}
+        <strong class="font-semibold text-gray-900">{taxonomy.domains.length} domains</strong>.
+      </p>
+    </header>
 
-    <div class="prose prose-gray max-w-none">
-      <div class="card mb-6">
-        <h2 class="text-xl font-semibold mb-3">What is this?</h2>
-        <p class="text-gray-700 mb-4">
-          The GenAI Security Literature Review is a comprehensive, community-driven, auto-updating database of research, standards, tools, and resources related to the security of Large Language Models (LLMs) and AI systems.
-        </p>
-        <p class="text-gray-700">
-          Currently tracking <strong>{totalEntries} resources</strong> across <strong>{totalCategories} categories</strong> in <strong>{taxonomy.domains.length} domains</strong>.
-        </p>
-      </div>
+    <section class="mt-16" aria-labelledby="how">
+      <h2 id="how" class="display border-b border-gray-900 pb-3 text-2xl">How it works</h2>
+      <ol class="divide-y divide-gray-200/80">
+        {steps.map((step, i) => (
+          <li class="grid gap-2 py-6 sm:grid-cols-[3rem_10rem_1fr] sm:gap-6">
+            <span class="num font-mono text-xs text-gray-400">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="font-semibold text-gray-900">{step.title}</h3>
+            <p class="leading-relaxed text-gray-600">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
 
-      <div class="card mb-6">
-        <h2 class="text-xl font-semibold mb-3">How It Works</h2>
-        <div class="space-y-4 text-gray-700">
-          <div>
-            <h3 class="font-semibold text-gray-900">Auto-Discovery</h3>
-            <p>A weekly GitHub Action collects new papers from arXiv, Semantic Scholar and CrossRef and proposes them in a pull request for human review before they are merged into the database.</p>
+    <section class="mt-16" aria-labelledby="coverage">
+      <h2 id="coverage" class="display border-b border-gray-900 pb-3 text-2xl">Coverage</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+        {taxonomy.domains.map((domain) => (
+          <li class={`surface p-4 domain-${domain.id}`}>
+            <a href={`${base}browse/#domain-${domain.id}`} class="flex items-center gap-2 font-medium text-gray-900 no-underline hover:text-primary-800">
+              <span class="dot"></span>{domain.label}
+            </a>
+            <p class="mt-1 text-sm leading-relaxed text-gray-600">{domain.description}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-16" aria-labelledby="mappings">
+      <h2 id="mappings" class="display border-b border-gray-900 pb-3 text-2xl">Framework mappings</h2>
+      <p class="mt-4 leading-relaxed text-gray-600">Entries are mapped, where applicable, to these frameworks:</p>
+      <dl class="mt-4 divide-y divide-gray-200/80">
+        {frameworkList.map(([name, text]) => (
+          <div class="grid gap-1 py-3 sm:grid-cols-[16rem_1fr] sm:gap-6">
+            <dt class="font-medium text-gray-900">{name}</dt>
+            <dd class="text-gray-600">{text}</dd>
           </div>
-          <div>
-            <h3 class="font-semibold text-gray-900">Human Curation</h3>
-            <p>Curated entries are categorized using our taxonomy, mapped to relevant security frameworks (OWASP, NIST, MITRE ATLAS, ISO 42001), and tagged. Automatically added entries get keyword-based categories and stay marked as not yet reviewed until a maintainer vets them. Anyone can suggest a resource via GitHub Issues.</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-900">Quality Signals</h3>
-            <p>Entries marked as "reviewed" have been vetted by a human; unreviewed entries carry a badge. Every change to the data is validated against the schema in CI. Citation counts, open-access status, and venue information help you prioritize what to read.</p>
-          </div>
+        ))}
+      </dl>
+      <a href={`${base}frameworks/`} class="link-arrow mt-4 text-sm">Explore the mappings</a>
+    </section>
+
+    <section class="mt-16 scroll-mt-24" id="download" aria-labelledby="download-title">
+      <h2 id="download-title" class="display border-b border-gray-900 pb-3 text-2xl">Download the dataset</h2>
+      <p class="mt-4 leading-relaxed text-gray-600">
+        The full database is available for analysis, citation managers and systematic reviews. Files are regenerated on every deploy.
+      </p>
+      <div class="surface mt-6 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b border-gray-200/80">
+              <th scope="col" class="px-5 py-3 font-medium text-gray-500">Format</th>
+              <th scope="col" class="px-5 py-3 font-medium text-gray-500">All entries <span class="num font-mono text-xs">({fmt(totalEntries)})</span></th>
+              <th scope="col" class="px-5 py-3 font-medium text-gray-500">Reviewed only <span class="num font-mono text-xs">({fmt(reviewedEntries.length)})</span></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr>
+              <td class="px-5 py-3.5"><span class="font-medium text-gray-900">JSON</span> <span class="text-gray-500">complete records</span></td>
+              <td class="px-5 py-3.5"><a href={`${base}literature.json`} download class="font-mono text-[13px]">literature.json</a></td>
+              <td class="px-5 py-3.5 text-gray-500">filter on <code>reviewed</code></td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3.5"><span class="font-medium text-gray-900">CSV</span> <span class="text-gray-500">spreadsheets, pandas</span></td>
+              <td class="px-5 py-3.5"><a href={`${base}literature.csv`} download class="font-mono text-[13px]">literature.csv</a></td>
+              <td class="px-5 py-3.5"><a href={`${base}literature-reviewed.csv`} download class="font-mono text-[13px]">literature-reviewed.csv</a></td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3.5"><span class="font-medium text-gray-900">BibTeX</span> <span class="text-gray-500">Zotero, LaTeX</span></td>
+              <td class="px-5 py-3.5"><a href={`${base}literature.bib`} download class="font-mono text-[13px]">literature.bib</a></td>
+              <td class="px-5 py-3.5"><a href={`${base}literature-reviewed.bib`} download class="font-mono text-[13px]">literature-reviewed.bib</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed text-gray-500">
+        {fmt(totalEntries - reviewedEntries.length)} entries have <code>reviewed: false</code>: they were added automatically from academic APIs and have not been curated yet. Licensed under MIT; citation keys match the BibTeX shown on each entry page.
+      </p>
+    </section>
+
+    <section class="mt-16 grid gap-10 border-t border-gray-900 pt-8 sm:grid-cols-2" aria-label="Contribute and maintainer">
+      <div>
+        <h2 class="display text-2xl">Contribute</h2>
+        <p class="mt-3 leading-relaxed text-gray-600">Suggest a paper, tool or standard, or report a correction on GitHub.</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href={`${REPO}/issues/new?template=add-resource.md`} class="btn-primary">Suggest a resource</a>
+          <a href={REPO} class="btn-secondary">View on GitHub</a>
         </div>
       </div>
-
-      <div class="card mb-6">
-        <h2 class="text-xl font-semibold mb-3">Coverage</h2>
-        <p class="text-gray-700 mb-4">We cover the full LLM/AI security landscape:</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {taxonomy.domains.map(domain => (
-            <div class="bg-gray-50 rounded-md p-3">
-              <h4 class="font-semibold text-gray-900 text-sm">{domain.label}</h4>
-              <p class="text-xs text-gray-500">{domain.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div class="card mb-6">
-        <h2 class="text-xl font-semibold mb-3">Framework Mappings</h2>
-        <p class="text-gray-700 mb-3">Entries are mapped (where applicable) to these security frameworks:</p>
-        <ul class="list-disc pl-5 text-gray-700 space-y-1">
-          <li><strong>OWASP Top 10 for LLM Applications</strong> -- the most widely adopted LLM security standard</li>
-          <li><strong>OWASP Top 10 for Agentic Applications</strong> -- security risks specific to autonomous AI agents</li>
-          <li><strong>MITRE ATLAS</strong> -- adversarial tactics, techniques, and case studies for AI systems</li>
-          <li><strong>NIST AI RMF</strong> -- the US government's AI risk management framework</li>
-          <li><strong>ISO/IEC 42001</strong> -- international standard for AI management systems</li>
-        </ul>
-      </div>
-
-      <div class="card mb-6" id="download">
-        <h2 class="text-xl font-semibold mb-3">Download the Dataset</h2>
-        <p class="text-gray-700 mb-4">The full database is available for analysis, citation managers, and systematic reviews. Files are regenerated on every deploy.</p>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm text-left">
-            <thead class="text-gray-500 border-b border-gray-200">
-              <tr><th class="py-2 pr-4 font-medium">Format</th><th class="py-2 pr-4 font-medium">All entries ({totalEntries})</th><th class="py-2 font-medium">Reviewed only ({reviewedEntries.length})</th></tr>
-            </thead>
-            <tbody class="text-gray-700">
-              <tr class="border-b border-gray-100">
-                <td class="py-2 pr-4">JSON <span class="text-gray-500">(complete records)</span></td>
-                <td class="py-2 pr-4"><a href={`${base}literature.json`} download>literature.json</a></td>
-                <td class="py-2 text-gray-500">filter on <code>reviewed</code></td>
-              </tr>
-              <tr class="border-b border-gray-100">
-                <td class="py-2 pr-4">CSV <span class="text-gray-500">(spreadsheets, pandas)</span></td>
-                <td class="py-2 pr-4"><a href={`${base}literature.csv`} download>literature.csv</a></td>
-                <td class="py-2"><a href={`${base}literature-reviewed.csv`} download>literature-reviewed.csv</a></td>
-              </tr>
-              <tr>
-                <td class="py-2 pr-4">BibTeX <span class="text-gray-500">(Zotero, LaTeX)</span></td>
-                <td class="py-2 pr-4"><a href={`${base}literature.bib`} download>literature.bib</a></td>
-                <td class="py-2"><a href={`${base}literature-reviewed.bib`} download>literature-reviewed.bib</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="text-sm text-gray-500 mt-3">
-          {totalEntries - reviewedEntries.length} entries have <code>reviewed: false</code>: they were added automatically from academic APIs and have not been curated yet. Licensed under MIT; citation keys match the BibTeX shown on each entry page.
+      <div>
+        <h2 class="display text-2xl">Maintainer</h2>
+        <p class="mt-3 leading-relaxed text-gray-600">
+          <strong class="font-semibold text-gray-900">Emmanuel Guilherme</strong> (<a href="https://github.com/emmanuelgjr">@emmanuelgjr</a>), OWASP contributor and GenAI data security researcher. Licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.
         </p>
       </div>
-
-      <div class="card mb-6">
-        <h2 class="text-xl font-semibold mb-3">Contributing</h2>
-        <p class="text-gray-700 mb-4">We welcome contributions from the community:</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 no-underline">
-            Submit a Resource
-          </a>
-          <a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review" class="bg-white text-primary-600 px-4 py-2 rounded-md text-sm font-medium border border-primary-600 hover:bg-primary-50 no-underline">
-            View on GitHub
-          </a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 class="text-xl font-semibold mb-3">Maintainer</h2>
-        <p class="text-gray-700">
-          <strong>Emmanuel Guilherme</strong> (<a href="https://github.com/emmanuelgjr">@emmanuelgjr</a>) -- OWASP contributor and GenAI data security researcher.
-        </p>
-        <p class="text-gray-700 mt-2">
-          Licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.
-        </p>
-      </div>
-    </div>
+    </section>
   </div>
 </BaseLayout>

@@ -1,127 +1,247 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import StatsGrid from '../components/StatsGrid.astro';
-import EntryCard from '../components/EntryCard.astro';
+import EntryRow from '../components/EntryRow.astro';
+import { categoryLabel, domainClass } from '../categoryColors';
 import literature from '../data/literature.json';
 import taxonomy from '../data/taxonomy.json';
+import frameworksData from '../data/frameworks.json';
 
 const entries = literature.entries;
-const totalEntries = entries.length;
-const reviewedCount = entries.filter(e => e.reviewed).length;
-const typeCount = new Set(entries.map(e => e.type)).size;
-const categoryCount = taxonomy.domains.reduce((sum, d) => sum + d.categories.length, 0);
-const yearRange = `${Math.min(...entries.map(e => e.year))}-${Math.max(...entries.map(e => e.year))}`;
+const base = import.meta.env.BASE_URL;
+const REPO = 'https://github.com/emmanuelgjr/GenAI-Security-Literature-Review';
+const fmt = (n: number) => n.toLocaleString('en-US');
 
-const stats = [
-  { label: 'Total Resources', value: totalEntries },
-  { label: 'Reviewed', value: reviewedCount },
-  { label: 'Categories', value: categoryCount },
-  { label: 'Resource Types', value: typeCount },
-];
+const totalEntries = entries.length;
+const reviewedCount = entries.filter((e) => e.reviewed).length;
+const categoryCount = taxonomy.domains.reduce((sum, d) => sum + d.categories.length, 0);
+// Some journals list issues dated next year; fold those into the current year.
+const currentYear = new Date().getFullYear();
+const years = entries.map((e) => Math.min(e.year, currentYear));
+const minYear = Math.min(...years);
+const maxYear = Math.max(...years);
+
+// Entries per publication year for the hero histogram. Square-root heights keep
+// earlier years visible next to the recent surge in publications.
+const perYear = Array.from({ length: maxYear - minYear + 1 }, (_, i) => {
+  const year = minYear + i;
+  return { year, count: years.filter((y) => y === year).length };
+});
+const maxPerYear = Math.sqrt(Math.max(...perYear.map((y) => y.count)));
+const barHeight = (count: number) => (count ? Math.max(6, (Math.sqrt(count) / maxPerYear) * 100) : 0);
 
 // Recent additions are by date added (not publication year), newest first
 const recentEntries = [...entries]
   .sort((a, b) => (b.added_date || '').localeCompare(a.added_date || '') || b.year - a.year)
-  .slice(0, 5);
-const topCited = [...entries].filter(e => e.citation_count).sort((a, b) => (b.citation_count || 0) - (a.citation_count || 0)).slice(0, 5);
+  .slice(0, 6);
+const topCited = [...entries]
+  .filter((e) => e.citation_count)
+  .sort((a, b) => (b.citation_count || 0) - (a.citation_count || 0))
+  .slice(0, 6);
 
-// Category distribution
 const catCounts: Record<string, number> = {};
-entries.forEach(e => e.categories.forEach(c => { catCounts[c] = (catCounts[c] || 0) + 1; }));
+entries.forEach((e) => e.categories.forEach((c) => { catCounts[c] = (catCounts[c] || 0) + 1; }));
 const topCategories = Object.entries(catCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+const maxCategory = topCategories[0]?.[1] ?? 1;
 
-const base = import.meta.env.BASE_URL;
+const quickTopics = ['prompt-injection', 'jailbreaking', 'data-poisoning', 'agentic-threats', 'rag-security'];
 
-// Framework coverage counts
-const frameworkDefs = [
-  { key: 'owasp_llm_top10', label: 'OWASP LLM Top 10' },
-  { key: 'owasp_agentic_top10', label: 'OWASP Agentic Top 10' },
-  { key: 'mitre_atlas', label: 'MITRE ATLAS' },
-  { key: 'nist_ai_rmf', label: 'NIST AI RMF' },
-  { key: 'iso_42001', label: 'ISO/IEC 42001' },
-];
-
-const frameworkCounts = frameworkDefs.map(fw => {
-  const count = entries.filter(e => {
-    const mappings = (e as any).framework_mappings;
-    return mappings && mappings[fw.key] && mappings[fw.key].length > 0;
-  }).length;
-  return { ...fw, count };
+const shortNames: Record<string, string> = {
+  owasp_llm_top10: 'OWASP LLM Top 10',
+  owasp_agentic_top10: 'OWASP Agentic Top 10',
+  mitre_atlas: 'MITRE ATLAS',
+  nist_ai_rmf: 'NIST AI RMF',
+  iso_42001: 'ISO/IEC 42001',
+};
+const frameworkCounts = frameworksData.frameworks.map((fw) => {
+  const count = entries.filter((e) => ((e as any).framework_mappings?.[fw.id] ?? []).length > 0).length;
+  return { id: fw.id, label: shortNames[fw.id] ?? fw.name, count, items: fw.entries.length };
 });
+const maxFramework = Math.max(...frameworkCounts.map((f) => f.count), 1);
 ---
 
-<BaseLayout title="Home">
-  <div class="space-y-10">
-    <!-- Hero -->
-    <div class="text-center py-8">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">GenAI Security Literature Review</h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
-        A comprehensive, community-driven, auto-updating database of GenAI and LLM security research, standards, tools, and resources.
-      </p>
-      <form action={`${base}search/`} method="get" role="search" class="max-w-xl mx-auto mb-6 flex gap-2">
-        <label for="hero-search" class="sr-only">Search resources</label>
-        <input
-          id="hero-search"
-          name="q"
-          type="search"
-          placeholder="Search papers, authors, topics..."
-          class="flex-1 min-w-0 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-        />
-        <button type="submit" class="bg-primary-600 text-white px-5 py-3 rounded-lg font-medium hover:bg-primary-700">Search</button>
-      </form>
-      <div class="flex justify-center gap-4">
-        <a href={`${base}search/`} class="bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 no-underline transition-colors">
-          Search Resources
-        </a>
-        <a href={`${base}browse/`} class="bg-white text-primary-600 px-6 py-3 rounded-lg font-medium border border-primary-600 hover:bg-primary-50 no-underline transition-colors">
-          Browse Categories
-        </a>
-      </div>
-    </div>
+<BaseLayout title="Home" wide>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-gray-200/80">
+    <div class="dot-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto grid max-w-6xl gap-12 px-4 pb-16 pt-14 sm:px-6 md:pt-20 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-7">
+        <p class="eyebrow animate-rise">Updated weekly · {fmt(totalEntries)} resources</p>
+        <h1 class="display mt-5 animate-rise text-[2.6rem] leading-[1.04] [animation-delay:60ms] sm:text-6xl">
+          The research on securing generative&nbsp;AI, <em class="text-primary-700">in one searchable index.</em>
+        </h1>
+        <p class="mt-6 max-w-xl animate-rise text-lg leading-relaxed text-gray-600 [animation-delay:120ms]">
+          Papers, standards, tools and reports on prompt injection, jailbreaks, data poisoning and agent security, mapped to OWASP, MITRE ATLAS and NIST.
+        </p>
 
-    <!-- Stats -->
-    <StatsGrid stats={stats} />
+        <form action={`${base}search/`} method="get" role="search" class="mt-8 max-w-xl animate-rise [animation-delay:180ms]">
+          <label for="hero-search" class="sr-only">Search resources</label>
+          <div class="field flex items-center gap-2 p-1.5 pl-4 focus-within:border-primary-600 focus-within:ring-4 focus-within:ring-primary-600/15">
+            <svg class="h-5 w-5 shrink-0 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" /><path stroke-linecap="round" d="m20 20-4.2-4.2" />
+            </svg>
+            <input
+              id="hero-search"
+              name="q"
+              type="search"
+              placeholder="Search titles, authors, topics…"
+              class="min-w-0 flex-1 border-0 bg-transparent py-2 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0"
+            />
+            <button type="submit" class="btn-primary rounded-lg px-4">Search</button>
+          </div>
+        </form>
 
-    <!-- Two columns: Recent + Top Cited -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Recent Additions</h2>
-        <div class="space-y-4">
-          {recentEntries.map(entry => <EntryCard entry={entry} />)}
+        <div class="mt-5 flex max-w-xl animate-rise flex-wrap items-center gap-2 text-sm [animation-delay:240ms]">
+          <span class="mr-1 text-gray-500">Popular:</span>
+          {quickTopics.map((cat) => (
+            <a href={`${base}browse/${cat}/`} class={`chip bg-white ring-1 ring-gray-200 ${domainClass(cat)}`}>{categoryLabel(cat)}</a>
+          ))}
         </div>
       </div>
-      <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Most Cited</h2>
-        <div class="space-y-4">
-          {topCited.map(entry => <EntryCard entry={entry} />)}
-        </div>
-      </div>
-    </div>
 
-    <!-- Top categories -->
-    <div>
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">Top Categories</h2>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-        {topCategories.map(([cat, count]) => (
-          <a href={`${base}browse/${cat}/`} class="card text-center no-underline hover:border-primary-300">
-            <div class="text-2xl font-bold text-primary-600">{count}</div>
-            <div class="text-sm text-gray-600 mt-1">{cat.replace(/-/g, ' ')}</div>
+      <!-- At a glance -->
+      <aside class="animate-rise [animation-delay:200ms] lg:col-span-5 lg:pl-6">
+        <div class="surface p-6 shadow-soft sm:p-7">
+          <div class="flex items-baseline justify-between">
+            <h2 class="meta-label">At a glance</h2>
+            <a href={`${base}about/#download`} class="text-xs font-medium no-underline">Download data</a>
+          </div>
+          <dl class="mt-5 grid grid-cols-2 gap-x-6 gap-y-5">
+            <div>
+              <dt class="text-xs text-gray-500">Resources</dt>
+              <dd class="display num mt-1 text-4xl">{fmt(totalEntries)}</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-gray-500">Human-reviewed</dt>
+              <dd class="display num mt-1 text-4xl">{fmt(reviewedCount)}</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-gray-500">Categories</dt>
+              <dd class="display num mt-1 text-4xl">{categoryCount}</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-gray-500">Frameworks</dt>
+              <dd class="display num mt-1 text-4xl">{frameworksData.frameworks.length}</dd>
+            </div>
+          </dl>
+          <div class="mt-7 border-t border-gray-200/80 pt-5">
+            <p class="text-xs text-gray-500">By publication year</p>
+            <div class="mt-3 flex h-20 items-end gap-1.5" role="img" aria-label={`Resources per year, ${minYear} to ${maxYear}`}>
+              {perYear.map((y) => (
+                <div class="group/bar relative flex h-full flex-1 items-end">
+                  <div
+                    class="w-full rounded-t-[3px] bg-primary-200 transition-colors group-hover/bar:bg-primary-600"
+                    style={`height: ${barHeight(y.count)}%`}
+                    title={`${y.year}: ${y.count}`}
+                  ></div>
+                </div>
+              ))}
+            </div>
+            <div class="num mt-2 flex justify-between font-mono text-[10px] text-gray-500">
+              <span>{minYear}</span><span>{maxYear}</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl space-y-24 px-4 py-20 sm:px-6">
+    <!-- Latest and most cited -->
+    <section class="grid gap-14 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <div class="flex items-end justify-between gap-4 border-b border-gray-900 pb-3">
+          <h2 class="display text-2xl">Recently added</h2>
+          <a href={`${base}search/`} class="link-arrow text-sm">All resources</a>
+        </div>
+        <ul class="divide-y divide-gray-200/80">
+          {recentEntries.map((entry) => <EntryRow entry={entry} />)}
+        </ul>
+      </div>
+      <div>
+        <div class="flex items-end justify-between gap-4 border-b border-gray-900 pb-3">
+          <h2 class="display text-2xl">Most cited</h2>
+          <span class="meta-label">Citations</span>
+        </div>
+        <ul class="divide-y divide-gray-200/80">
+          {topCited.map((entry) => <EntryRow entry={entry} metric="citations" />)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="eyebrow">Taxonomy</p>
+        <h2 class="display mt-3 text-3xl leading-tight">What the field is working on</h2>
+        <p class="mt-4 max-w-sm leading-relaxed text-gray-600">
+          Every resource is filed under {categoryCount} categories in {taxonomy.domains.length} domains, from attacks and defenses to governance and agentic AI.
+        </p>
+        <a href={`${base}browse/`} class="link-arrow mt-6 text-sm">Browse all categories</a>
+      </div>
+      <ol class="lg:col-span-8">
+        {topCategories.map(([cat, count], i) => (
+          <li>
+            <a
+              href={`${base}browse/${cat}/`}
+              class="group grid grid-cols-[1.5rem_1fr_auto] items-center gap-4 border-b border-gray-200/80 py-3 text-gray-900 no-underline hover:text-gray-900"
+            >
+              <span class="num font-mono text-xs text-gray-400">{String(i + 1).padStart(2, '0')}</span>
+              <span class="relative">
+                <span class="flex items-center gap-2 text-[15px] font-medium transition-colors group-hover:text-primary-800">
+                  <span class={`dot ${domainClass(cat)}`}></span>{categoryLabel(cat)}
+                </span>
+                <span class="mt-2 block h-1 overflow-hidden rounded-full bg-gray-200/70">
+                  <span
+                    class="block h-full rounded-full bg-gray-900/80 transition-colors group-hover:bg-primary-600"
+                    style={`width: ${(count / maxCategory) * 100}%`}
+                  ></span>
+                </span>
+              </span>
+              <span class="num font-mono text-sm text-gray-600">{fmt(count)}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Frameworks -->
+    <section>
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="eyebrow">Framework mappings</p>
+          <h2 class="display mt-3 text-3xl">Read the research through the standards you use</h2>
+        </div>
+        <a href={`${base}frameworks/`} class="link-arrow text-sm">Explore mappings</a>
+      </div>
+      <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-gray-200/80 bg-gray-200/80 lg:grid-cols-5">
+        {frameworkCounts.map((fw) => (
+          <a href={`${base}frameworks/#${fw.id}`} class="group bg-white p-5 no-underline transition-colors hover:bg-gray-50">
+            <p class="text-sm font-medium text-gray-900">{fw.label}</p>
+            <p class="display num mt-4 text-3xl">{fmt(fw.count)}</p>
+            <p class="text-xs text-gray-500">mapped resources · {fw.items} items</p>
+            <span class="mt-4 block h-1 overflow-hidden rounded-full bg-gray-100">
+              <span class="block h-full rounded-full bg-primary-500 transition-colors group-hover:bg-primary-700" style={`width: ${Math.max(2, (fw.count / maxFramework) * 100)}%`}></span>
+            </span>
           </a>
         ))}
       </div>
-    </div>
+    </section>
 
-    <!-- Framework coverage -->
-    <div class="card">
-      <h2 class="text-xl font-bold text-gray-900 mb-4">Framework Coverage</h2>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center">
-        {frameworkCounts.map(fw => (
-          <a href={`${base}frameworks/`} class="no-underline">
-            <div class="text-2xl font-bold text-primary-600">{fw.count}</div>
-            <div class="text-xs text-gray-600">{fw.label}</div>
-          </a>
-        ))}
+    <!-- Contribute -->
+    <section class="surface relative overflow-hidden px-6 py-12 sm:px-12">
+      <div class="dot-grid pointer-events-none absolute inset-0 opacity-70" aria-hidden="true"></div>
+      <div class="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <div class="max-w-xl">
+          <h2 class="display text-3xl leading-tight">Know a paper, tool or standard that belongs here?</h2>
+          <p class="mt-3 leading-relaxed text-gray-600">
+            Suggest it through a GitHub issue. New papers are also collected automatically every week and reviewed before they're merged.
+          </p>
+        </div>
+        <div class="flex shrink-0 flex-wrap gap-3">
+          <a href={`${REPO}/issues/new?template=add-resource.md`} class="btn-primary">Suggest a resource</a>
+          <a href={`${base}about/#download`} class="btn-secondary">Download the dataset</a>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </BaseLayout>

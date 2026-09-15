@@ -1,22 +1,25 @@
 ---
+/** A framework item reference: mono ID, optionally followed by the item's name. */
 interface Props {
   framework: string;
   id: string;
+  name?: string;
+  /** Show the framework's short label before the ID */
+  showFramework?: boolean;
 }
 
-const { framework, id } = Astro.props;
+const { framework, id, name, showFramework = false } = Astro.props;
 
-const frameworkStyles: Record<string, { bg: string; text: string; label: string }> = {
-  owasp_llm_top10: { bg: 'bg-red-100', text: 'text-red-800', label: 'OWASP LLM' },
-  owasp_agentic_top10: { bg: 'bg-orange-100', text: 'text-orange-800', label: 'OWASP Agentic' },
-  mitre_atlas: { bg: 'bg-purple-100', text: 'text-purple-800', label: 'MITRE ATLAS' },
-  nist_ai_rmf: { bg: 'bg-blue-100', text: 'text-blue-800', label: 'NIST AI RMF' },
-  iso_42001: { bg: 'bg-green-100', text: 'text-green-800', label: 'ISO 42001' },
+const labels: Record<string, string> = {
+  owasp_llm_top10: 'OWASP LLM',
+  owasp_agentic_top10: 'OWASP Agentic',
+  mitre_atlas: 'MITRE ATLAS',
+  nist_ai_rmf: 'NIST AI RMF',
+  iso_42001: 'ISO 42001',
 };
-
-const style = frameworkStyles[framework] || { bg: 'bg-gray-100', text: 'text-gray-800', label: framework };
 ---
 
-<span class={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${style.bg} ${style.text}`}>
-  {style.label}: {id}
+<span class="inline-flex max-w-full items-center gap-2 text-sm text-gray-800">
+  <span class="chip-plain shrink-0">{showFramework && <span class="mr-1 text-gray-500">{labels[framework] ?? framework}</span>}{id}</span>
+  {name && <span class="truncate">{name}</span>}
 </span>

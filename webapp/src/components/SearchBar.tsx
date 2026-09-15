@@ -1,41 +1,15 @@
 import { useState, useMemo, useEffect } from 'preact/hooks';
 import Fuse from 'fuse.js';
+import taxonomy from '../data/taxonomy.json';
 
-// Category -> domain color mapping (mirrors categoryColors.ts for Preact island)
-const categoryDomainMap: Record<string, string> = {
-  'prompt-injection': 'attacks', jailbreaking: 'attacks', 'data-poisoning': 'attacks',
-  'model-extraction': 'attacks', 'membership-inference': 'attacks', 'adversarial-examples': 'attacks',
-  'supply-chain-attacks': 'attacks', 'social-engineering': 'attacks', 'agentic-threats': 'attacks',
-  'input-filtering': 'defenses', 'output-moderation': 'defenses', guardrails: 'defenses',
-  'access-control': 'defenses', 'monitoring-detection': 'defenses', 'sandboxing-isolation': 'defenses',
-  'cryptographic-controls': 'defenses', watermarking: 'defenses',
-  'differential-privacy': 'privacy', 'federated-learning': 'privacy', 'data-anonymization': 'privacy',
-  unlearning: 'privacy', 'confidential-computing': 'privacy',
-  'risk-frameworks': 'governance', 'model-governance': 'governance', 'audit-assurance': 'governance',
-  'responsible-ai': 'governance', 'incident-response': 'governance',
-  'red-teaming': 'redteam', benchmarks: 'redteam', fuzzing: 'redteam', 'vulnerability-disclosure': 'redteam',
-  'model-serving-security': 'infra', 'rag-security': 'infra', 'fine-tuning-security': 'infra',
-  'mlops-security': 'infra', 'cloud-ai-security': 'infra',
-  'agent-architecture': 'agentic', 'tool-use-security': 'agentic', 'memory-security': 'agentic',
-  'human-in-the-loop': 'agentic', 'autonomous-operations': 'agentic',
-  survey: 'meta', 'threat-modeling': 'meta', 'industry-report': 'meta',
-  book: 'meta', 'conference-proceedings': 'meta',
-};
-
-const domainColorClasses: Record<string, string> = {
-  attacks: 'bg-red-100 text-red-800',
-  defenses: 'bg-emerald-100 text-emerald-800',
-  privacy: 'bg-violet-100 text-violet-800',
-  governance: 'bg-amber-100 text-amber-800',
-  redteam: 'bg-orange-100 text-orange-800',
-  infra: 'bg-cyan-100 text-cyan-800',
-  agentic: 'bg-fuchsia-100 text-fuchsia-800',
-  meta: 'bg-sky-100 text-sky-800',
-};
-
-function getCatColor(cat: string): string {
-  const domain = categoryDomainMap[cat];
-  return domainColorClasses[domain] || 'bg-gray-100 text-gray-700';
+// Category -> domain and label, from the same taxonomy the static pages use
+const categoryDomain: Record<string, string> = {};
+const categoryLabel: Record<string, string> = {};
+for (const domain of taxonomy.domains) {
+  for (const cat of domain.categories) {
+    categoryDomain[cat.id] = domain.id;
+    categoryLabel[cat.id] = cat.label;
+  }
 }
 
 // Shape of search-index.json (see src/pages/search-index.json.ts)
@@ -58,20 +32,81 @@ interface Props {
   basePath: string;
 }
 
-const typeColors: Record<string, string> = {
-  paper: 'bg-blue-100 text-blue-800',
-  book: 'bg-purple-100 text-purple-800',
-  report: 'bg-orange-100 text-orange-800',
-  tool: 'bg-green-100 text-green-800',
-  standard: 'bg-red-100 text-red-800',
-  talk: 'bg-gray-100 text-gray-800',
-  blog: 'bg-gray-100 text-gray-800',
-  dataset: 'bg-green-100 text-green-800',
-};
-
 const PAGE_SIZE = 50;
-const selectClass =
-  'border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:ring-primary-500 focus:border-primary-500';
+
+function ResultCard({ entry, basePath }: { entry: Entry; basePath: string }) {
+  const authors = `${entry.authors.slice(0, 3).join(', ')}${entry.authors.length > 3 ? ` +${entry.authors.length - 3}` : ''}`;
+  return (
+    <article class="surface-interactive group relative p-5 sm:p-6">
+      <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+        <span class="meta-label">{entry.type}</span>
+        <span class="text-gray-300" aria-hidden="true">/</span>
+        <span class="num font-mono text-[11px] text-gray-500">{entry.year}</span>
+        {entry.venue && (
+          <span class="max-w-[16rem] truncate text-xs text-gray-500" title={entry.venue}>{entry.venue}</span>
+        )}
+        <span class="ml-auto">
+          {entry.reviewed ? (
+            <span class="status-reviewed" title="Human-reviewed">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 11.2 3.2 8l1-1 2.2 2.2 5.4-5.4 1 1z" /></svg>
+              Reviewed
+            </span>
+          ) : (
+            <span class="status-unreviewed" title="Added automatically; not yet human-reviewed">Unreviewed</span>
+          )}
+        </span>
+      </div>
+      <h3 class="mt-2.5 text-[17px] font-semibold leading-snug tracking-[-0.01em] text-gray-900">
+        <a
+          href={`${basePath}entry/${entry.id}/`}
+          class="text-gray-900 no-underline after:absolute after:inset-0 after:rounded-2xl after:content-[''] group-hover:text-primary-800"
+        >
+          {entry.title}
+        </a>
+      </h3>
+      <p class="mt-1 text-sm text-gray-600">{authors}</p>
+      {entry.abstract && <p class="mt-2.5 line-clamp-2 text-sm leading-relaxed text-gray-600">{entry.abstract}</p>}
+      <div class="relative z-10 mt-4 flex flex-wrap items-center gap-1.5">
+        {entry.categories.slice(0, 4).map((cat) => (
+          <a key={cat} href={`${basePath}browse/${cat}/`} class={`chip domain-${categoryDomain[cat] ?? ''}`}>
+            {categoryLabel[cat] ?? cat.replace(/-/g, ' ')}
+          </a>
+        ))}
+        <span class="ml-auto flex items-center gap-3 pl-2">
+          {(entry.citation_count ?? 0) > 0 && (
+            <span class="num font-mono text-[11px] text-gray-500" title="Citation count">
+              {entry.citation_count!.toLocaleString('en-US')} cit.
+            </span>
+          )}
+          <a
+            href={entry.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-md p-1 text-gray-400 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900"
+            title="Open resource"
+            aria-label={`Open resource: ${entry.title} (new tab)`}
+          >
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-8 8M17 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h4" />
+            </svg>
+          </a>
+        </span>
+      </div>
+    </article>
+  );
+}
+
+function SkeletonCard() {
+  return (
+    <div class="surface p-6" aria-hidden="true">
+      <div class="skeleton h-3 w-28" />
+      <div class="skeleton mt-4 h-4 w-4/5" />
+      <div class="skeleton mt-2 h-3 w-1/3" />
+      <div class="skeleton mt-4 h-3 w-full" />
+      <div class="skeleton mt-2 h-3 w-2/3" />
+    </div>
+  );
+}
 
 export default function SearchBar({ basePath }: Props) {
   const [entries, setEntries] = useState<Entry[] | null>(null);
@@ -152,49 +187,44 @@ export default function SearchBar({ basePath }: Props) {
     return results;
   }, [query, typeFilter, yearFilter, reviewedFilter, fuse, list]);
 
+  const filtersActive = typeFilter !== 'all' || yearFilter !== 'all' || reviewedFilter !== 'all';
+  const resetFilters = () => {
+    setTypeFilter('all');
+    setYearFilter('all');
+    setReviewedFilter('all');
+  };
+
   return (
     <div>
       {/* Search input */}
-      <div class="mb-6">
-        <label for="search-query" class="sr-only">Search resources</label>
-        <div class="relative">
-          <svg
-            class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-          <input
-            id="search-query"
-            type="search"
-            value={query}
-            onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
-            placeholder="Search papers, authors, topics..."
-            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-lg"
-            autoFocus
-          />
-        </div>
+      <label for="search-query" class="sr-only">Search resources</label>
+      <div class="field flex items-center gap-3 px-4 focus-within:border-primary-600 focus-within:ring-4 focus-within:ring-primary-600/15">
+        <svg class="h-5 w-5 shrink-0 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" />
+          <path stroke-linecap="round" d="m20 20-4.2-4.2" />
+        </svg>
+        <input
+          id="search-query"
+          type="search"
+          value={query}
+          onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
+          placeholder="Search titles, abstracts, authors, topics…"
+          class="min-w-0 flex-1 border-0 bg-transparent py-4 text-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0"
+          autoFocus
+        />
       </div>
 
       {/* Filters */}
-      <div class="flex flex-wrap gap-3 mb-6">
+      <div class="mt-4 flex flex-wrap items-center gap-2.5">
         <select
           aria-label="Filter by resource type"
           value={typeFilter}
           onChange={(e) => setTypeFilter((e.target as HTMLSelectElement).value)}
-          class={selectClass}
+          class="select"
         >
           <option value="all">All types</option>
           {types.map((t) => (
-            <option key={t} value={t}>{t}</option>
+            <option key={t} value={t}>{t.charAt(0).toUpperCase() + t.slice(1)}</option>
           ))}
         </select>
 
@@ -202,7 +232,7 @@ export default function SearchBar({ basePath }: Props) {
           aria-label="Filter by year"
           value={yearFilter}
           onChange={(e) => setYearFilter((e.target as HTMLSelectElement).value)}
-          class={selectClass}
+          class="select"
         >
           <option value="all">All years</option>
           {years.map((y) => (
@@ -214,112 +244,64 @@ export default function SearchBar({ basePath }: Props) {
           aria-label="Filter by review status"
           value={reviewedFilter}
           onChange={(e) => setReviewedFilter((e.target as HTMLSelectElement).value)}
-          class={selectClass}
+          class="select"
         >
           <option value="all">All entries</option>
           <option value="true">Reviewed only</option>
-          <option value="false">Unreviewed</option>
+          <option value="false">Unreviewed only</option>
         </select>
 
-        <span class="text-sm text-gray-500 self-center ml-auto" role="status" aria-live="polite">
+        {filtersActive && (
+          <button type="button" onClick={resetFilters} class="rounded-lg px-2 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-900/[0.04] hover:text-gray-900">
+            Reset
+          </button>
+        )}
+
+        <span class="num ml-auto font-mono text-xs text-gray-500" role="status" aria-live="polite">
           {entries
-            ? `${filteredResults.length} result${filteredResults.length !== 1 ? 's' : ''}`
-            : loadError ? '' : 'Loading…'}
+            ? `${filteredResults.length.toLocaleString('en-US')} result${filteredResults.length !== 1 ? 's' : ''}`
+            : loadError ? '' : 'Loading index…'}
         </span>
       </div>
 
-      {loadError && (
-        <div class="text-center py-12" role="alert">
-          <p class="text-gray-700 text-lg">The search index could not be loaded.</p>
-          <p class="text-gray-500 text-sm mt-2">
-            Try reloading, or <a href={`${basePath}browse/`}>browse by category</a>.
-          </p>
-        </div>
-      )}
+      <div class="mt-6 space-y-3">
+        {!entries && !loadError && [0, 1, 2].map((i) => <SkeletonCard key={i} />)}
 
-      {/* Results */}
-      <div class="space-y-4">
-        {filteredResults.slice(0, limit).map((entry) => (
-          <div key={entry.id} class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 mb-2 flex-wrap">
-                  <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${typeColors[entry.type] || 'bg-gray-100 text-gray-800'}`}>
-                    {entry.type}
-                  </span>
-                  {entry.reviewed ? (
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      reviewed
-                    </span>
-                  ) : (
-                    <span
-                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-900"
-                      title="Added automatically; not yet human-reviewed"
-                    >
-                      unreviewed
-                    </span>
-                  )}
-                  <span class="text-xs text-gray-500">{entry.year}</span>
-                </div>
-                <h3 class="text-lg font-semibold mb-1">
-                  <a href={`${basePath}entry/${entry.id}/`} class="text-primary-600 hover:text-primary-800 hover:underline">
-                    {entry.title}
-                  </a>
-                </h3>
-                <p class="text-sm text-gray-600 mb-2">
-                  {entry.authors.slice(0, 3).join(', ')}
-                  {entry.authors.length > 3 ? ` + ${entry.authors.length - 3} more` : ''}
-                  {entry.venue && <span class="text-gray-500"> &mdash; {entry.venue}</span>}
-                </p>
-                {entry.abstract && (
-                  <p class="text-sm text-gray-700 mb-3 line-clamp-2">{entry.abstract}</p>
-                )}
-                <div class="flex items-center gap-2 flex-wrap">
-                  {entry.categories.slice(0, 4).map((cat) => (
-                    <span key={cat} class={`text-xs px-2 py-0.5 rounded font-medium ${getCatColor(cat)}`}>
-                      {cat.replace(/-/g, ' ')}
-                    </span>
-                  ))}
-                  {(entry.citation_count ?? 0) > 0 && (
-                    <span class="text-xs text-gray-500 ml-auto">
-                      {entry.citation_count} citations
-                    </span>
-                  )}
-                </div>
-              </div>
-              <a
-                href={entry.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="shrink-0 text-gray-500 hover:text-primary-600"
-                title="Open resource"
-                aria-label={`Open resource: ${entry.title} (new tab)`}
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        ))}
-        {filteredResults.length > limit && (
-          <div class="text-center py-4">
-            <p class="text-gray-500 mb-3">
-              Showing {limit} of {filteredResults.length} results.
+        {loadError && (
+          <div class="surface px-6 py-14 text-center" role="alert">
+            <p class="display text-2xl">The search index didn't load</p>
+            <p class="mt-2 text-gray-600">
+              Check your connection and reload, or <a href={`${basePath}browse/`}>browse by category</a>.
             </p>
-            <button
-              type="button"
-              onClick={() => setLimit(limit + PAGE_SIZE)}
-              class="bg-white text-primary-600 px-4 py-2 rounded-md text-sm font-medium border border-primary-600 hover:bg-primary-50"
-            >
-              Show more
+          </div>
+        )}
+
+        {filteredResults.slice(0, limit).map((entry) => (
+          <ResultCard key={entry.id} entry={entry} basePath={basePath} />
+        ))}
+
+        {filteredResults.length > limit && (
+          <div class="flex flex-col items-center gap-3 py-6">
+            <p class="num font-mono text-xs text-gray-500">
+              Showing {limit} of {filteredResults.length.toLocaleString('en-US')}
+            </p>
+            <button type="button" onClick={() => setLimit(limit + PAGE_SIZE)} class="btn-secondary">
+              Show {Math.min(PAGE_SIZE, filteredResults.length - limit)} more
             </button>
           </div>
         )}
+
         {entries && filteredResults.length === 0 && (
-          <div class="text-center py-12">
-            <p class="text-gray-500 text-lg">No results found</p>
-            <p class="text-gray-500 text-sm mt-2">Try different keywords or adjust the filters</p>
+          <div class="surface px-6 py-14 text-center">
+            <p class="display text-2xl">No matches</p>
+            <p class="mx-auto mt-2 max-w-md text-gray-600">
+              Try a broader term, check the spelling, or
+              {filtersActive ? (
+                <> <button type="button" onClick={resetFilters} class="font-medium text-primary-700 underline-offset-2 hover:underline">reset the filters</button>.</>
+              ) : (
+                <> <a href={`${basePath}browse/`}>browse by category</a>.</>
+              )}
+            </p>
           </div>
         )}
       </div>

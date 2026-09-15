@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FrameworkBadge from '../../components/FrameworkBadge.astro';
-import { getCategoryClasses } from '../../categoryColors';
+import { categoryLabel, getCategoryClasses } from '../../categoryColors';
 import { generateBibtex } from '../../lib/bibtex';
 import { citationKeys } from '../../lib/dataset';
 import literature from '../../data/literature.json';
+import frameworksData from '../../data/frameworks.json';
 
 export function getStaticPaths() {
   return literature.entries.map(entry => ({
@@ -16,17 +17,6 @@ export function getStaticPaths() {
 const { entry } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
-const typeColors: Record<string, string> = {
-  paper: 'badge-blue',
-  book: 'badge-purple',
-  report: 'badge-orange',
-  tool: 'badge-green',
-  standard: 'badge-red',
-  talk: 'badge-gray',
-  blog: 'badge-gray',
-  dataset: 'badge-green',
-};
-
 // Same key as in the combined literature.bib download
 const bibtex = generateBibtex(entry as any, citationKeys.get(entry.id));
 
@@ -37,152 +27,192 @@ const summary = !entry.abstract
     ? `${entry.abstract.slice(0, 200).replace(/\s+\S*$/, '')}…`
     : entry.abstract;
 const description = `${authorsShort} (${entry.year}). ${summary}`;
-const frameworkMappings: Record<string, string[]> | undefined = (entry as any).framework_mappings;
+
+const frameworkMappings: Record<string, string[]> = (entry as any).framework_mappings ?? {};
+const frameworks = frameworksData.frameworks
+  .map((fw) => ({
+    id: fw.id,
+    name: fw.name,
+    items: (frameworkMappings[fw.id] ?? []).map((itemId) => ({
+      id: itemId,
+      name: fw.entries.find((e) => e.id === itemId)?.name,
+    })),
+  }))
+  .filter((fw) => fw.items.length > 0);
+
+const published = entry.month
+  ? new Date(Date.UTC(entry.year, entry.month - 1, 1)).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  : String(entry.year);
+const externalIds = Object.entries((entry as any).external_ids ?? {}).filter(([, v]) => v) as [string, string][];
+const idLabels: Record<string, string> = { arxiv_id: 'arXiv', doi: 'DOI', semantic_scholar_id: 'Semantic Scholar' };
 ---
 
 <BaseLayout title={entry.title} description={description} ogType="article">
-  <div class="max-w-4xl mx-auto">
-    <!-- Back link -->
-    <a href={`${base}search/`} class="text-sm text-gray-500 hover:text-primary-600 mb-4 inline-block">
-      &larr; Back to search
-    </a>
+  <a href={`${base}search/`} class="inline-flex items-center gap-1.5 text-sm text-gray-600 no-underline hover:text-gray-900">
+    <span aria-hidden="true">←</span> Search
+  </a>
 
-    <!-- Header -->
-    <div class="card mb-6">
-      <div class="flex items-center gap-2 mb-3 flex-wrap">
-        <span class={`badge ${typeColors[entry.type] || 'badge-gray'}`}>{entry.type}</span>
-        {entry.reviewed
-          ? <span class="badge badge-green">reviewed</span>
-          : <span class="badge badge-amber">unreviewed</span>}
-        {entry.open_access && <span class="badge badge-blue">open access</span>}
-        <span class="text-sm text-gray-500">{entry.id}</span>
-      </div>
+  <article class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14">
+    <div class="min-w-0">
+      <header>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span class="meta-label">{entry.type}</span>
+          <span class="text-gray-300" aria-hidden="true">/</span>
+          <span class="num font-mono text-xs text-gray-500">{published}</span>
+          {entry.reviewed ? (
+            <span class="status-reviewed">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 11.2 3.2 8l1-1 2.2 2.2 5.4-5.4 1 1z" /></svg>
+              Reviewed
+            </span>
+          ) : (
+            <span class="status-unreviewed">Unreviewed</span>
+          )}
+          {entry.open_access && <span class="text-xs font-medium text-gray-600">Open access</span>}
+        </div>
 
-      <h1 class="text-2xl font-bold text-gray-900 mb-3">{entry.title}</h1>
+        <h1 class="display mt-4 text-3xl leading-[1.15] sm:text-[2.6rem]">{entry.title}</h1>
+
+        <p class="mt-4 text-[15px] leading-relaxed text-gray-700">{entry.authors.join(', ')}</p>
+        {entry.venue && <p class="mt-1 text-sm italic text-gray-500">{entry.venue}</p>}
+
+        <!-- On small screens the sidebar comes after the abstract; keep the main actions in reach -->
+        <div class="mt-6 flex gap-2.5 lg:hidden">
+          <a href={entry.url} target="_blank" rel="noopener noreferrer" class="btn-primary flex-1">View resource</a>
+          {entry.pdf_url && <a href={entry.pdf_url} target="_blank" rel="noopener noreferrer" class="btn-secondary">PDF</a>}
+        </div>
+      </header>
 
       {!entry.reviewed && (
-        <p class="text-sm bg-amber-50 border border-amber-200 text-amber-900 rounded-md px-3 py-2 mb-3">
-          This entry was added automatically from {entry.source_api || 'an academic API'} and has not been reviewed yet.
-          Its categories were assigned by keyword matching and may be inaccurate.
-        </p>
+        <aside class="mt-6 flex gap-3 rounded-xl border border-amber-200/80 bg-amber-50/70 px-4 py-3 text-sm text-amber-900">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-amber-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.25v3a.75.75 0 0 0 1.5 0V9.75A.75.75 0 0 0 10 9H9Z" clip-rule="evenodd" />
+          </svg>
+          <p>
+            Added automatically from {entry.source_api || 'an academic API'} and not yet reviewed. Categories were assigned by keyword matching and may be inaccurate.
+          </p>
+        </aside>
       )}
 
-      <p class="text-gray-700 mb-2">
-        {entry.authors.join(', ')}
-      </p>
+      {entry.abstract && (
+        <section class="mt-10">
+          <h2 class="meta-label">Abstract</h2>
+          <p class="mt-3 max-w-[68ch] font-serif text-[1.15rem] leading-[1.7] text-gray-800">{entry.abstract}</p>
+        </section>
+      )}
 
-      <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
-        <span>{entry.year}{entry.month ? `-${String(entry.month).padStart(2, '0')}` : ''}</span>
-        {entry.venue && <span>&mdash; {entry.venue}</span>}
-        {entry.citation_count !== undefined && entry.citation_count > 0 && (
-          <span>{entry.citation_count} citations</span>
+      <section class="mt-10">
+        <h2 class="meta-label">Categories</h2>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {entry.categories.map((cat) => (
+            <a href={`${base}browse/${cat}/`} class={`${getCategoryClasses(cat)} px-2.5 py-1 text-sm`}>{categoryLabel(cat)}</a>
+          ))}
+        </div>
+        {entry.tags && entry.tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            {entry.tags.map((tag) => <span class="chip-plain">#{tag}</span>)}
+          </div>
         )}
-      </div>
+      </section>
 
-      <div class="flex flex-wrap gap-3">
-        <a href={entry.url} target="_blank" rel="noopener noreferrer" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 no-underline">
-          View Resource
-        </a>
-        {entry.pdf_url && (
-          <a href={entry.pdf_url} target="_blank" rel="noopener noreferrer" class="bg-white text-primary-600 px-4 py-2 rounded-md text-sm font-medium border border-primary-600 hover:bg-primary-50 no-underline">
-            PDF
-          </a>
-        )}
-        {entry.doi && (
-          <a href={`https://doi.org/${entry.doi}`} target="_blank" rel="noopener noreferrer" class="bg-white text-gray-600 px-4 py-2 rounded-md text-sm font-medium border border-gray-300 hover:bg-gray-50 no-underline">
-            DOI
-          </a>
-        )}
-      </div>
-    </div>
-
-    <!-- Abstract -->
-    {entry.abstract && (
-      <div class="card mb-6">
-        <h2 class="text-lg font-semibold text-gray-900 mb-2">Abstract</h2>
-        <p class="text-gray-700 leading-relaxed">{entry.abstract}</p>
-      </div>
-    )}
-
-    <!-- Categories & Tags -->
-    <div class="card mb-6">
-      <h2 class="text-lg font-semibold text-gray-900 mb-3">Categories</h2>
-      <div class="flex flex-wrap gap-2 mb-4">
-        {entry.categories.map(cat => (
-          <a href={`${base}browse/${cat}/`} class={`badge no-underline font-medium ${getCategoryClasses(cat)}`}>
-            {cat.replace(/-/g, ' ')}
-          </a>
-        ))}
-      </div>
-
-      {entry.tags && entry.tags.length > 0 && (
-        <>
-          <h2 class="text-lg font-semibold text-gray-900 mb-3">Tags</h2>
-          <div class="flex flex-wrap gap-2">
-            {entry.tags.map(tag => (
-              <span class="badge badge-gray">{tag}</span>
+      {frameworks.length > 0 && (
+        <section class="mt-10">
+          <h2 class="meta-label">Framework mappings</h2>
+          <div class="mt-3 divide-y divide-gray-200/80 rounded-2xl border border-gray-200/80 bg-white">
+            {frameworks.map((fw) => (
+              <div class="grid gap-2 px-5 py-4 sm:grid-cols-[10rem_1fr] sm:gap-6">
+                <a href={`${base}frameworks/#${fw.id}`} class="text-sm font-medium text-gray-900 no-underline hover:text-primary-800">{fw.name}</a>
+                <ul class="space-y-1.5">
+                  {fw.items.map((item) => (
+                    <li><FrameworkBadge framework={fw.id} id={item.id} name={item.name} /></li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
-        </>
+          {!entry.reviewed && <p class="mt-2 text-xs text-gray-500">Suggested from the entry's categories.</p>}
+        </section>
       )}
-    </div>
 
-    <!-- Framework Mappings -->
-    {frameworkMappings && Object.keys(frameworkMappings).some(k => (frameworkMappings[k] || []).length > 0) && (
-      <div class="card mb-6">
-        <h2 class="text-lg font-semibold text-gray-900 mb-3">Framework Mappings</h2>
-        <div class="flex flex-wrap gap-2">
-          {Object.entries(frameworkMappings).map(([fw, ids]) =>
-            (ids || []).map(id => <FrameworkBadge framework={fw} id={id} />)
-          )}
+      <section class="mt-10">
+        <div class="flex items-center justify-between">
+          <h2 class="meta-label">Cite</h2>
+          <button
+            type="button"
+            id="copy-bibtex"
+            class="btn-secondary px-3 py-1.5 text-xs"
+            data-bibtex={bibtex}
+          >Copy BibTeX</button>
         </div>
-      </div>
-    )}
-
-    <!-- Citation Export -->
-    <div class="card mb-6">
-      <h2 class="text-lg font-semibold text-gray-900 mb-3">Cite This Resource</h2>
-      <div class="relative">
-        <pre class="bg-gray-50 rounded-md p-4 text-sm overflow-x-auto"><code>{bibtex}</code></pre>
-        <button
-          type="button"
-          id="copy-bibtex"
-          class="absolute top-2 right-2 bg-white border border-gray-300 rounded px-2 py-1 text-xs text-gray-600 hover:bg-gray-50"
-          data-bibtex={bibtex}
-        >
-          Copy
-        </button>
-      </div>
+        <pre class="mt-3 overflow-x-auto rounded-2xl bg-gray-900 p-5 font-mono text-[13px] leading-relaxed text-gray-100"><code class="bg-transparent p-0 text-inherit">{bibtex}</code></pre>
+      </section>
     </div>
 
-    <!-- Metadata -->
-    <div class="card">
-      <h2 class="text-lg font-semibold text-gray-900 mb-3">Metadata</h2>
-      <dl class="grid grid-cols-2 gap-2 text-sm">
-        <dt class="text-gray-500">Added</dt>
-        <dd>{entry.added_date}</dd>
-        <dt class="text-gray-500">Added by</dt>
-        <dd>{entry.added_by || 'manual'}</dd>
-        <dt class="text-gray-500">Source</dt>
-        <dd>{entry.source_api || 'manual'}</dd>
-        {entry.external_ids && Object.entries(entry.external_ids).map(([key, val]) => val && (
-          <>
-            <dt class="text-gray-500">{key}</dt>
-            <dd class="break-all">{val}</dd>
-          </>
-        ))}
-      </dl>
-    </div>
-  </div>
+    <aside class="lg:pt-2">
+      <div class="space-y-6 lg:sticky lg:top-24">
+        <div class="flex flex-col gap-2.5">
+          <a href={entry.url} target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-3">
+            View resource
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-8 8" /></svg>
+          </a>
+          <div class="grid grid-cols-2 gap-2.5">
+            {entry.pdf_url && (
+              <a href={entry.pdf_url} target="_blank" rel="noopener noreferrer" class:list={['btn-secondary', !entry.doi && 'col-span-2']}>PDF</a>
+            )}
+            {entry.doi && (
+              <a href={`https://doi.org/${entry.doi}`} target="_blank" rel="noopener noreferrer" class:list={['btn-secondary', !entry.pdf_url && 'col-span-2']}>DOI</a>
+            )}
+          </div>
+        </div>
+
+        <dl class="surface divide-y divide-gray-100 text-sm">
+          {entry.citation_count !== undefined && entry.citation_count > 0 && (
+            <div class="flex items-baseline justify-between gap-4 px-5 py-3">
+              <dt class="text-gray-500">Citations</dt>
+              <dd class="display num text-2xl">{entry.citation_count.toLocaleString('en-US')}</dd>
+            </div>
+          )}
+          <div class="flex justify-between gap-4 px-5 py-3">
+            <dt class="text-gray-500">Added</dt>
+            <dd class="num font-mono text-xs text-gray-800">{entry.added_date}</dd>
+          </div>
+          <div class="flex justify-between gap-4 px-5 py-3">
+            <dt class="text-gray-500">Source</dt>
+            <dd class="text-gray-800">{entry.source_api || 'manual'}</dd>
+          </div>
+          {externalIds.map(([key, val]) => (
+            <div class="flex justify-between gap-4 px-5 py-3">
+              <dt class="shrink-0 text-gray-500">{idLabels[key] ?? key}</dt>
+              <dd class="min-w-0 break-all text-right font-mono text-xs text-gray-800">{val}</dd>
+            </div>
+          ))}
+          <div class="flex justify-between gap-4 px-5 py-3">
+            <dt class="text-gray-500">Entry ID</dt>
+            <dd class="font-mono text-xs text-gray-800">{entry.id}</dd>
+          </div>
+        </dl>
+
+        <a
+          href={`https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?title=${encodeURIComponent(`Correction: ${entry.id}`)}`}
+          class="block text-sm text-gray-600 no-underline hover:text-gray-900"
+        >Spotted an error? Report a correction →</a>
+      </div>
+    </aside>
+  </article>
 </BaseLayout>
 
 <script>
   document.getElementById('copy-bibtex')?.addEventListener('click', (e) => {
     const btn = e.currentTarget as HTMLButtonElement;
     const bibtex = btn.getAttribute('data-bibtex') || '';
-    navigator.clipboard.writeText(bibtex).then(() => {
-      btn.textContent = 'Copied!';
-      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-    });
+    navigator.clipboard.writeText(bibtex).then(
+      () => {
+        btn.textContent = 'Copied';
+        setTimeout(() => { btn.textContent = 'Copy BibTeX'; }, 2000);
+      },
+      () => {
+        btn.textContent = 'Copy failed';
+        setTimeout(() => { btn.textContent = 'Copy BibTeX'; }, 2000);
+      },
+    );
   });
 </script>

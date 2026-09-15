@@ -3,7 +3,7 @@ import type { GetStaticPaths, Page } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EntryCard from '../../../components/EntryCard.astro';
 import Pagination from '../../../components/Pagination.astro';
-import { getCategoryColor } from '../../../categoryColors';
+import { domainClass } from '../../../categoryColors';
 import literature from '../../../data/literature.json';
 import taxonomy from '../../../data/taxonomy.json';
 
@@ -39,45 +39,60 @@ interface Props {
 
 const { cat, page } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const color = getCategoryColor(cat.id);
 const pageSuffix = page.currentPage > 1 ? ` (page ${page.currentPage} of ${page.lastPage})` : '';
 const description = `${page.total} GenAI security ${page.total === 1 ? 'resource' : 'resources'} on ${cat.label}${cat.description ? `: ${cat.description}` : '.'}`;
+const reviewedOnPage = page.data.filter((e: any) => e.reviewed).length;
 ---
 
 <BaseLayout title={`${cat.label}${pageSuffix}`} description={description}>
-  <div>
-    <a href={`${base}browse/`} class="text-sm text-gray-500 hover:text-primary-600 mb-4 inline-block">
-      &larr; Back to all categories
-    </a>
+  <nav aria-label="Breadcrumb" class="text-sm">
+    <ol class="flex flex-wrap items-center gap-2 text-gray-500">
+      <li><a href={`${base}browse/`} class="text-gray-600 no-underline hover:text-gray-900">Browse</a></li>
+      <li aria-hidden="true" class="text-gray-300">/</li>
+      <li class={`flex items-center gap-2 ${domainClass(cat.id)}`}><span class="dot"></span>{cat.domainLabel}</li>
+    </ol>
+  </nav>
 
-    <div class="mb-8">
-      <div class="flex items-center gap-3 mb-2">
-        <h1 class="text-3xl font-bold text-gray-900">{cat.label}</h1>
-        <span class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${color.bg} ${color.text}`}>
-          {page.total} {page.total === 1 ? 'resource' : 'resources'}
-        </span>
-      </div>
-      <p class="text-sm text-gray-500">{cat.domainLabel}</p>
-      {cat.description && (
-        <p class="text-gray-600 mt-2">{cat.description}</p>
-      )}
+  <header class="mt-6 flex flex-wrap items-end justify-between gap-6 border-b border-gray-200/80 pb-8">
+    <div class="max-w-2xl">
+      <h1 class="display text-4xl sm:text-5xl">{cat.label}</h1>
+      {cat.description && <p class="mt-3 text-lg leading-relaxed text-gray-600">{cat.description}</p>}
     </div>
-
-    {page.total > 0 ? (
-      <>
-        <Pagination page={page} />
-        <div class="space-y-4">
-          {page.data.map((entry: any) => <EntryCard entry={entry} />)}
-        </div>
-        <Pagination page={page} />
-      </>
-    ) : (
-      <div class="text-center py-12">
-        <p class="text-gray-500 text-lg">No resources in this category yet.</p>
-        <p class="text-gray-500 text-sm mt-2">
-          <a href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md">Submit one</a>
-        </p>
+    <dl class="flex gap-8">
+      <div>
+        <dt class="meta-label">Resources</dt>
+        <dd class="display num mt-1 text-3xl">{page.total.toLocaleString('en-US')}</dd>
       </div>
-    )}
-  </div>
+      {page.lastPage > 1 && (
+        <div>
+          <dt class="meta-label">Page</dt>
+          <dd class="display num mt-1 text-3xl">{page.currentPage}<span class="text-gray-400">/{page.lastPage}</span></dd>
+        </div>
+      )}
+    </dl>
+  </header>
+
+  {page.total > 0 ? (
+    <div class="mt-8 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 text-sm text-gray-500">
+        <p>Newest first{reviewedOnPage > 0 && ` · ${reviewedOnPage} reviewed on this page`}</p>
+        <a href={`${base}search/`} class="link-arrow">Search instead</a>
+      </div>
+      <div class="space-y-3">
+        {page.data.map((entry: any) => <EntryCard entry={entry} />)}
+      </div>
+      <Pagination page={page} />
+    </div>
+  ) : (
+    <div class="surface mt-8 px-6 py-16 text-center">
+      <p class="display text-2xl">Nothing filed here yet</p>
+      <p class="mx-auto mt-2 max-w-md text-gray-600">
+        If you know a paper, tool or standard on {cat.label.toLowerCase()}, suggest it and it will be reviewed for inclusion.
+      </p>
+      <a
+        href="https://github.com/emmanuelgjr/GenAI-Security-Literature-Review/issues/new?template=add-resource.md"
+        class="btn-primary mt-6"
+      >Suggest a resource</a>
+    </div>
+  )}
 </BaseLayout>
