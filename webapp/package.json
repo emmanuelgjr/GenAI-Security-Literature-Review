@@ -13,12 +13,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^6.0.5",
+    "@astrojs/preact": "^6.0.6",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
     "@fontsource-variable/newsreader": "^5.3.0",
-    "astro": "^7.3.2",
+    "astro": "^7.3.8",
     "fuse.js": "^7.5.0",
     "preact": "^10.29.8"
   },
